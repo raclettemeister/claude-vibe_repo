@@ -29,3 +29,14 @@
 {"location":"index.html:makeChoice","message":"Choice made","data":{"choiceIndex":0,"eventId":"first_christmas","monthsPlayed":5},"timestamp":1770126095294,"sessionId":"debug-session","hypothesisId":"B"}
 {"location":"index.html:closeOutcome","message":"Outcome closed","data":{"monthsPlayed":5},"timestamp":1770126096666,"sessionId":"debug-session","hypothesisId":"D"}
 {"location":"index.html:advanceMonth","message":"Advance month entry","data":{"monthsPlayedBefore":5,"month":12,"year":2022},"timestamp":1770126096666,"sessionId":"debug-session","hypothesisId":"D"}
+{"location":"index.html:selectNextEvent","message":"Select next event entry","data":{"currentMonthIndex":1,"monthsPlayed":0},"timestamp":1770126906952,"sessionId":"debug-session","hypothesisId":"C"}
+{"location":"index.html:displayEvent","message":"Displaying event","data":{"eventId":"sunday_opening"},"timestamp":1770126906953,"sessionId":"debug-session","hypothesisId":"C"}
+{"location":"index.html:startGame","message":"Game started","data":{"difficulty":"realistic","monthsPlayed":0,"firstEventId":"sunday_opening"},"timestamp":1770126906953,"sessionId":"debug-session","hypothesisId":"A"}
+{"location":"index.html:selectNextEvent","message":"Select next event entry","data":{"currentMonthIndex":1,"monthsPlayed":0},"timestamp":1770127719800,"sessionId":"debug-session","hypothesisId":"C"}
+{"location":"index.html:displayEvent","message":"Displaying event","data":{"eventId":"sunday_opening"},"timestamp":1770127719801,"sessionId":"debug-session","hypothesisId":"C"}
+{"location":"index.html:startGame","message":"Game started","data":{"difficulty":"realistic","monthsPlayed":0,"firstEventId":"sunday_opening"},"timestamp":1770127719801,"sessionId":"debug-session","hypothesisId":"A"}
+{"location":"index.html:makeChoice","message":"Choice made","data":{"choiceIndex":0,"eventId":"sunday_opening","monthsPlayed":0},"timestamp":1770127722234,"sessionId":"debug-session","hypothesisId":"B"}
+{"location":"index.html:closeOutcome","message":"Outcome closed","data":{"monthsPlayed":0},"timestamp":1770127723100,"sessionId":"debug-session","hypothesisId":"D"}
+{"location":"index.html:advanceMonth","message":"Advance month entry","data":{"monthsPlayedBefore":0,"month":7,"year":2022},"timestamp":1770127723101,"sessionId":"debug-session","hypothesisId":"D"}
+{"location":"index.html:selectNextEvent","message":"Select next event entry","data":{"currentMonthIndex":2,"monthsPlayed":1},"timestamp":1770127723102,"sessionId":"debug-session","hypothesisId":"C"}
+{"location":"index.html:displayEvent","message":"Displaying event","data":{"eventId":"stock_reality"},"timestamp":1770127723102,"sessionId":"debug-session","hypothesisId":"C"}
