@@ -5,8 +5,9 @@ This branch (`testing/mobile-i18n-json-refactor`) is for developing the new stru
 ## What’s done so far
 
 - **Branch**: All work is on `testing/mobile-i18n-json-refactor` (main is unchanged).
-- **Events extracted**: The events database is no longer inline in `index.html`. It lives in **`data/events.js`** and is loaded via `<script src="data/events.js"></script>`.
-- **Same behavior**: Game logic is unchanged; only the location of the events array moved. `index.html` is shorter; the rest of the plan (locales, responsive, etc.) can follow.
+- **Events extracted**: The events database lives in **`data/events.js`** and is loaded via `<script src="data/events.js"></script>`.
+- **i18n (FR/EN)**: Language switcher on the title screen (EN | FR). Locale files: **`data/locales/en.json`** and **`data/locales/fr.json`**. Choice saved in `localStorage`. Title screen, difficulty labels, buttons, and in-game month names use the selected language. Event/choice text still in English for now.
+- **Same behavior**: Game logic unchanged; no bugs introduced.
 
 ## How to run
 
@@ -15,8 +16,8 @@ This branch (`testing/mobile-i18n-json-refactor`) is for developing the new stru
 
 ## Next steps (from the plan)
 
-1. Convert events to `events.json` + `eventLogic.js` (optional; current setup already works).
-2. Add `data/locales/en.json` and `fr.json` + language switcher.
+1. Convert events to `events.json` + `eventLogic.js` (optional).
+2. Add more UI strings to locale files (e.g. story tab, glossary, end screen) and optionally event/choice text.
 3. Extract CSS to `css/styles.css` and add responsive + mobile options (scrollable layout, optional landscape hint).
 
 ## Rollback
