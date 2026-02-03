@@ -14,6 +14,7 @@ This game covers 42 months of running a small business—the real decisions, the
 ## Features
 
 - **Real story**: Based on the actual journey of Chez Julien in Brussels
+- **French & English**: Full translation (FR/EN) with language switcher on the title screen
 - **Meaningful choices**: Every decision affects your finances, stress, energy, family, and reputation
 - **Burnout mechanics**: Push too hard and face real consequences
 - **Building purchase goal**: Save €80,000 by month 25 to buy your building
@@ -31,6 +32,7 @@ Can you balance:
 
 ## Version History
 
+- **v3.0** — **FR/EN** — Full French/English translation (UI, events, photos, end screen, warnings, bank, burnout). Language switcher on title screen. Raclette event order fix.
 - **v2.1** - Endgame cost escalation (salary, car, apartment grow over time)
 - **v2.0** - Balance overhaul (tighter economy, family choices cost real money)
 - **v1.0** - Initial release
