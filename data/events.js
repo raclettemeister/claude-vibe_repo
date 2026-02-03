@@ -563,11 +563,11 @@ const events = [
                     ? 'Winter is here. Your raclette reputation precedes you. Customers call in advance. "Are you the shop with 15 different raclettes?" The question is how hard to push.'
                     : 'Winter is here and everyone wants raclette. You could stock up big on raclette cheese and rent machines. High investment but the margins are incredible.',
                 type: 'opportunity',
-                monthRange: [15, 17], // Oct-Dec
+                monthRange: [17, 20], // Nov Year 2–Feb (after "The Raclette Question" in Oct; winter = Nov–Jan)
                 recurring: true,
                 cooldown: 12,
                 priority: 85,
-                condition: () => (gameState.month >= 10 || gameState.month <= 1) && gameState.cheeseTypes >= 25,
+                condition: () => (gameState.month >= 11 || gameState.month <= 1) && gameState.cheeseTypes >= 25,
                 choices: [
                     {
                         text: 'Go all-in on raclette',
@@ -595,8 +595,8 @@ const events = [
                 title: 'The Raclette Question',
                 description: 'October. Your second autumn in the shop. The temperature drops. Customers start asking: "Do you have raclette?" You have a few basic wheels, but you could do more. Much more. Raclette season is coming—the question is whether you want to ride it.',
                 type: 'decision',
-                monthRange: [14, 18], // Sep-Jan Year 2 (wider window)
-                condition: () => (gameState.month >= 9 || gameState.month <= 1) && gameState.cheeseTypes >= 10,
+                monthRange: [16, 16], // October only (monthIndex 16 = Oct 2023; narrative: "October... Raclette season is coming")
+                condition: () => gameState.month === 10 && gameState.cheeseTypes >= 10,
                 unique: true,
                 priority: 90,
                 choices: [

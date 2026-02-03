@@ -259,4 +259,19 @@ If events feel random, the deterministic system isn't working.
 
 ---
 
+## Family-First Balance (Tested Feb 2026)
+
+**Design goal:** It should be **very hard** to get the building if you consistently choose family over work.
+
+**Simulation (balance-test.js / Python):** A "family first" run with:
+- No Sunday opening (prioritise rest/family)
+- Family choices when offered: wedding (-€2k), hospital (-€4k), week off (-€4.5k), long weekend (-€2.5k), relationship balance (-€1.5k), close Sundays (-€1.2k), delegation (-€2k), smaller family costs
+- Moderate cheese/reputation growth (less time grinding business)
+
+**Result:** Bank at month 25 ≈ **€35k** — short of €80k by **~€45k**. Building is **not** reached.
+
+**Conclusion:** Current economy and event costs already make the building very hard when choosing family. No change required unless playtesting shows it still feels achievable; then consider increasing building cost (e.g. €85k) or family-choice penalties.
+
+---
+
 *"The story is sacrifice, then reward. Make the sacrifice feel real. Make the reward feel earned."*

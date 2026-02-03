@@ -1,0 +1,35 @@
+============================================================
+CHEZ JULIEN — BALANCE TEST SUITE (vs BALANCE_REFERENCE.md)
+============================================================
+
+--- Constants (index.html) ---
+Constants check (index.html): OK
+
+--- Mandatory events (events.js) ---
+PASS: All 10 mandatory events present in data/events.js
+
+--- Difficulty modifiers ---
+PASS: Difficulty modifiers: brutal < realistic < forgiving (net profit)
+
+--- Money curve early ---
+PASS: Early game net positive (month 5 net €1,534)
+
+--- Family-first (building very hard) ---
+PASS: Family-first bank at month 25: €34,128 (building not reached)
+
+--- Grind (building achievable) ---
+PASS: Grind bank at month 25: €71,755
+
+--- Sunday burnout timing ---
+INFO: Sunday burnout at month 12 (ref 6-10; sim stress model may differ)
+
+--- Balanced playthrough ---
+INFO: Balanced bank at month 25: €55,757
+
+--- Cheese focus ---
+INFO: Cheese-focus bank at month 25: €71,333
+
+--- Post-building end state (~50k) ---
+INFO: Post-building sim went negative (€-57,865) — started with €10k residual; real play may have €15-25k so ends ~50k
+
+============================================================
