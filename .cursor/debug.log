@@ -40,3 +40,31 @@
 {"location":"index.html:advanceMonth","message":"Advance month entry","data":{"monthsPlayedBefore":0,"month":7,"year":2022},"timestamp":1770127723101,"sessionId":"debug-session","hypothesisId":"D"}
 {"location":"index.html:selectNextEvent","message":"Select next event entry","data":{"currentMonthIndex":2,"monthsPlayed":1},"timestamp":1770127723102,"sessionId":"debug-session","hypothesisId":"C"}
 {"location":"index.html:displayEvent","message":"Displaying event","data":{"eventId":"stock_reality"},"timestamp":1770127723102,"sessionId":"debug-session","hypothesisId":"C"}
+{"location":"index.html:selectNextEvent","message":"Select next event entry","data":{"currentMonthIndex":1,"monthsPlayed":0},"timestamp":1770127930612,"sessionId":"debug-session","hypothesisId":"C"}
+{"location":"index.html:displayEvent","message":"Displaying event","data":{"eventId":"sunday_opening"},"timestamp":1770127930613,"sessionId":"debug-session","hypothesisId":"C"}
+{"location":"index.html:startGame","message":"Game started","data":{"difficulty":"realistic","monthsPlayed":0,"firstEventId":"sunday_opening"},"timestamp":1770127930614,"sessionId":"debug-session","hypothesisId":"A"}
+{"location":"index.html:makeChoice","message":"Choice made","data":{"choiceIndex":0,"eventId":"sunday_opening","monthsPlayed":0},"timestamp":1770127932675,"sessionId":"debug-session","hypothesisId":"B"}
+{"location":"index.html:closeOutcome","message":"Outcome closed","data":{"monthsPlayed":0},"timestamp":1770127933291,"sessionId":"debug-session","hypothesisId":"D"}
+{"location":"index.html:advanceMonth","message":"Advance month entry","data":{"monthsPlayedBefore":0,"month":7,"year":2022},"timestamp":1770127933292,"sessionId":"debug-session","hypothesisId":"D"}
+{"location":"index.html:selectNextEvent","message":"Select next event entry","data":{"currentMonthIndex":2,"monthsPlayed":1},"timestamp":1770127933294,"sessionId":"debug-session","hypothesisId":"C"}
+{"location":"index.html:displayEvent","message":"Displaying event","data":{"eventId":"stock_reality"},"timestamp":1770127933294,"sessionId":"debug-session","hypothesisId":"C"}
+{"location":"index.html:makeChoice","message":"Choice made","data":{"choiceIndex":0,"eventId":"stock_reality","monthsPlayed":1},"timestamp":1770127933858,"sessionId":"debug-session","hypothesisId":"B"}
+{"location":"index.html:closeOutcome","message":"Outcome closed","data":{"monthsPlayed":1},"timestamp":1770127934467,"sessionId":"debug-session","hypothesisId":"D"}
+{"location":"index.html:advanceMonth","message":"Advance month entry","data":{"monthsPlayedBefore":1,"month":8,"year":2022},"timestamp":1770127934467,"sessionId":"debug-session","hypothesisId":"D"}
+{"location":"index.html:selectNextEvent","message":"Select next event entry","data":{"currentMonthIndex":3,"monthsPlayed":2},"timestamp":1770127934469,"sessionId":"debug-session","hypothesisId":"C"}
+{"location":"index.html:displayEvent","message":"Displaying event","data":{"eventId":"first_cheese"},"timestamp":1770127934469,"sessionId":"debug-session","hypothesisId":"C"}
+{"location":"index.html:makeChoice","message":"Choice made","data":{"choiceIndex":0,"eventId":"first_cheese","monthsPlayed":2},"timestamp":1770127935117,"sessionId":"debug-session","hypothesisId":"B"}
+{"location":"index.html:closeOutcome","message":"Outcome closed","data":{"monthsPlayed":2},"timestamp":1770127936183,"sessionId":"debug-session","hypothesisId":"D"}
+{"location":"index.html:advanceMonth","message":"Advance month entry","data":{"monthsPlayedBefore":2,"month":9,"year":2022},"timestamp":1770127936183,"sessionId":"debug-session","hypothesisId":"D"}
+{"location":"index.html:selectNextEvent","message":"Select next event entry","data":{"currentMonthIndex":4,"monthsPlayed":3},"timestamp":1770127936185,"sessionId":"debug-session","hypothesisId":"C"}
+{"location":"index.html:displayEvent","message":"Displaying event","data":{"eventId":"insurance_decision"},"timestamp":1770127936186,"sessionId":"debug-session","hypothesisId":"C"}
+{"location":"index.html:makeChoice","message":"Choice made","data":{"choiceIndex":0,"eventId":"insurance_decision","monthsPlayed":3},"timestamp":1770127936891,"sessionId":"debug-session","hypothesisId":"B"}
+{"location":"index.html:closeOutcome","message":"Outcome closed","data":{"monthsPlayed":3},"timestamp":1770127937542,"sessionId":"debug-session","hypothesisId":"D"}
+{"location":"index.html:advanceMonth","message":"Advance month entry","data":{"monthsPlayedBefore":3,"month":10,"year":2022},"timestamp":1770127937542,"sessionId":"debug-session","hypothesisId":"D"}
+{"location":"index.html:selectNextEvent","message":"Select next event entry","data":{"currentMonthIndex":5,"monthsPlayed":4},"timestamp":1770127937544,"sessionId":"debug-session","hypothesisId":"C"}
+{"location":"index.html:displayEvent","message":"Displaying event","data":{"eventId":"difficult_customer"},"timestamp":1770127937544,"sessionId":"debug-session","hypothesisId":"C"}
+{"location":"index.html:makeChoice","message":"Choice made","data":{"choiceIndex":0,"eventId":"difficult_customer","monthsPlayed":4},"timestamp":1770127938353,"sessionId":"debug-session","hypothesisId":"B"}
+{"location":"index.html:closeOutcome","message":"Outcome closed","data":{"monthsPlayed":4},"timestamp":1770127939008,"sessionId":"debug-session","hypothesisId":"D"}
+{"location":"index.html:advanceMonth","message":"Advance month entry","data":{"monthsPlayedBefore":4,"month":11,"year":2022},"timestamp":1770127939008,"sessionId":"debug-session","hypothesisId":"D"}
+{"location":"index.html:selectNextEvent","message":"Select next event entry","data":{"currentMonthIndex":6,"monthsPlayed":5},"timestamp":1770127939010,"sessionId":"debug-session","hypothesisId":"C"}
+{"location":"index.html:displayEvent","message":"Displaying event","data":{"eventId":"first_christmas"},"timestamp":1770127939010,"sessionId":"debug-session","hypothesisId":"C"}
