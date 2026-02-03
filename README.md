@@ -1,2 +1,44 @@
-# claude-vibe_repo
-github repo for claude vibr project
+# 🧀 Chez Julien Simulator
+
+A narrative business simulation game based on the true story of a cheese shop in Brussels.
+
+## Play Now
+**[Play the game](https://raclettemeister.github.io/chez-julien-simulatorV3/)**
+
+## About
+
+You are Julien. It's July 2022. You've just taken over a small bulk grocery store in Uccle, Brussels. The previous owner left you with modest savings, loyal customers, and a decision to make: stay the course, or pivot to something new?
+
+This game covers 42 months of running a small business—the real decisions, the burnouts, the relationships, and the dream of owning your own building.
+
+## Features
+
+- **Real story**: Based on the actual journey of Chez Julien in Brussels
+- **Meaningful choices**: Every decision affects your finances, stress, energy, family, and reputation
+- **Burnout mechanics**: Push too hard and face real consequences
+- **Building purchase goal**: Save €80,000 by month 25 to buy your building
+- **Photo memories**: Unlock real photos from the shop as you progress
+- **Multiple endings**: Your choices shape how the story ends
+
+## The Challenge
+
+Can you balance:
+- 💰 **Money** - Pay bills, grow the business, save for the building
+- 😰 **Stress** - Too much leads to burnout
+- ⚡ **Energy** - You can't do everything alone
+- 👨‍👩‍👧 **Family** - Success means nothing if you lose what matters
+- ⭐ **Reputation** - Build a name in the neighborhood
+
+## Version History
+
+- **v2.1** - Endgame cost escalation (salary, car, apartment grow over time)
+- **v2.0** - Balance overhaul (tighter economy, family choices cost real money)
+- **v1.0** - Initial release
+
+## Credits
+
+Created with ❤️ and 🧀
+
+---
+
+*"Chez Julien... chez moi, chez vous, chez mes potes!"*
