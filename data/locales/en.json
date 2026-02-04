@@ -367,6 +367,15 @@
         { "text": "Watch it slip away", "hint": "You needed €80,000. You have €{{bank}}.", "outcome": "You couldn't make the numbers work. The building sold to someone else. You'll keep renting. Keep vulnerable." }
       ]
     },
+    "building_deadline_extended": {
+      "choicesExtendedCanAfford": [
+        { "text": "Sign the papers", "hint": "Pay €85,000 (€80k + €5k penalty) - this is it", "hintStruggling": "Scrape together €{{payment}} - every last euro you have", "outcome": "You signed. The €5,000 penalty stung—coming right out of your fresh savings from that extra month. But you made it. The building is yours. Worth every euro.", "outcomeStruggling": "You signed. It took every euro you had—the penalty ate into your savings completely. But you made it. The building is yours. You'll rebuild from zero, but it's YOUR zero now." },
+        { "text": "Let it go anyway", "hint": "Maybe freedom isn't owning property", "outcome": "You chose not to buy. The building sold to someone else. You'll keep renting—but also keep your savings." }
+      ],
+      "choicesExtendedCannotAfford": [
+        { "text": "Watch it slip away", "hint": "You needed at least €80,000. You have €{{bank}}.", "outcome": "Even with the extra month, you couldn't make the €80,000 minimum. The building sold to someone else. You'll keep renting." }
+      ]
+    },
     "stock_reality": {
       "title": "The Inventory",
       "description": "Two weeks in, you finally finish counting everything. The €38,000 in stock on paper... doesn't match reality. Bulk quinoa from 2019. Organic lentils that smell strange. Cacao en poudre nobody wants. The épicerie sèche is dying—sales down 23% industry-wide. Realistically, maybe €10,000 is sellable. The rest is just... there.",

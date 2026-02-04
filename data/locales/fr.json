@@ -1054,6 +1054,15 @@
     "building_deadline_extended": {
       "title": "Août 2024 : dernière chance",
       "description": "Le délai prolongé est là. Il faut 80 000 € d'apport plus 5 000 € de pénalité (85 000 € au total). Vous avez ce qu'il faut ?",
+      "dynamicDescriptionCanAfford": "Le délai prolongé est là. Votre compte : {{bank}} €. Il en faut 85 000 au total (80 k + 5 k de pénalité). Vous avez assez.",
+      "dynamicDescriptionCannotAfford": "Le délai prolongé est là. Votre compte : {{bank}} €. Il en faut au moins 80 000. Ce n'est pas assez.",
+      "choicesExtendedCanAfford": [
+        { "text": "Signer", "hint": "Payer 85 000 € (80 k + 5 k de pénalité) – c'est le moment", "hintStruggling": "Rassembler {{payment}} € – jusqu'au dernier euro", "outcome": "Vous avez signé. Les 5 000 € de pénalité ont fait mal. Mais vous y êtes arrivé. Le bâtiment est à vous.", "outcomeStruggling": "Vous avez signé. Il a fallu chaque euro – la pénalité a tout pris. Mais vous y êtes arrivé. Le bâtiment est à vous." },
+        { "text": "Laisser tomber quand même", "hint": "La liberté, ce n'est peut-être pas la propriété", "outcome": "Vous avez dit non. Le bâtiment est parti. Vous restez locataire – mais avec vos économies." }
+      ],
+      "choicesExtendedCannotAfford": [
+        { "text": "Laisser filer", "hint": "Il fallait au moins 80 000 €. Vous avez {{bank}} €.", "outcome": "Même avec le mois de plus, vous n'avez pas atteint les 80 000 €. Le bâtiment est parti. Vous restez locataire." }
+      ],
       "choices": [
         { "text": "Signer", "hint": "J'ai les 85 000 €", "outcome": "Vous avez signé. Le bâtiment est à vous. La pénalité a fait mal mais c'est fait." },
         { "text": "Abandonner", "hint": "Trop tard", "outcome": "Vous avez renoncé. Le bâtiment est parti. Vous restez locataire." }
