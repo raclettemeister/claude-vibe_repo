@@ -1,0 +1,3927 @@
+[
+  {
+    "id": "cash_crisis",
+    "title": "No More Grace",
+    "type": "crisis",
+    "monthRange": "[1, 42]",
+    "mandatory": false,
+    "unique": false,
+    "priority": "—",
+    "special": "cash_crisis",
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "(dynamic)",
+    "choices": [
+      {
+        "text": "Take a bank loan",
+        "effects": {},
+        "flags": [],
+        "action": "take_loan"
+      },
+      {
+        "text": "Sell equipment at a loss",
+        "effects": {
+          "reputation": -5
+        },
+        "flags": [],
+        "action": "sell_equipment"
+      },
+      {
+        "text": "Ask family for help",
+        "effects": {
+          "family": -15
+        },
+        "flags": [],
+        "action": "family_help"
+      }
+    ]
+  },
+  {
+    "id": "sunday_opening",
+    "title": "The Sunday Question",
+    "type": "decision",
+    "monthRange": "[1, 1]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 100,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "Day one. The previous owner was closed Sundays. But you see other shops open. Th...",
+    "choices": [
+      {
+        "text": "Open on Sundays",
+        "effects": {
+          "stress": 10,
+          "energy": -5
+        },
+        "flags": [
+          "openSunday"
+        ],
+        "action": null
+      },
+      {
+        "text": "Stay closed on Sundays",
+        "effects": {
+          "stress": -5,
+          "family": 5,
+          "energy": 5
+        },
+        "flags": [
+          "openSunday"
+        ],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "stock_reality",
+    "title": "The Inventory",
+    "type": "crisis",
+    "monthRange": "[1, 2]",
+    "mandatory": false,
+    "unique": false,
+    "priority": 95,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "Two weeks in, you finally finish counting everything. The €38,000 in stock on pa...",
+    "choices": [
+      {
+        "text": "Progressive liquidation - flea markets, deep discounts",
+        "effects": {
+          "stress": 15,
+          "energy": -15
+        },
+        "flags": [
+          "liquidatedStock",
+          "fleaMarketDone"
+        ],
+        "action": null
+      },
+      {
+        "text": "Find a \"guy\" to take the bulk stuff",
+        "effects": {
+          "bank": 1500,
+          "stress": 5,
+          "energy": -5
+        },
+        "flags": [
+          "shadyGuyContacted",
+          "liquidatedStock"
+        ],
+        "action": null
+      },
+      {
+        "text": "Keep trying to sell it normally",
+        "effects": {
+          "stress": 25,
+          "bank": -1000
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "shop_name",
+    "title": "What's In a Name?",
+    "type": "decision",
+    "monthRange": "[3, 12]",
+    "mandatory": false,
+    "unique": true,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "The shop came with a generic name. But customers have started calling it differe...",
+    "choices": [
+      {
+        "text": "\"Chez Julien\" - embrace what customers already call it",
+        "effects": {
+          "stress": -5
+        },
+        "flags": [
+          "shopRenamed",
+          "shopName"
+        ],
+        "action": null
+      },
+      {
+        "text": "\"Alix Corner\" - modern and trendy",
+        "effects": {
+          "bank": -200
+        },
+        "flags": [
+          "shopRenamed",
+          "shopName"
+        ],
+        "action": null
+      },
+      {
+        "text": "Keep the current name",
+        "effects": {},
+        "flags": [
+          "shopRenamed"
+        ],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "insurance_decision",
+    "title": "The Insurance Question",
+    "type": "decision",
+    "monthRange": "[2, 4]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 90,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "Your accountant sends you the annual insurance renewal. \"Shop insurance covers f...",
+    "choices": [
+      {
+        "text": "Get comprehensive coverage (€1,800/year)",
+        "effects": {
+          "bank": -1800,
+          "stress": -5
+        },
+        "flags": [
+          "insuranceDecisionMade",
+          "hasComprehensiveInsurance",
+          "monthlyInsurance"
+        ],
+        "action": null
+      },
+      {
+        "text": "Basic coverage only",
+        "effects": {
+          "stress": 5
+        },
+        "flags": [
+          "insuranceDecisionMade",
+          "hasComprehensiveInsurance"
+        ],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "summer_flood",
+    "title": "The Flood",
+    "type": "crisis",
+    "monthRange": "[13, 37]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 95,
+    "special": null,
+    "dynamicChoices": true,
+    "choicesCount": 0,
+    "description": "(dynamic)",
+    "choices": []
+  },
+  {
+    "id": "first_cheese",
+    "title": "A Customer's Suggestion",
+    "type": "pivot",
+    "monthRange": "[2, 4]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 95,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "A regular customer, Madame Dubois, sighs looking at your bulk bins. \"What this n...",
+    "choices": [
+      {
+        "text": "Start with ONE cheese - Tomme Larzac",
+        "effects": {
+          "bank": -300,
+          "energy": -10
+        },
+        "flags": [
+          "cheeseTypes"
+        ],
+        "action": null
+      },
+      {
+        "text": "Go big - state of the art counter",
+        "effects": {
+          "bank": -5000,
+          "stress": 20,
+          "energy": -15
+        },
+        "flags": [
+          "cheeseTypes",
+          "hasProCounter"
+        ],
+        "action": null
+      },
+      {
+        "text": "Stick to the bulk concept",
+        "effects": {
+          "stress": 10
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "charcuterie_question",
+    "title": "The Charcuterie Question",
+    "type": "decision",
+    "monthRange": "[6, 38]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 65,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "A customer lingers at the cheese counter. \"Do you have any charcuterie? A nice s...",
+    "choices": [
+      {
+        "text": "Add Belgian charcuterie (Coprosain)",
+        "effects": {
+          "bank": -1500,
+          "stress": 10
+        },
+        "flags": [
+          "hasCharcuterie"
+        ],
+        "action": null
+      },
+      {
+        "text": "Add Italian imports (premium)",
+        "effects": {
+          "bank": -3000,
+          "stress": 15
+        },
+        "flags": [
+          "hasCharcuterie"
+        ],
+        "action": null
+      },
+      {
+        "text": "Stay focused on cheese",
+        "effects": {
+          "stress": -5
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "wine_dilemma",
+    "title": "The Wine Dilemma",
+    "type": "decision",
+    "monthRange": "[10, 38]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 65,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "\"What wine goes with this cheese?\" You get asked this daily. The wine shop on Ru...",
+    "choices": [
+      {
+        "text": "Curated selection (15 bottles)",
+        "effects": {
+          "bank": -2000,
+          "stress": 5
+        },
+        "flags": [
+          "hasWineSelection"
+        ],
+        "action": null
+      },
+      {
+        "text": "Serious wine section",
+        "effects": {
+          "bank": -8000,
+          "stress": 20,
+          "energy": -15
+        },
+        "flags": [
+          "hasWineSelection",
+          "hasWineEvents"
+        ],
+        "action": null
+      },
+      {
+        "text": "Partner with the wine shop",
+        "effects": {
+          "stress": -5
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "corporate_opportunity",
+    "title": "The Corporate Inquiry",
+    "type": "opportunity",
+    "monthRange": "[12, 35]",
+    "mandatory": false,
+    "unique": true,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "An email from a law firm downtown: \"We're looking for a caterer for our weekly p...",
+    "choices": [
+      {
+        "text": "Accept - reliable recurring revenue",
+        "effects": {
+          "stress": 15,
+          "energy": -10
+        },
+        "flags": [
+          "hasCorporateClient"
+        ],
+        "action": null
+      },
+      {
+        "text": "Negotiate better terms",
+        "effects": {
+          "stress": 10
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Decline politely",
+        "effects": {
+          "stress": -10
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "cheap_fridge",
+    "title": "The Barely-Working Fridge",
+    "type": "decision",
+    "monthRange": "[4, 10]",
+    "mandatory": false,
+    "unique": true,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "You found a used cheese display counter for €800. It's ugly. The compressor soun...",
+    "choices": [
+      {
+        "text": "Buy the cheap ugly one (€800)",
+        "effects": {
+          "bank": -800,
+          "stress": 5
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Finance a proper counter (€50,000)",
+        "effects": {
+          "bank": -2000,
+          "stress": 20
+        },
+        "flags": [
+          "monthlyPayment",
+          "hasProCounter"
+        ],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "fine_food_choice",
+    "title": "A New Direction",
+    "type": "pivot",
+    "monthRange": "[8, 20]",
+    "mandatory": false,
+    "unique": true,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "Looking at the shop, you realize it's becoming something different. The bulk bin...",
+    "choices": [
+      {
+        "text": "Embrace fine food - this is who we are now",
+        "effects": {
+          "stress": 10,
+          "reputation": 6
+        },
+        "flags": [
+          "fineFoodChoiceMade"
+        ],
+        "action": "set_fine_food"
+      },
+      {
+        "text": "Stay hybrid - keep options open",
+        "effects": {
+          "stress": 5
+        },
+        "flags": [
+          "fineFoodChoiceMade"
+        ],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "gradual_pivot",
+    "title": "The Gradual Transformation",
+    "type": "pivot",
+    "monthRange": "[6, 15]",
+    "mandatory": false,
+    "unique": false,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "You've been slowly replacing bulk bins with cheese, charcuterie, local products....",
+    "choices": [
+      {
+        "text": "Continue the slow pivot",
+        "effects": {
+          "stress": 10,
+          "energy": -5
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Accelerate - transform faster",
+        "effects": {
+          "bank": -2000,
+          "stress": 25,
+          "energy": -15
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "first_christmas",
+    "title": "Your First Christmas Season",
+    "type": "milestone",
+    "monthRange": "[6, 6]",
+    "mandatory": true,
+    "unique": true,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "December arrives. Your first December as a shop owner. Other fromageries seem to...",
+    "choices": [
+      {
+        "text": "Keep it simple - focus on quality",
+        "effects": {
+          "stress": 5,
+          "bank": 1500
+        },
+        "flags": [
+          "firstChristmasDone"
+        ],
+        "action": null
+      },
+      {
+        "text": "Push hard - fake it till you make it",
+        "effects": {
+          "stress": 20,
+          "energy": -15,
+          "bank": 3000
+        },
+        "flags": [
+          "firstChristmasDone"
+        ],
+        "action": null
+      },
+      {
+        "text": "Ask other shop owners for advice",
+        "effects": {
+          "stress": -5,
+          "reputation": 5
+        },
+        "flags": [
+          "firstChristmasDone"
+        ],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "christmas_market",
+    "title": "Christmas Market Opportunity",
+    "type": "opportunity",
+    "monthRange": "[18, 18]",
+    "mandatory": true,
+    "unique": true,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "The commune is organizing a Christmas market at Place Dumont. They're offering y...",
+    "choices": [
+      {
+        "text": "Take the stand",
+        "effects": {
+          "energy": -20,
+          "stress": 15
+        },
+        "flags": [
+          "didChristmasMarket"
+        ],
+        "action": null
+      },
+      {
+        "text": "Focus on the shop",
+        "effects": {
+          "stress": -5
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "corporate_client",
+    "title": "A Corporate Inquiry",
+    "type": "opportunity",
+    "monthRange": "[8, 35]",
+    "mandatory": false,
+    "unique": false,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "An architecture firm down the street wants monthly plateaux for their Friday apé...",
+    "choices": [
+      {
+        "text": "Take the contract",
+        "effects": {
+          "stress": 10,
+          "energy": -10
+        },
+        "flags": [
+          "hasCorporateClient"
+        ],
+        "action": null
+      },
+      {
+        "text": "Stay focused on retail",
+        "effects": {
+          "stress": -5
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "wine_pairing",
+    "title": "Wine & Cheese Evenings",
+    "type": "opportunity",
+    "monthRange": "[10, 38]",
+    "mandatory": false,
+    "unique": false,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "A local sommelier proposes hosting wine and cheese tasting evenings in your shop...",
+    "choices": [
+      {
+        "text": "Start the wine evenings",
+        "effects": {
+          "energy": -10,
+          "stress": 5
+        },
+        "flags": [
+          "hasWineEvents"
+        ],
+        "action": null
+      },
+      {
+        "text": "Too much to organize",
+        "effects": {},
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "raclette_season",
+    "title": "Raclette Season!",
+    "type": "opportunity",
+    "monthRange": "[17, 20]",
+    "mandatory": false,
+    "unique": false,
+    "priority": 85,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "(dynamic)",
+    "choices": [
+      {
+        "text": "Go all-in on raclette",
+        "effects": {
+          "bank": -3000,
+          "stress": 10
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Normal winter stock",
+        "effects": {},
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "first_raclette_season",
+    "title": "The Raclette Question",
+    "type": "decision",
+    "monthRange": "[16, 16]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 90,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "October. Your second autumn in the shop. The temperature drops. Customers start ...",
+    "choices": [
+      {
+        "text": "Go all-in for raclette season",
+        "effects": {
+          "bank": -2000,
+          "stress": 10
+        },
+        "flags": [
+          "raclettePathStarted"
+        ],
+        "action": null
+      },
+      {
+        "text": "Stock a few classics",
+        "effects": {
+          "bank": -500
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Focus on other cheeses",
+        "effects": {},
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "swiss_invitation",
+    "title": "The Swiss Invitation",
+    "type": "opportunity",
+    "monthRange": "[16, 32]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 85,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "An email from Valais, Switzerland. A raclette producer you've been ordering from...",
+    "choices": [
+      {
+        "text": "Go to Switzerland",
+        "effects": {
+          "bank": -4000,
+          "energy": -20,
+          "family": 10
+        },
+        "flags": [
+          "swissVisitDone"
+        ],
+        "action": null
+      },
+      {
+        "text": "Can't afford it right now",
+        "effects": {
+          "stress": 5
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "raclette_kingdom",
+    "title": "The Raclette Kingdom",
+    "type": "decision",
+    "monthRange": "[24, 40]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 88,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "You've built something special. Customers come from across Brussels for your rac...",
+    "choices": [
+      {
+        "text": "Build the Raclette Kingdom",
+        "effects": {
+          "bank": -3000,
+          "stress": 15
+        },
+        "flags": [
+          "racletteKingdom"
+        ],
+        "action": null
+      },
+      {
+        "text": "Stay balanced",
+        "effects": {},
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "parmigiano_invitation",
+    "title": "The King of Cheeses Calls",
+    "type": "milestone",
+    "monthRange": "[38, 42]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 95,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "An email arrives from Emilia-Romagna, Italy. A consortium of Parmigiano Reggiano...",
+    "choices": [
+      {
+        "text": "Go to Emilia-Romagna",
+        "effects": {
+          "bank": -6000,
+          "stress": -25,
+          "energy": 20,
+          "family": 15
+        },
+        "flags": [
+          "parmigianoVisitDone"
+        ],
+        "action": null
+      },
+      {
+        "text": "I can't justify €6,000",
+        "effects": {
+          "stress": 10
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "birthday_party",
+    "title": "Your Birthday Approaches",
+    "type": "personal",
+    "monthRange": "[28, 42]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 70,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "Your birthday is coming up. Your partner has been hinting. \"We should do somethi...",
+    "choices": [
+      {
+        "text": "Throw the big party at the shop",
+        "effects": {
+          "bank": -4500,
+          "stress": 30,
+          "energy": -25
+        },
+        "flags": [
+          "hadBigBirthdayParty"
+        ],
+        "action": null
+      },
+      {
+        "text": "Keep it small—dinner with loved ones",
+        "effects": {
+          "bank": -1200,
+          "stress": -5
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "regular_appreciation",
+    "title": "The Regulars' Gift",
+    "type": "personal",
+    "monthRange": "[30, 42]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 60,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "A group of your most loyal customers shows up with a wrapped package. \"Three yea...",
+    "choices": [
+      {
+        "text": "Display it proudly in the shop",
+        "effects": {
+          "stress": -15
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Keep it at home, use it for family dinners",
+        "effects": {
+          "stress": -10
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "competitor_closes",
+    "title": "The Competition Closes",
+    "type": "opportunity",
+    "monthRange": "[25, 42]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 55,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "You hear the news: the cheese shop on Avenue Louise is closing. They couldn't ma...",
+    "choices": [
+      {
+        "text": "Reach out to their suppliers",
+        "effects": {
+          "stress": 10,
+          "energy": -5
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Just let the customers find you naturally",
+        "effects": {},
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "apprentice_request",
+    "title": "The Apprentice",
+    "type": "opportunity",
+    "monthRange": "[28, 42]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 60,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "A culinary school student emails you. They want to do a stage—an apprenticeship—...",
+    "choices": [
+      {
+        "text": "Take them on for a month",
+        "effects": {
+          "stress": 15,
+          "energy": -10
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Decline politely",
+        "effects": {
+          "stress": -5
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "food_blogger_visit",
+    "title": "The Food Blogger",
+    "type": "opportunity",
+    "monthRange": "[20, 42]",
+    "mandatory": false,
+    "unique": false,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "Someone's been taking a lot of photos in the shop. You recognize her from Instag...",
+    "choices": [
+      {
+        "text": "Give her the full tour and interview",
+        "effects": {
+          "stress": 10,
+          "energy": -5
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Politely decline the spotlight",
+        "effects": {},
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "reflection_moment",
+    "title": "A Moment to Reflect",
+    "type": "personal",
+    "monthRange": "[35, 42]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 50,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "It's a quiet Tuesday afternoon. The shop is empty for once. You look around—at t...",
+    "choices": [
+      {
+        "text": "Take stock and feel proud",
+        "effects": {
+          "stress": -20,
+          "energy": 10
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Start planning the next chapter",
+        "effects": {
+          "stress": 5
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "newspaper_feature",
+    "title": "Local Newspaper Calls",
+    "type": "opportunity",
+    "monthRange": "[12, 36]",
+    "mandatory": false,
+    "unique": true,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "A journalist from the local paper wants to write a feature about your shop. \"The...",
+    "choices": [
+      {
+        "text": "Welcome the journalist",
+        "effects": {
+          "stress": 10,
+          "energy": -5
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Prefer to stay under the radar",
+        "effects": {},
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "expand_hours",
+    "title": "Extended Hours?",
+    "type": "decision",
+    "monthRange": "[6, 30]",
+    "mandatory": false,
+    "unique": false,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "Customers keep asking if you could stay open later. \"I get off work at 6, you cl...",
+    "choices": [
+      {
+        "text": "Extend to 7:30pm",
+        "effects": {
+          "stress": 10,
+          "energy": -10
+        },
+        "flags": [
+          "extendedHours"
+        ],
+        "action": null
+      },
+      {
+        "text": "Keep current hours",
+        "effects": {
+          "family": 5
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "talk_to_customers",
+    "title": "The Listening Tour",
+    "type": "opportunity",
+    "monthRange": "[4, 20]",
+    "mandatory": false,
+    "unique": true,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "You've noticed something: the more you chat with customers, the more you underst...",
+    "choices": [
+      {
+        "text": "Invest time in conversations",
+        "effects": {
+          "energy": -10,
+          "stress": 5
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Keep service efficient",
+        "effects": {
+          "stress": 10
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "christmas_rush",
+    "title": "The Christmas Chaos",
+    "type": "crisis",
+    "monthRange": "[30, 30]",
+    "mandatory": true,
+    "unique": true,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "December hits like a truck. Raclette, Comté, Beaufort d'été—everyone wants chees...",
+    "choices": [
+      {
+        "text": "Push through - this is your moment",
+        "effects": {
+          "stress": 25,
+          "energy": -25,
+          "bank": 5000
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Set boundaries - close on time, limit orders",
+        "effects": {
+          "stress": 10,
+          "energy": -10,
+          "bank": 2000
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "summer_slowdown",
+    "title": "Summer Drought",
+    "type": "crisis",
+    "monthRange": "[13, 14]",
+    "mandatory": false,
+    "unique": false,
+    "priority": 85,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "August. Brussels empties. Your regulars are at the coast. The Melon Charentais b...",
+    "choices": [
+      {
+        "text": "Discount the cheese to move stock",
+        "effects": {
+          "stress": 15,
+          "bank": -1500
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Hold prices, weather the storm",
+        "effects": {
+          "stress": 20,
+          "bank": -500
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Take a week off - embrace it",
+        "effects": {
+          "stress": -15,
+          "energy": 20,
+          "family": 15,
+          "bank": -4500
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "heat_wave",
+    "title": "The Heat Wave",
+    "type": "crisis",
+    "monthRange": "[12, 13]",
+    "mandatory": false,
+    "unique": false,
+    "priority": 80,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "July. 38°C outside. The cheese display fridge is struggling. The AC can barely k...",
+    "choices": [
+      {
+        "text": "Emergency ice and coolers",
+        "effects": {
+          "bank": -400,
+          "stress": 20,
+          "energy": -15
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Push summer products hard",
+        "effects": {
+          "stress": 10,
+          "energy": -10
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Close early during the worst days",
+        "effects": {
+          "bank": -800,
+          "stress": -5
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "snow_day",
+    "title": "Brussels Under Snow",
+    "type": "decision",
+    "monthRange": "[5, 7]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 85,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "You wake up to 20cm of snow. Brussels is paralyzed. The tram isn't running. Cars...",
+    "choices": [
+      {
+        "text": "Open anyway - be the hero",
+        "effects": {
+          "stress": 15,
+          "energy": -20
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Stay closed - it's not worth it",
+        "effects": {
+          "stress": -10,
+          "family": 10,
+          "bank": -1800
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "back_to_school",
+    "title": "September Rush",
+    "type": "decision",
+    "monthRange": "[14, 15]",
+    "mandatory": false,
+    "unique": false,
+    "priority": 85,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "School's back. Everyone's returning from holidays. Suddenly they need everything...",
+    "choices": [
+      {
+        "text": "Embrace the chaos",
+        "effects": {
+          "stress": 15,
+          "energy": -15,
+          "bank": 3000
+        },
+        "flags": [
+          "septemberRushExperienced"
+        ],
+        "action": null
+      },
+      {
+        "text": "Ease back in gradually",
+        "effects": {
+          "stress": 5,
+          "bank": 1500
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "supplier_price_hike",
+    "title": "The Lalero Letter",
+    "type": "crisis",
+    "monthRange": "[8, 36]",
+    "mandatory": false,
+    "unique": true,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "Email from Lalero, your main cheese supplier: \"Cher Julien, suite aux conditions...",
+    "choices": [
+      {
+        "text": "Raise your prices to match",
+        "effects": {
+          "stress": 10
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Absorb the cost temporarily",
+        "effects": {
+          "stress": 5,
+          "bank": -1200
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Negotiate - threaten to switch suppliers",
+        "effects": {
+          "stress": 15
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "delivery_disaster",
+    "title": "The Interbio No-Show",
+    "type": "crisis",
+    "monthRange": "[3, 40]",
+    "mandatory": false,
+    "unique": true,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "Thursday morning. Your Interbio delivery hasn't arrived. You check email—their t...",
+    "choices": [
+      {
+        "text": "Rush to the Marché Dumont",
+        "effects": {
+          "stress": 20,
+          "energy": -15,
+          "bank": -200
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Make do with what you have",
+        "effects": {
+          "stress": 15,
+          "energy": -5
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "health_inspection",
+    "title": "AFSCA Visit",
+    "type": "crisis",
+    "monthRange": "[5, 40]",
+    "mandatory": false,
+    "unique": true,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "Two inspectors from AFSCA walk in unannounced. Clipboards. Thermometers. Questio...",
+    "choices": [
+      {
+        "text": "Stay calm, show them everything",
+        "effects": {
+          "stress": 5
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Panic internally but act professional",
+        "effects": {
+          "stress": 15,
+          "energy": -10
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "competitor_opens",
+    "title": "New Competition",
+    "type": "crisis",
+    "monthRange": "[12, 30]",
+    "mandatory": false,
+    "unique": true,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "A new \"artisan fromagerie\" opens three streets away. Slick branding. Instagram p...",
+    "choices": [
+      {
+        "text": "Double down on what makes you different",
+        "effects": {
+          "stress": 15,
+          "energy": -10
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Visit them, learn from them",
+        "effects": {
+          "stress": 10
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Ignore them and focus on your work",
+        "effects": {
+          "stress": 20
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "fridge_breakdown",
+    "title": "The Fridge Dies",
+    "type": "crisis",
+    "monthRange": "[8, 38]",
+    "mandatory": false,
+    "unique": true,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "The main display fridge starts making a horrible noise. Then stops. The temperat...",
+    "choices": [
+      {
+        "text": "Emergency repair - pay whatever it takes",
+        "effects": {
+          "stress": 25,
+          "bank": -1200
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Move everything to the backup fridge",
+        "effects": {
+          "stress": 20,
+          "energy": -20
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "producer_visit_lalero",
+    "title": "The Lalero Invitation",
+    "type": "opportunity",
+    "monthRange": "[8, 30]",
+    "mandatory": false,
+    "unique": true,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "Email from Lalero: \"Cher Julien, we're inviting our best clients to visit our ca...",
+    "choices": [
+      {
+        "text": "Go - close the shop for 2 days",
+        "effects": {
+          "bank": -2000,
+          "stress": 15,
+          "energy": -10
+        },
+        "flags": [
+          "producerVisits"
+        ],
+        "action": null
+      },
+      {
+        "text": "Send Henry (if available)",
+        "effects": {
+          "stress": 5
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Decline - can't leave the shop",
+        "effects": {
+          "stress": 5
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "cheese_course",
+    "title": "The Cheese Certification",
+    "type": "opportunity",
+    "monthRange": "[10, 28]",
+    "mandatory": false,
+    "unique": true,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "A prestigious 3-day cheese certification course in Lyon. €1,200 plus travel. The...",
+    "choices": [
+      {
+        "text": "Take the course",
+        "effects": {
+          "bank": -1500,
+          "stress": 10
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Learn from YouTube instead",
+        "effects": {
+          "stress": -5
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "bulk_supplier_deal",
+    "title": "The Lalero Bulk Offer",
+    "type": "opportunity",
+    "monthRange": "[12, 36]",
+    "mandatory": false,
+    "unique": true,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "Lalero offers 20% off if you commit to 3 months of orders upfront. That's €4,000...",
+    "choices": [
+      {
+        "text": "Take the deal - €4,000 upfront",
+        "effects": {
+          "bank": -4000,
+          "stress": 5
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Negotiate payment terms",
+        "effects": {
+          "stress": 10
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Keep flexibility",
+        "effects": {},
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "staff_training",
+    "title": "Training Lucas",
+    "type": "decision",
+    "monthRange": "[8, 35]",
+    "mandatory": false,
+    "unique": true,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "Lucas is eager but clumsy with customers. You could spend a week really training...",
+    "choices": [
+      {
+        "text": "Invest a week in training",
+        "effects": {
+          "energy": -20,
+          "stress": 10
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Let him learn on the job",
+        "effects": {
+          "stress": 5
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "sleep_problems",
+    "title": "The 3am Wake-ups",
+    "type": "personal",
+    "monthRange": "[6, 40]",
+    "mandatory": false,
+    "unique": true,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "For the past two weeks, you've been waking up at 3am. Mind racing. Did you order...",
+    "choices": [
+      {
+        "text": "Push through - it'll pass",
+        "effects": {
+          "stress": 15,
+          "energy": -20
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "See a doctor",
+        "effects": {
+          "stress": -5,
+          "bank": -100
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Start evening walks with Poncho",
+        "effects": {
+          "stress": -10,
+          "energy": 5
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "relationship_tension",
+    "title": "The Talk",
+    "type": "personal",
+    "monthRange": "[8, 35]",
+    "mandatory": false,
+    "unique": true,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "\"We need to talk about the shop.\" Your partner sits you down. They're worried. Y...",
+    "choices": [
+      {
+        "text": "Promise to find better balance",
+        "effects": {
+          "stress": 10,
+          "family": 15,
+          "bank": -1500
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "\"This is temporary - I need support right now\"",
+        "effects": {
+          "stress": -5,
+          "family": -10
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Hire more help so you can be present",
+        "effects": {
+          "family": 25,
+          "bank": -2500
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "friend_needs_help",
+    "title": "An Old Friend",
+    "type": "personal",
+    "monthRange": "[10, 38]",
+    "mandatory": false,
+    "unique": false,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "Your best friend from before the shop days calls. They're going through a rough ...",
+    "choices": [
+      {
+        "text": "Make time - friendship matters",
+        "effects": {
+          "stress": 10,
+          "energy": -10,
+          "family": 10
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "\"I'm really busy, but call anytime\"",
+        "effects": {
+          "stress": 5
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "bad_review",
+    "title": "One Star",
+    "type": "crisis",
+    "monthRange": "[5, 40]",
+    "mandatory": false,
+    "unique": true,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "You open Google Maps. Someone left a 1-star review. \"Overpriced cheese, rude own...",
+    "choices": [
+      {
+        "text": "Respond professionally",
+        "effects": {
+          "stress": -5
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Ignore it",
+        "effects": {
+          "stress": 10
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Ask loyal customers for reviews",
+        "effects": {
+          "stress": 5,
+          "energy": -5
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "difficult_customer",
+    "title": "The Complainer",
+    "type": "crisis",
+    "monthRange": "[3, 40]",
+    "mandatory": false,
+    "unique": true,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "A customer brings back cheese, claiming it was \"off.\" It wasn't - it's a washed-...",
+    "choices": [
+      {
+        "text": "Refund and apologize",
+        "effects": {
+          "stress": 10,
+          "bank": -25
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Explain the cheese patiently",
+        "effects": {
+          "stress": 15,
+          "energy": -5
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Exchange it for something milder",
+        "effects": {
+          "stress": 5
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "regular_moves_away",
+    "title": "Goodbye, Madame Dubois",
+    "type": "personal",
+    "monthRange": "[15, 40]",
+    "mandatory": false,
+    "unique": true,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "Madame Dubois - your very first regular, the one who suggested cheese - comes in...",
+    "choices": [
+      {
+        "text": "Give her a farewell cheese basket",
+        "effects": {
+          "bank": -80,
+          "family": 10
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Thank her for everything",
+        "effects": {
+          "stress": 5
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "theft_incident",
+    "title": "Sticky Fingers",
+    "type": "crisis",
+    "monthRange": "[8, 40]",
+    "mandatory": false,
+    "unique": true,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "You notice the expensive truffle cheese is missing from the display. Then you se...",
+    "choices": [
+      {
+        "text": "Confront them next time they come",
+        "effects": {
+          "stress": 20
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Let it go, improve security",
+        "effects": {
+          "stress": 10,
+          "bank": -200
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Post about it (anonymously) in local groups",
+        "effects": {
+          "stress": 15
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "signature_cheese",
+    "title": "Creating Your Signature",
+    "type": "milestone",
+    "monthRange": "[18, 35]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 80,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "You've been thinking... what if you created something unique? A cheese aged spec...",
+    "choices": [
+      {
+        "text": "Yes - create my signature cheese",
+        "effects": {
+          "bank": -2000,
+          "stress": 10
+        },
+        "flags": [
+          "hasSignatureCheese"
+        ],
+        "action": null
+      },
+      {
+        "text": "Not yet - focus on curation over creation",
+        "effects": {
+          "stress": -5
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "shop_philosophy",
+    "title": "What Do You Stand For?",
+    "type": "decision",
+    "monthRange": "[12, 25]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 75,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "A journalist asks you: \"What's your philosophy?\" You realize you've never articu...",
+    "choices": [
+      {
+        "text": "\"Accessibility - great cheese for everyone, not just the eli",
+        "effects": {
+          "stress": -5
+        },
+        "flags": [
+          "shopPhilosophy"
+        ],
+        "action": null
+      },
+      {
+        "text": "\"Education - I want people to discover, not just buy\"",
+        "effects": {
+          "energy": -5
+        },
+        "flags": [
+          "shopPhilosophy"
+        ],
+        "action": null
+      },
+      {
+        "text": "\"Connection - I'm building relationships, not transactions\"",
+        "effects": {},
+        "flags": [
+          "shopPhilosophy"
+        ],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "mentor_opportunity",
+    "title": "The Old Fromager",
+    "type": "opportunity",
+    "monthRange": "[10, 28]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 85,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "Pierre, a retired fromager who ran a famous shop in Ixelles for 40 years, stops ...",
+    "choices": [
+      {
+        "text": "Accept his mentorship gratefully",
+        "effects": {
+          "energy": -5
+        },
+        "flags": [
+          "hasMentor"
+        ],
+        "action": null
+      },
+      {
+        "text": "Politely decline - forge your own path",
+        "effects": {},
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "neighborhood_collab",
+    "title": "The Neighborhood Collective",
+    "type": "opportunity",
+    "monthRange": "[14, 30]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 70,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "The bakery, the wine shop, and the butcher want to form a collective. Shared mar...",
+    "choices": [
+      {
+        "text": "Join the collective",
+        "effects": {
+          "stress": 5
+        },
+        "flags": [
+          "inNeighborhoodCollective"
+        ],
+        "action": null
+      },
+      {
+        "text": "Stay independent",
+        "effects": {},
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "cookbook_idea",
+    "title": "The Recipe Collection",
+    "type": "decision",
+    "monthRange": "[20, 38]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 65,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "You've been collecting cheese recipes from customers for two years now. Madame D...",
+    "choices": [
+      {
+        "text": "Create \"Recipes from Chez Julien\"",
+        "effects": {
+          "bank": -1500,
+          "stress": 15,
+          "energy": -10
+        },
+        "flags": [
+          "hasCookbook"
+        ],
+        "action": null
+      },
+      {
+        "text": "Keep the recipes as a personal collection",
+        "effects": {},
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "seasonal_ritual",
+    "title": "Creating a Tradition",
+    "type": "decision",
+    "monthRange": "[8, 20]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 70,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "You want to create something special - a yearly tradition that customers look fo...",
+    "choices": [
+      {
+        "text": "\"Beaufort Season\" - a spring celebration of alpine cheese",
+        "effects": {
+          "bank": -500,
+          "stress": 10
+        },
+        "flags": [
+          "hasBeaufortSeason"
+        ],
+        "action": null
+      },
+      {
+        "text": "\"Fromage et Vendanges\" - autumn cheese and wine pairing",
+        "effects": {
+          "bank": -800,
+          "stress": 10
+        },
+        "flags": [
+          "hasFromageVendanges"
+        ],
+        "action": null
+      },
+      {
+        "text": "\"Cheese School\" - monthly workshops for enthusiasts",
+        "effects": {
+          "energy": -10
+        },
+        "flags": [
+          "hasCheeseSchool"
+        ],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "lucas_growth",
+    "title": "Lucas Has an Idea",
+    "type": "decision",
+    "monthRange": "[28, 40]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 75,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "Lucas approaches you nervously. \"I've been thinking... what if we did TikToks? S...",
+    "choices": [
+      {
+        "text": "Let Lucas run the social media",
+        "effects": {
+          "stress": -5
+        },
+        "flags": [
+          "lucasSocialMedia"
+        ],
+        "action": null
+      },
+      {
+        "text": "Not yet - focus on the fundamentals",
+        "effects": {},
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "your_counter_story",
+    "title": "The Stories Behind the Counter",
+    "type": "decision",
+    "monthRange": "[15, 35]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 68,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "You realize every cheese in your counter has a story. The Tomme from the farm yo...",
+    "choices": [
+      {
+        "text": "Create \"Story Cards\" for each cheese",
+        "effects": {
+          "energy": -10,
+          "bank": -200
+        },
+        "flags": [
+          "hasStoryCards"
+        ],
+        "action": null
+      },
+      {
+        "text": "Keep the stories verbal",
+        "effects": {},
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "expansion_dream",
+    "title": "The Second Location",
+    "type": "milestone",
+    "monthRange": "[28, 40]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 90,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "A space opened up in Uccle. Nice neighborhood, no cheese shop. Your accountant s...",
+    "choices": [
+      {
+        "text": "Open the second shop",
+        "effects": {
+          "bank": -40000,
+          "stress": 30,
+          "energy": -20
+        },
+        "flags": [
+          "hasSecondShop"
+        ],
+        "action": null
+      },
+      {
+        "text": "Stay focused on one perfect shop",
+        "effects": {
+          "stress": -10
+        },
+        "flags": [
+          "declinedExpansion"
+        ],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "documentary_approach",
+    "title": "The Documentary",
+    "type": "opportunity",
+    "monthRange": "[24, 40]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 75,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "A filmmaker wants to make a short documentary about your shop. \"The pivot from b...",
+    "choices": [
+      {
+        "text": "Let her film the documentary",
+        "effects": {
+          "stress": 15,
+          "energy": -10
+        },
+        "flags": [
+          "hasDocumentary"
+        ],
+        "action": null
+      },
+      {
+        "text": "Decline - keep your privacy",
+        "effects": {},
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "charity_choice",
+    "title": "Giving Back",
+    "type": "decision",
+    "monthRange": "[10, 35]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 60,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "The local food bank asks if you'd donate cheese that's near its sell-by date. Al...",
+    "choices": [
+      {
+        "text": "Partner with the food bank",
+        "effects": {
+          "bank": -100
+        },
+        "flags": [
+          "foodBankPartner"
+        ],
+        "action": null
+      },
+      {
+        "text": "Do the school sessions",
+        "effects": {
+          "energy": -10
+        },
+        "flags": [
+          "schoolProgram"
+        ],
+        "action": null
+      },
+      {
+        "text": "Do both - find the time",
+        "effects": {
+          "energy": -15,
+          "bank": -100,
+          "stress": 10
+        },
+        "flags": [
+          "foodBankPartner",
+          "schoolProgram"
+        ],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "naming_ceremony",
+    "title": "The Naming Ceremony",
+    "type": "decision",
+    "monthRange": "[6, 15]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 65,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "It's official: customers have started calling your shop by a nickname. Some say ...",
+    "choices": [
+      {
+        "text": "Embrace \"Chez Julien\" with a new sign",
+        "effects": {
+          "bank": -800
+        },
+        "flags": [
+          "hasNewSign",
+          "signInstalled"
+        ],
+        "action": null
+      },
+      {
+        "text": "Keep it understated",
+        "effects": {},
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "special_order",
+    "title": "The Impossible Request",
+    "type": "opportunity",
+    "monthRange": "[15, 38]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 72,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "A customer asks: \"Can you get Époisses aged by Berthaut himself? The one from be...",
+    "choices": [
+      {
+        "text": "Take on the challenge",
+        "effects": {
+          "energy": -15,
+          "stress": 10
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Explain why it's not possible",
+        "effects": {},
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "sunday_burnout",
+    "title": "The Crash",
+    "type": "crisis",
+    "monthRange": "[10, 18]",
+    "mandatory": false,
+    "unique": false,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "It's been a year. You've worked every single day. Sunday was supposed to be \"jus...",
+    "choices": [
+      {
+        "text": "Close for a week, recover",
+        "effects": {
+          "energy": 50,
+          "stress": -40,
+          "family": 20,
+          "bank": -5000
+        },
+        "flags": [
+          "burnoutCrashed",
+          "openSunday"
+        ],
+        "action": null
+      },
+      {
+        "text": "Push through somehow",
+        "effects": {
+          "energy": -20,
+          "stress": 20,
+          "family": -25
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "stop_sunday",
+    "title": "The Sunday Decision",
+    "type": "decision",
+    "monthRange": "[12, 25]",
+    "mandatory": false,
+    "unique": false,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "After the crash, you're rethinking everything. Sunday was only your 4th best day...",
+    "choices": [
+      {
+        "text": "Close Sundays permanently",
+        "effects": {
+          "stress": -20,
+          "energy": 15,
+          "family": 20,
+          "bank": -1200
+        },
+        "flags": [
+          "openSunday"
+        ],
+        "action": null
+      },
+      {
+        "text": "Keep Sundays, hire help",
+        "effects": {
+          "stress": 5,
+          "bank": -800
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "meet_lucas",
+    "title": "The Neighbor Kid",
+    "type": "hiring",
+    "monthRange": "[27, 28]",
+    "mandatory": true,
+    "unique": true,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "Lucas works at a shop next door. Young, chaotic energy, passionate about food. H...",
+    "choices": [
+      {
+        "text": "Hire Lucas part-time",
+        "effects": {
+          "bank": -1200,
+          "stress": -10,
+          "energy": 15
+        },
+        "flags": [
+          "hasLucas"
+        ],
+        "action": null
+      },
+      {
+        "text": "Look for someone more reliable",
+        "effects": {
+          "stress": 10,
+          "energy": -10
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Not yet, keep doing it yourself",
+        "effects": {
+          "stress": 15,
+          "energy": -10,
+          "family": -10
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "lucas_brings_henry",
+    "title": "Lucas Has a Friend",
+    "type": "hiring",
+    "monthRange": "[28, 42]",
+    "mandatory": false,
+    "unique": false,
+    "priority": 85,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "Lucas has been great. Unreliable sometimes, but customers adore him. One day he ...",
+    "choices": [
+      {
+        "text": "Hire Henry",
+        "effects": {
+          "bank": -1500,
+          "stress": -20,
+          "energy": 25
+        },
+        "flags": [
+          "hasHenry"
+        ],
+        "action": null
+      },
+      {
+        "text": "One employee is enough",
+        "effects": {
+          "stress": 10
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "direct_hire_help",
+    "title": "Time to Get Help",
+    "type": "hiring",
+    "monthRange": "[26, 40]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 70,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "You've been running yourself ragged for over two years now. The shop needs anoth...",
+    "choices": [
+      {
+        "text": "Hire Sophie full-time",
+        "effects": {
+          "bank": -1600,
+          "stress": -15,
+          "energy": 20
+        },
+        "flags": [
+          "hasHenry",
+          "directHireEventSeen"
+        ],
+        "action": null
+      },
+      {
+        "text": "Hire part-time help",
+        "effects": {
+          "bank": -900,
+          "stress": -8,
+          "energy": 10
+        },
+        "flags": [
+          "hasLucas",
+          "directHireEventSeen"
+        ],
+        "action": null
+      },
+      {
+        "text": "Keep doing it alone",
+        "effects": {
+          "stress": 15,
+          "energy": -15,
+          "family": -10
+        },
+        "flags": [
+          "directHireEventSeen"
+        ],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "student_trap",
+    "title": "Student Workers",
+    "type": "decision",
+    "monthRange": "[5, 30]",
+    "mandatory": false,
+    "unique": true,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "A business advisor suggests hiring students. \"Cheap labor! Flexible! Perfect for...",
+    "choices": [
+      {
+        "text": "Hire students anyway",
+        "effects": {
+          "bank": -400,
+          "stress": 5
+        },
+        "flags": [
+          "studentHired"
+        ],
+        "action": null
+      },
+      {
+        "text": "Pass - find adults who can commit",
+        "effects": {
+          "stress": 10
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "peak_performance",
+    "title": "In The Zone",
+    "type": "opportunity",
+    "monthRange": "[13, 42]",
+    "mandatory": false,
+    "unique": false,
+    "priority": 80,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 4,
+    "description": "You wake up feeling... incredible. Rested. Clear-headed. Ready. It's been months...",
+    "choices": [
+      {
+        "text": "Deep clean and reorganize the shop",
+        "effects": {
+          "energy": -15,
+          "stress": -10
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Visit a supplier you've been meaning to see",
+        "effects": {
+          "energy": -20,
+          "bank": -300
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Take a spontaneous day off with your partner",
+        "effects": {
+          "energy": -10,
+          "bank": -2200
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Just enjoy the feeling",
+        "effects": {
+          "stress": -5
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "adopt_dog",
+    "title": "The Dog Question",
+    "type": "personal",
+    "monthRange": "[14, 16]",
+    "mandatory": true,
+    "unique": true,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "Your partner has been hinting for months. A friend's Australian Shepherd just ha...",
+    "choices": [
+      {
+        "text": "Adopt the Australian Shepherd puppy",
+        "effects": {
+          "bank": -1800,
+          "energy": -25,
+          "stress": 15
+        },
+        "flags": [
+          "hasDog",
+          "dogBreed"
+        ],
+        "action": null
+      },
+      {
+        "text": "Not now, too much already",
+        "effects": {
+          "family": -10,
+          "stress": 5
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "dog_in_shop",
+    "title": "Poncho Comes to Work",
+    "type": "opportunity",
+    "monthRange": "[16, 35]",
+    "mandatory": false,
+    "unique": false,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "Poncho has become a shop mascot. He greets customers with boundless enthusiasm. ...",
+    "choices": [
+      {
+        "text": "Lean into it - Poncho is part of the brand",
+        "effects": {
+          "stress": -15,
+          "family": 10,
+          "energy": -10,
+          "bank": -800
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Keep him at home more",
+        "effects": {
+          "family": 5,
+          "energy": 5
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "poncho_cheese_emergency",
+    "title": "Poncho's Cheese Incident",
+    "type": "crisis",
+    "monthRange": "[18, 36]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 90,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "You turn your back for ONE minute. Poncho found the cheese samples meant for tom...",
+    "choices": [
+      {
+        "text": "Rush him to the emergency vet",
+        "effects": {
+          "bank": -2500,
+          "stress": 30,
+          "energy": -20
+        },
+        "flags": [
+          "ponchoSurgery"
+        ],
+        "action": null
+      },
+      {
+        "text": "Wait and see if he passes it naturally",
+        "effects": {
+          "stress": 40,
+          "energy": -30
+        },
+        "flags": [
+          "ponchoSurgery"
+        ],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "poncho_anniversary",
+    "title": "Poncho's First Year",
+    "type": "milestone",
+    "monthRange": "[27, 27]",
+    "mandatory": true,
+    "unique": true,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 1,
+    "description": "One year ago, those eyes looked up at you from the shelter. Now Poncho owns the ...",
+    "choices": [
+      {
+        "text": "Give him extra treats",
+        "effects": {
+          "stress": -10,
+          "family": 10
+        },
+        "flags": [
+          "ponchoAnniversary"
+        ],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "building_offer",
+    "title": "Madame Malfait Calls",
+    "type": "milestone",
+    "monthRange": "[17, 18]",
+    "mandatory": true,
+    "unique": true,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "Your landlord, Madame Malfait, calls with news: \"I'm selling the building. €380,...",
+    "choices": [
+      {
+        "text": "\"I'll find a way. I want it.\"",
+        "effects": {
+          "stress": 20,
+          "energy": -10
+        },
+        "flags": [
+          "buildingOfferReceived"
+        ],
+        "action": null
+      },
+      {
+        "text": "Ask for more time",
+        "effects": {
+          "stress": 20
+        },
+        "flags": [
+          "buildingOfferReceived"
+        ],
+        "action": null
+      },
+      {
+        "text": "\"I can't afford it. Thank you anyway.\"",
+        "effects": {
+          "stress": 15,
+          "family": 5
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "building_countdown",
+    "title": "The Savings Push",
+    "type": "milestone",
+    "monthRange": "[19, 24]",
+    "mandatory": false,
+    "unique": false,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "(dynamic)",
+    "choices": [
+      {
+        "text": "Maximum savings mode",
+        "effects": {
+          "stress": 15,
+          "reputation": -3
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Balance savings with operations",
+        "effects": {
+          "stress": 10
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "building_deadline",
+    "title": "July 2024: The Moment",
+    "type": "milestone",
+    "monthRange": "[25, 25]",
+    "mandatory": true,
+    "unique": true,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": true,
+    "choicesCount": 0,
+    "description": "(dynamic)",
+    "choices": []
+  },
+  {
+    "id": "building_deadline_extended",
+    "title": "August 2024: Last Chance",
+    "type": "milestone",
+    "monthRange": "[26, 26]",
+    "mandatory": true,
+    "unique": true,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": true,
+    "choicesCount": 0,
+    "description": "(dynamic)",
+    "choices": []
+  },
+  {
+    "id": "fancy_sign",
+    "title": "The Shop Sign",
+    "type": "decision",
+    "monthRange": "[8, 30]",
+    "mandatory": false,
+    "unique": false,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "Everyone says you need a proper sign. \"People don't even notice the shop!\" A des...",
+    "choices": [
+      {
+        "text": "Install the fancy sign",
+        "effects": {
+          "bank": -2000,
+          "stress": 15
+        },
+        "flags": [
+          "signInstalled"
+        ],
+        "action": null
+      },
+      {
+        "text": "Keep the old sign",
+        "effects": {
+          "stress": -5
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "producer_opportunity",
+    "title": "Visit the Producers",
+    "type": "opportunity",
+    "monthRange": "[10, 40]",
+    "mandatory": false,
+    "unique": true,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "A cheese supplier invites you to visit their farm in Wallonia. \"See where it com...",
+    "choices": [
+      {
+        "text": "Go visit the producer",
+        "effects": {
+          "energy": -10,
+          "family": 5
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Can't leave the shop",
+        "effects": {
+          "stress": 5
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Send Lucas to visit",
+        "effects": {
+          "bank": -100
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "delegation_moment",
+    "title": "Learning to Let Go",
+    "type": "personal",
+    "monthRange": "[28, 40]",
+    "mandatory": false,
+    "unique": false,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "You've been doing everything yourself. Opening, closing, ordering, pricing, clea...",
+    "choices": [
+      {
+        "text": "Start delegating seriously",
+        "effects": {
+          "stress": -15,
+          "energy": 20,
+          "family": 15,
+          "bank": -2000
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Keep control",
+        "effects": {
+          "stress": 10,
+          "energy": -10,
+          "family": -10
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "take_holiday",
+    "title": "A Week Off?",
+    "type": "personal",
+    "monthRange": "[20, 40]",
+    "mandatory": false,
+    "unique": true,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "You haven't taken a real holiday since you started. Your partner is begging. \"Ju...",
+    "choices": [
+      {
+        "text": "Take the holiday",
+        "effects": {
+          "energy": 40,
+          "stress": -30,
+          "family": 25,
+          "bank": -6000
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Just a long weekend",
+        "effects": {
+          "energy": 15,
+          "stress": -10,
+          "family": 10,
+          "bank": -2500
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Not this time",
+        "effects": {
+          "stress": 10,
+          "family": -15
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "december_rush",
+    "title": "The December Rush",
+    "type": "opportunity",
+    "monthRange": "[6, 42]",
+    "mandatory": false,
+    "unique": false,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "December. The month that makes or breaks the year. Cheese platters, gift baskets...",
+    "choices": [
+      {
+        "text": "Go all out",
+        "effects": {
+          "energy": -35,
+          "stress": 20
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Sustainable push",
+        "effects": {
+          "energy": -10,
+          "stress": 5
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "family_dinner",
+    "title": "Sunday Dinner",
+    "type": "personal",
+    "monthRange": "[1, 42]",
+    "mandatory": false,
+    "unique": true,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "Your family is gathering this Sunday. You haven't been to a family dinner in mon...",
+    "choices": [
+      {
+        "text": "Go to dinner",
+        "effects": {
+          "family": 15,
+          "energy": 10
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Work comes first",
+        "effects": {
+          "family": -15,
+          "stress": 10,
+          "autonomy": 5
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "the_invitation",
+    "title": "The Invitation",
+    "type": "personal",
+    "monthRange": "[8, 18]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 80,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "Your friend Marc is getting married. Saturday, of course. You're invited - actua...",
+    "choices": [
+      {
+        "text": "Close the shop and go",
+        "effects": {
+          "bank": -2000,
+          "stress": 15
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Have staff cover",
+        "effects": {
+          "stress": 10,
+          "bank": -800
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Skip the wedding",
+        "effects": {
+          "family": -20,
+          "stress": 5
+        },
+        "flags": [
+          "skippedWedding"
+        ],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "hospital_call",
+    "title": "The Hospital Call",
+    "type": "crisis",
+    "monthRange": "[17, 18]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 150,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "Your mother calls. Your father had a fall - he's in the hospital in Liège. Not l...",
+    "choices": [
+      {
+        "text": "Close and go immediately",
+        "effects": {
+          "bank": -4000,
+          "stress": 20,
+          "reputation": -10
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Go after closing each day",
+        "effects": {
+          "stress": 35,
+          "energy": -30,
+          "family": 5
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Stay, call every day",
+        "effects": {
+          "family": -25,
+          "stress": 15
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "old_friend",
+    "title": "The Old Friend",
+    "type": "personal",
+    "monthRange": "[6, 30]",
+    "mandatory": false,
+    "unique": true,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "Thomas is passing through Brussels. You haven't seen him in three years - he mov...",
+    "choices": [
+      {
+        "text": "Go out with Thomas",
+        "effects": {
+          "energy": -25,
+          "family": 10,
+          "stress": -10
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Invite him to the shop instead",
+        "effects": {
+          "family": 5,
+          "reputation": 3
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Decline",
+        "effects": {
+          "family": -10
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "birthday_forgot",
+    "title": "The Birthday You Forgot",
+    "type": "crisis",
+    "monthRange": "[12, 36]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 90,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "It's 22h. You're finally home, exhausted. Your phone buzzes - a photo in the fam...",
+    "choices": [
+      {
+        "text": "Go see her right now",
+        "effects": {
+          "family": -10,
+          "stress": 10
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Send flowers tomorrow with a long apology",
+        "effects": {
+          "family": -15,
+          "bank": -100
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "christmas_day",
+    "title": "Christmas Day",
+    "type": "personal",
+    "monthRange": "[42, 42]",
+    "mandatory": true,
+    "unique": true,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "December 25th. The shop is closed today and tomorrow - finally. Your family expe...",
+    "choices": [
+      {
+        "text": "Go straight to family",
+        "effects": {
+          "family": 15,
+          "stress": 10
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "\"Just a few hours\" at the shop first",
+        "effects": {
+          "stress": -5,
+          "family": -10,
+          "energy": -10
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Work through Christmas",
+        "effects": {
+          "family": -30,
+          "stress": -15,
+          "autonomy": 5
+        },
+        "flags": [
+          "workedChristmas"
+        ],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "second_shop_offer",
+    "title": "The Call from Rue au Bois",
+    "type": "opportunity",
+    "monthRange": "[36, 42]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 200,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "Your phone rings. It's Marie, a fellow fromagère. \"Julien, I'm retiring. My shop...",
+    "choices": [
+      {
+        "text": "Let's do it - expand the empire",
+        "effects": {
+          "bank": -60000,
+          "stress": 10
+        },
+        "flags": [
+          "hasSecondShop"
+        ],
+        "action": null
+      },
+      {
+        "text": "I'm happy with one shop",
+        "effects": {
+          "stress": -10
+        },
+        "flags": [
+          "declinedExpansion"
+        ],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "systems_project",
+    "title": "Time to Systematize",
+    "type": "strategy",
+    "monthRange": "[8, 25]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 70,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "You've been thinking about efficiency. There are tools and systems that could he...",
+    "choices": [
+      {
+        "text": "Set up email automations",
+        "effects": {
+          "stress": 5,
+          "energy": -10,
+          "bank": -200
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Hire a weekly cleaning service",
+        "effects": {
+          "bank": -300,
+          "stress": -8
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Keep doing things yourself",
+        "effects": {
+          "stress": 5
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "visibility_push",
+    "title": "Building Visibility",
+    "type": "strategy",
+    "monthRange": "[6, 20]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 70,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "The shop is good, but does the neighborhood know? You could invest time in getti...",
+    "choices": [
+      {
+        "text": "Instagram campaign",
+        "effects": {
+          "stress": 10,
+          "energy": -15,
+          "bank": -150
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Visit other shops for inspiration",
+        "effects": {
+          "stress": -5,
+          "energy": -10,
+          "bank": -100
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Focus on existing customers",
+        "effects": {
+          "stress": -5
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "personal_recharge",
+    "title": "Taking Care of Yourself",
+    "type": "strategy",
+    "monthRange": "[10, 28]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 70,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "The shop demands everything. But this month, you're thinking about yourself for ...",
+    "choices": [
+      {
+        "text": "Business dinner with a supplier",
+        "effects": {
+          "bank": -150,
+          "energy": -5
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Family weekend",
+        "effects": {
+          "bank": -200,
+          "stress": -10
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Keep pushing through",
+        "effects": {
+          "stress": 8,
+          "autonomy": 3
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "pricing_strategy",
+    "title": "The Pricing Question",
+    "type": "strategy",
+    "monthRange": "[12, 30]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 70,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "You've been thinking about your margins. Some shops charge premium prices and ow...",
+    "choices": [
+      {
+        "text": "Go premium - quality justifies price",
+        "effects": {
+          "stress": 5
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Stay accessible - volume matters",
+        "effects": {
+          "stress": 3
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Mixed strategy - everyday and special occasion",
+        "effects": {
+          "stress": 8,
+          "energy": -5
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "supplier_relationship",
+    "title": "Supplier Strategy",
+    "type": "strategy",
+    "monthRange": "[14, 32]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 65,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "You're ordering regularly now. Do you consolidate with fewer suppliers for bette...",
+    "choices": [
+      {
+        "text": "Consolidate - negotiate better terms",
+        "effects": {
+          "stress": -5
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Diversify - unique products win",
+        "effects": {
+          "stress": 8,
+          "energy": -8
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Keep current balance",
+        "effects": {},
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "weekly_rhythm",
+    "title": "Finding Your Rhythm",
+    "type": "strategy",
+    "monthRange": "[10, 26]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 65,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "The shop has a pattern now. But you're wondering if you could optimize the week ...",
+    "choices": [
+      {
+        "text": "Theme days - Tasting Tuesday, etc.",
+        "effects": {
+          "stress": 10,
+          "energy": -10,
+          "bank": -200
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Quiet mornings for admin",
+        "effects": {
+          "stress": -8
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Stay flexible",
+        "effects": {
+          "stress": 3
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "learning_investment",
+    "title": "Investing in Knowledge",
+    "type": "strategy",
+    "monthRange": "[18, 36]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 60,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "There's a cheese certification course. Three weekends, €800. Or you could visit ...",
+    "choices": [
+      {
+        "text": "Take the certification course",
+        "effects": {
+          "bank": -800,
+          "stress": 15,
+          "energy": -20
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Visit producers in France",
+        "effects": {
+          "bank": -600,
+          "stress": -5,
+          "energy": -10
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Learn by doing",
+        "effects": {
+          "stress": 3
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "shop_atmosphere",
+    "title": "The Shop Experience",
+    "type": "strategy",
+    "monthRange": "[8, 24]",
+    "mandatory": false,
+    "unique": true,
+    "priority": 60,
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "The shop works, but could it feel better? Music, lighting, the smell when people...",
+    "choices": [
+      {
+        "text": "Invest in ambiance",
+        "effects": {
+          "bank": -400,
+          "stress": 5,
+          "energy": -8
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Focus on the product display",
+        "effects": {
+          "bank": -300,
+          "stress": 8,
+          "energy": -10
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Keep it authentic",
+        "effects": {},
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "catering_opportunity",
+    "title": "Catering Request",
+    "type": "opportunity",
+    "monthRange": "[8, 36]",
+    "mandatory": false,
+    "unique": false,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "A local business wants cheese platters for their monthly client meetings. It's r...",
+    "choices": [
+      {
+        "text": "Take the contract",
+        "effects": {
+          "stress": 8,
+          "energy": -10
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Negotiate for pickup only",
+        "effects": {
+          "stress": 3
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Decline politely",
+        "effects": {},
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "private_tasting",
+    "title": "Private Tasting Request",
+    "type": "opportunity",
+    "monthRange": "[6, 42]",
+    "mandatory": false,
+    "unique": false,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "Someone wants to book the shop for a private cheese tasting - their partner's 40...",
+    "choices": [
+      {
+        "text": "Host an elaborate tasting",
+        "effects": {
+          "stress": 12,
+          "energy": -15
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Simple tasting, reasonable price",
+        "effects": {
+          "stress": 5,
+          "energy": -8
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Suggest they visit during open hours",
+        "effects": {
+          "stress": -3
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "bulk_order",
+    "title": "Restaurant Bulk Order",
+    "type": "opportunity",
+    "monthRange": "[10, 38]",
+    "mandatory": false,
+    "unique": false,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "(dynamic)",
+    "choices": [
+      {
+        "text": "Full partnership",
+        "effects": {
+          "stress": 8,
+          "energy": -5
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Occasional supply only",
+        "effects": {
+          "stress": 3
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Decline - retail focus",
+        "effects": {},
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "market_stall",
+    "title": "Weekend Market Opportunity",
+    "type": "opportunity",
+    "monthRange": "[6, 30]",
+    "mandatory": false,
+    "unique": true,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "A spot opened up at the Dumont market. Every Wednesday afternoon. It's good expo...",
+    "choices": [
+      {
+        "text": "Take the spot",
+        "effects": {
+          "stress": 15,
+          "energy": -12
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Take it temporarily",
+        "effects": {
+          "stress": 8,
+          "energy": -8
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Pass on it",
+        "effects": {},
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "good_month",
+    "title": "An Unexpectedly Good Month",
+    "type": "milestone",
+    "monthRange": "[8, 40]",
+    "mandatory": false,
+    "unique": false,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 3,
+    "description": "(dynamic)",
+    "choices": [
+      {
+        "text": "Save it all",
+        "effects": {},
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Invest in the shop",
+        "effects": {
+          "bank": -500
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Celebrate with family",
+        "effects": {
+          "stress": -10
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  },
+  {
+    "id": "quiet_month",
+    "title": "A Quiet Month",
+    "type": "routine",
+    "monthRange": "[1, 42]",
+    "mandatory": false,
+    "unique": false,
+    "priority": "—",
+    "special": null,
+    "dynamicChoices": false,
+    "choicesCount": 2,
+    "description": "Nothing dramatic. The rhythm continues. Customers come, cheese sells, the sun ri...",
+    "choices": [
+      {
+        "text": "Rest and recover",
+        "effects": {
+          "energy": 15,
+          "stress": -10
+        },
+        "flags": [],
+        "action": null
+      },
+      {
+        "text": "Plan and improve",
+        "effects": {
+          "energy": -5,
+          "stress": 5
+        },
+        "flags": [],
+        "action": null
+      }
+    ]
+  }
+]
