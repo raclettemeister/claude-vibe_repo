@@ -30,6 +30,18 @@ Can you balance:
 - 👨‍👩‍👧 **Family** - Success means nothing if you lose what matters
 - ⭐ **Reputation** - Build a name in the neighborhood
 
+## Testing
+
+To run automated E2E tests (e.g. building-deadline choices in FR when you can’t afford):
+
+```bash
+npm install
+npx playwright install chromium
+npm test
+```
+
+See [TESTING.md](TESTING.md) for why and what is tested.
+
 ## Version History
 
 - **v3.0** — **FR/EN** — Full French/English translation (UI, events, photos, end screen, warnings, bank, burnout). Language switcher on title screen. Raclette event order fix.
