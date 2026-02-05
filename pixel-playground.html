@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Scene Playground — Chez Julien</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 20px;
+        }
+        .controls {
+            background: #2a2a2a;
+            padding: 20px;
+            border-radius: 8px;
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+        .controls h2 {
+            margin-bottom: 20px;
+            color: #f4a460;
+        }
+        .control-group {
+            margin-bottom: 20px;
+        }
+        .control-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 12px;
+            color: #aaa;
+        }
+        .control-group input[type="range"] {
+            width: 100%;
+            margin-bottom: 5px;
+        }
+        .control-group .value {
+            font-size: 11px;
+            color: #888;
+        }
+        .control-group input[type="checkbox"] {
+            margin-right: 8px;
+        }
+        .canvas-container {
+            background: #1a1a1a;
+            border: 2px solid #3a3a3a;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #playground-canvas {
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+            border: 1px solid #444;
+            background: #000;
+        }
+        .info {
+            margin-top: 15px;
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+        }
+        button {
+            background: #2C5530;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
+        }
+        button:hover {
+            background: #3D7042;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="controls">
+            <h2>🎨 Pixel Scene Controls</h2>
+            
+                <div class="control-group">
+                    <label>Month (1-12)</label>
+                    <input type="range" id="month" min="1" max="12" value="3">
+                    <div class="value" id="month-val">3</div>
+                </div>
+
+            <div class="control-group">
+                <label>Time of Day</label>
+                <input type="range" id="timeOfDay" min="0" max="3" value="1" step="1">
+                <div class="value" id="timeOfDay-val">Afternoon</div>
+            </div>
+
+            <div class="control-group">
+                <label>Reputation (0-100)</label>
+                <input type="range" id="reputation" min="0" max="100" value="0">
+                <div class="value" id="reputation-val">0</div>
+            </div>
+
+            <div class="control-group">
+                <label>Stress (0-100)</label>
+                <input type="range" id="stress" min="0" max="100" value="0">
+                <div class="value" id="stress-val">0</div>
+            </div>
+
+            <div class="control-group">
+                <label>Cheese Types</label>
+                <input type="range" id="cheeseTypes" min="0" max="60" value="0">
+                <div class="value" id="cheeseTypes-val">0</div>
+            </div>
+
+            <div class="control-group">
+                <label>Months Played</label>
+                <input type="range" id="monthsPlayed" min="0" max="42" value="1">
+                    <div class="value" id="monthsPlayed-val">1</div>
+            </div>
+
+            <div class="control-group">
+                <label><input type="checkbox" id="hasDog"> Has Dog (Poncho)</label>
+            </div>
+
+            <div class="control-group">
+                <label><input type="checkbox" id="hasLucas"> Has Lucas</label>
+            </div>
+
+            <div class="control-group">
+                <label><input type="checkbox" id="hasHenry"> Has Henry</label>
+            </div>
+
+            <div class="control-group">
+                <label><input type="checkbox" id="hasWineSelection"> Has Wine</label>
+            </div>
+
+            <div class="control-group">
+                <label><input type="checkbox" id="hasRaclette"> Has Raclette</label>
+            </div>
+
+            <div class="control-group">
+                <label>Raclette Types (Swiss Flag if > 0)</label>
+                <input type="range" id="racletteTypes" min="0" max="10" value="0">
+                <div class="value" id="racletteTypes-val">0</div>
+            </div>
+
+            <div class="control-group">
+                <label><input type="checkbox" id="shopRenamed"> Shop Renamed (name event done)</label>
+            </div>
+
+            <div class="control-group">
+                <label>Shop Name</label>
+                <select id="shopName">
+                    <option value="Chez Julien">Chez Julien</option>
+                    <option value="Alix Corner">Alix Corner</option>
+                    <option value="The Shop">The Shop (generic)</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label><input type="checkbox" id="signInstalled"> Sign Installed (fancy €2k upgrade)</label>
+            </div>
+
+            <div class="control-group">
+                <label><input type="checkbox" id="ownsBuilding"> Owns Building</label>
+            </div>
+
+            <div class="control-group">
+                <label><input type="checkbox" id="floodActive"> Flood Active</label>
+            </div>
+
+            <button onclick="randomize()">🎲 Randomize</button>
+            <button onclick="presetMorning()">🌅 Morning</button>
+            <button onclick="presetNight()">🌙 Night</button>
+            <button onclick="presetBusy()">🏪 Busy Shop</button>
+        </div>
+
+        <div class="canvas-container">
+            <canvas id="playground-canvas" width="640" height="360"></canvas>
+            <div class="info">
+                Resolution: 640×360 (2× detail) | Drag sliders to see changes instantly
+            </div>
+        </div>
+    </div>
+
+    <script src="js/pixel-scene.js"></script>
+    <script>
+        const canvas = document.getElementById('playground-canvas');
+        const ctx = canvas.getContext('2d');
+        ctx.imageSmoothingEnabled = false;
+
+        // Mock gameState
+        let gameState = {
+            month: 3, // Start with March (no snow, easier testing)
+            timeOfDay: 1, // 0=morning, 1=afternoon, 2=evening, 3=night
+            reputation: 0,
+            stress: 0,
+            cheeseTypes: 0,
+            monthsPlayed: 1, // Start at month 1 (sign appears after shopRenamed event)
+            hasDog: false,
+            hasLucas: false,
+            hasHenry: false,
+            hasWineSelection: false,
+            hasRaclette: false,
+            shopRenamed: false,
+            shopName: 'Chez Julien', // Default name choice
+            signInstalled: false,
+            ownsBuilding: false,
+            floodActive: false,
+            monthsSinceBuilding: 0,
+            family: 60,
+            racletteTypes: 0
+        };
+
+        function updateValue(id, value) {
+            document.getElementById(id + '-val').textContent = value;
+        }
+
+        function updateTimeOfDay(val) {
+            const names = ['Morning', 'Afternoon', 'Evening', 'Night'];
+            updateValue('timeOfDay', names[val]);
+        }
+
+        function render() {
+            if (window.PixelScene && window.PixelScene.renderShopToCanvas) {
+                // Clear canvas
+                ctx.fillStyle = '#000';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                // Render at 2x scale: render to temp canvas at base resolution, then scale up
+                const baseW = 320;
+                const baseH = 180;
+                const tempCanvas = document.createElement('canvas');
+                tempCanvas.width = baseW;
+                tempCanvas.height = baseH;
+                const tempCtx = tempCanvas.getContext('2d');
+                tempCtx.imageSmoothingEnabled = false;
+                
+                // Render to temp canvas at base resolution
+                window.PixelScene.renderShopToCanvas(tempCtx, baseW, baseH, gameState);
+                
+                // Scale up to display canvas (2x) with crisp pixels
+                ctx.imageSmoothingEnabled = false;
+                ctx.drawImage(tempCanvas, 0, 0, canvas.width, canvas.height);
+            }
+        }
+
+        // Wire up controls
+        document.getElementById('month').addEventListener('input', (e) => {
+            gameState.month = parseInt(e.target.value);
+            updateValue('month', e.target.value);
+            render();
+        });
+
+        document.getElementById('timeOfDay').addEventListener('input', (e) => {
+            gameState.timeOfDay = parseInt(e.target.value);
+            updateTimeOfDay(gameState.timeOfDay);
+            render();
+        });
+
+        document.getElementById('reputation').addEventListener('input', (e) => {
+            gameState.reputation = parseInt(e.target.value);
+            updateValue('reputation', e.target.value);
+            render();
+        });
+
+        document.getElementById('stress').addEventListener('input', (e) => {
+            gameState.stress = parseInt(e.target.value);
+            updateValue('stress', e.target.value);
+            render();
+        });
+
+        document.getElementById('cheeseTypes').addEventListener('input', (e) => {
+            gameState.cheeseTypes = parseInt(e.target.value);
+            updateValue('cheeseTypes', e.target.value);
+            render();
+        });
+
+        document.getElementById('monthsPlayed').addEventListener('input', (e) => {
+            gameState.monthsPlayed = parseInt(e.target.value);
+            updateValue('monthsPlayed', e.target.value);
+            render();
+        });
+
+        document.getElementById('racletteTypes').addEventListener('input', (e) => {
+            gameState.racletteTypes = parseInt(e.target.value);
+            updateValue('racletteTypes', e.target.value);
+            render();
+        });
+
+        ['hasDog', 'hasLucas', 'hasHenry', 'hasWineSelection', 'hasRaclette', 
+         'shopRenamed', 'signInstalled', 'ownsBuilding', 'floodActive'].forEach(id => {
+            document.getElementById(id).addEventListener('change', (e) => {
+                gameState[id] = e.target.checked;
+                render();
+            });
+        });
+
+        // Shop name dropdown
+        document.getElementById('shopName').addEventListener('change', (e) => {
+            gameState.shopName = e.target.value;
+            render();
+        });
+
+        function randomize() {
+            gameState.month = Math.floor(Math.random() * 12) + 1;
+            gameState.timeOfDay = Math.floor(Math.random() * 4);
+            gameState.reputation = Math.floor(Math.random() * 100);
+            gameState.stress = Math.floor(Math.random() * 100);
+            gameState.cheeseTypes = Math.floor(Math.random() * 60);
+            gameState.monthsPlayed = Math.floor(Math.random() * 42);
+            gameState.hasDog = Math.random() > 0.5;
+            gameState.hasLucas = Math.random() > 0.5;
+            gameState.hasHenry = Math.random() > 0.5;
+            gameState.hasWineSelection = Math.random() > 0.5;
+            gameState.hasRaclette = Math.random() > 0.5;
+            gameState.racletteTypes = Math.floor(Math.random() * 10);
+            
+            // Update UI
+            document.getElementById('month').value = gameState.month;
+            document.getElementById('timeOfDay').value = gameState.timeOfDay;
+            document.getElementById('reputation').value = gameState.reputation;
+            document.getElementById('stress').value = gameState.stress;
+            document.getElementById('cheeseTypes').value = gameState.cheeseTypes;
+            document.getElementById('monthsPlayed').value = gameState.monthsPlayed;
+            document.getElementById('racletteTypes').value = gameState.racletteTypes;
+            document.getElementById('hasDog').checked = gameState.hasDog;
+            document.getElementById('hasLucas').checked = gameState.hasLucas;
+            document.getElementById('hasHenry').checked = gameState.hasHenry;
+            document.getElementById('hasWineSelection').checked = gameState.hasWineSelection;
+            document.getElementById('hasRaclette').checked = gameState.hasRaclette;
+            
+            updateValue('month', gameState.month);
+            updateTimeOfDay(gameState.timeOfDay);
+            updateValue('reputation', gameState.reputation);
+            updateValue('stress', gameState.stress);
+            updateValue('cheeseTypes', gameState.cheeseTypes);
+            updateValue('monthsPlayed', gameState.monthsPlayed);
+            updateValue('racletteTypes', gameState.racletteTypes);
+            
+            render();
+        }
+
+        function presetMorning() {
+            gameState.month = 7;
+            gameState.timeOfDay = 0;
+            gameState.reputation = 60;
+            gameState.stress = 20;
+            gameState.hasDog = true;
+            gameState.hasLucas = true;
+            updateUI();
+            render();
+        }
+
+        function presetNight() {
+            gameState.month = 12;
+            gameState.timeOfDay = 3;
+            gameState.stress = 70;
+            gameState.hasDog = true;
+            updateUI();
+            render();
+        }
+
+        function presetBusy() {
+            gameState.reputation = 85;
+            gameState.cheeseTypes = 45;
+            gameState.hasLucas = true;
+            gameState.hasHenry = true;
+            gameState.hasWineSelection = true;
+            gameState.hasRaclette = true;
+            gameState.racletteTypes = 5;
+            updateUI();
+            render();
+        }
+
+        function updateUI() {
+            document.getElementById('month').value = gameState.month;
+            document.getElementById('timeOfDay').value = gameState.timeOfDay;
+            document.getElementById('reputation').value = gameState.reputation;
+            document.getElementById('stress').value = gameState.stress;
+            document.getElementById('cheeseTypes').value = gameState.cheeseTypes;
+            document.getElementById('monthsPlayed').value = gameState.monthsPlayed;
+            document.getElementById('racletteTypes').value = gameState.racletteTypes;
+            document.getElementById('hasDog').checked = gameState.hasDog;
+            document.getElementById('hasLucas').checked = gameState.hasLucas;
+            document.getElementById('hasHenry').checked = gameState.hasHenry;
+            document.getElementById('hasWineSelection').checked = gameState.hasWineSelection;
+            document.getElementById('hasRaclette').checked = gameState.hasRaclette;
+            updateValue('month', gameState.month);
+            updateTimeOfDay(gameState.timeOfDay);
+            updateValue('reputation', gameState.reputation);
+            updateValue('stress', gameState.stress);
+            updateValue('cheeseTypes', gameState.cheeseTypes);
+            updateValue('monthsPlayed', gameState.monthsPlayed);
+            updateValue('racletteTypes', gameState.racletteTypes);
+        }
+
+        // Initial render
+        updateTimeOfDay(gameState.timeOfDay);
+        render();
+        
+        // Use requestAnimationFrame for smooth, flicker-free animations
+        let animationFrameId;
+        function animate() {
+            render();
+            animationFrameId = requestAnimationFrame(animate);
+        }
+        animate();
+        
+        // Cleanup on page unload
+        window.addEventListener('beforeunload', () => {
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+            }
+        });
+    </script>
+</body>
+</html>
