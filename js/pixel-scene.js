@@ -494,9 +494,11 @@
         drawWindow16(ctx, 42, 75, 22, 30, leftWin2Lit);
         drawWindow16(ctx, 12, 115, 22, 25, false);
         drawWindow16(ctx, 42, 115, 22, 25, false);
-        // Silhouettes in lit windows
-        if (leftWin1Lit) drawWindowSilhouette(ctx, 12, 75, 22, 30, 'person', frameTime);
-        if (leftWin2Lit) drawWindowSilhouette(ctx, 42, 75, 22, 30, 'cooking', frameTime);
+        // Subtle life hint in lit windows (no detailed silhouettes)
+        if (leftWin1Lit && timeOfDay === 3) {
+            ctx.fillStyle = 'rgba(0,0,0,0.1)';
+            ctx.fillRect(18, 85, 10, 15);
+        }
 
         // === RIGHT NEIGHBORING BUILDING ===
         ctx.fillStyle = '#B8956E';
@@ -511,8 +513,13 @@
         drawWindow16(ctx, 292, 70, 20, 28, rightWin2Lit);
         drawWindow16(ctx, 265, 110, 20, 25, true);
         drawWindow16(ctx, 292, 110, 20, 25, true);
-        if (rightWin1Lit) drawWindowSilhouette(ctx, 265, 70, 20, 28, 'reading', frameTime);
-        if (rightWin2Lit) drawWindowSilhouette(ctx, 292, 70, 20, 28, 'tv', frameTime);
+        // Subtle life hint (no detailed silhouettes)
+        if (rightWin2Lit && timeOfDay === 3) {
+            // Hint of TV flicker
+            const flicker = Math.sin(frameTime / 200) > 0 ? 0.08 : 0.12;
+            ctx.fillStyle = `rgba(100,150,255,${flicker})`;
+            ctx.fillRect(295, 78, 12, 8);
+        }
 
         // === MAIN SHOP BUILDING ===
         // Upper floors: Light tan/beige brickwork (residential)
@@ -536,7 +543,7 @@
         ctx.fillStyle = '#E8E8E8';
         ctx.fillRect(65, 52, 190, 2);
 
-        drawSeasonalCritter(ctx, 180, 42, month, frameTime);
+        drawSeasonalCritters(ctx, month, frameTime, gameState.monthsPlayed || 1);
         // Window sills: Light stone/concrete beneath windows (matching real building)
         ctx.fillStyle = '#E0E0E0'; // Light stone color
         ctx.fillRect(85, 104, 38, 2); // Sill below window 1
@@ -550,10 +557,15 @@
         drawWindow16(ctx, 85, 62, 38, 42, aptWin1Lit, true);
         drawWindow16(ctx, 138, 62, 45, 42, aptWin2Lit, true);
         drawWindow16(ctx, 198, 62, 38, 42, aptWin3Lit, true);
-        // Silhouettes in apartment windows
-        if (aptWin1Lit && gameState.stress > 60) drawWindowSilhouette(ctx, 85, 62, 38, 42, 'pacing', frameTime);
-        if (aptWin2Lit && timeOfDay === 3) drawWindowSilhouette(ctx, 138, 62, 45, 42, 'reading', frameTime);
-        if (aptWin3Lit) drawWindowSilhouette(ctx, 198, 62, 38, 42, 'sitting', frameTime);
+        
+        // At night: just subtle warm glow indicating life, no detailed silhouettes
+        // Only show vague movement hint when stressed (very subtle)
+        if (timeOfDay === 3 && gameState.stress > 70) {
+            // Very subtle movement shadow in one window
+            ctx.fillStyle = 'rgba(0,0,0,0.15)';
+            const shift = Math.sin(frameTime / 1000) * 3;
+            ctx.fillRect(92 + shift, 75, 8, 20);
+        }
 
         // === WOODEN SIGN BOARD (Top) ===
         // Only appears after the "sign installed" event (investment upgrade)
@@ -594,8 +606,9 @@
             ctx.fillRect(x, 119, 12, 12);
         }
 
-        // === OPEN DOOR (LEFT SIDE) - Can see inside ===
+        // === OPEN DOOR (LEFT SIDE) - Can see inside with depth ===
         const shopWindowLit = timeOfDay === 3 || timeOfDay === 2;
+        const isLit = shopWindowLit || timeOfDay === 1; // Lit during day too
         
         // Door frame (white)
         ctx.fillStyle = '#F5F5F5';
@@ -605,31 +618,106 @@
         ctx.fillRect(72, 132, 3, 48);
         ctx.fillRect(119, 132, 3, 48);
         
-        // Interior visible through open door
-        const interiorGrad = ctx.createLinearGradient(75, 134, 75, 178);
-        if (shopWindowLit) {
-            interiorGrad.addColorStop(0, '#4A4A4A'); // Dark ceiling
-            interiorGrad.addColorStop(0.15, '#F5F0E6'); // Light wall
-            interiorGrad.addColorStop(1, '#8B7355'); // Floor
-        } else {
-            interiorGrad.addColorStop(0, '#3A3A3A');
-            interiorGrad.addColorStop(0.15, '#E5E0D6');
-            interiorGrad.addColorStop(1, '#7B6345');
+        // === INTERIOR WITH DEPTH ===
+        // Dark ceiling (like real shop - black with track lighting)
+        ctx.fillStyle = '#1A1A1A';
+        ctx.fillRect(75, 134, 44, 8);
+        
+        // Track lights/spotlights on ceiling
+        if (isLit) {
+            ctx.fillStyle = '#FFE4B5';
+            ctx.fillRect(80, 136, 2, 2);
+            ctx.fillRect(92, 136, 2, 2);
+            ctx.fillRect(104, 136, 2, 2);
+            // Light glow
+            ctx.fillStyle = 'rgba(255,230,180,0.3)';
+            ctx.fillRect(78, 138, 6, 3);
+            ctx.fillRect(90, 138, 6, 3);
+            ctx.fillRect(102, 138, 6, 3);
         }
-        ctx.fillStyle = interiorGrad;
-        ctx.fillRect(75, 134, 44, 44);
         
-        // Colorful wall mural (visible through door)
-        drawInteriorMural(ctx, 78, 138, frameTime);
+        // Back wall (warm beige/taupe like real shop)
+        ctx.fillStyle = isLit ? '#C8B8A8' : '#A89888';
+        ctx.fillRect(75, 142, 44, 18);
         
-        // Wooden shelves with products inside door
-        drawInteriorShelves(ctx, 76, 150, shopWindowLit);
+        const monthsPlayed = gameState.monthsPlayed || 1;
+        
+        // Refrigerator/fridge at back wall (appears after month 3)
+        if (monthsPlayed > 3) {
+            drawInteriorFridge(ctx, 78, 143, isLit);
+        }
+        
+        // Wine bottle racks next to fridge (if hasWineSelection)
+        if (gameState.hasWineSelection && monthsPlayed > 3) {
+            drawWineRack(ctx, 103, 143, isLit);
+        }
+        
+        // Floor with perspective (gray tiles)
+        const floorGrad = ctx.createLinearGradient(75, 160, 75, 180);
+        floorGrad.addColorStop(0, '#6B6B6B'); // Darker at back
+        floorGrad.addColorStop(1, '#8B8B8B'); // Lighter at front
+        ctx.fillStyle = floorGrad;
+        ctx.fillRect(75, 160, 44, 18);
+        
+        // Floor tile lines (perspective)
+        ctx.fillStyle = '#5B5B5B';
+        ctx.fillRect(75, 165, 44, 1);
+        ctx.fillRect(75, 172, 44, 1);
+        
+        // Left side: Wooden shelves with products (appears month 2+)
+        if (monthsPlayed >= 2) {
+            ctx.fillStyle = '#A88B5A'; // Wood color
+            ctx.fillRect(76, 148, 8, 28);
+            // Shelf divisions
+            ctx.fillStyle = '#8B6B3A';
+            ctx.fillRect(76, 154, 8, 1);
+            ctx.fillRect(76, 162, 8, 1);
+            ctx.fillRect(76, 170, 8, 1);
+            // Products on left shelves (jars, bottles)
+            ctx.fillStyle = '#8B4513'; // Brown jars
+            ctx.fillRect(77, 149, 3, 4);
+            ctx.fillRect(81, 150, 2, 3);
+            ctx.fillStyle = '#2E5530'; // Green bottles
+            ctx.fillRect(77, 156, 2, 5);
+            ctx.fillRect(80, 155, 2, 6);
+            ctx.fillStyle = '#FFD700'; // Yellow products
+            ctx.fillRect(77, 164, 4, 4);
+            ctx.fillRect(82, 163, 2, 5);
+        }
+        
+        // Right side: Fresh produce in green crates (appears month 6+)
+        if (monthsPlayed >= 6) {
+            ctx.fillStyle = '#A88B5A'; // Wooden stand
+            ctx.fillRect(108, 152, 10, 24);
+            // Green plastic crates
+            ctx.fillStyle = '#2E8B2E';
+            ctx.fillRect(109, 153, 8, 5);
+            ctx.fillRect(109, 160, 8, 5);
+            ctx.fillRect(109, 167, 8, 5);
+            // Produce in crates (colorful fruits/vegetables)
+            ctx.fillStyle = '#FF6347'; // Tomatoes/red
+            ctx.fillRect(110, 154, 3, 3);
+            ctx.fillStyle = '#FFA500'; // Oranges
+            ctx.fillRect(113, 154, 3, 3);
+            ctx.fillStyle = '#9ACD32'; // Green/lettuce
+            ctx.fillRect(110, 161, 6, 3);
+            ctx.fillStyle = '#FFD700'; // Yellow/lemons
+            ctx.fillRect(110, 168, 3, 3);
+            ctx.fillStyle = '#8B4513'; // Brown/potatoes
+            ctx.fillRect(114, 168, 3, 3);
+        }
+        
+        // Green shopping baskets stacked near entrance (like photo)
+        ctx.fillStyle = '#228B22';
+        ctx.fillRect(77, 173, 6, 4);
+        ctx.fillStyle = '#1E7B1E';
+        ctx.fillRect(78, 174, 4, 2);
         
         // Entrance mat
         ctx.fillStyle = '#2C2C2C';
-        ctx.fillRect(78, 176, 36, 4);
+        ctx.fillRect(85, 176, 24, 2);
         ctx.fillStyle = '#3C3C3C';
-        ctx.fillRect(80, 177, 32, 2);
+        ctx.fillRect(87, 177, 20, 1);
 
         // === SHOP WINDOW (RIGHT SIDE) ===
         // Dark gray facade around window
@@ -640,45 +728,93 @@
         ctx.fillStyle = '#F5F5F5';
         ctx.fillRect(125, 135, 122, 42);
         
-        // Window glass - interior view
-        const windowGrad = ctx.createLinearGradient(128, 138, 244, 174);
-        if (shopWindowLit) {
-            windowGrad.addColorStop(0, '#FFF8E0');
-            windowGrad.addColorStop(0.5, '#F5EED8');
-            windowGrad.addColorStop(1, '#E8E0C8');
-        } else {
-            windowGrad.addColorStop(0, '#E8F0E8');
-            windowGrad.addColorStop(0.5, '#D8E8D8');
-            windowGrad.addColorStop(1, '#C8D8C8');
-        }
-        ctx.fillStyle = windowGrad;
-        ctx.fillRect(128, 138, 116, 36);
+        const isNight = timeOfDay === 3;
         
-        // Shop name on window - only appears after "shop renamed" event
+        if (isNight) {
+            // NIGHT: Dark window - shop is closed, can't see inside
+            ctx.fillStyle = '#1A1A1A';
+            ctx.fillRect(128, 138, 116, 36);
+            // Subtle reflection of street lights
+            ctx.fillStyle = 'rgba(255,200,100,0.05)';
+            ctx.fillRect(130, 140, 30, 20);
+            ctx.fillRect(200, 145, 25, 15);
+        } else {
+            // DAY/EVENING: Can see interior through window
+            // Dark back wall with warm undertone
+            ctx.fillStyle = isLit ? '#4A4035' : '#3A3025';
+            ctx.fillRect(128, 138, 116, 36);
+            
+            // Warm spotlights on back wall (ambient lighting)
+            if (isLit) {
+                ctx.fillStyle = 'rgba(255,220,180,0.15)';
+                ctx.fillRect(135, 138, 30, 10);
+                ctx.fillRect(175, 138, 30, 10);
+                ctx.fillRect(215, 138, 25, 10);
+            }
+            
+            // Shelves on back wall with products
+            ctx.fillStyle = '#6B5030'; // Dark wood shelves
+            ctx.fillRect(130, 142, 110, 2);
+            ctx.fillRect(130, 148, 110, 2);
+            // Products on shelves (jars, bottles - darker)
+            ctx.fillStyle = '#8B4513';
+            ctx.fillRect(132, 138, 4, 4);
+            ctx.fillRect(140, 139, 3, 3);
+            ctx.fillStyle = '#2E4A2E';
+            ctx.fillRect(148, 138, 3, 4);
+            ctx.fillRect(155, 139, 4, 3);
+            ctx.fillStyle = '#722F37';
+            ctx.fillRect(165, 138, 3, 4);
+            ctx.fillRect(172, 139, 3, 3);
+            ctx.fillStyle = '#8B6914';
+            ctx.fillRect(180, 138, 4, 4);
+            ctx.fillRect(188, 139, 3, 3);
+            ctx.fillStyle = '#4A4A4A';
+            ctx.fillRect(196, 138, 3, 4);
+            ctx.fillRect(203, 139, 4, 3);
+            
+            // === HENRY behind cheese counter (drawn first so counter is in front) ===
+            if (gameState.hasHenry) {
+                drawInteriorHenry(ctx, 180, 152, isLit, frameTime);
+            }
+            
+            // === CHEESE COUNTER visible through window (only after first cheese - Tomme Larzac event) ===
+            if (gameState.cheeseTypes >= 1) {
+                drawCheeseCounter(ctx, 130, 158, gameState.cheeseTypes || 0, gameState.hasHenry, isLit, frameTime);
+            }
+        }
+        
+        // Window frame bottom edge (drawn after counter so counter appears inside)
+        ctx.fillStyle = '#F5F5F5';
+        ctx.fillRect(125, 174, 122, 3);
+        // Side frames too
+        ctx.fillRect(125, 135, 3, 42);
+        ctx.fillRect(244, 135, 3, 42);
+        
+        // Shop name on window - elegant flowing script like real shop
         if (gameState.shopRenamed) {
-            // Name in cursive (uses the chosen shop name)
-            ctx.fillStyle = 'rgba(255,255,255,0.9)';
-            ctx.font = 'italic 14px Georgia, serif';
             ctx.textAlign = 'center';
-            // Extract first name from shop name (e.g., "Chez Julien" -> "Julien")
             const displayName = gameState.shopName ? 
                 gameState.shopName.replace(/^Chez\s+/i, '').replace(/\s+Corner$/i, '') : 
                 'Julien';
-            ctx.fillText(displayName, 186, 154);
-            // Tagline
-            ctx.font = 'italic 5px Georgia, serif';
-            ctx.fillStyle = 'rgba(255,255,255,0.7)';
-            ctx.fillText('chez moi... chez vous... chez mes potes!', 186, 162);
+            
+            // Shadow for depth
+            ctx.fillStyle = isNight ? 'rgba(0,0,0,0.5)' : 'rgba(0,0,0,0.35)';
+            ctx.font = 'italic 19px "Segoe Script", "Lucida Handwriting", "Apple Chancery", cursive';
+            ctx.fillText(displayName, 193, 157);
+            
+            // Main name - elegant script (slightly transparent)
+            ctx.fillStyle = 'rgba(255,255,255,0.75)';
+            ctx.font = 'italic 19px "Segoe Script", "Lucida Handwriting", "Apple Chancery", cursive';
+            ctx.fillText(displayName, 192, 156);
+            
+            // Tagline below: "chez moi... chez vous... chez mes potes!"
+            ctx.fillStyle = 'rgba(255,255,255,0.6)';
+            ctx.font = 'italic 5px "Segoe Script", "Lucida Handwriting", Georgia, serif';
+            ctx.fillText('chez moi... chez vous... chez mes potes!', 192, 164);
         }
         
-        // Cheese display visible through window
-        if (gameState.cheeseTypes >= 5) {
-            drawCheeseDisplay(ctx, 130, 145, gameState.cheeseTypes, gameState.hasHenry, frameTime);
-        } else if (gameState.hasHenry) {
-            drawCheeseDisplay(ctx, 130, 145, 0, gameState.hasHenry, frameTime);
-        }
-        
-        // Glass reflection
+        // Glass reflection (subtle)
         ctx.fillStyle = 'rgba(255,255,255,0.2)';
         ctx.fillRect(130, 140, 25, 6);
         ctx.fillRect(200, 142, 20, 4);
@@ -703,20 +839,36 @@
         ctx.fillStyle = '#B8B8B8';
         ctx.fillRect(0, 175, W, 1);
 
-        if (gameState.monthsPlayed > 10) {
-            drawFlowerBox(ctx, 79, 175, isWinter, isAutumn);
+        // Flowers in spring and summer only (not autumn or winter)
+        if (isSpring || isSummer) {
+            drawFlowerBox(ctx, 252, 175, isWinter, isAutumn);
         }
 
         // === CHARACTERS ===
-        // Julien appears if not fully staffed
-        if (!gameState.hasLucas || !gameState.hasHenry) {
-            drawJulienInShop(ctx, gameState.hasLucas ? 115 : 195, 147, gameState, frameTime);
+        const isRaining = month === 9 || month === 2;
+        
+        // JULIEN - Main character, stands outside near left building
+        drawJulien(ctx, 45, 150, gameState, frameTime);
+        
+        // Umbrella for Julien when raining
+        if (isRaining) {
+            drawUmbrella(ctx, 45, 130);
         }
-        // Lucas at the door area
-        if (gameState.hasLucas) drawCharacter16(ctx, 200, 150, 'lucas', false, gameState, frameTime);
-        // Henry is now drawn inside the cheese display (see drawCheeseDisplay)
-        // No separate Henry draw needed - he's part of the shop interior
-        if (gameState.hasDog) drawPoncho16(ctx, 255, 155, gameState, frameTime);
+        
+        // Poncho next to Julien (on his left side, slightly apart)
+        if (gameState.hasDog) drawPoncho16(ctx, 12, 168, gameState, frameTime);
+        
+        // Lucas - outside normally, inside when raining
+        if (gameState.hasLucas) {
+            if (isRaining) {
+                // Lucas visible through door when raining (inside shop)
+                drawCharacter16(ctx, 95, 155, 'lucas', true, gameState, frameTime);
+            } else {
+                // Lucas on the right side of door (mirrored from Julien's position)
+                drawCharacter16(ctx, 145, 150, 'lucas', false, gameState, frameTime);
+            }
+        }
+        // Henry is drawn inside the shop (visible through door)
 
         const customerCount = Math.min(3, Math.floor(gameState.reputation / 30));
         if (customerCount > 0) drawCharacter16(ctx, 35, 148, 'customer0', false, gameState, frameTime);
@@ -728,8 +880,8 @@
             drawCustomerQueue(ctx, queueCount);
         }
 
-        if (gameState.hasWineSelection) drawWineDisplay(ctx, 130, 158);
-        if (gameState.hasRaclette || gameState.racletteTypes > 0) drawRacletteSteam(ctx);
+        // Wine display is now the rack next to fridge (drawn through open door)
+        // Raclette is indicated by Swiss flag, no steam effect needed
 
         const isChristmas = month === 12 || month === 11;
         if (isChristmas) {
@@ -740,7 +892,8 @@
         }
 
         if (month === 7) {
-            drawBelgianFlag(ctx, 250, 125, frameTime);
+            // Belgian flag in Julien's left hand
+            drawBelgianFlagInHand(ctx, 38, 160, frameTime);
             // Balloons and bunting flags only in July (month 7)
             drawPartyDecorations(ctx, frameTime);
         }
@@ -753,8 +906,21 @@
             drawSoldBanner(ctx);
         }
 
-        if (isWinter) drawSnow(ctx, W, H);
-        if (isAutumn) drawLeaves(ctx, W, H);
+        // Weather by month:
+        // December (12): Snow falling + snow on ground
+        // January (1): Snow on ground only (no falling snow)
+        // February (2): Rain (end of winter)
+        // September (9): Heavy rain (first autumn month)
+        if (month === 12) {
+            drawSnow(ctx, W, H, gameState.monthsPlayed || 1, frameTime, true); // with falling snow
+        } else if (month === 1) {
+            drawSnow(ctx, W, H, gameState.monthsPlayed || 1, frameTime, false); // ground snow only
+        } else if (month === 2) {
+            drawRain(ctx, W, H); // February rain
+        } else if (month === 9) {
+            drawHeavyRain(ctx, W, H, frameTime); // September heavy rain
+        }
+        if (isAutumn && month !== 9) drawLeaves(ctx, W, H); // No leaves during heavy rain
         if (isSpring) drawPetals(ctx, W, H);
 
         if (gameState.floodActive) {
@@ -762,23 +928,11 @@
             drawFloodWater(ctx, W, H);
         }
 
-        // Night mode overlay (only if not already night time)
-        if (gameState.stress > 55 && timeOfDay !== 3) {
-            drawNightMode(ctx, W, H, gameState.stress);
-        }
+        // Stress overlay removed - Julien's expression is enough visual feedback
         
-        // Street lights at night
-        if (timeOfDay === 3) {
-            drawStreetLights(ctx, W, H);
-        }
+        // Street lights removed - were interfering with characters
 
-        if (gameState.ownsBuilding) {
-            ctx.fillStyle = '#FFD700';
-            ctx.fillRect(248, 53, 16, 12);
-            ctx.fillStyle = '#FFF8DC';
-            ctx.font = 'bold 10px serif';
-            ctx.fillText('★', 252, 63);
-        }
+        // Building ownership indicator removed (was yellow star flag)
     }
 
     function drawCloud(ctx, x, y, scale) {
@@ -1013,23 +1167,299 @@
         }
     }
 
-    // === INTERIOR MURAL (colorful wall art visible through open door) ===
-    function drawInteriorMural(ctx, x, y, frameTime) {
-        // Colorful geometric mural like in real shop
-        const colors = ['#E74C3C', '#3498DB', '#2ECC71', '#F39C12', '#9B59B6', '#1ABC9C'];
+    // === INTERIOR FRIDGE (refrigerator with produce visible through door) ===
+    function drawInteriorFridge(ctx, x, y, lit) {
+        // Fridge body (stainless steel look)
+        ctx.fillStyle = '#D0D0D0';
+        ctx.fillRect(x, y, 24, 16);
         
-        // Abstract colorful shapes
-        for (let i = 0; i < 6; i++) {
-            ctx.fillStyle = colors[i % colors.length];
-            const px = x + (i % 3) * 12;
-            const py = y + Math.floor(i / 3) * 8;
-            ctx.fillRect(px, py, 10, 6);
+        // Fridge frame/border
+        ctx.fillStyle = '#A0A0A0';
+        ctx.fillRect(x, y, 24, 1);
+        ctx.fillRect(x, y, 1, 16);
+        ctx.fillRect(x + 23, y, 1, 16);
+        
+        // Glass door (see-through to products)
+        ctx.fillStyle = lit ? 'rgba(200, 230, 255, 0.6)' : 'rgba(180, 210, 235, 0.5)';
+        ctx.fillRect(x + 2, y + 2, 20, 12);
+        
+        // Shelves inside fridge
+        ctx.fillStyle = '#E8E8E8';
+        ctx.fillRect(x + 2, y + 5, 20, 1);
+        ctx.fillRect(x + 2, y + 9, 20, 1);
+        
+        // Products on fridge shelves
+        // Top shelf: dairy/cheese
+        ctx.fillStyle = '#FFE4B5'; // Cheese yellow
+        ctx.fillRect(x + 3, y + 2, 4, 2);
+        ctx.fillStyle = '#FFFAF0'; // White cheese
+        ctx.fillRect(x + 8, y + 2, 3, 2);
+        ctx.fillStyle = '#FFA500'; // Orange cheese
+        ctx.fillRect(x + 12, y + 2, 4, 2);
+        ctx.fillStyle = '#F5F5DC'; // Cream
+        ctx.fillRect(x + 17, y + 2, 4, 2);
+        
+        // Middle shelf: drinks/bottles
+        ctx.fillStyle = '#FFFFFF'; // Milk
+        ctx.fillRect(x + 3, y + 6, 2, 3);
+        ctx.fillStyle = '#90EE90'; // Green juice
+        ctx.fillRect(x + 6, y + 6, 2, 3);
+        ctx.fillStyle = '#FFA07A'; // Orange juice
+        ctx.fillRect(x + 9, y + 6, 2, 3);
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(x + 12, y + 6, 2, 3);
+        ctx.fillStyle = '#87CEEB'; // Water
+        ctx.fillRect(x + 15, y + 6, 2, 3);
+        ctx.fillRect(x + 18, y + 6, 2, 3);
+        
+        // Bottom shelf: vegetables
+        ctx.fillStyle = '#228B22'; // Green veggies
+        ctx.fillRect(x + 3, y + 10, 6, 3);
+        ctx.fillStyle = '#FF6347'; // Red/tomatoes
+        ctx.fillRect(x + 10, y + 10, 4, 3);
+        ctx.fillStyle = '#FFA500'; // Orange/carrots
+        ctx.fillRect(x + 15, y + 10, 5, 3);
+        
+        // Fridge light glow if lit
+        if (lit) {
+            ctx.fillStyle = 'rgba(255,255,255,0.2)';
+            ctx.fillRect(x + 2, y + 2, 20, 12);
         }
         
-        // Outline/frame
-        ctx.strokeStyle = '#4A3728';
-        ctx.lineWidth = 1;
-        ctx.strokeRect(x - 1, y - 1, 38, 18);
+        // Handle
+        ctx.fillStyle = '#808080';
+        ctx.fillRect(x + 21, y + 6, 2, 4);
+    }
+
+    // === WINE RACK (bottle storage visible through door) ===
+    function drawWineRack(ctx, x, y, lit) {
+        // Wooden rack frame
+        ctx.fillStyle = '#5A3D2B';
+        ctx.fillRect(x, y, 14, 16);
+        
+        // Darker wood back
+        ctx.fillStyle = '#4A2D1B';
+        ctx.fillRect(x + 1, y + 1, 12, 14);
+        
+        // Horizontal shelf dividers
+        ctx.fillStyle = '#6B4D3B';
+        ctx.fillRect(x, y + 4, 14, 1);
+        ctx.fillRect(x, y + 8, 14, 1);
+        ctx.fillRect(x, y + 12, 14, 1);
+        
+        // Wine bottles (horizontal, showing corks/caps)
+        // Row 1 (top)
+        ctx.fillStyle = '#2B0B0B'; // Dark red wine
+        ctx.fillRect(x + 2, y + 1, 4, 2);
+        ctx.fillStyle = '#8B0000';
+        ctx.fillRect(x + 7, y + 1, 4, 2);
+        
+        // Row 2
+        ctx.fillStyle = '#4A0E0E';
+        ctx.fillRect(x + 2, y + 5, 4, 2);
+        ctx.fillStyle = '#2B0B0B';
+        ctx.fillRect(x + 7, y + 5, 4, 2);
+        
+        // Row 3
+        ctx.fillStyle = '#8B0000';
+        ctx.fillRect(x + 2, y + 9, 4, 2);
+        ctx.fillStyle = '#F5F5DC'; // White wine
+        ctx.fillRect(x + 7, y + 9, 4, 2);
+        
+        // Row 4 (bottom)
+        ctx.fillStyle = '#F0E68C'; // Champagne/white
+        ctx.fillRect(x + 2, y + 13, 4, 2);
+        ctx.fillStyle = '#4A0E0E';
+        ctx.fillRect(x + 7, y + 13, 4, 2);
+        
+        // Bottle cap/cork highlights
+        ctx.fillStyle = lit ? '#C0A080' : '#907060';
+        ctx.fillRect(x + 1, y + 1, 1, 2);
+        ctx.fillRect(x + 1, y + 5, 1, 2);
+        ctx.fillRect(x + 1, y + 9, 1, 2);
+        ctx.fillRect(x + 1, y + 13, 1, 2);
+        
+        // Subtle light reflection if lit
+        if (lit) {
+            ctx.fillStyle = 'rgba(255,255,255,0.1)';
+            ctx.fillRect(x + 3, y + 1, 1, 14);
+        }
+    }
+
+    // === HENRY behind counter (upper body only - waist up) ===
+    function drawInteriorHenry(ctx, x, y, lit, frameTime) {
+        // No legs - they're hidden behind the counter
+        
+        // Body (blue work shirt) - from waist up
+        ctx.fillStyle = lit ? '#3A5A9A' : '#2A4A7A';
+        ctx.fillRect(x, y, 11, 8);
+        
+        // Apron (white)
+        ctx.fillStyle = lit ? '#F0F0F0' : '#D0D0D0';
+        ctx.fillRect(x + 2, y + 2, 7, 6);
+        
+        // Arms
+        ctx.fillStyle = lit ? '#3A5A9A' : '#2A4A7A';
+        ctx.fillRect(x - 2, y + 1, 3, 6);
+        ctx.fillRect(x + 10, y + 1, 3, 6);
+        
+        // Hands (resting on counter level)
+        ctx.fillStyle = lit ? '#E8C8A8' : '#C8A888';
+        ctx.fillRect(x - 2, y + 6, 3, 2);
+        ctx.fillRect(x + 10, y + 6, 3, 2);
+        
+        // Head
+        ctx.fillStyle = lit ? '#E8C8A8' : '#C8A888';
+        ctx.fillRect(x + 2, y - 8, 7, 8);
+        
+        // Short dark hair
+        ctx.fillStyle = '#3A2A1A';
+        ctx.fillRect(x + 2, y - 9, 7, 2);
+        ctx.fillRect(x + 3, y - 7, 5, 1);
+        
+        // Eyes with subtle up/down movement
+        const lookY = Math.floor(frameTime / 3000) % 3;
+        const eyeYOffset = lookY === 1 ? 1 : (lookY === 2 ? -1 : 0);
+        
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(x + 3, y - 5, 2, 2);
+        ctx.fillRect(x + 6, y - 5, 2, 2);
+        ctx.fillStyle = '#2C2C2C';
+        ctx.fillRect(x + 3, y - 5 + eyeYOffset, 1, 1);
+        ctx.fillRect(x + 7, y - 5 + eyeYOffset, 1, 1);
+        
+        // Smile
+        ctx.fillStyle = '#C08080';
+        ctx.fillRect(x + 4, y - 2, 3, 1);
+    }
+
+    // === CHEESE COUNTER (visible through shop window) ===
+    function drawCheeseCounter(ctx, x, y, cheeseCount, hasHenry, lit, frameTime) {
+        // Scale: 0 = empty counter, 100 = full like photo
+        const fullness = Math.min(100, cheeseCount) / 100;
+        
+        // === WOODEN PALLET COUNTER BASE ===
+        ctx.fillStyle = '#A08060';
+        ctx.fillRect(x, y + 6, 110, 18);
+        // Pallet slats (horizontal wood planks)
+        ctx.fillStyle = '#B89070';
+        ctx.fillRect(x, y + 6, 110, 3);
+        ctx.fillRect(x, y + 11, 110, 3);
+        ctx.fillRect(x, y + 16, 110, 3);
+        ctx.fillRect(x, y + 21, 110, 3);
+        // Gaps between slats
+        ctx.fillStyle = '#705030';
+        ctx.fillRect(x, y + 9, 110, 1);
+        ctx.fillRect(x, y + 14, 110, 1);
+        ctx.fillRect(x, y + 19, 110, 1);
+        
+        // === GLASS DISPLAY CASE ===
+        // Chrome/metal frame top edge
+        ctx.fillStyle = '#C0C0C0';
+        ctx.fillRect(x, y - 1, 110, 2);
+        // Glass front
+        ctx.fillStyle = '#B8C8D0';
+        ctx.fillRect(x, y + 1, 110, 1);
+        ctx.fillRect(x, y + 5, 110, 2);
+        // Left/right frame
+        ctx.fillStyle = '#A0A0A0';
+        ctx.fillRect(x, y - 1, 2, 8);
+        ctx.fillRect(x + 108, y - 1, 2, 8);
+        
+        // Inside case - white refrigerated surface
+        ctx.fillStyle = lit ? '#FEFEFE' : '#F0F0F0';
+        ctx.fillRect(x + 2, y + 1, 106, 5);
+        
+        // === CHEESES INSIDE GLASS CASE (wedges with price tags) ===
+        const caseCheeses = [
+            // Various wedges - different colors like photo
+            { cx: 3, w: 6, h: 4, color: '#E8D060' },   // Yellow
+            { cx: 10, w: 5, h: 4, color: '#F0E8D0' },  // Pale brie
+            { cx: 16, w: 7, h: 4, color: '#D4A030' },  // Golden
+            { cx: 24, w: 5, h: 4, color: '#6090B0' },  // Blue cheese
+            { cx: 30, w: 6, h: 4, color: '#F4C870' },  // Light yellow
+            { cx: 37, w: 5, h: 4, color: '#E0D0B0' },  // Cream
+            { cx: 43, w: 7, h: 4, color: '#C89030' },  // Aged golden
+            { cx: 51, w: 5, h: 4, color: '#F8F0E0' },  // White fresh
+            { cx: 57, w: 6, h: 4, color: '#D08020' },  // Orange
+            { cx: 64, w: 5, h: 4, color: '#B08040' },  // Brown aged
+            { cx: 70, w: 7, h: 4, color: '#F0D870' },  // Bright yellow
+            { cx: 78, w: 5, h: 4, color: '#E8C060' },  // Gold
+            { cx: 84, w: 6, h: 4, color: '#C0A050' },  // Aged
+            { cx: 91, w: 5, h: 4, color: '#F0E0C0' },  // Pale
+            { cx: 97, w: 7, h: 4, color: '#D09030' },  // Orange-gold
+        ];
+        
+        const caseCount = Math.floor(caseCheeses.length * fullness);
+        for (let i = 0; i < caseCount; i++) {
+            const c = caseCheeses[i];
+            // Cheese wedge
+            ctx.fillStyle = c.color;
+            ctx.fillRect(x + c.cx, y + 1, c.w, c.h);
+            // Rind (darker edge)
+            ctx.fillStyle = 'rgba(0,0,0,0.1)';
+            ctx.fillRect(x + c.cx, y + 4, c.w, 1);
+            // Highlight
+            ctx.fillStyle = 'rgba(255,255,255,0.25)';
+            ctx.fillRect(x + c.cx + 1, y + 1, c.w - 2, 1);
+            // Price tag (white, standing up)
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(x + c.cx + 2, y - 1, 2, 3);
+        }
+        
+        // Glass reflection
+        ctx.fillStyle = 'rgba(255,255,255,0.12)';
+        ctx.fillRect(x + 8, y + 2, 25, 1);
+        ctx.fillRect(x + 50, y + 3, 20, 1);
+        
+        // Henry is now drawn in the door interior section (next to fridge)
+        
+        // === BIG CHEESE WHEELS ON TOP (like photo) ===
+        // Wheel 1: Large golden/yellow (left)
+        if (fullness > 0.2) {
+            ctx.fillStyle = '#C8A030'; // Rind
+            ctx.fillRect(x + 5, y - 11, 16, 10);
+            ctx.fillStyle = '#B89020';
+            ctx.fillRect(x + 5, y - 11, 16, 2);
+            // Cut face showing interior
+            ctx.fillStyle = '#E8C850';
+            ctx.fillRect(x + 7, y - 9, 12, 6);
+            ctx.fillStyle = 'rgba(255,255,255,0.2)';
+            ctx.fillRect(x + 8, y - 8, 10, 2);
+        }
+        
+        // Wheel 2: Orange mimolette (center-left)
+        if (fullness > 0.4) {
+            ctx.fillStyle = '#D06020'; // Orange rind
+            ctx.fillRect(x + 26, y - 13, 18, 12);
+            ctx.fillStyle = '#C05010';
+            ctx.fillRect(x + 26, y - 13, 18, 2);
+            // Bright orange interior
+            ctx.fillStyle = '#F08030';
+            ctx.fillRect(x + 28, y - 11, 14, 7);
+            ctx.fillStyle = 'rgba(255,255,255,0.15)';
+            ctx.fillRect(x + 29, y - 10, 12, 2);
+        }
+        
+        // Wheel 3 removed - was blocking Henry
+        
+        // Wheel 4: Darker aged (right)
+        if (fullness > 0.8) {
+            ctx.fillStyle = '#906030';
+            ctx.fillRect(x + 70, y - 10, 13, 9);
+            ctx.fillStyle = '#805020';
+            ctx.fillRect(x + 70, y - 10, 13, 2);
+            ctx.fillStyle = '#B08050';
+            ctx.fillRect(x + 72, y - 8, 9, 5);
+        }
+        
+        // Small wedge on top (far right) at 90%+
+        if (fullness > 0.9) {
+            ctx.fillStyle = '#E0C060';
+            ctx.fillRect(x + 88, y - 7, 10, 6);
+            ctx.fillStyle = '#D0B050';
+            ctx.fillRect(x + 88, y - 7, 10, 1);
+        }
     }
 
     // === INTERIOR SHELVES (products visible through door) ===
@@ -1282,56 +1712,7 @@
             });
         }
         
-        // === HENRY behind counter (if present) ===
-        if (hasHenry) {
-            const breathe = Math.sin(frameTime / 600) * 0.3;
-            // Henry's position - standing behind counter
-            const hx = x + 70;
-            const hy = y - 8 + breathe;
-            
-            // Body (behind counter, partially visible)
-            ctx.fillStyle = '#4169E1'; // Blue shirt
-            ctx.fillRect(hx, hy + 2, 12, 10);
-            
-            // White apron front
-            ctx.fillStyle = '#FFFFFF';
-            ctx.fillRect(hx + 2, hy + 4, 8, 7);
-            
-            // Head
-            ctx.fillStyle = '#FFE4C4'; // Skin
-            ctx.fillRect(hx + 2, hy - 8, 8, 10);
-            
-            // Blonde/golden hair
-            ctx.fillStyle = '#DAA520';
-            ctx.fillRect(hx + 2, hy - 10, 8, 4);
-            ctx.fillRect(hx + 1, hy - 8, 2, 3);
-            ctx.fillRect(hx + 9, hy - 8, 2, 3);
-            
-            // Eyes
-            ctx.fillStyle = '#2C2C2C';
-            ctx.fillRect(hx + 3, hy - 5, 2, 2);
-            ctx.fillRect(hx + 7, hy - 5, 2, 2);
-            
-            // Smile
-            ctx.fillStyle = '#E08080';
-            ctx.fillRect(hx + 4, hy - 2, 4, 1);
-            
-            // Arms (one holding cheese)
-            ctx.fillStyle = '#4169E1';
-            ctx.fillRect(hx - 2, hy + 3, 3, 6);
-            ctx.fillRect(hx + 11, hy + 3, 3, 6);
-            
-            // Hands
-            ctx.fillStyle = '#FFE4C4';
-            ctx.fillRect(hx - 2, hy + 8, 3, 3);
-            ctx.fillRect(hx + 11, hy + 8, 3, 3);
-            
-            // Cheese in hand (work animation)
-            if (Math.floor(frameTime / 2000) % 3 === 0) {
-                ctx.fillStyle = '#F4A460';
-                ctx.fillRect(hx + 13, hy + 6, 5, 4);
-            }
-        }
+        // Henry is now drawn in the door interior section (next to fridge)
         
         // === GLASS REFLECTION ===
         ctx.fillStyle = 'rgba(255,255,255,0.15)';
@@ -1339,128 +1720,491 @@
         ctx.fillRect(x + 5, y + 13, 15, 3);
     }
 
-    function drawSeasonalCritter(ctx, x, y, month, frameTime = Date.now()) {
+    // === SEASONAL CRITTERS with story progression ===
+    // Critters can appear in multiple locations and tell a love story over time
+    function drawSeasonalCritters(ctx, month, frameTime, monthsPlayed) {
         const isWinter = month === 12 || month === 1 || month === 2;
         const isSpring = month >= 3 && month <= 5;
         const isSummer = month >= 6 && month <= 8;
         const isAutumn = month >= 9 && month <= 11;
         const time = frameTime;
-        const bobble = Math.sin(time / 400) * 1;
-
-        if (isAutumn) {
-            const peck = Math.floor(time / 300) % 3 === 0 ? 2 : 0;
-            ctx.fillStyle = '#707070';
-            ctx.fillRect(x, y + bobble, 12, 8);
-            ctx.fillStyle = '#606060';
-            ctx.fillRect(x + 2, y + 1 + bobble, 8, 4);
-            ctx.fillStyle = '#555555';
-            ctx.fillRect(x - 4, y + 3 + bobble, 5, 3);
-            ctx.fillStyle = '#707070';
-            ctx.fillRect(x + 10, y - 4 + peck + bobble, 6, 6);
-            ctx.fillStyle = '#50806B';
-            ctx.fillRect(x + 10, y + peck + bobble, 4, 3);
-            ctx.fillStyle = '#FF6600';
-            ctx.fillRect(x + 13, y - 3 + peck + bobble, 2, 2);
-            ctx.fillStyle = '#AA9977';
-            ctx.fillRect(x + 15, y - 1 + peck + bobble, 3, 2);
-            ctx.fillStyle = '#AA6666';
-            ctx.fillRect(x + 3, y + 8, 1, 3);
-            ctx.fillRect(x + 7, y + 8, 1, 3);
-        } else if (isWinter) {
-            const tailWag = Math.sin(time / 200) * 0.3;
-            ctx.fillStyle = '#8B5A2B';
-            ctx.save();
-            ctx.translate(x - 2, y + 4);
-            ctx.rotate(tailWag);
-            ctx.fillRect(-6, -8, 8, 14);
-            ctx.fillStyle = '#A0693C';
-            ctx.fillRect(-5, -6, 4, 10);
-            ctx.restore();
-            ctx.fillStyle = '#8B5A2B';
-            ctx.fillRect(x + 2, y + 2 + bobble, 10, 8);
-            ctx.fillStyle = '#DECCAA';
-            ctx.fillRect(x + 4, y + 4 + bobble, 6, 5);
-            ctx.fillStyle = '#8B5A2B';
-            ctx.fillRect(x + 10, y - 2 + bobble, 8, 8);
-            ctx.fillRect(x + 10, y - 5 + bobble, 3, 4);
-            ctx.fillRect(x + 15, y - 5 + bobble, 3, 4);
-            ctx.fillStyle = '#2C2C2C';
-            ctx.fillRect(x + 15, y + bobble, 2, 2);
-            ctx.fillRect(x + 17, y + 3 + bobble, 2, 2);
-            if (Math.floor(time / 2000) % 2 === 0) {
-                ctx.fillStyle = '#8B4513';
-                ctx.fillRect(x + 17, y + 5 + bobble, 4, 5);
-                ctx.fillStyle = '#228B22';
-                ctx.fillRect(x + 18, y + 3 + bobble, 2, 3);
+        
+        // Deterministic "random" position based on month (changes each month)
+        const positionSeed = (monthsPlayed * 7) % 5;
+        
+        // Bird/Pigeon story progression
+        const birdStage = monthsPlayed < 6 ? 0 : (monthsPlayed < 12 ? 1 : 2);
+        // 0 = alone, 1 = found mate (2 birds), 2 = has nest
+        
+        // === PIGEON (Autumn) - On building roof edge (only Oct/Nov, not Sept) ===
+        if (isAutumn && month >= 10) {
+            // Pigeons sit on roof - feet at y=53 (roof edge), body in sky
+            const roofY = 48;
+            
+            if (birdStage === 0) {
+                // Stage 0: 1 pigeon
+                drawPigeon(ctx, 150, roofY, time, false, false);
+            } else if (birdStage === 1) {
+                // Stage 1: 2 pigeons
+                drawPigeon(ctx, 140, roofY, time, false, false);
+                drawPigeon(ctx, 170, roofY, time, true, true);
+            } else {
+                // Stage 2: 6 pigeons spread across roof, facing different ways
+                drawPigeon(ctx, 90, roofY, time, false, false);   // facing right
+                drawPigeon(ctx, 115, roofY, time, true, true);    // facing left
+                drawPigeon(ctx, 145, roofY, time, false, false);  // facing right
+                drawPigeon(ctx, 175, roofY, time, true, false);   // facing right
+                drawPigeon(ctx, 200, roofY, time, false, true);   // facing left
+                drawPigeon(ctx, 225, roofY, time, true, true);    // facing left
             }
-        } else if (isSpring) {
-            const hop = Math.floor(time / 500) % 2 * 2;
-            ctx.fillStyle = '#8FBC8F';
-            ctx.fillRect(x + 2, y + 2 + hop, 8, 6);
-            ctx.fillStyle = '#FFFACD';
-            ctx.fillRect(x + 4, y + 4 + hop, 5, 3);
+        }
+        
+        // === SQUIRREL (Winter) - On building roof, mom + babies (Dec/Jan only, not Feb) ===
+        if (isWinter && month !== 2) {
+            const roofY = 48;
+            
+            // Stage 0: 1 adult squirrel (mom)
+            drawSquirrel(ctx, 115, roofY, time, false, false);
+            
+            // Stage 1: mom + 1 baby
+            if (birdStage >= 1) {
+                drawSquirrel(ctx, 130, roofY, time, false, true); // baby
+            }
+            
+            // Stage 2: mom + 2 babies
+            if (birdStage >= 2) {
+                drawSquirrel(ctx, 100, roofY, time, false, true); // second baby
+            }
+        }
+        
+        // === SMALL BIRD (Spring) - On rooftops ===
+        if (isSpring) {
+            // y=56 so feet are right on roof edge (roof is at y=61)
+            // Primary bird on main shop roof
+            drawSmallBird(ctx, 175, 56, time, false, false);
+            
+            // Second bird if paired - facing the first bird
+            if (birdStage >= 1) {
+                // Bird faces left toward first bird, positioned next to it
+                drawSmallBird(ctx, 192, 56, time, true, true);
+                
+                // Kissing animation every 10 seconds when they have a nest
+                if (birdStage >= 2 && (time % 10000) < 500) {
+                    // Little heart above them
+                    ctx.fillStyle = '#FF6B6B';
+                    ctx.fillRect(183, 50, 2, 2);
+                    ctx.fillRect(186, 50, 2, 2);
+                    ctx.fillRect(184, 52, 3, 2);
+                    ctx.fillRect(185, 54, 1, 1);
+                }
+            }
+            // Nest right on roof edge if stage 2 (with eggs in spring!)
+            if (birdStage >= 2) {
+                drawBirdNest(ctx, 207, 58, time, true);
+            }
+        }
+        
+        // === BUTTERFLIES - Spring and summer only ===
+        if (isSpring || isSummer) {
+            const butterflySpots = [
+                { x: 260, y: 166, offset: 0 },     // Near flower pot
+                { x: 275, y: 162, offset: 200 },   // Right side
+                { x: 245, y: 168, offset: 400 },   // Near flowers
+                { x: 280, y: 164, offset: 600 },   // Far right
+                { x: 255, y: 160, offset: 800 },   // Middle right
+            ];
+            
+            // Progressive butterfly count based on months played
+            let butterflyCount = 1;
+            if (monthsPlayed >= 12) {
+                butterflyCount = 5; // Full multicolor flock
+            } else if (monthsPlayed >= 6) {
+                butterflyCount = 2; // A pair
+            }
+            
+            for (let i = 0; i < butterflyCount; i++) {
+                const spot = butterflySpots[i];
+                drawTinyButterfly(ctx, spot.x, spot.y, time + spot.offset, i);
+            }
+        }
+    }
+    
+    // Individual critter drawing functions
+    function drawPigeon(ctx, x, y, time, isMate, faceLeft = false) {
+        // Animation with 3 second pause: animate for 2s, pause for 3s (5s cycle)
+        const cycle = (time + (isMate ? 1500 : 0)) % 5000;
+        const isAnimating = cycle < 2000;
+        const bobble = isAnimating ? Math.sin(cycle / 400) * 1 : 0;
+        const peck = isAnimating && Math.floor(cycle / 300) % 3 === 0 ? 1 : 0;
+        
+        if (faceLeft) {
+            // Facing left (mirrored)
+            // Body
+            ctx.fillStyle = isMate ? '#686868' : '#707070';
+            ctx.fillRect(x, y + bobble, 8, 5);
+            ctx.fillStyle = '#606060';
+            ctx.fillRect(x + 1, y + 1 + bobble, 6, 3);
+            
+            // Tail (on right)
+            ctx.fillStyle = '#555555';
+            ctx.fillRect(x + 7, y + 2 + bobble, 4, 2);
+            
+            // Head (on left)
+            ctx.fillStyle = isMate ? '#688868' : '#50806B';
+            ctx.fillRect(x - 2, y - 2 + peck + bobble, 4, 4);
+            
+            // Eye
+            ctx.fillStyle = '#FF6600';
+            ctx.fillRect(x - 1, y - 1 + peck + bobble, 1, 1);
+            
+            // Beak (pointing left)
+            ctx.fillStyle = '#AA9977';
+            ctx.fillRect(x - 4, y + peck + bobble, 2, 1);
+            
+            // Legs
+            ctx.fillStyle = '#AA6666';
+            ctx.fillRect(x + 2, y + 5, 1, 2);
+            ctx.fillRect(x + 5, y + 5, 1, 2);
+        } else {
+            // Facing right (original)
+            // Body
+            ctx.fillStyle = isMate ? '#686868' : '#707070';
+            ctx.fillRect(x, y + bobble, 8, 5);
+            ctx.fillStyle = '#606060';
+            ctx.fillRect(x + 1, y + 1 + bobble, 6, 3);
+            
+            // Tail
+            ctx.fillStyle = '#555555';
+            ctx.fillRect(x - 3, y + 2 + bobble, 4, 2);
+            
+            // Head
+            ctx.fillStyle = isMate ? '#688868' : '#50806B';
+            ctx.fillRect(x + 6, y - 2 + peck + bobble, 4, 4);
+            
+            // Eye
+            ctx.fillStyle = '#FF6600';
+            ctx.fillRect(x + 8, y - 1 + peck + bobble, 1, 1);
+            
+            // Beak
+            ctx.fillStyle = '#AA9977';
+            ctx.fillRect(x + 9, y + peck + bobble, 2, 1);
+            
+            // Legs
+            ctx.fillStyle = '#AA6666';
+            ctx.fillRect(x + 2, y + 5, 1, 2);
+            ctx.fillRect(x + 5, y + 5, 1, 2);
+        }
+    }
+    
+    function drawSmallBird(ctx, x, y, time, isMate, faceLeft = false) {
+        const hop = Math.floor(time / 500) % 2;
+        const bobble = Math.sin(time / 300 + (isMate ? 150 : 0)) * 0.5;
+        
+        if (faceLeft) {
+            // Facing left (mirrored)
+            // Body
+            ctx.fillStyle = isMate ? '#7BA37B' : '#8FBC8F';
+            ctx.fillRect(x, y + hop + bobble, 6, 4);
+            
+            // Wing
             ctx.fillStyle = '#6B8E6B';
-            ctx.fillRect(x + 3, y + 2 + hop, 6, 4);
-            ctx.fillStyle = '#5C7C5C';
-            ctx.fillRect(x - 2, y + 4 + hop, 5, 3);
-            ctx.fillStyle = '#8FBC8F';
-            ctx.fillRect(x + 8, y - 2 + hop, 6, 6);
+            ctx.fillRect(x + 1, y + 1 + hop + bobble, 4, 2);
+            
+            // Head (on left side)
+            ctx.fillStyle = isMate ? '#7BA37B' : '#8FBC8F';
+            ctx.fillRect(x - 2, y - 2 + hop + bobble, 4, 4);
+            
+            // Eye
             ctx.fillStyle = '#2C2C2C';
-            ctx.fillRect(x + 11, y + hop, 2, 2);
+            ctx.fillRect(x - 1, y - 1 + hop + bobble, 1, 1);
+            
+            // Beak (pointing left)
             ctx.fillStyle = '#FFA500';
-            ctx.fillRect(x + 13, y + 1 + hop, 3, 2);
+            ctx.fillRect(x - 4, y + hop + bobble, 2, 1);
+            
+            // Legs
             ctx.fillStyle = '#8B7355';
-            ctx.fillRect(x + 4, y + 8 + hop, 1, 3);
-            ctx.fillRect(x + 7, y + 8 + hop, 1, 3);
-        } else if (isSummer) {
-            const wingFlap = Math.sin(time / 80) * 0.5;
-            const flutter = Math.sin(time / 300) * 3;
-            ctx.save();
-            ctx.translate(x + 6, y + flutter);
-            ctx.fillStyle = '#FF69B4';
-            ctx.save();
-            ctx.rotate(-0.3 + wingFlap);
-            ctx.fillRect(-8, -6, 8, 8);
-            ctx.fillStyle = '#FFB6C1';
-            ctx.fillRect(-6, -4, 4, 4);
-            ctx.restore();
-            ctx.save();
-            ctx.rotate(0.3 - wingFlap);
-            ctx.fillRect(0, -6, 8, 8);
-            ctx.fillStyle = '#FFB6C1';
-            ctx.fillRect(2, -4, 4, 4);
-            ctx.restore();
-            ctx.fillStyle = '#DDA0DD';
-            ctx.save();
-            ctx.rotate(-0.2 + wingFlap * 0.8);
-            ctx.fillRect(-7, 0, 6, 6);
-            ctx.restore();
-            ctx.save();
-            ctx.rotate(0.2 - wingFlap * 0.8);
-            ctx.fillRect(1, 0, 6, 6);
-            ctx.restore();
+            ctx.fillRect(x + 1, y + 4 + hop, 1, 2);
+            ctx.fillRect(x + 3, y + 4 + hop, 1, 2);
+        } else {
+            // Facing right (original)
+            // Body
+            ctx.fillStyle = isMate ? '#7BA37B' : '#8FBC8F';
+            ctx.fillRect(x, y + hop + bobble, 6, 4);
+            
+            // Wing
+            ctx.fillStyle = '#6B8E6B';
+            ctx.fillRect(x + 1, y + 1 + hop + bobble, 4, 2);
+            
+            // Head
+            ctx.fillStyle = isMate ? '#7BA37B' : '#8FBC8F';
+            ctx.fillRect(x + 4, y - 2 + hop + bobble, 4, 4);
+            
+            // Eye
             ctx.fillStyle = '#2C2C2C';
-            ctx.fillRect(-1, -4, 2, 10);
-            ctx.fillRect(-3, -7, 1, 3);
-            ctx.fillRect(2, -7, 1, 3);
+            ctx.fillRect(x + 6, y - 1 + hop + bobble, 1, 1);
+            
+            // Beak
+            ctx.fillStyle = '#FFA500';
+            ctx.fillRect(x + 7, y + hop + bobble, 2, 1);
+            
+            // Legs
+            ctx.fillStyle = '#8B7355';
+            ctx.fillRect(x + 2, y + 4 + hop, 1, 2);
+            ctx.fillRect(x + 4, y + 4 + hop, 1, 2);
+        }
+    }
+    
+    function drawSquirrel(ctx, x, y, time, isMate, isBaby = false) {
+        // Babies have minimal animation
+        const bobble = isBaby ? 0 : Math.sin(time / 400 + (isMate ? 200 : 0)) * 0.5;
+        const tailWag = isBaby ? 0 : Math.sin(time / 200) * 0.2;
+        
+        if (isBaby) {
+            // === BABY SQUIRREL (smaller, less detail) ===
+            // Tiny fluffy tail
+            ctx.fillStyle = '#A07040';
+            ctx.fillRect(x - 1, y + 2, 3, 5);
+            
+            // Tiny body
+            ctx.fillStyle = '#9B6A3B';
+            ctx.fillRect(x + 2, y + 3, 4, 3);
+            
+            // Tiny belly
+            ctx.fillStyle = '#E8DCBB';
+            ctx.fillRect(x + 2, y + 4, 3, 2);
+            
+            // Tiny head
+            ctx.fillStyle = '#9B6A3B';
+            ctx.fillRect(x + 5, y + 2, 3, 3);
+            
+            // Tiny ears
+            ctx.fillRect(x + 5, y + 1, 1, 2);
+            ctx.fillRect(x + 7, y + 1, 1, 2);
+            
+            // Tiny eye
+            ctx.fillStyle = '#2C2C2C';
+            ctx.fillRect(x + 6, y + 3, 1, 1);
+        } else {
+            // === ADULT SQUIRREL ===
+            // Fluffy tail
+            ctx.fillStyle = '#8B5A2B';
+            ctx.save();
+            ctx.translate(x, y + 3);
+            ctx.rotate(tailWag);
+            ctx.fillRect(-4, -6, 5, 10);
+            ctx.fillStyle = '#A0693C';
+            ctx.fillRect(-3, -4, 3, 7);
             ctx.restore();
+            
+            // Body
+            ctx.fillStyle = '#8B5A2B';
+            ctx.fillRect(x + 2, y + 1 + bobble, 7, 5);
+            
+            // Belly
+            ctx.fillStyle = '#DECCAA';
+            ctx.fillRect(x + 3, y + 2 + bobble, 4, 3);
+            
+            // Head
+            ctx.fillStyle = '#8B5A2B';
+            ctx.fillRect(x + 7, y - 1 + bobble, 5, 5);
+            
+            // Ears
+            ctx.fillRect(x + 7, y - 3 + bobble, 2, 3);
+            ctx.fillRect(x + 10, y - 3 + bobble, 2, 3);
+            
+            // Eye
+            ctx.fillStyle = '#2C2C2C';
+            ctx.fillRect(x + 10, y + 1 + bobble, 1, 1);
+            
+            // Acorn (sometimes)
+            if (Math.floor(time / 2000) % 3 === 0) {
+                ctx.fillStyle = '#8B4513';
+                ctx.fillRect(x + 12, y + 3 + bobble, 3, 3);
+                ctx.fillStyle = '#228B22';
+                ctx.fillRect(x + 12, y + 2 + bobble, 3, 1);
+            }
+        }
+    }
+    
+    function drawTinyButterfly(ctx, x, y, time, index) {
+        // Tiny cute butterflies with different colors
+        const colors = [
+            { main: '#FFB6C1', accent: '#FF69B4' }, // Pink
+            { main: '#87CEEB', accent: '#4169E1' }, // Blue
+            { main: '#DDA0DD', accent: '#9370DB' }, // Purple
+            { main: '#FFFACD', accent: '#FFD700' }, // Yellow
+            { main: '#98FB98', accent: '#32CD32' }, // Green
+        ];
+        const color = colors[index % colors.length];
+        
+        const wingFlap = Math.sin(time / 70 + index) * 0.5;
+        const flutter = Math.sin(time / 300 + index * 50) * 1.5;
+        const drift = Math.sin(time / 2000 + index * 100) * 3;
+        
+        ctx.save();
+        ctx.translate(x + drift, y + flutter);
+        
+        // Tiny body (2px)
+        ctx.fillStyle = '#333';
+        ctx.fillRect(0, -1, 1, 3);
+        
+        // Left wing (tiny, 2x3)
+        ctx.fillStyle = color.main;
+        const leftWing = Math.max(1, 2 + wingFlap);
+        ctx.fillRect(-leftWing, -2, 2, 3);
+        ctx.fillStyle = color.accent;
+        ctx.fillRect(-leftWing + 1, -1, 1, 1);
+        
+        // Right wing
+        ctx.fillStyle = color.main;
+        const rightWing = Math.max(1, 2 - wingFlap);
+        ctx.fillRect(1, -2, 2, 3);
+        ctx.fillStyle = color.accent;
+        ctx.fillRect(1, -1, 1, 1);
+        
+        // Antennae (tiny)
+        ctx.fillStyle = '#333';
+        ctx.fillRect(-1, -3, 1, 1);
+        ctx.fillRect(1, -3, 1, 1);
+        
+        ctx.restore();
+    }
+    
+    function drawButterfly(ctx, x, y, time) {
+        const wingFlap = Math.sin(time / 80) * 0.4;
+        const flutter = Math.sin(time / 400) * 2;
+        
+        ctx.save();
+        ctx.translate(x, y + flutter);
+        
+        // Upper wings
+        ctx.fillStyle = '#FF69B4';
+        ctx.save();
+        ctx.rotate(-0.2 + wingFlap);
+        ctx.fillRect(-5, -4, 5, 5);
+        ctx.fillStyle = '#FFB6C1';
+        ctx.fillRect(-4, -3, 3, 3);
+        ctx.restore();
+        
+        ctx.fillStyle = '#FF69B4';
+        ctx.save();
+        ctx.rotate(0.2 - wingFlap);
+        ctx.fillRect(0, -4, 5, 5);
+        ctx.fillStyle = '#FFB6C1';
+        ctx.fillRect(1, -3, 3, 3);
+        ctx.restore();
+        
+        // Lower wings (smaller)
+        ctx.fillStyle = '#DDA0DD';
+        ctx.save();
+        ctx.rotate(-0.15 + wingFlap * 0.7);
+        ctx.fillRect(-4, 0, 4, 4);
+        ctx.restore();
+        ctx.save();
+        ctx.rotate(0.15 - wingFlap * 0.7);
+        ctx.fillRect(0, 0, 4, 4);
+        ctx.restore();
+        
+        // Body
+        ctx.fillStyle = '#2C2C2C';
+        ctx.fillRect(-1, -3, 2, 7);
+        
+        // Antennae
+        ctx.fillRect(-2, -5, 1, 2);
+        ctx.fillRect(1, -5, 1, 2);
+        
+        ctx.restore();
+    }
+    
+    function drawBirdNest(ctx, x, y, time, hasEggs = false) {
+        // Nest made of twigs
+        ctx.fillStyle = '#8B7355';
+        ctx.fillRect(x, y, 12, 4);
+        ctx.fillStyle = '#6B5335';
+        ctx.fillRect(x + 1, y + 1, 10, 2);
+        // Twigs sticking out
+        ctx.fillStyle = '#8B7355';
+        ctx.fillRect(x - 2, y + 1, 3, 1);
+        ctx.fillRect(x + 11, y + 1, 3, 1);
+        
+        // Eggs if spring/mature
+        if (hasEggs) {
+            ctx.fillStyle = '#F5F5DC';
+            ctx.fillRect(x + 3, y - 1, 2, 2);
+            ctx.fillRect(x + 6, y - 1, 2, 2);
+            ctx.fillRect(x + 4, y - 2, 3, 2);
         }
     }
 
+    function drawUmbrella(ctx, x, y) {
+        // Umbrella on right side (viewer's left), held by right hand
+        // Umbrella handle (brown stick) - longer handle
+        ctx.fillStyle = '#5D4037';
+        ctx.fillRect(x - 8, y - 5, 2, 30);
+        
+        // Hand holding umbrella (raised position)
+        ctx.fillStyle = '#FFDAB9';
+        ctx.fillRect(x - 10, y + 8, 4, 4);
+        
+        // Umbrella canopy (dark blue/navy)
+        ctx.fillStyle = '#1A237E';
+        ctx.beginPath();
+        ctx.moveTo(x - 22, y - 3);
+        ctx.lineTo(x - 7, y - 13);
+        ctx.lineTo(x + 8, y - 3);
+        ctx.closePath();
+        ctx.fill();
+        
+        // Canopy highlight
+        ctx.fillStyle = '#283593';
+        ctx.beginPath();
+        ctx.moveTo(x - 18, y - 5);
+        ctx.lineTo(x - 7, y - 11);
+        ctx.lineTo(x + 4, y - 5);
+        ctx.closePath();
+        ctx.fill();
+        
+        // Canopy edge detail
+        ctx.fillStyle = '#0D1B5E';
+        ctx.fillRect(x - 22, y - 4, 30, 2);
+    }
+
     function drawFlowerBox(ctx, x, y, isWinter, isAutumn) {
-        ctx.fillStyle = '#5C4033';
-        ctx.fillRect(x, y, 90, 8);
-        ctx.fillStyle = '#4A3020';
-        ctx.fillRect(x, y, 90, 2);
+        // Small terracotta pot
+        ctx.fillStyle = '#A0522D';
+        ctx.fillRect(x, y, 40, 5);
+        ctx.fillStyle = '#8B4513';
+        ctx.fillRect(x, y, 40, 1);
+        ctx.fillRect(x + 1, y + 4, 38, 1);
+        
         if (!isWinter) {
-            const flowerColors = isAutumn ? ['#FF6347', '#FF8C00', '#FFD700'] : ['#FF69B4', '#FF1493', '#FF6347'];
-            for (let i = 0; i < 8; i++) {
-                ctx.fillStyle = '#228B22';
-                ctx.fillRect(x + 5 + i * 11, y - 8, 2, 8);
+            // Fewer, smaller, more detailed flowers (only up to leg height)
+            const flowerColors = isAutumn ? ['#CD5C5C', '#D2691E', '#DAA520'] : ['#DB7093', '#C71585', '#FF6B6B'];
+            
+            // Only 4 small flowers
+            for (let i = 0; i < 4; i++) {
+                const fx = x + 5 + i * 9;
+                
+                // Thin stem (only 5px tall - leg height)
+                ctx.fillStyle = '#2E8B2E';
+                ctx.fillRect(fx, y - 5, 1, 5);
+                
+                // Small leaf
+                if (i % 2 === 0) {
+                    ctx.fillStyle = '#228B22';
+                    ctx.fillRect(fx + 1, y - 3, 2, 1);
+                }
+                
+                // Tiny detailed flower (2px petals)
                 ctx.fillStyle = flowerColors[i % 3];
-                ctx.beginPath();
-                ctx.arc(x + 6 + i * 11, y - 10, 4, 0, Math.PI * 2);
-                ctx.fill();
+                ctx.fillRect(fx - 1, y - 7, 3, 2);
+                ctx.fillRect(fx, y - 8, 1, 1);
+                ctx.fillRect(fx, y - 6, 1, 1);
+                
+                // Flower center
+                ctx.fillStyle = '#FFD700';
+                ctx.fillRect(fx, y - 7, 1, 1);
             }
         }
     }
@@ -1475,8 +2219,12 @@
         };
         const c = colors[type] || colors.customer0;
         const time = frameTime;
-        const idleAnim = Math.sin(time / 1000) * 0.3;
-        const gestureFrame = Math.floor(time / 2500) % 3;
+        
+        // Lucas is mostly static - only subtle shoulder movement
+        const isLucas = type === 'lucas';
+        const shoulderBob = isLucas ? Math.sin(time / 800) * 0.5 : 0;
+        const idleAnim = isLucas ? 0 : Math.sin(time / 1000) * 0.3;
+        const gestureFrame = isLucas ? -1 : Math.floor(time / 2500) % 3; // No gesture for Lucas
         
         if (behindWindow) {
             ctx.fillStyle = c.shirt;
@@ -1489,275 +2237,775 @@
             ctx.fillRect(x + 2, y - 10, 8, 4);
             return;
         }
+        
+        // Shadow
         ctx.fillStyle = 'rgba(0,0,0,0.2)';
         ctx.beginPath();
-        ctx.ellipse(x + 7, y + 27 + idleAnim, 6, 2, 0, 0, Math.PI * 2);
+        ctx.ellipse(x + 7, y + 27, 6, 2, 0, 0, Math.PI * 2);
         ctx.fill();
-        ctx.fillStyle = '#2F4F4F';
-        ctx.fillRect(x + 2, y + 16 + idleAnim, 4, 10);
-        ctx.fillRect(x + 8, y + 16 + idleAnim, 4, 10);
-        ctx.fillStyle = c.shirt;
-        ctx.fillRect(x, y + idleAnim, 14, 17);
-        if (type === 'lucas' || type === 'henry') {
-            ctx.fillStyle = '#FFFFFF';
-            ctx.fillRect(x + 2, y + 3 + idleAnim, 10, 12);
-            ctx.fillStyle = '#F0F0F0';
-            ctx.fillRect(x + 2, y + 3 + idleAnim, 10, 2);
-        }
-        ctx.fillStyle = c.shirt;
-        // Arms with gesture animation
-        const armOffset = gestureFrame === 1 ? 1 : (gestureFrame === 2 ? -1 : 0);
-        ctx.fillRect(x - 2, y + 2 + idleAnim + armOffset, 3, 10);
-        ctx.fillRect(x + 13, y + 2 + idleAnim - armOffset, 3, 10);
-        ctx.fillStyle = c.skin;
-        ctx.fillRect(x - 2, y + 12 + idleAnim, 3, 4);
-        ctx.fillRect(x + 13, y + 12 + idleAnim, 3, 4);
-        ctx.fillStyle = c.skin;
-        ctx.fillRect(x + 2, y - 12 + idleAnim, 10, 12);
-        ctx.fillStyle = c.hair;
-        ctx.fillRect(x + 2, y - 14 + idleAnim, 10, 5);
-        ctx.fillRect(x + 1, y - 12 + idleAnim, 2, 4);
-        ctx.fillRect(x + 11, y - 12 + idleAnim, 2, 4);
-        ctx.fillStyle = '#2C2C2C';
-        ctx.fillRect(x + 4, y - 8 + idleAnim, 2, 2);
-        ctx.fillRect(x + 8, y - 8 + idleAnim, 2, 2);
-        ctx.fillStyle = '#E08080';
-        ctx.fillRect(x + 5, y - 4 + idleAnim, 4, 1);
         
-        // Work animation for Lucas/Henry
-        if ((type === 'lucas' || type === 'henry') && gestureFrame === 0) {
-            // Holding cheese/working
+        // Legs
+        ctx.fillStyle = '#2F4F4F';
+        ctx.fillRect(x + 2, y + 16, 4, 10);
+        ctx.fillRect(x + 8, y + 16, 4, 10);
+        
+        // Body/shirt
+        ctx.fillStyle = c.shirt;
+        ctx.fillRect(x, y, 14, 17);
+        
+        // White apron for Lucas
+        if (isLucas) {
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(x + 2, y + 3, 10, 12);
+            ctx.fillStyle = '#F0F0F0';
+            ctx.fillRect(x + 2, y + 3, 10, 2);
+        }
+        
+        // Arms (subtle shoulder bob for Lucas)
+        ctx.fillStyle = c.shirt;
+        ctx.fillRect(x - 2, y + 2 + shoulderBob, 3, 10);
+        ctx.fillRect(x + 13, y + 2 - shoulderBob, 3, 10);
+        
+        // Hands
+        ctx.fillStyle = c.skin;
+        ctx.fillRect(x - 2, y + 12, 3, 4);
+        ctx.fillRect(x + 13, y + 12, 3, 4);
+        
+        // Head
+        ctx.fillStyle = c.skin;
+        ctx.fillRect(x + 2, y - 12, 10, 12);
+        
+        // Hair
+        ctx.fillStyle = c.hair;
+        ctx.fillRect(x + 2, y - 14, 10, 5);
+        ctx.fillRect(x + 1, y - 12, 2, 4);
+        ctx.fillRect(x + 11, y - 12, 2, 4);
+        
+        // === CHRISTMAS HAT (December only) ===
+        const month = gameState.month || 1;
+        if (month === 12) {
+            // Red hat
+            ctx.fillStyle = '#DC143C';
+            ctx.fillRect(x + 1, y - 17, 10, 4);
+            ctx.fillRect(x + 3, y - 20, 6, 3);
+            ctx.fillRect(x + 5, y - 22, 3, 2);
+            // White trim
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(x, y - 14, 12, 2);
+            // White pom-pom
+            ctx.fillRect(x + 6, y - 23, 2, 2);
+        }
+        
+        // Eyes
+        ctx.fillStyle = '#2C2C2C';
+        ctx.fillRect(x + 4, y - 8, 2, 2);
+        ctx.fillRect(x + 8, y - 8, 2, 2);
+        
+        // Mouth
+        ctx.fillStyle = '#E08080';
+        ctx.fillRect(x + 5, y - 4, 4, 1);
+        
+        // Lucas has a beard!
+        if (isLucas) {
+            ctx.fillStyle = '#3A2818';
+            // Beard sides
+            ctx.fillRect(x + 2, y - 4, 2, 4);
+            ctx.fillRect(x + 10, y - 4, 2, 4);
+            // Chin beard
+            ctx.fillRect(x + 3, y - 2, 8, 3);
+            ctx.fillRect(x + 4, y + 1, 6, 2);
+            // Mustache
+            ctx.fillRect(x + 4, y - 5, 6, 2);
+        }
+        
+        // Work animation (not for Lucas - he's static)
+        if (!isLucas && gestureFrame === 0) {
             ctx.fillStyle = '#F4A460';
             ctx.fillRect(x + 15, y + 5 + idleAnim, 4, 3);
         }
     }
 
-    function drawJulienInShop(ctx, x, y, gameState, frameTime = Date.now()) {
-        const breathe = Math.sin(frameTime / 600) * 0.5;
-        const stressLevel = gameState.stress || 0;
-        const isStressed = stressLevel > 60;
+    // === JULIEN - Main character, stands outside near the door ===
+    function drawJulien(ctx, x, y, gameState, frameTime = Date.now()) {
+        const stress = gameState.stress || 0;
+        const recovering = gameState.recovering || false;
+        
+        // Stress states
+        const isHappy = stress < 40;
+        const isNeutral = stress >= 40 && stress < 70;
+        const isPanicking = stress >= 70 && stress < 80;
+        const isBurnout = stress >= 80;
+        
+        // Only panic shake animation (no breathing/floating)
+        const panicShake = isPanicking ? Math.sin(frameTime / 50) * 1.5 : 0;
         const gestureFrame = Math.floor(frameTime / 2000) % 4;
+        
+        // Blinking - blink for ~150ms every 3-4 seconds
+        const blinkCycle = frameTime % 3500;
+        const isBlinking = blinkCycle > 3350;
+        
+        // Looking around - shift eyes occasionally (every 5-8 seconds for ~1 second)
+        const lookCycle = frameTime % 6000;
+        const lookDirection = lookCycle > 5000 ? (lookCycle > 5500 ? 0 : 1) : (lookCycle < 1000 ? -1 : 0);
+        
+        // Offsets - only horizontal shake when panicking
+        const ox = panicShake;
+        
+        // Skin color (pale when burnout/recovering)
+        const skin = (isBurnout || recovering) ? '#E0D8D0' : '#FFDAB9';
+        const skinDark = (isBurnout || recovering) ? '#C8C0B8' : '#DEB887';
+        
+        // === SHADOW ===
         ctx.fillStyle = 'rgba(0,0,0,0.2)';
         ctx.beginPath();
-        ctx.ellipse(x + 8, y + 30, 8, 3, 0, 0, Math.PI * 2);
+        ctx.ellipse(x + 10, y + 32, 8, 3, 0, 0, Math.PI * 2);
         ctx.fill();
+        
+        // === LEGS (dark jeans) ===
         ctx.fillStyle = '#2C3E50';
-        ctx.fillRect(x + 2, y + 18, 5, 11);
-        ctx.fillRect(x + 9, y + 18, 5, 11);
+        ctx.fillRect(x + 5 + ox, y + 18, 4, 14);
+        ctx.fillRect(x + 11 + ox, y + 18, 4, 14);
+        // Jean highlights
+        ctx.fillStyle = '#3D5A6F';
+        ctx.fillRect(x + 6 + ox, y + 19, 1, 12);
+        ctx.fillRect(x + 12 + ox, y + 19, 1, 12);
+        
+        // === SHOES (dark) ===
         ctx.fillStyle = '#1A1A1A';
-        ctx.fillRect(x + 1, y + 27, 7, 4);
-        ctx.fillRect(x + 8, y + 27, 7, 4);
-        ctx.fillStyle = '#3498DB';
-        ctx.fillRect(x, y, 16, 20);
+        ctx.fillRect(x + 4 + ox, y + 31, 6, 2);
+        ctx.fillRect(x + 10 + ox, y + 31, 6, 2);
+        
+        // === NECK (connects head to body cleanly) ===
+        ctx.fillStyle = skin;
+        ctx.fillRect(x + 7 + ox, y - 2, 6, 4);
+        
+        // === TORSO (white T-shirt - shorter) ===
         ctx.fillStyle = '#FFFFFF';
-        ctx.fillRect(x + 2, y + 4, 12, 14);
-        ctx.fillStyle = '#F0F0F0';
-        ctx.fillRect(x + 4, y + 10, 8, 5);
-        ctx.strokeStyle = '#DDDDDD';
-        ctx.lineWidth = 0.5;
-        ctx.strokeRect(x + 4, y + 10, 8, 5);
-        ctx.fillStyle = '#3498DB';
-        ctx.fillRect(x - 3, y + 3, 4, 12);
-        ctx.fillRect(x + 15, y + 3, 4, 12);
-        ctx.fillStyle = '#DEB887';
-        ctx.fillRect(x - 3, y + 14, 4, 4);
-        ctx.fillRect(x + 15, y + 14, 4, 4);
-        // Gesture animations based on stress
-        if (isStressed && gestureFrame === 0) {
-            // Rubbing head gesture
-            ctx.fillStyle = '#DEB887';
-            ctx.fillRect(x + 18, y + 12, 4, 6);
-        } else if (gestureFrame === 1 && !isStressed) {
-            // Waving/pointing
-            ctx.fillStyle = '#DEB887';
-            ctx.fillRect(x + 19, y + 10, 3, 8);
-            ctx.fillRect(x + 22, y + 12, 4, 2);
-        } else if (Math.floor(frameTime / 3000) % 3 === 0) {
-            // Cheese gesture (original)
-            ctx.fillStyle = '#F4A460';
-            ctx.beginPath();
-            ctx.ellipse(x + 19, y + 15, 5, 3, 0, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.fillStyle = '#D4844A';
-            ctx.beginPath();
-            ctx.arc(x + 19, y + 15, 2, 0, Math.PI * 2);
-            ctx.fill();
+        ctx.fillRect(x + 3 + ox, y + 2, 14, 16);
+        // T-shirt shadow/fold
+        ctx.fillStyle = '#E8E8E8';
+        ctx.fillRect(x + 4 + ox, y + 8, 2, 8);
+        ctx.fillRect(x + 14 + ox, y + 8, 2, 8);
+        
+        // === BLACK APRON over shirt ===
+        ctx.fillStyle = '#1A1A1A';
+        ctx.fillRect(x + 4 + ox, y + 6, 12, 12);
+        // Apron straps
+        ctx.fillStyle = '#2A2A2A';
+        ctx.fillRect(x + 6 + ox, y + 2, 2, 5);
+        ctx.fillRect(x + 12 + ox, y + 2, 2, 5);
+        // Apron highlight
+        ctx.fillStyle = '#2A2A2A';
+        ctx.fillRect(x + 5 + ox, y + 7, 1, 10);
+        // Apron pocket
+        ctx.fillStyle = '#252525';
+        ctx.fillRect(x + 7 + ox, y + 11, 6, 4);
+        ctx.fillStyle = '#1A1A1A';
+        ctx.fillRect(x + 7 + ox, y + 11, 6, 1);
+        
+        // === ARMS (depends on gesture state) ===
+        const isWaving = isHappy && gestureFrame === 1;
+        const isPanicGesture = isPanicking && gestureFrame < 2;
+        
+        // Left arm (always normal)
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(x + ox, y + 2, 4, 7);
+        ctx.fillStyle = '#E8E8E8';
+        ctx.fillRect(x + ox, y + 6, 1, 3);
+        ctx.fillStyle = skin;
+        if (isPanicGesture) {
+            // Hand on head
+            ctx.fillRect(x + 2 + ox, y - 10, 3, 3);
+        } else if (isBurnout) {
+            ctx.fillRect(x - 1 + ox, y + 12, 4, 5);
+        } else {
+            ctx.fillRect(x + ox, y + 9, 4, 5);
         }
-        ctx.fillStyle = '#DEB887';
-        ctx.fillRect(x + 2, y - 14, 12, 14);
-        ctx.fillStyle = '#4A3728';
-        ctx.fillRect(x + 1, y - 16, 14, 6);
-        ctx.fillRect(x + 1, y - 14, 3, 5);
-        ctx.fillRect(x + 12, y - 14, 3, 5);
-        ctx.fillStyle = '#5A4738';
-        ctx.fillRect(x + 5, y - 15, 4, 2);
-        ctx.fillStyle = '#2C3E50';
-        ctx.fillRect(x + 4, y - 10, 2, 2);
-        ctx.fillRect(x + 10, y - 10, 2, 2);
-        ctx.fillStyle = '#3A2718';
-        ctx.fillRect(x + 3, y - 12, 4, 1);
-        ctx.fillRect(x + 9, y - 12, 4, 1);
-        ctx.fillStyle = '#C0826E';
-        ctx.fillRect(x + 5, y - 6, 6, 2);
-        ctx.fillStyle = '#CBA877';
-        ctx.fillRect(x + 7, y - 8, 2, 2);
+        
+        // Right arm (changes when waving)
+        if (isWaving) {
+            // Waving arm - raised position
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(x + 16 + ox, y + 2, 4, 4);
+            ctx.fillRect(x + 18 + ox, y - 2, 3, 5);
+            ctx.fillStyle = skin;
+            ctx.fillRect(x + 18 + ox, y - 6, 4, 5);
+        } else {
+            // Normal right arm
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(x + 16 + ox, y + 2, 4, 7);
+            ctx.fillStyle = '#E8E8E8';
+            ctx.fillRect(x + 19 + ox, y + 6, 1, 3);
+            ctx.fillStyle = skin;
+            if (isPanicGesture) {
+                ctx.fillRect(x + 15 + ox, y - 10, 3, 3);
+            } else if (isBurnout) {
+                ctx.fillRect(x + 17 + ox, y + 12, 4, 5);
+            } else {
+                ctx.fillRect(x + 16 + ox, y + 9, 4, 5);
+            }
+        }
+        
+        // === HEAD (slightly shorter) ===
+        ctx.fillStyle = skin;
+        ctx.fillRect(x + 6 + ox, y - 10, 8, 9);
+        
+        // === CURLY DARK BROWN HAIR ===
+        ctx.fillStyle = '#3A2A1A';
+        // Top hair - curly volume
+        ctx.fillRect(x + 6 + ox, y - 12, 8, 3);
+        // Side hair (short, frames face)
+        ctx.fillRect(x + 5 + ox, y - 11, 2, 2);
+        ctx.fillRect(x + 13 + ox, y - 11, 2, 2);
+        // Hair texture highlights
+        ctx.fillStyle = '#4A3A2A';
+        ctx.fillRect(x + 8 + ox, y - 11, 2, 1);
+        ctx.fillRect(x + 10 + ox, y - 10, 2, 1);
+        
+        // === CHRISTMAS HAT (December only) ===
+        const month = gameState.month || 1;
+        if (month === 12) {
+            // Red hat
+            ctx.fillStyle = '#DC143C';
+            ctx.fillRect(x + 5 + ox, y - 14, 10, 4);
+            ctx.fillRect(x + 7 + ox, y - 17, 6, 3);
+            ctx.fillRect(x + 9 + ox, y - 19, 3, 2);
+            // White trim
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(x + 4 + ox, y - 11, 12, 2);
+            // White pom-pom
+            ctx.fillRect(x + 10 + ox, y - 20, 2, 2);
+        }
+        
+        // === EYES ===
+        // Subtle eye movement - slow side to side
+        const subtleLook = Math.floor(frameTime / 4000) % 3; // 0, 1, or 2
+        const eyeOffset = subtleLook === 0 ? 0 : (subtleLook === 1 ? 1 : 0);
+        
+        if (isBlinking && !isPanicking && !isBurnout) {
+            // Blinking - eyes closed
+            ctx.fillStyle = '#3A2A1A';
+            ctx.fillRect(x + 7 + ox, y - 6, 2, 1);
+            ctx.fillRect(x + 11 + ox, y - 6, 2, 1);
+        } else if (isBurnout) {
+            // Exhausted half-closed eyes
+            ctx.fillStyle = '#2C2C2C';
+            ctx.fillRect(x + 7 + ox, y - 6, 2, 1);
+            ctx.fillRect(x + 11 + ox, y - 6, 2, 1);
+        } else if (isPanicking) {
+            // Wide panicked eyes
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(x + 7 + ox, y - 7, 2, 3);
+            ctx.fillRect(x + 11 + ox, y - 7, 2, 3);
+            // Darting pupils
+            const eyeShift = Math.sin(frameTime / 100) > 0 ? 0 : 1;
+            ctx.fillStyle = '#2C2C2C';
+            ctx.fillRect(x + 7 + eyeShift + ox, y - 6, 1, 2);
+            ctx.fillRect(x + 11 + eyeShift + ox, y - 6, 1, 2);
+        } else {
+            // Normal eyes with subtle movement
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(x + 7 + ox, y - 7, 2, 2);
+            ctx.fillRect(x + 11 + ox, y - 7, 2, 2);
+            // Pupils - with subtle side movement
+            ctx.fillStyle = '#2C2C2C';
+            ctx.fillRect(x + 7 + eyeOffset + ox, y - 6, 1, 1);
+            ctx.fillRect(x + 11 + eyeOffset + ox, y - 6, 1, 1);
+        }
+        
+        // === EYEBROWS ===
+        ctx.fillStyle = '#3A2A1A';
+        if (isPanicking) {
+            // Raised worried
+            ctx.fillRect(x + 7 + ox, y - 9, 2, 1);
+            ctx.fillRect(x + 11 + ox, y - 9, 2, 1);
+        } else if (isBurnout) {
+            // Droopy tired
+            ctx.fillRect(x + 7 + ox, y - 8, 2, 1);
+            ctx.fillRect(x + 11 + ox, y - 8, 2, 1);
+        } else {
+            // Normal
+            ctx.fillRect(x + 7 + ox, y - 8, 2, 1);
+            ctx.fillRect(x + 11 + ox, y - 8, 2, 1);
+        }
+        
+        // === MOUTH ===
+        if (isHappy) {
+            // Bigger smile!
+            ctx.fillStyle = '#D08080';
+            ctx.fillRect(x + 8 + ox, y - 3, 4, 1);
+            ctx.fillRect(x + 9 + ox, y - 2, 2, 1);
+        } else if (isPanicking) {
+            // Open mouth panic
+            ctx.fillStyle = '#6B3030';
+            ctx.fillRect(x + 9 + ox, y - 5, 2, 2);
+        } else if (isBurnout) {
+            // Flat exhausted line
+            ctx.fillStyle = '#8A6A5A';
+            ctx.fillRect(x + 8 + ox, y - 4, 4, 1);
+        } else {
+            // Neutral - simple line
+            ctx.fillStyle = '#C08080';
+            ctx.fillRect(x + 9 + ox, y - 4, 2, 1);
+        }
+        
+        // === SWEAT DROPS (panicking) ===
+        if (isPanicking) {
+            ctx.fillStyle = '#87CEEB';
+            const sweatAnim = (frameTime / 80) % 12;
+            ctx.fillRect(x + 4 + ox, y - 8 + sweatAnim, 1, 2);
+            ctx.fillRect(x + 15 + ox, y - 6 + sweatAnim, 1, 2);
+        }
+        
+        // === STRESS LINES ===
+        if (stress > 50 && stress < 80) {
+            ctx.fillStyle = 'rgba(0,0,0,0.12)';
+            ctx.fillRect(x + 6 + ox, y - 10, 1, 2);
+            ctx.fillRect(x + 13 + ox, y - 10, 1, 2);
+        }
+        
+        // === BURNOUT CLOUD/SPIRAL ===
+        if (isBurnout) {
+            ctx.fillStyle = 'rgba(100,100,100,0.25)';
+            const spiralAnim = Math.sin(frameTime / 300) * 2;
+            ctx.fillRect(x + 4 + spiralAnim + ox, y - 20, 2, 2);
+            ctx.fillRect(x + 9 - spiralAnim + ox, y - 22, 3, 3);
+            ctx.fillRect(x + 14 + spiralAnim + ox, y - 20, 2, 2);
+        }
     }
 
+    // === PONCHO - Australian Shepherd (Red Merle) ===
+    // Puppy version until ponchoAnniversary event, then adult
+    // === PONCHO - Australian Shepherd (Red Merle) ===
+    // Current "puppy" size becomes ADULT, new smaller puppy
     function drawPoncho16(ctx, x, y, gameState = {}, frameTime = Date.now()) {
         const time = frameTime;
-        const frame = Math.floor(time / 400) % 2;
-        const wagFrame = Math.floor(time / 120) % 4;
-        const breathe = Math.sin(time / 500) * 0.5;
-        const stressLevel = gameState.stress || 0;
+        const wagFrame = Math.floor(time / 100) % 4;
+        const breathe = Math.sin(time / 600) * 0.2;
         const reputation = gameState.reputation || 0;
+        const isAdult = gameState.ponchoAnniversary || false;
         
-        // Poncho states: sleeping (night/low rep), playing (high rep), normal
-        const isSleeping = (gameState.timeOfDay === 3 || gameState.timeOfDay === 0) && reputation < 50;
-        const isPlaying = reputation > 70 && Math.floor(time / 3000) % 3 === 0;
-        if (isSleeping) {
-            // Sleeping Poncho (lying down)
-            ctx.fillStyle = '#8B4513';
-            ctx.fillRect(x, y + 8, 20, 10);
-            ctx.fillStyle = '#FFFFFF';
-            ctx.fillRect(x + 3, y + 10, 8, 6);
-            ctx.fillStyle = '#8B4513';
-            ctx.fillRect(x + 18, y + 6, 10, 8);
-            ctx.fillStyle = '#FFFFFF';
-            ctx.fillRect(x + 20, y + 7, 6, 6);
-            ctx.fillStyle = '#2C2C2C';
-            ctx.fillRect(x + 22, y + 8, 2, 1); // Closed eyes
-            ctx.fillRect(x + 25, y + 8, 2, 1);
-            // Zzz
-            ctx.fillStyle = '#888888';
-            ctx.font = '8px sans-serif';
-            ctx.fillText('z', x + 28, y + 10);
-            ctx.fillText('z', x + 30, y + 8);
-            ctx.fillText('z', x + 32, y + 6);
-        } else if (isPlaying) {
-            // Playing Poncho (jumping/bouncing)
-            const jump = Math.sin(time / 300) * 3;
-            ctx.fillStyle = 'rgba(0,0,0,0.2)';
+        // Puppy sits closer to Julien, adult sits further away
+        if (!isAdult) {
+            x = x + 15; // Move puppy closer to Julien
+        }
+        
+        // Australian Shepherd colors (red merle)
+        const copper = '#B5651D';
+        const copperDark = '#8B4513';
+        const copperLight = '#CD853F';
+        const white = '#FEFEFE';
+        const cream = '#F5F5DC';
+        const merle = '#A0522D';
+        const nose = '#3D2B1F';
+        const eyeBlue = '#6B9BBD';   // Blue eye
+        const eyeBrown = '#8B4513';  // Brown eye
+        
+        const isSleeping = gameState.timeOfDay === 3 && reputation < 50;
+        const isHappy = reputation > 60;
+        
+        if (isAdult) {
+            // === ADULT PONCHO - Smaller sitting Australian Shepherd ===
+            
+            // Shadow
+            ctx.fillStyle = 'rgba(0,0,0,0.12)';
             ctx.beginPath();
-            ctx.ellipse(x + 12, y + 22 + jump, 10, 3, 0, 0, Math.PI * 2);
+            ctx.ellipse(x + 8, y + 12, 6, 2, 0, 0, Math.PI * 2);
             ctx.fill();
-            ctx.fillStyle = '#FFFFFF';
-            const tailAngle = Math.sin(time / 200) * 0.8;
+            
+            if (isSleeping) {
+                // Sleeping curled
+                ctx.fillStyle = copper;
+                ctx.fillRect(x + 2, y + 6, 12, 6);
+                ctx.fillStyle = white;
+                ctx.fillRect(x + 6, y + 7, 4, 4);
+                ctx.fillStyle = copper;
+                ctx.fillRect(x + 11, y + 4, 6, 5);
+                ctx.fillStyle = white;
+                ctx.fillRect(x + 13, y + 5, 3, 3);
+                return;
+            }
+            
+            // Tail (wagging gently)
+            const tailWag = Math.sin(time / 150) * 0.3;
             ctx.save();
-            ctx.translate(x, y + 6 + jump);
-            ctx.rotate(tailAngle);
-            ctx.fillRect(-8, -2, 10, 5);
-            ctx.fillStyle = '#8B4513';
-            ctx.fillRect(-8, -2, 3, 5);
+            ctx.translate(x + 2, y + 6);
+            ctx.rotate(tailWag - 0.2);
+            ctx.fillStyle = copper;
+            ctx.fillRect(-4, -1, 5, 3);
+            ctx.fillStyle = white;
+            ctx.fillRect(-3, 0, 2, 2);
             ctx.restore();
-            ctx.fillStyle = '#8B4513';
-            ctx.fillRect(x, y + jump, 22, 14);
-            ctx.fillStyle = '#FFFFFF';
-            ctx.fillRect(x + 3, y + 6 + jump, 10, 8);
-            ctx.fillRect(x + 16, y + 2 + jump, 6, 10);
-            ctx.fillStyle = '#2C2C2C';
-            ctx.fillRect(x + 14, y + 1 + jump, 4, 6);
-            ctx.fillRect(x + 2, y + 1 + jump, 5, 4);
-            // Legs in jumping position
-            ctx.fillStyle = '#8B4513';
-            ctx.fillRect(x + 3, y + 14 + jump, 4, 5);
-            ctx.fillRect(x + 9, y + 14 + jump, 4, 5);
-            ctx.fillRect(x + 15, y + 14 + jump, 4, 5);
-            ctx.fillStyle = '#FFFFFF';
-            ctx.fillRect(x + 3, y + 17 + jump, 4, 2);
-            ctx.fillRect(x + 9, y + 17 + jump, 4, 2);
-            ctx.fillRect(x + 15, y + 17 + jump, 4, 2);
+            
+            // Back haunches (sitting)
+            ctx.fillStyle = copper;
+            ctx.fillRect(x + 2, y + 6, 8, 5);
+            ctx.fillStyle = white;
+            ctx.fillRect(x + 2, y + 10, 3, 2);
+            ctx.fillRect(x + 7, y + 10, 3, 2);
+            
+            // Body (upright sitting)
+            ctx.fillStyle = copper;
+            ctx.fillRect(x + 5, y - 2 + breathe, 8, 10);
+            ctx.fillStyle = white;
+            ctx.fillRect(x + 7, y + breathe, 6, 8);
+            ctx.fillStyle = merle;
+            ctx.fillRect(x + 5, y + 2 + breathe, 2, 2);
+            
+            // Front legs
+            ctx.fillStyle = copper;
+            ctx.fillRect(x + 7, y + 7 + breathe, 2, 5);
+            ctx.fillRect(x + 11, y + 7 + breathe, 2, 5);
+            ctx.fillStyle = white;
+            ctx.fillRect(x + 7, y + 10 + breathe, 2, 2);
+            ctx.fillRect(x + 11, y + 10 + breathe, 2, 2);
+            
+            // Neck ruff
+            ctx.fillStyle = white;
+            ctx.fillRect(x + 6, y - 4 + breathe, 6, 3);
+            
+            // Head movement (quick tilt, but infrequent - every ~8 seconds for ~1 second)
+            const headCycle = Math.floor(time / 8000) % 2;
+            const headTilt = headCycle === 0 && (time % 8000) < 800 ? Math.sin((time % 800) / 100) * 1.5 : 0;
+            
             // Head
-            ctx.fillStyle = '#8B4513';
-            ctx.fillRect(x + 18, y - 4 + jump, 12, 12);
+            ctx.fillStyle = copper;
+            ctx.fillRect(x + 5 + headTilt, y - 10 + breathe, 8, 7);
+            ctx.fillStyle = white;
+            ctx.fillRect(x + 7 + headTilt, y - 9 + breathe, 4, 5);
+            
+            // Ears
+            ctx.fillStyle = copper;
+            ctx.fillRect(x + 4 + headTilt, y - 11 + breathe, 3, 3);
+            ctx.fillRect(x + 11 + headTilt, y - 11 + breathe, 3, 3);
+            
+            // Eyes - HETEROCHROMIA
             ctx.fillStyle = '#FFFFFF';
-            ctx.fillRect(x + 22, y - 3 + jump, 5, 10);
-            ctx.fillStyle = '#8B4513';
-            ctx.fillRect(x + 17, y - 7 + jump, 5, 5);
-            ctx.fillRect(x + 26, y - 7 + jump, 5, 5);
-            ctx.fillStyle = '#2C2C2C';
-            ctx.fillRect(x + 17, y - 7 + jump, 5, 2);
-            ctx.fillRect(x + 26, y - 7 + jump, 5, 2);
-            ctx.fillRect(x + 28, y + 2 + jump, 3, 3);
-            ctx.fillStyle = '#4169E1';
-            ctx.fillRect(x + 25, y - 1 + jump, 3, 3);
-            ctx.fillStyle = '#FFFFFF';
-            ctx.fillRect(x + 26, y + jump, 1, 1);
-            // Tongue out (happy)
-            ctx.fillStyle = '#FF6B6B';
-            ctx.fillRect(x + 28, y + 5 + jump, 2, 4);
+            ctx.fillRect(x + 6 + headTilt, y - 7 + breathe, 2, 2);
+            ctx.fillRect(x + 10 + headTilt, y - 7 + breathe, 2, 2);
+            ctx.fillStyle = eyeBlue;
+            ctx.fillRect(x + 6 + headTilt, y - 6 + breathe, 1, 1);
+            ctx.fillStyle = eyeBrown;
+            ctx.fillRect(x + 11 + headTilt, y - 6 + breathe, 1, 1);
+            
+            // Nose
+            ctx.fillStyle = nose;
+            ctx.fillRect(x + 8 + headTilt, y - 5 + breathe, 2, 1);
+            
+            // Tongue (once every ~10 seconds for ~0.5 second)
+            if ((time % 10000) < 500) {
+                ctx.fillStyle = '#FF7070';
+                ctx.fillRect(x + 8 + headTilt, y - 4 + breathe, 2, 2);
+            }
+            
         } else {
-            // Normal Poncho (enhanced animations)
-            ctx.fillStyle = 'rgba(0,0,0,0.2)';
+            // === PUPPY PONCHO (tiny!) ===
+            
+            // Shadow
+            ctx.fillStyle = 'rgba(0,0,0,0.1)';
             ctx.beginPath();
-            ctx.ellipse(x + 12, y + 22 + breathe, 10, 3, 0, 0, Math.PI * 2);
+            ctx.ellipse(x + 6, y + 10, 4, 1, 0, 0, Math.PI * 2);
             ctx.fill();
-            ctx.fillStyle = '#FFFFFF';
-            const tailAngle = (wagFrame - 1.5) * 0.4; // More wag
+            
+            if (isSleeping) {
+                // Tiny ball
+                ctx.fillStyle = copper;
+                ctx.fillRect(x + 3, y + 5, 8, 4);
+                ctx.fillStyle = white;
+                ctx.fillRect(x + 5, y + 6, 3, 2);
+                ctx.fillStyle = copper;
+                ctx.fillRect(x + 9, y + 3, 4, 4);
+                ctx.fillStyle = white;
+                ctx.fillRect(x + 10, y + 4, 2, 2);
+                return;
+            }
+            
+            // Tiny tail (fast wag!)
+            const puppyWag = Math.sin(time / 70) * 0.7;
             ctx.save();
-            ctx.translate(x, y + 6);
-            ctx.rotate(tailAngle);
-            ctx.fillRect(-8, -2, 10, 5);
-            ctx.fillStyle = '#8B4513';
-            ctx.fillRect(-8, -2, 3, 5);
+            ctx.translate(x + 2, y + 4);
+            ctx.rotate(puppyWag);
+            ctx.fillStyle = copper;
+            ctx.fillRect(-3, -1, 4, 2);
+            ctx.fillStyle = white;
+            ctx.fillRect(-2, 0, 2, 1);
             ctx.restore();
-            ctx.fillStyle = '#8B4513';
-            ctx.fillRect(x, y + breathe, 22, 14);
+            
+            // Back legs
+            ctx.fillStyle = copper;
+            ctx.fillRect(x + 3, y + 6 + breathe, 2, 4);
+            ctx.fillRect(x + 6, y + 6 + breathe, 2, 4);
+            ctx.fillStyle = white;
+            ctx.fillRect(x + 3, y + 9 + breathe, 2, 1);
+            ctx.fillRect(x + 6, y + 9 + breathe, 2, 1);
+            
+            // Body
+            ctx.fillStyle = copper;
+            ctx.fillRect(x + 2, y + 2 + breathe, 10, 5);
+            ctx.fillStyle = white;
+            ctx.fillRect(x + 8, y + 3 + breathe, 4, 3);
+            ctx.fillStyle = merle;
+            ctx.fillRect(x + 3, y + 3 + breathe, 2, 2);
+            
+            // Front legs
+            ctx.fillStyle = copper;
+            ctx.fillRect(x + 8, y + 6 + breathe, 2, 4);
+            ctx.fillRect(x + 11, y + 6 + breathe, 2, 4);
+            ctx.fillStyle = white;
+            ctx.fillRect(x + 8, y + 9 + breathe, 2, 1);
+            ctx.fillRect(x + 11, y + 9 + breathe, 2, 1);
+            
+            // Neck (fluffy)
+            ctx.fillStyle = white;
+            ctx.fillRect(x + 10, y + 1 + breathe, 3, 2);
+            
+            // Head (cute puppy proportions - rounder)
+            ctx.fillStyle = copper;
+            ctx.fillRect(x + 10, y - 4 + breathe, 6, 6);
+            // White blaze on face
+            ctx.fillStyle = white;
+            ctx.fillRect(x + 12, y - 3 + breathe, 2, 4);
+            
+            // Floppy ears (on sides) - quick flop every ~6 seconds for ~0.5 second
+            const earFlop = (time % 6000) < 500 ? 1 : 0;
+            ctx.fillStyle = copper;
+            ctx.fillRect(x + 9, y - 3 + breathe + earFlop, 2, 3);
+            ctx.fillRect(x + 15, y - 3 + breathe + earFlop, 2, 3);
+            
+            // Big cute eyes - HETEROCHROMIA (higher on face)
             ctx.fillStyle = '#FFFFFF';
-            ctx.fillRect(x + 3, y + 6 + breathe, 10, 8);
-            ctx.fillRect(x + 16, y + 2 + breathe, 6, 10);
-            ctx.fillStyle = '#2C2C2C';
-            ctx.fillRect(x + 14, y + 1 + breathe, 4, 6);
-            ctx.fillRect(x + 2, y + 1 + breathe, 5, 4);
-            ctx.fillStyle = '#8B4513';
-            const legOffset = frame * 2;
-            ctx.fillRect(x + 3, y + 14 + breathe, 4, 7 - legOffset);
-            ctx.fillRect(x + 9, y + 14 + breathe, 4, 7 + legOffset);
-            ctx.fillRect(x + 15, y + 14 + breathe, 4, 7 - legOffset);
-            ctx.fillStyle = '#FFFFFF';
-            ctx.fillRect(x + 3, y + 19 - legOffset + breathe, 4, 2);
-            ctx.fillRect(x + 9, y + 19 + legOffset + breathe, 4, 2);
-            ctx.fillRect(x + 15, y + 19 - legOffset + breathe, 4, 2);
-            ctx.fillStyle = '#8B4513';
-            ctx.fillRect(x + 18, y - 4 + breathe, 12, 12);
-            ctx.fillStyle = '#FFFFFF';
-            ctx.fillRect(x + 22, y - 3 + breathe, 5, 10);
-            ctx.fillStyle = '#8B4513';
-            ctx.fillRect(x + 17, y - 7 + breathe, 5, 5);
-            ctx.fillRect(x + 26, y - 7 + breathe, 5, 5);
-            ctx.fillStyle = '#2C2C2C';
-            ctx.fillRect(x + 17, y - 7 + breathe, 5, 2);
-            ctx.fillRect(x + 26, y - 7 + breathe, 5, 2);
-            ctx.fillRect(x + 28, y + 2 + breathe, 3, 3);
-            ctx.fillStyle = '#4169E1';
-            ctx.fillRect(x + 25, y - 1 + breathe, 3, 3);
-            ctx.fillStyle = '#FFFFFF';
-            ctx.fillRect(x + 26, y + breathe, 1, 1);
-            // Tail wag affects tongue
-            if (wagFrame === 2 || wagFrame === 3) {
-                ctx.fillStyle = '#FF6B6B';
-                ctx.fillRect(x + 28, y + 5 + breathe, 2, 4);
+            ctx.fillRect(x + 11, y - 3 + breathe, 2, 2);
+            ctx.fillRect(x + 14, y - 3 + breathe, 2, 2);
+            // Left eye BLUE
+            ctx.fillStyle = eyeBlue;
+            ctx.fillRect(x + 11, y - 2 + breathe, 1, 1);
+            // Right eye BROWN
+            ctx.fillStyle = eyeBrown;
+            ctx.fillRect(x + 15, y - 2 + breathe, 1, 1);
+            
+            // Tiny nose (at front/bottom of face)
+            ctx.fillStyle = nose;
+            ctx.fillRect(x + 15, y - 1 + breathe, 2, 1);
+            
+            // Little tongue (once every ~10 seconds for ~0.5 second)
+            if ((time % 10000) < 500) {
+                ctx.fillStyle = '#FF8080';
+                ctx.fillRect(x + 15, y + breathe, 2, 2);
             }
         }
     }
 
-    function drawSnow(ctx, W, H) {
-        ctx.fillStyle = '#FFFFFF';
-        for (let i = 0; i < 50; i++) {
-            const x = (Date.now() / 30 + i * 41) % W;
-            const y = (Date.now() / 20 + i * 29) % (H - 5);
-            const size = 1 + (i % 3);
-            ctx.beginPath();
-            ctx.arc(x, y, size, 0, Math.PI * 2);
-            ctx.fill();
+    function drawSnow(ctx, W, H, monthsPlayed, frameTime, showFalling = true) {
+        // Determine which winter "year" we're in for rotating features
+        const winterYear = Math.floor(monthsPlayed / 12) % 4;
+        // 0 = basic snow, 1 = icicles, 2 = snowman, 3 = Christmas tree
+        
+        // Falling snowflakes (only in December)
+        if (showFalling) {
+            ctx.fillStyle = '#FFFFFF';
+            for (let i = 0; i < 60; i++) {
+                const x = (frameTime / 30 + i * 41) % W;
+                const y = (frameTime / 25 + i * 29) % (H - 10);
+                const size = 1 + (i % 3);
+                ctx.globalAlpha = 0.7 + (i % 3) * 0.1;
+                ctx.beginPath();
+                ctx.arc(x, y, size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            ctx.globalAlpha = 1;
         }
+        
+        // Snow on ground (layered for depth)
         ctx.fillStyle = '#FFFFFF';
-        ctx.fillRect(0, 173, W, 7);
+        ctx.fillRect(0, 174, W, 6);
+        // Snow drift texture
+        ctx.fillStyle = '#F5F5F5';
+        for (let sx = 0; sx < W; sx += 12) {
+            ctx.fillRect(sx, 172, 8, 3);
+        }
         ctx.fillStyle = '#E8E8E8';
-        for (let x = 0; x < W; x += 8) ctx.fillRect(x, 172, 6, 2);
+        for (let sx = 6; sx < W; sx += 15) {
+            ctx.fillRect(sx, 173, 5, 2);
+        }
+        
+        // Snow on grey awning (thick layer on top)
         ctx.fillStyle = '#FFFFFF';
-        ctx.fillRect(72, 105, 176, 4);
-        ctx.fillRect(79, 175, 92, 2);
-        ctx.fillRect(191, 128, 45, 2);
+        ctx.fillRect(70, 115, 180, 4);
+        // Snow edge detail
+        ctx.fillStyle = '#F0F0F0';
+        ctx.fillRect(70, 118, 180, 1);
+        // Small snow lumps on awning
+        ctx.fillStyle = '#FFFFFF';
+        for (let sx = 75; sx < 245; sx += 25) {
+            ctx.fillRect(sx, 113, 12, 3);
+        }
+        
+        // Snow on building roof ledge (removed - was covering critters)
+        
+        // Snow on upper window sills
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(85, 102, 38, 3);
+        ctx.fillRect(138, 102, 45, 3);
+        ctx.fillRect(198, 102, 38, 3);
+        
+        // Snow on left building
+        ctx.fillRect(10, 103, 25, 2);
+        ctx.fillRect(40, 103, 25, 2);
+        ctx.fillRect(0, 48, 70, 3);
+        
+        // Snow on right building
+        ctx.fillRect(265, 68, 20, 2);
+        ctx.fillRect(292, 68, 20, 2);
+        ctx.fillRect(255, 48, 65, 3);
+        
+        // === ROTATING YEARLY FEATURES ===
+        
+        // Year 1: Icicles hanging from awning
+        if (winterYear === 1 || winterYear === 3) {
+            drawIcicles(ctx, 75, 128);
+        }
+        
+        // Year 2: Snowman near entrance
+        if (winterYear === 2) {
+            drawSnowman(ctx, 265, 158);
+        }
+        
+        // Year 3: Small Christmas tree at entrance
+        if (winterYear === 3) {
+            drawMiniChristmasTree(ctx, 125, 165);
+        }
+        
+        // Every year after first: snow pile
+        if (monthsPlayed > 12) {
+            drawSnowPile(ctx, 55, 172);
+        }
+    }
+    
+    function drawIcicles(ctx, x, y) {
+        // Icicles hanging from awning
+        ctx.fillStyle = '#E0F0FF';
+        const iciclePositions = [0, 15, 35, 55, 80, 100, 120, 145, 160];
+        for (let i = 0; i < iciclePositions.length; i++) {
+            const ix = x + iciclePositions[i];
+            const height = 4 + (i % 3) * 3;
+            // Icicle shape (tapers down)
+            ctx.fillRect(ix, y, 2, height);
+            ctx.fillRect(ix, y + height, 1, 2);
+            // Shine
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(ix, y, 1, height - 1);
+            ctx.fillStyle = '#E0F0FF';
+        }
+    }
+    
+    function drawSnowman(ctx, x, y) {
+        // Bottom ball
+        ctx.fillStyle = '#FFFFFF';
+        ctx.beginPath();
+        ctx.arc(x, y + 8, 8, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Middle ball
+        ctx.beginPath();
+        ctx.arc(x, y, 6, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Head
+        ctx.beginPath();
+        ctx.arc(x, y - 8, 4, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Shadow details
+        ctx.fillStyle = '#E8E8E8';
+        ctx.beginPath();
+        ctx.arc(x + 2, y + 10, 6, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = '#FFFFFF';
+        ctx.beginPath();
+        ctx.arc(x, y + 8, 7, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Eyes
+        ctx.fillStyle = '#2C2C2C';
+        ctx.fillRect(x - 2, y - 9, 1, 1);
+        ctx.fillRect(x + 1, y - 9, 1, 1);
+        
+        // Carrot nose
+        ctx.fillStyle = '#FF6600';
+        ctx.fillRect(x, y - 8, 3, 1);
+        
+        // Buttons
+        ctx.fillStyle = '#2C2C2C';
+        ctx.fillRect(x, y - 2, 1, 1);
+        ctx.fillRect(x, y + 1, 1, 1);
+        ctx.fillRect(x, y + 4, 1, 1);
+        
+        // Stick arms
+        ctx.fillStyle = '#5C4033';
+        ctx.fillRect(x - 8, y - 1, 6, 1);
+        ctx.fillRect(x + 4, y - 1, 6, 1);
+        
+        // Scarf
+        ctx.fillStyle = '#DC143C';
+        ctx.fillRect(x - 3, y - 5, 6, 2);
+        ctx.fillRect(x + 2, y - 5, 2, 5);
+    }
+    
+    function drawMiniChristmasTree(ctx, x, y) {
+        // Pot
+        ctx.fillStyle = '#8B4513';
+        ctx.fillRect(x - 3, y + 8, 6, 4);
+        ctx.fillStyle = '#A0522D';
+        ctx.fillRect(x - 2, y + 9, 4, 2);
+        
+        // Tree trunk
+        ctx.fillStyle = '#5C4033';
+        ctx.fillRect(x - 1, y + 5, 2, 4);
+        
+        // Tree layers (triangle shape)
+        ctx.fillStyle = '#228B22';
+        // Bottom layer
+        ctx.fillRect(x - 6, y + 3, 12, 3);
+        // Middle layer
+        ctx.fillRect(x - 5, y, 10, 3);
+        // Top layer
+        ctx.fillRect(x - 4, y - 3, 8, 3);
+        // Peak
+        ctx.fillRect(x - 2, y - 5, 4, 2);
+        ctx.fillRect(x - 1, y - 6, 2, 1);
+        
+        // Star on top
+        ctx.fillStyle = '#FFD700';
+        ctx.fillRect(x - 1, y - 8, 2, 2);
+        ctx.fillRect(x, y - 9, 1, 1);
+        
+        // Ornaments
+        ctx.fillStyle = '#FF0000';
+        ctx.fillRect(x - 4, y + 1, 2, 2);
+        ctx.fillRect(x + 2, y + 4, 2, 2);
+        ctx.fillStyle = '#FFD700';
+        ctx.fillRect(x + 1, y - 1, 2, 2);
+        ctx.fillRect(x - 3, y + 4, 2, 2);
+        ctx.fillStyle = '#0000FF';
+        ctx.fillRect(x - 2, y - 3, 2, 2);
+    }
+    
+    function drawSnowPile(ctx, x, y) {
+        // Small snow pile
+        ctx.fillStyle = '#FFFFFF';
+        ctx.beginPath();
+        ctx.moveTo(x - 8, y + 5);
+        ctx.lineTo(x, y - 2);
+        ctx.lineTo(x + 8, y + 5);
+        ctx.fill();
+        
+        // Shadow
+        ctx.fillStyle = '#E8E8E8';
+        ctx.beginPath();
+        ctx.moveTo(x - 6, y + 5);
+        ctx.lineTo(x + 2, y);
+        ctx.lineTo(x + 6, y + 5);
+        ctx.fill();
     }
 
     function drawRain(ctx, W, H) {
@@ -1777,6 +3025,44 @@
             ctx.ellipse(px + Math.sin(px) * 10, 177, 15 + (px % 10), 3, 0, 0, Math.PI * 2);
             ctx.fill();
         }
+    }
+
+    function drawHeavyRain(ctx, W, H, frameTime) {
+        // Dark overcast sky overlay
+        ctx.fillStyle = 'rgba(50, 60, 70, 0.3)';
+        ctx.fillRect(0, 0, W, H);
+        
+        // Heavy rain - lots of raindrops
+        ctx.strokeStyle = 'rgba(150, 180, 210, 0.7)';
+        ctx.lineWidth = 1;
+        for (let i = 0; i < 120; i++) {
+            const x = (frameTime / 10 + i * 27) % W;
+            const y = (frameTime / 5 + i * 19) % H;
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.lineTo(x - 3, y + 12);
+            ctx.stroke();
+        }
+        
+        // Splashes on ground
+        ctx.fillStyle = 'rgba(150, 180, 210, 0.5)';
+        for (let i = 0; i < 15; i++) {
+            const splashX = (frameTime / 8 + i * 47) % W;
+            const splashFrame = (frameTime + i * 100) % 500;
+            if (splashFrame < 200) {
+                const size = 2 + (splashFrame / 100);
+                ctx.beginPath();
+                ctx.arc(splashX, 175, size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+        
+        // Puddles on sidewalk
+        ctx.fillStyle = 'rgba(100, 140, 180, 0.4)';
+        ctx.fillRect(20, 176, 40, 3);
+        ctx.fillRect(100, 177, 30, 2);
+        ctx.fillRect(200, 176, 50, 3);
+        ctx.fillRect(280, 177, 25, 2);
     }
 
     function drawFloodWater(ctx, W, H) {
@@ -1826,56 +3112,72 @@
     }
 
     function drawChristmasDecorations(ctx) {
-        ctx.fillStyle = '#228B22';
+        const time = Date.now();
+        
+        // === GARLAND across full shop width ===
+        // Green garland rope
+        ctx.strokeStyle = '#1B5E20';
+        ctx.lineWidth = 2;
         ctx.beginPath();
-        ctx.arc(215, 145, 10, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.fillStyle = '#1B5E20';
-        ctx.beginPath();
-        ctx.arc(215, 145, 6, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.fillStyle = '#DC143C';
-        ctx.fillRect(212, 154, 6, 4);
-        ctx.beginPath();
-        ctx.moveTo(210, 155);
-        ctx.lineTo(215, 158);
-        ctx.lineTo(220, 155);
-        ctx.fill();
-        ctx.fillStyle = '#DC143C';
-        ctx.beginPath();
-        ctx.arc(210, 140, 2, 0, Math.PI * 2);
-        ctx.arc(220, 143, 2, 0, Math.PI * 2);
-        ctx.arc(212, 150, 2, 0, Math.PI * 2);
-        ctx.fill();
-        const lightColors = ['#FF0000', '#00FF00', '#FFD700', '#0000FF', '#FF69B4'];
-        const blink = Math.floor(Date.now() / 300) % 2;
-        for (let i = 0; i < 15; i++) {
-            const lx = 78 + i * 12;
-            const ly = 126 + Math.sin(i * 0.8) * 2;
-            ctx.strokeStyle = '#2C2C2C';
+        ctx.moveTo(70, 128);
+        for (let x = 70; x <= 250; x += 5) {
+            const sag = Math.sin((x - 70) / 30) * 2 + 1;
+            ctx.lineTo(x, 128 + sag);
+        }
+        ctx.stroke();
+        
+        // Hanging ornaments from garland (red and green alternating)
+        for (let i = 0; i < 20; i++) {
+            const ox = 75 + i * 9;
+            const sag = Math.sin((ox - 70) / 30) * 2 + 1;
+            const oy = 128 + sag;
+            
+            // String
+            ctx.strokeStyle = '#8B8B8B';
             ctx.lineWidth = 1;
-            if (i < 14) {
-                ctx.beginPath();
-                ctx.moveTo(lx, ly);
-                ctx.lineTo(lx + 12, 126 + Math.sin((i + 1) * 0.8) * 2);
-                ctx.stroke();
-            }
-            const colorIndex = (i + (blink && i % 2 === 0 ? 1 : 0)) % lightColors.length;
+            ctx.beginPath();
+            ctx.moveTo(ox, oy);
+            ctx.lineTo(ox, oy + 4 + (i % 3));
+            ctx.stroke();
+            
+            // Ornament ball
+            const isRed = i % 2 === 0;
+            ctx.fillStyle = isRed ? '#DC143C' : '#228B22';
+            ctx.fillRect(ox - 1, oy + 4 + (i % 3), 3, 3);
+            // Shine
+            ctx.fillStyle = 'rgba(255,255,255,0.4)';
+            ctx.fillRect(ox - 1, oy + 4 + (i % 3), 1, 1);
+        }
+        
+        // === SMALL STRING LIGHTS (subtle) ===
+        const lightColors = ['#FF6B6B', '#6BCB77', '#FFD93D', '#6B9BFF'];
+        const blink = Math.floor(time / 400) % 2;
+        for (let i = 0; i < 25; i++) {
+            const lx = 72 + i * 7;
+            const ly = 130 + Math.sin(i * 0.5) * 1;
+            
+            // Tiny light (just 1-2 pixels)
+            const colorIndex = (i + (blink && i % 3 === 0 ? 1 : 0)) % lightColors.length;
             ctx.fillStyle = lightColors[colorIndex];
-            ctx.beginPath();
-            ctx.arc(lx, ly + 3, 3, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.fillStyle = lightColors[colorIndex] + '40';
-            ctx.beginPath();
-            ctx.arc(lx, ly + 3, 5, 0, Math.PI * 2);
-            ctx.fill();
+            ctx.fillRect(lx, ly, 2, 2);
+            
+            // Very subtle glow
+            ctx.fillStyle = lightColors[colorIndex] + '30';
+            ctx.fillRect(lx - 1, ly - 1, 4, 4);
         }
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
-        for (let corner of [{x: 82, y: 134}, {x: 170, y: 134}, {x: 82, y: 168}, {x: 170, y: 168}]) {
-            ctx.beginPath();
-            ctx.arc(corner.x, corner.y, 6, 0, Math.PI * 2);
-            ctx.fill();
-        }
+        
+        // === SUBTLE INTERIOR CHRISTMAS GLOW ===
+        // Warm red/green glow inside shop window
+        ctx.fillStyle = 'rgba(220, 20, 60, 0.05)';
+        ctx.fillRect(130, 140, 50, 30);
+        ctx.fillStyle = 'rgba(34, 139, 34, 0.05)';
+        ctx.fillRect(180, 140, 50, 30);
+        
+        // Small interior lights hint
+        ctx.fillStyle = 'rgba(255, 215, 0, 0.15)';
+        ctx.fillRect(145, 138, 2, 2);
+        ctx.fillRect(175, 138, 2, 2);
+        ctx.fillRect(205, 138, 2, 2);
     }
 
     function drawNightMode(ctx, W, H, stressLevel) {
@@ -1947,54 +3249,60 @@
         }
     }
 
-    function drawBelgianFlag(ctx, x, y, frameTime = Date.now()) {
+    function drawBelgianFlagInHand(ctx, x, y, frameTime = Date.now()) {
+        // Small flag on a stick held in Julien's left hand
+        // Stick
         ctx.fillStyle = '#8B4513';
-        ctx.fillRect(x, y, 2, 25);
-        // Slower, smoother wave animation (similar to butterfly timing)
-        const wave = Math.sin(frameTime / 600) * 1.5; // Slower: /600 instead of /200, smaller amplitude
-        ctx.fillStyle = '#2D2926';
-        ctx.fillRect(x + 2, y + wave, 6, 15);
-        ctx.fillStyle = '#FDDA24';
-        ctx.fillRect(x + 8, y + wave, 6, 15);
-        ctx.fillStyle = '#EF3340';
-        ctx.fillRect(x + 14, y + wave, 6, 15);
+        ctx.fillRect(x, y, 1, 12);
+        // Flag (smaller, waving gently)
+        const wave = Math.sin(frameTime / 600) * 0.5;
+        ctx.fillStyle = '#2D2926'; // Black
+        ctx.fillRect(x + 1, y - 6 + wave, 3, 8);
+        ctx.fillStyle = '#FDDA24'; // Yellow
+        ctx.fillRect(x + 4, y - 6 + wave, 3, 8);
+        ctx.fillStyle = '#EF3340'; // Red
+        ctx.fillRect(x + 7, y - 6 + wave, 3, 8);
     }
 
     function drawPartyDecorations(ctx, frameTime = Date.now()) {
-        // Bunting flags (triangular flags on string)
+        // Bunting flags (triangular flags on string) - lowered to just above awning
         const colors = ['#FF6B6B', '#4ECDC4', '#FFE66D', '#95E1D3'];
         for (let i = 0; i < 12; i++) {
             const bx = 75 + i * 15;
-            const by = 100 + Math.sin(i * 0.5) * 3;
+            const by = 118 + Math.sin(i * 0.5) * 2;
             ctx.fillStyle = colors[i % colors.length];
             ctx.beginPath();
             ctx.moveTo(bx, by);
-            ctx.lineTo(bx + 7, by);
-            ctx.lineTo(bx + 3.5, by + 10);
+            ctx.lineTo(bx + 6, by);
+            ctx.lineTo(bx + 3, by + 8);
             ctx.fill();
         }
         // String connecting flags
         ctx.strokeStyle = '#8B4513';
         ctx.lineWidth = 1;
         ctx.beginPath();
-        ctx.moveTo(72, 100);
-        for (let i = 0; i < 12; i++) ctx.lineTo(78 + i * 15, 100 + Math.sin(i * 0.5) * 3);
+        ctx.moveTo(72, 118);
+        for (let i = 0; i < 12; i++) ctx.lineTo(78 + i * 15, 118 + Math.sin(i * 0.5) * 2);
         ctx.stroke();
         
-        // Balloons (only in July)
+        // Balloons - lowered and slightly smaller
         const balloonColors = ['#FF6B6B', '#4ECDC4', '#FFE66D'];
         for (let i = 0; i < 3; i++) {
-            const bx = 185 + i * 18;
-            const by = 90 + Math.sin(frameTime / 400 + i) * 3; // Use frameTime instead of Date.now()
+            const bx = 190 + i * 16;
+            const by = 108 + Math.sin(frameTime / 500 + i) * 2;
             ctx.fillStyle = balloonColors[i];
             ctx.beginPath();
-            ctx.ellipse(bx, by, 7, 9, 0, 0, Math.PI * 2);
+            ctx.ellipse(bx, by, 5, 7, 0, 0, Math.PI * 2);
             ctx.fill();
+            // Balloon shine
+            ctx.fillStyle = 'rgba(255,255,255,0.3)';
+            ctx.fillRect(bx - 2, by - 4, 2, 2);
             // Balloon string
             ctx.strokeStyle = '#999';
+            ctx.lineWidth = 1;
             ctx.beginPath();
-            ctx.moveTo(bx, by + 9);
-            ctx.lineTo(bx + Math.sin(i) * 3, 110);
+            ctx.moveTo(bx, by + 7);
+            ctx.lineTo(bx + Math.sin(i) * 2, by + 18);
             ctx.stroke();
         }
     }

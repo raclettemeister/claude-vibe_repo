@@ -117,8 +117,8 @@
             </div>
 
             <div class="control-group">
-                <label>Cheese Types</label>
-                <input type="range" id="cheeseTypes" min="0" max="60" value="0">
+                <label>Cheese Types (0-100)</label>
+                <input type="range" id="cheeseTypes" min="0" max="100" value="0">
                 <div class="value" id="cheeseTypes-val">0</div>
             </div>
 
@@ -130,6 +130,10 @@
 
             <div class="control-group">
                 <label><input type="checkbox" id="hasDog"> Has Dog (Poncho)</label>
+            </div>
+
+            <div class="control-group">
+                <label><input type="checkbox" id="ponchoAnniversary"> Poncho Adult (1yr anniversary)</label>
             </div>
 
             <div class="control-group">
@@ -208,6 +212,7 @@
             cheeseTypes: 0,
             monthsPlayed: 1, // Start at month 1 (sign appears after shopRenamed event)
             hasDog: false,
+            ponchoAnniversary: false,
             hasLucas: false,
             hasHenry: false,
             hasWineSelection: false,
@@ -298,7 +303,7 @@
             render();
         });
 
-        ['hasDog', 'hasLucas', 'hasHenry', 'hasWineSelection', 'hasRaclette', 
+        ['hasDog', 'ponchoAnniversary', 'hasLucas', 'hasHenry', 'hasWineSelection', 'hasRaclette', 
          'shopRenamed', 'signInstalled', 'ownsBuilding', 'floodActive'].forEach(id => {
             document.getElementById(id).addEventListener('change', (e) => {
                 gameState[id] = e.target.checked;
@@ -320,6 +325,7 @@
             gameState.cheeseTypes = Math.floor(Math.random() * 60);
             gameState.monthsPlayed = Math.floor(Math.random() * 42);
             gameState.hasDog = Math.random() > 0.5;
+            gameState.ponchoAnniversary = gameState.hasDog && Math.random() > 0.5;
             gameState.hasLucas = Math.random() > 0.5;
             gameState.hasHenry = Math.random() > 0.5;
             gameState.hasWineSelection = Math.random() > 0.5;
@@ -335,6 +341,7 @@
             document.getElementById('monthsPlayed').value = gameState.monthsPlayed;
             document.getElementById('racletteTypes').value = gameState.racletteTypes;
             document.getElementById('hasDog').checked = gameState.hasDog;
+            document.getElementById('ponchoAnniversary').checked = gameState.ponchoAnniversary;
             document.getElementById('hasLucas').checked = gameState.hasLucas;
             document.getElementById('hasHenry').checked = gameState.hasHenry;
             document.getElementById('hasWineSelection').checked = gameState.hasWineSelection;
@@ -392,6 +399,7 @@
             document.getElementById('monthsPlayed').value = gameState.monthsPlayed;
             document.getElementById('racletteTypes').value = gameState.racletteTypes;
             document.getElementById('hasDog').checked = gameState.hasDog;
+            document.getElementById('ponchoAnniversary').checked = gameState.ponchoAnniversary;
             document.getElementById('hasLucas').checked = gameState.hasLucas;
             document.getElementById('hasHenry').checked = gameState.hasHenry;
             document.getElementById('hasWineSelection').checked = gameState.hasWineSelection;
