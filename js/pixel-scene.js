@@ -664,6 +664,17 @@
         ctx.fillRect(75, 165, 44, 1);
         ctx.fillRect(75, 172, 44, 1);
         
+        // Inside customer queue (on floor, in front of fridge/wine, behind stalls)
+        // 1 at 35+, 2 at 50+, 3 at 70+, 4 at 90+
+        const isRainingDoor = (gameState.month === 9 || gameState.month === 2);
+        if (gameState.reputation >= 35 && !isRainingDoor) {
+            let queueCount = 1;
+            if (gameState.reputation >= 90) queueCount = 4;
+            else if (gameState.reputation >= 70) queueCount = 3;
+            else if (gameState.reputation >= 50) queueCount = 2;
+            drawInsideCustomerQueue(ctx, queueCount, frameTime);
+        }
+        
         // Left side: Wooden shelves with products (appears month 2+)
         if (monthsPlayed >= 2) {
             ctx.fillStyle = '#A88B5A'; // Wood color
@@ -850,35 +861,25 @@
         // JULIEN - Main character, stands outside near left building
         drawJulien(ctx, 45, 150, gameState, frameTime);
         
-        // Umbrella for Julien when raining
+        // Umbrella for Julien when raining (positioned over his head)
         if (isRaining) {
-            drawUmbrella(ctx, 45, 130);
+            drawUmbrella(ctx, 35, 128);
         }
         
         // Poncho next to Julien (on his left side, slightly apart)
         if (gameState.hasDog) drawPoncho16(ctx, 12, 168, gameState, frameTime);
         
-        // Lucas - outside normally, inside when raining
-        if (gameState.hasLucas) {
-            if (isRaining) {
-                // Lucas visible through door when raining (inside shop)
-                drawCharacter16(ctx, 95, 155, 'lucas', true, gameState, frameTime);
-            } else {
-                // Lucas on the right side of door (mirrored from Julien's position)
-                drawCharacter16(ctx, 145, 150, 'lucas', false, gameState, frameTime);
-            }
+        // Lucas - disappears on rainy days
+        if (gameState.hasLucas && !isRaining) {
+            drawCharacter16(ctx, 145, 150, 'lucas', false, gameState, frameTime);
         }
+        
+        // Outside customers on sidewalk (elderly, chatting group with kid)
+        if (!isRaining && gameState.reputation >= 35) {
+            drawOutsideCustomers(ctx, gameState.reputation, frameTime);
+        }
+        
         // Henry is drawn inside the shop (visible through door)
-
-        const customerCount = Math.min(3, Math.floor(gameState.reputation / 30));
-        if (customerCount > 0) drawCharacter16(ctx, 35, 148, 'customer0', false, gameState, frameTime);
-        if (customerCount > 1) drawCharacter16(ctx, 55, 152, 'customer1', false, gameState, frameTime);
-        if (customerCount > 2) drawCharacter16(ctx, 20, 150, 'customer2', false, gameState, frameTime);
-
-        if (gameState.reputation > 70) {
-            const queueCount = Math.min(4, Math.floor((gameState.reputation - 70) / 8));
-            drawCustomerQueue(ctx, queueCount);
-        }
 
         // Wine display is now the rack next to fridge (drawn through open door)
         // Raclette is indicated by Swiss flag, no steam effect needed
@@ -1229,6 +1230,283 @@
         // Handle
         ctx.fillStyle = '#808080';
         ctx.fillRect(x + 21, y + 6, 2, 4);
+    }
+
+    // === INSIDE CUSTOMER QUEUE ===
+    function drawInsideCustomerQueue(ctx, count, frameTime) {
+        // Queue of customers inside the shop, facing right (toward counter)
+        // Positioned vertically in a line, behind stalls, in front of fridge/wine
+        const customers = [
+            { hair: '#3A2820', shirt: '#4169E1', skin: '#FFDAB9', isLady: true },  // Lady 1
+            { hair: '#5C4033', shirt: '#228B22', skin: '#FFDBAC', isLady: false }, // Man 1
+            { hair: '#1C1C1C', shirt: '#DC143C', skin: '#D2B48C', isLady: true },  // Lady 2
+            { hair: '#8B4513', shirt: '#6B5B95', skin: '#FFE4C4', isLady: false }  // Man 2
+        ];
+        
+        // Vertical queue positions (from back to front, y increases as they're closer)
+        const positions = [
+            { x: 90, y: 156 },
+            { x: 92, y: 160 },
+            { x: 88, y: 164 },
+            { x: 94, y: 168 }
+        ];
+        
+        for (let i = 0; i < count && i < 4; i++) {
+            const c = customers[i];
+            const p = positions[i];
+            
+            // Draw customer facing right (side profile)
+            // Legs
+            ctx.fillStyle = c.isLady ? '#2F2F4F' : '#1A1A3A';
+            if (c.isLady) {
+                // Skirt
+                ctx.fillRect(p.x, p.y + 5, 4, 4);
+                // Legs below skirt
+                ctx.fillStyle = c.skin;
+                ctx.fillRect(p.x, p.y + 9, 2, 4);
+                ctx.fillRect(p.x + 2, p.y + 9, 2, 4);
+            } else {
+                // Pants
+                ctx.fillRect(p.x, p.y + 5, 2, 6);
+                ctx.fillRect(p.x + 2, p.y + 5, 2, 6);
+            }
+            
+            // Feet
+            ctx.fillStyle = '#2C2C2C';
+            ctx.fillRect(p.x - 1, p.y + 11, 3, 2);
+            ctx.fillRect(p.x + 2, p.y + 11, 3, 2);
+            
+            // Body (torso)
+            ctx.fillStyle = c.shirt;
+            ctx.fillRect(p.x, p.y, 4, 5);
+            
+            // Head (side profile)
+            ctx.fillStyle = c.skin;
+            ctx.fillRect(p.x + 1, p.y - 4, 3, 4);
+            
+            // Hair
+            ctx.fillStyle = c.hair;
+            if (c.isLady) {
+                // Longer hair for ladies
+                ctx.fillRect(p.x, p.y - 5, 4, 2);
+                ctx.fillRect(p.x, p.y - 4, 1, 4);
+            } else {
+                // Short hair for men
+                ctx.fillRect(p.x + 1, p.y - 5, 3, 2);
+            }
+            
+            // Eye (facing right)
+            ctx.fillStyle = '#000000';
+            ctx.fillRect(p.x + 3, p.y - 3, 1, 1);
+        }
+    }
+
+    // === OUTSIDE CUSTOMERS ===
+    function drawOutsideCustomers(ctx, reputation, frameTime) {
+        // Customers outside the shop on the sidewalk
+        // 35+: Elderly, 50+: +Adult1, 70+: +Adult2 (chatting), 90+: +Kid
+        
+        const time = frameTime || Date.now();
+        
+        // === ELDERLY PERSON (appears at 35+) ===
+        if (reputation >= 35) {
+            const ex = 200, ey = 162;
+            
+            // Legs (dark pants)
+            ctx.fillStyle = '#3D3D3D';
+            ctx.fillRect(ex + 2, ey + 10, 3, 8);
+            ctx.fillRect(ex + 6, ey + 10, 3, 8);
+            
+            // Shoes
+            ctx.fillStyle = '#1A1A1A';
+            ctx.fillRect(ex + 1, ey + 18, 4, 2);
+            ctx.fillRect(ex + 6, ey + 18, 4, 2);
+            
+            // Body - beige cardigan
+            ctx.fillStyle = '#C4A574';
+            ctx.fillRect(ex + 1, ey + 2, 9, 8);
+            
+            // Cardigan details
+            ctx.fillStyle = '#A8956A';
+            ctx.fillRect(ex + 5, ey + 3, 1, 6);
+            
+            // Head
+            ctx.fillStyle = '#FFDAB9';
+            ctx.fillRect(ex + 2, ey - 5, 7, 7);
+            
+            // White/gray hair (curly style)
+            ctx.fillStyle = '#E8E8E8';
+            ctx.fillRect(ex + 1, ey - 6, 9, 3);
+            ctx.fillRect(ex + 1, ey - 4, 2, 3);
+            ctx.fillRect(ex + 8, ey - 4, 2, 3);
+            
+            // Glasses
+            ctx.fillStyle = '#4A4A4A';
+            ctx.fillRect(ex + 3, ey - 3, 2, 2);
+            ctx.fillRect(ex + 6, ey - 3, 2, 2);
+            ctx.fillRect(ex + 5, ey - 2, 1, 1);
+            
+            // Eyes behind glasses
+            ctx.fillStyle = '#000000';
+            ctx.fillRect(ex + 3, ey - 2, 1, 1);
+            ctx.fillRect(ex + 7, ey - 2, 1, 1);
+            
+            // Smile
+            ctx.fillStyle = '#CD8B8B';
+            ctx.fillRect(ex + 4, ey, 3, 1);
+            
+            // Walking cane
+            ctx.fillStyle = '#5D4037';
+            ctx.fillRect(ex + 12, ey + 2, 2, 18);
+            ctx.fillRect(ex + 11, ey + 1, 4, 2);
+            
+            // Shopping bag
+            ctx.fillStyle = '#8B4513';
+            ctx.fillRect(ex - 4, ey + 6, 5, 7);
+            ctx.fillStyle = '#A0522D';
+            ctx.fillRect(ex - 3, ey + 7, 3, 5);
+            // Baguette poking out
+            ctx.fillStyle = '#DEB887';
+            ctx.fillRect(ex - 2, ey + 3, 2, 4);
+        }
+        
+        // === ADULT 1 - Woman (appears at 50+) ===
+        if (reputation >= 50) {
+            const ax = 230, ay = 160;
+            const headBob = Math.sin(time / 800) * 0.5;
+            
+            // Legs
+            ctx.fillStyle = '#1E3A5F';
+            ctx.fillRect(ax + 2, ay + 11, 3, 7);
+            ctx.fillRect(ax + 6, ay + 11, 3, 7);
+            
+            // Shoes
+            ctx.fillStyle = '#8B0000';
+            ctx.fillRect(ax + 1, ay + 18, 4, 2);
+            ctx.fillRect(ax + 6, ay + 18, 4, 2);
+            
+            // Body - red coat
+            ctx.fillStyle = '#B22222';
+            ctx.fillRect(ax + 1, ay + 2, 9, 9);
+            
+            // Coat collar
+            ctx.fillStyle = '#8B1A1A';
+            ctx.fillRect(ax + 2, ay + 2, 2, 2);
+            ctx.fillRect(ax + 7, ay + 2, 2, 2);
+            
+            // Head
+            ctx.fillStyle = '#FFE4C4';
+            ctx.fillRect(ax + 2, ay - 5 + headBob, 7, 7);
+            
+            // Brown hair (styled)
+            ctx.fillStyle = '#4A3728';
+            ctx.fillRect(ax + 1, ay - 6 + headBob, 9, 3);
+            ctx.fillRect(ax + 1, ay - 4 + headBob, 2, 5);
+            ctx.fillRect(ax + 8, ay - 4 + headBob, 2, 5);
+            
+            // Eyes
+            ctx.fillStyle = '#000000';
+            ctx.fillRect(ax + 3, ay - 3 + headBob, 1, 1);
+            ctx.fillRect(ax + 7, ay - 3 + headBob, 1, 1);
+            
+            // Lipstick smile
+            ctx.fillStyle = '#DC143C';
+            ctx.fillRect(ax + 4, ay - 1 + headBob, 3, 1);
+            
+            // Purse
+            ctx.fillStyle = '#2F2F2F';
+            ctx.fillRect(ax - 3, ay + 8, 4, 5);
+            ctx.fillStyle = '#FFD700';
+            ctx.fillRect(ax - 2, ay + 8, 2, 1);
+        }
+        
+        // === ADULT 2 - Man (appears at 70+, chatting with Adult 1) ===
+        if (reputation >= 70) {
+            const mx = 248, my = 158;
+            const headBob = Math.sin(time / 800 + 1.5) * 0.5;
+            
+            // Legs
+            ctx.fillStyle = '#2F2F2F';
+            ctx.fillRect(mx + 2, my + 12, 3, 8);
+            ctx.fillRect(mx + 6, my + 12, 3, 8);
+            
+            // Shoes
+            ctx.fillStyle = '#1A1A1A';
+            ctx.fillRect(mx + 1, my + 20, 4, 2);
+            ctx.fillRect(mx + 6, my + 20, 4, 2);
+            
+            // Body - blue jacket
+            ctx.fillStyle = '#2C5282';
+            ctx.fillRect(mx + 1, my + 2, 9, 10);
+            
+            // Jacket zipper
+            ctx.fillStyle = '#1A365D';
+            ctx.fillRect(mx + 5, my + 3, 1, 8);
+            
+            // Head
+            ctx.fillStyle = '#DEB887';
+            ctx.fillRect(mx + 2, my - 5 + headBob, 7, 7);
+            
+            // Short dark hair
+            ctx.fillStyle = '#2D2D2D';
+            ctx.fillRect(mx + 2, my - 6 + headBob, 7, 2);
+            
+            // Beard stubble
+            ctx.fillStyle = '#4A4A4A';
+            ctx.fillRect(mx + 3, my - 1 + headBob, 5, 2);
+            
+            // Eyes
+            ctx.fillStyle = '#000000';
+            ctx.fillRect(mx + 3, my - 3 + headBob, 1, 1);
+            ctx.fillRect(mx + 7, my - 3 + headBob, 1, 1);
+            
+            // Grocery bag in hand
+            ctx.fillStyle = '#F5F5DC';
+            ctx.fillRect(mx + 11, my + 8, 6, 8);
+            ctx.fillStyle = '#E8E8D0';
+            ctx.fillRect(mx + 12, my + 9, 4, 6);
+            // Cheese wheel visible
+            ctx.fillStyle = '#FFD700';
+            ctx.fillRect(mx + 13, my + 6, 3, 3);
+        }
+        
+        // === KID (appears at 90+) ===
+        if (reputation >= 90) {
+            const kx = 240, ky = 168;
+            const bounce = Math.abs(Math.sin(time / 400)) * 1;
+            
+            // Small legs
+            ctx.fillStyle = '#4169E1';
+            ctx.fillRect(kx + 1, ky + 6 - bounce, 2, 5);
+            ctx.fillRect(kx + 4, ky + 6 - bounce, 2, 5);
+            
+            // Little shoes
+            ctx.fillStyle = '#FF6347';
+            ctx.fillRect(kx, ky + 11 - bounce, 3, 2);
+            ctx.fillRect(kx + 4, ky + 11 - bounce, 3, 2);
+            
+            // Body - yellow shirt
+            ctx.fillStyle = '#FFD700';
+            ctx.fillRect(kx, ky + 1 - bounce, 7, 5);
+            
+            // Head (smaller)
+            ctx.fillStyle = '#FFDAB9';
+            ctx.fillRect(kx + 1, ky - 4 - bounce, 5, 5);
+            
+            // Messy hair
+            ctx.fillStyle = '#8B4513';
+            ctx.fillRect(kx, ky - 5 - bounce, 6, 2);
+            ctx.fillRect(kx + 2, ky - 6 - bounce, 2, 1);
+            
+            // Big curious eyes
+            ctx.fillStyle = '#000000';
+            ctx.fillRect(kx + 2, ky - 2 - bounce, 1, 1);
+            ctx.fillRect(kx + 4, ky - 2 - bounce, 1, 1);
+            
+            // Little smile
+            ctx.fillStyle = '#FFB6C1';
+            ctx.fillRect(kx + 2, ky - bounce, 2, 1);
+        }
     }
 
     // === WINE RACK (bottle storage visible through door) ===
@@ -2138,36 +2416,36 @@
     }
 
     function drawUmbrella(ctx, x, y) {
-        // Umbrella on right side (viewer's left), held by right hand
-        // Umbrella handle (brown stick) - longer handle
-        ctx.fillStyle = '#5D4037';
-        ctx.fillRect(x - 8, y - 5, 2, 30);
-        
-        // Hand holding umbrella (raised position)
-        ctx.fillStyle = '#FFDAB9';
-        ctx.fillRect(x - 10, y + 8, 4, 4);
-        
-        // Umbrella canopy (dark blue/navy)
+        // Umbrella centered over Julien's head
+        // Canopy above head
         ctx.fillStyle = '#1A237E';
         ctx.beginPath();
-        ctx.moveTo(x - 22, y - 3);
-        ctx.lineTo(x - 7, y - 13);
-        ctx.lineTo(x + 8, y - 3);
+        ctx.moveTo(x + 2, y + 5);
+        ctx.lineTo(x + 12, y - 5);
+        ctx.lineTo(x + 22, y + 5);
         ctx.closePath();
         ctx.fill();
         
         // Canopy highlight
         ctx.fillStyle = '#283593';
         ctx.beginPath();
-        ctx.moveTo(x - 18, y - 5);
-        ctx.lineTo(x - 7, y - 11);
-        ctx.lineTo(x + 4, y - 5);
+        ctx.moveTo(x + 5, y + 3);
+        ctx.lineTo(x + 12, y - 3);
+        ctx.lineTo(x + 19, y + 3);
         ctx.closePath();
         ctx.fill();
         
-        // Canopy edge detail
+        // Canopy edge
         ctx.fillStyle = '#0D1B5E';
-        ctx.fillRect(x - 22, y - 4, 30, 2);
+        ctx.fillRect(x + 2, y + 4, 20, 2);
+        
+        // Handle going down
+        ctx.fillStyle = '#5D4037';
+        ctx.fillRect(x + 11, y + 4, 2, 20);
+        
+        // Curved handle bottom
+        ctx.fillRect(x + 9, y + 22, 2, 2);
+        ctx.fillRect(x + 7, y + 23, 2, 2);
     }
 
     function drawFlowerBox(ctx, x, y, isWinter, isAutumn) {
