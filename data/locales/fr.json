@@ -21,6 +21,7 @@
     "beginJourney": "🧀 Commencer l'aventure",
     "photoAlbum": "📸 Album photo",
     "shopName": "🧀 Chez Julien",
+    "shopNameDefault": "La Boutique",
     "skipIntro": "Cliquez ou appuyez sur une touche pour passer",
     "introLocation": "Woluwe-Saint-Pierre, Bruxelles — Juillet 2022",
     "clickToContinue": "Cliquez n'importe où pour continuer",
@@ -90,7 +91,7 @@
     "chart_target80k": "Objectif 80 k €",
     "chart_monthlyProfit": "Bénéfice mensuel",
     "chart_loss": "Perte",
-    "chart_stress": "Stress",
+    "chart_stress": "Stress (%)",
     "chart_energy": "Énergie",
     "warning_energyCapped": "⚡ Énergie max plafonnée à {{cap}} % (burnout)",
     "warning_recoveryMode": "🩹 Mode récup : {{count}} de repos forcé restant(s)",
@@ -188,35 +189,107 @@
   "glossary": {
     "title": "🧀 Lexique des fromages",
     "items": [
-      {"term": "Tomme Larzac", "def": "Fromage de brebis crémeux du sud de la France. Le premier fromage de Julien."},
-      {"term": "Comté", "def": "Fromage à pâte pressée du Jura. 8, 12, 18, 24+ mois d'affinage."},
-      {"term": "Raclette", "def": "Fromage à fondre des Alpes. Raclé sur les pommes de terre. Incontournable l'hiver."},
-      {"term": "Parmigiano Reggiano", "def": "« Roi des fromages ». Fromage italien à pâte dure, 24-72 mois."},
-      {"term": "Manchego DOP", "def": "Fromage de brebis espagnol. Ferme, noisette, un peu piquant."},
-      {"term": "Brie de Meaux", "def": "Classique français à pâte molle. Cœur crémeux, croûte fleurie."},
-      {"term": "St Marcellin", "def": "Petit fromage français crémeux. Plus coulant en vieillissant."},
-      {"term": "Beaufort d'été", "def": "Beaufort d'été. Fromage alpin quand les vaches sont en alpage."},
-      {"term": "Chèvre Frais", "def": "Fromage de chèvre frais. Acidulé, tartinable, ne se garde pas longtemps."},
-      {"term": "Mozzarella di Bufala", "def": "Mozzarella au lait de bufflonne, Italie. Crémeuse, délicate, meilleure fraîche."},
-      {"term": "À croûte lavée", "def": "Fromages lavés au sel/alcool. Odeur forte, goût riche."},
-      {"term": "Affineur", "def": "Spécialiste de l'affinage. Ceux qui font mûrir le fromage à la perfection."}
+      {
+        "term": "Tomme Larzac",
+        "def": "Fromage de brebis crémeux du sud de la France. Le premier fromage de Julien."
+      },
+      {
+        "term": "Comté",
+        "def": "Fromage à pâte pressée du Jura. 8, 12, 18, 24+ mois d'affinage."
+      },
+      {
+        "term": "Raclette",
+        "def": "Fromage à fondre des Alpes. Raclé sur les pommes de terre. Incontournable l'hiver."
+      },
+      {
+        "term": "Parmigiano Reggiano",
+        "def": "« Roi des fromages ». Fromage italien à pâte dure, 24-72 mois."
+      },
+      {
+        "term": "Manchego DOP",
+        "def": "Fromage de brebis espagnol. Ferme, noisette, un peu piquant."
+      },
+      {
+        "term": "Brie de Meaux",
+        "def": "Classique français à pâte molle. Cœur crémeux, croûte fleurie."
+      },
+      {
+        "term": "St Marcellin",
+        "def": "Petit fromage français crémeux. Plus coulant en vieillissant."
+      },
+      {
+        "term": "Beaufort d'été",
+        "def": "Beaufort d'été. Fromage alpin quand les vaches sont en alpage."
+      },
+      {
+        "term": "Chèvre Frais",
+        "def": "Fromage de chèvre frais. Acidulé, tartinable, ne se garde pas longtemps."
+      },
+      {
+        "term": "Mozzarella di Bufala",
+        "def": "Mozzarella au lait de bufflonne, Italie. Crémeuse, délicate, meilleure fraîche."
+      },
+      {
+        "term": "À croûte lavée",
+        "def": "Fromages lavés au sel/alcool. Odeur forte, goût riche."
+      },
+      {
+        "term": "Affineur",
+        "def": "Spécialiste de l'affinage. Ceux qui font mûrir le fromage à la perfection."
+      }
     ]
   },
   "belgian": {
     "title": "🇧🇪 Termes belges expliqués",
     "items": [
-      {"term": "AFSCA", "def": "Agence belge de sécurité alimentaire. Inspections surprises. Terrifiant mais nécessaire."},
-      {"term": "Interbio", "def": "Distributeur de produits bio. Livraisons le jeudi. Fournisseur principal de Julien."},
-      {"term": "Lalero", "def": "Grossiste fromager premium. Source de la Tomme Larzac et bien d'autres."},
-      {"term": "Coprosain", "def": "Coopérative belge pour viandes et charcuterie de qualité."},
-      {"term": "Woluwe-Saint-Pierre", "def": "Commune de Bruxelles. Résidentielle, familles. C'est là que se trouve Chez Julien."},
-      {"term": "Place Dumont", "def": "Marché hebdo célèbre à Ixelles. Le mercredi après-midi."},
-      {"term": "Rue au Bois", "def": "Rue commerçante huppée à Ixelles. Une cave à vins que Julien cite."},
-      {"term": "Épicerie sèche", "def": "« Épicerie sèche » — vrac, céréales, pâtes. Le concept d'origine de la boutique."},
-      {"term": "Commune", "def": "Bruxelles compte 19 communes. Chacune est semi-autonome."},
-      {"term": "Vin chaud", "def": "Vin chaud. Incontournable aux marchés de Noël."},
-      {"term": "Plateaux", "def": "Plateaux fromage/charcuterie. Gros business pour événements et entreprises."},
-      {"term": "Fermé", "def": "« Fermé » — la pancarte qu'on met pour une pause bien méritée."}
+      {
+        "term": "AFSCA",
+        "def": "Agence belge de sécurité alimentaire. Inspections surprises. Terrifiant mais nécessaire."
+      },
+      {
+        "term": "Interbio",
+        "def": "Distributeur de produits bio. Livraisons le jeudi. Fournisseur principal de Julien."
+      },
+      {
+        "term": "Lalero",
+        "def": "Grossiste fromager premium. Source de la Tomme Larzac et bien d'autres."
+      },
+      {
+        "term": "Coprosain",
+        "def": "Coopérative belge pour viandes et charcuterie de qualité."
+      },
+      {
+        "term": "Woluwe-Saint-Pierre",
+        "def": "Commune de Bruxelles. Résidentielle, familles. C'est là que se trouve Chez Julien."
+      },
+      {
+        "term": "Place Dumont",
+        "def": "Marché hebdo célèbre à Ixelles. Le mercredi après-midi."
+      },
+      {
+        "term": "Rue au Bois",
+        "def": "Rue commerçante huppée à Ixelles. Une cave à vins que Julien cite."
+      },
+      {
+        "term": "Épicerie sèche",
+        "def": "« Épicerie sèche » — vrac, céréales, pâtes. Le concept d'origine de la boutique."
+      },
+      {
+        "term": "Commune",
+        "def": "Bruxelles compte 19 communes. Chacune est semi-autonome."
+      },
+      {
+        "term": "Vin chaud",
+        "def": "Vin chaud. Incontournable aux marchés de Noël."
+      },
+      {
+        "term": "Plateaux",
+        "def": "Plateaux fromage/charcuterie. Gros business pour événements et entreprises."
+      },
+      {
+        "term": "Fermé",
+        "def": "« Fermé » — la pancarte qu'on met pour une pause bien méritée."
+      }
     ]
   },
   "end": {
@@ -335,203 +408,467 @@
     "owned": "PROPRIÉTAIRE !",
     "renting": "Locataire"
   },
-  "monthsShort": ["Janv.", "Févr.", "Mars", "Avr.", "Mai", "Juin", "Juil.", "Août", "Sept.", "Oct.", "Nov.", "Déc."],
-  "monthsFull": ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"],
+  "monthsShort": [
+    "Janv.",
+    "Févr.",
+    "Mars",
+    "Avr.",
+    "Mai",
+    "Juin",
+    "Juil.",
+    "Août",
+    "Sept.",
+    "Oct.",
+    "Nov.",
+    "Déc."
+  ],
+  "monthsFull": [
+    "Janvier",
+    "Février",
+    "Mars",
+    "Avril",
+    "Mai",
+    "Juin",
+    "Juillet",
+    "Août",
+    "Septembre",
+    "Octobre",
+    "Novembre",
+    "Décembre"
+  ],
   "events": {
     "cash_crisis": {
       "title": "Plus de délai",
       "description": "",
       "dynamicDescription": "Vous avez utilisé les 3 délais de grâce fournisseurs. Il vous manque {{amount}} € et ils n'attendront plus. Il faut trouver l'argent MAINTENANT ou la boutique ferme.",
       "choices": [
-        { "text": "Prendre un prêt bancaire", "hint": "6 % d'intérêt mensuel – vous garde à flot", "outcome": "La banque a accepté. Les intérêts font mal — 6 % par mois. Mais les fournisseurs sont payés." },
-        { "text": "Vendre du matériel à perte", "hint": "Perte de capacité mais pas de dette", "outcome": "Vous avez vendu le frigo de secours, des étagères. Moins que la valeur, mais vous avez évité la spirale de la dette." },
-        { "text": "Demander de l'aide à la famille", "hint": "Ils aideront, mais ça coûte autre chose", "outcome": "Votre famille a répondu présent. Pas d'intérêts. Mais vous avez vu l'inquiétude dans leurs yeux. Ça pèse sur la relation." }
+        {
+          "text": "Prendre un prêt bancaire",
+          "hint": "6 % d'intérêt mensuel – vous garde à flot",
+          "outcome": "La banque a accepté. Les intérêts font mal — 6 % par mois. Mais les fournisseurs sont payés."
+        },
+        {
+          "text": "Vendre du matériel à perte",
+          "hint": "Perte de capacité mais pas de dette",
+          "outcome": "Vous avez vendu le frigo de secours, des étagères. Moins que la valeur, mais vous avez évité la spirale de la dette."
+        },
+        {
+          "text": "Demander de l'aide à la famille",
+          "hint": "Ils aideront, mais ça coûte autre chose",
+          "outcome": "Votre famille a répondu présent. Pas d'intérêts. Mais vous avez vu l'inquiétude dans leurs yeux. Ça pèse sur la relation."
+        }
       ]
     },
     "sunday_opening": {
       "title": "La question du dimanche",
       "description": "Premier jour. L'ancien propriétaire fermait le dimanche. Mais vous voyez d'autres commerces ouverts. C'est une belle opportunité. Plus de chiffre, plus de visibilité. Mais aussi : aucun jour de repos. Sauf le lundi... C'est votre première grande décision.",
       "choices": [
-        { "text": "Ouvrir le dimanche", "hint": "Jusqu'à 20 % de chiffre en plus", "outcome": "Les dimanches sont chargés. Pas les pires, mais bien. Vous travaillez maintenant 6 jours par semaine. Seul le lundi de libre." },
-        { "text": "Rester fermé le dimanche", "hint": "Je ne travaille pas le dimanche !", "outcome": "Vous avez gardé le dimanche sacré. Votre corps vous remercie. Votre famille vous voit au moins un jour." }
+        {
+          "text": "Ouvrir le dimanche",
+          "hint": "Jusqu'à 20 % de chiffre en plus",
+          "outcome": "Les dimanches sont chargés. Pas les pires, mais bien. Vous travaillez maintenant 6 jours par semaine. Seul le lundi de libre."
+        },
+        {
+          "text": "Rester fermé le dimanche",
+          "hint": "Je ne travaille pas le dimanche !",
+          "outcome": "Vous avez gardé le dimanche sacré. Votre corps vous remercie. Votre famille vous voit au moins un jour."
+        }
       ]
     },
     "stock_reality": {
       "title": "L'inventaire",
       "description": "Deux semaines plus tard, vous avez enfin tout compté. Les 38 000 € de stock sur le papier... ne correspondent pas à la réalité. Du quinoa de 2019. Des lentilles bio qui sentent bizarre. Du cacao en poudre que personne ne veut. L'épicerie sèche meurt — les ventes en baisse de 23 % dans le secteur. En réalité, peut-être 10 000 € sont vendables. Le reste est juste... là.",
       "choices": [
-        { "text": "Liquidation progressive – brocantes, grosses soldes", "hint": "Ça va être beaucoup de travail...", "outcome": "Vous avez passé des week-ends en brocantes. Bacs à -70 %. Le riz bio a fini par partir. Les clients ont vu que vous teniez à eux. De la place pour ce que les gens veulent vraiment — comme le fromage." },
-        { "text": "Trouver un \"type\" pour reprendre le stock", "hint": "Quelqu'un qui achète le stock mort, sans questions", "outcome": "Un contact d'un contact est venu avec une camionnette. Vous a donné 1 500 € pour du stock valorisé 10 000 € en gros. Vous n'avez pas posé de questions. Problème réglé, mais pas de leçon." },
-        { "text": "Continuer à essayer de vendre normalement", "hint": "Les clients finiront peut-être par venir ?", "outcome": "Vous avez gardé les bacs. Ils ont pris la poussière. Les produits ont périmé. L'odeur a fait fuir les clients. Chaque mois, vous jettiez plus de stock et plus d'argent." }
+        {
+          "text": "Liquidation progressive – brocantes, grosses soldes",
+          "hint": "Ça va être beaucoup de travail...",
+          "outcome": "Vous avez passé des week-ends en brocantes. Bacs à -70 %. Le riz bio a fini par partir. Les clients ont vu que vous teniez à eux. De la place pour ce que les gens veulent vraiment — comme le fromage."
+        },
+        {
+          "text": "Trouver un \"type\" pour reprendre le stock",
+          "hint": "Quelqu'un qui achète le stock mort, sans questions",
+          "outcome": "Un contact d'un contact est venu avec une camionnette. Vous a donné 1 500 € pour du stock valorisé 10 000 € en gros. Vous n'avez pas posé de questions. Problème réglé, mais pas de leçon."
+        },
+        {
+          "text": "Continuer à essayer de vendre normalement",
+          "hint": "Les clients finiront peut-être par venir ?",
+          "outcome": "Vous avez gardé les bacs. Ils ont pris la poussière. Les produits ont périmé. L'odeur a fait fuir les clients. Chaque mois, vous jettiez plus de stock et plus d'argent."
+        }
       ]
     },
     "shop_name": {
       "title": "Qu'est-ce qu'un nom ?",
       "description": "La boutique avait un nom générique. Mais les clients ont commencé à l'appeler autrement. Certains disent déjà « Chez Julien ». Votre ami Alix propose « Alix Corner », plus tendance. C'est peut-être le moment d'en faire la vôtre.",
       "choices": [
-        { "text": "« Chez Julien » – reprendre ce que les clients disent déjà", "hint": "Touche personnelle, les clients se sentent proches", "outcome": "Vous avez peint « Chez Julien » sur la vitrine. Les habitués ont souri : « Enfin ! C'est comme ça qu'on l'appelait déjà. » Ça faisait sens." },
-        { "text": "« Alix Corner » – moderne et tendance", "hint": "Nouvelle image, peut attirer une autre clientèle", "outcome": "La nouvelle enseigne fait pro. Certains habitués sont perdus. « C'est qui Alix ? » Les nouveaux clients semblent aimer." },
-        { "text": "Garder le nom actuel", "hint": "Pas besoin de changer ce qui marche", "outcome": "Vous n'avez rien changé. Le nom compte moins que ce que vous faites." }
+        {
+          "text": "« Chez Julien » – reprendre ce que les clients disent déjà",
+          "hint": "Touche personnelle, les clients se sentent proches",
+          "outcome": "Vous avez peint « Chez Julien » sur la vitrine. Les habitués ont souri : « Enfin ! C'est comme ça qu'on l'appelait déjà. » Ça faisait sens."
+        },
+        {
+          "text": "« Alix Corner » – moderne et tendance",
+          "hint": "Nouvelle image, peut attirer une autre clientèle",
+          "outcome": "La nouvelle enseigne fait pro. Certains habitués sont perdus. « C'est qui Alix ? » Les nouveaux clients semblent aimer."
+        },
+        {
+          "text": "Garder le nom actuel",
+          "hint": "Pas besoin de changer ce qui marche",
+          "outcome": "Vous n'avez rien changé. Le nom compte moins que ce que vous faites."
+        }
       ]
     },
     "insurance_decision": {
       "title": "La question de l'assurance",
       "description": "Votre comptable vous envoie le renouvellement annuel. « L'assurance commerce couvre le feu, le vol... mais la couverture complète avec dégâts des eaux, c'est 1 800 €/an en plus. La plupart des commerçants ne la prennent pas – c'est cher et les inondations sont rares ici. » Elle hausse les épaules. « À vous de voir. »",
       "choices": [
-        { "text": "Prendre la couverture complète (1 800 €/an)", "hint": "Cher mais tout est couvert", "outcome": "Vous avez souscrit la formule complète. 150 €/mois, débités automatiquement. La sérénité a un prix." },
-        { "text": "Couverture de base uniquement", "hint": "Économiser, espérer que tout ira bien", "outcome": "Vous avez pris la formule de base. Les inondations, ici ? Les 1 800 € restent sur votre compte." }
+        {
+          "text": "Prendre la couverture complète (1 800 €/an)",
+          "hint": "Cher mais tout est couvert",
+          "outcome": "Vous avez souscrit la formule complète. 150 €/mois, débités automatiquement. La sérénité a un prix."
+        },
+        {
+          "text": "Couverture de base uniquement",
+          "hint": "Économiser, espérer que tout ira bien",
+          "outcome": "Vous avez pris la formule de base. Les inondations, ici ? Les 1 800 € restent sur votre compte."
+        }
       ]
     },
     "first_cheese": {
       "title": "Une suggestion d'un client",
       "description": "Une cliente, Madame Dubois, regarde vos bacs en soupirant. « Ce dont le quartier a vraiment besoin, c'est du bon fromage. On ne peut en acheter nulle part ici. » Elle n'est pas la première. Vous vous souvenez des chiffres : le fromage a de meilleures marges, forte demande, peu de concurrence.",
       "choices": [
-        { "text": "Commencer avec UN fromage – la Tomme Larzac", "hint": "Petit investissement, tester le marché", "outcome": "Vous avez commandé une meule de Tomme Larzac chez Lalero. Crémeuse, douce, tout le monde aime. Écoulée en 3 jours. « Vous en aurez d'autres ? »" },
-        { "text": "Viser gros – un vrai comptoir", "hint": "50 000 € financés – engagement sérieux", "outcome": "Vous avez acheté un comptoir à fromages à 50 000 €. Magnifique. Les mensualités font mal, mais c'est un signal : vous êtes sérieux." },
-        { "text": "Rester sur le vrac", "hint": "C'est ce que vous avez repris", "outcome": "Vous avez gardé le cap sur le vrac. Le quartier voulait du fromage. Il est allé ailleurs." }
+        {
+          "text": "Commencer avec UN fromage – la Tomme Larzac",
+          "hint": "Petit investissement, tester le marché",
+          "outcome": "Vous avez commandé une meule de Tomme Larzac chez Lalero. Crémeuse, douce, tout le monde aime. Écoulée en 3 jours. « Vous en aurez d'autres ? »"
+        },
+        {
+          "text": "Viser gros – un vrai comptoir",
+          "hint": "50 000 € financés – engagement sérieux",
+          "outcome": "Vous avez acheté un comptoir à fromages à 50 000 €. Magnifique. Les mensualités font mal, mais c'est un signal : vous êtes sérieux."
+        },
+        {
+          "text": "Rester sur le vrac",
+          "hint": "C'est ce que vous avez repris",
+          "outcome": "Vous avez gardé le cap sur le vrac. Le quartier voulait du fromage. Il est allé ailleurs."
+        }
       ]
     },
     "first_christmas": {
       "title": "Votre premier Noël",
       "description": "Décembre arrive. Votre premier décembre comme commerçant. Les autres fromageries semblent savoir quoi faire – paniers cadeaux, vitrines, horaires étendus. Vous... non. Le fromage est là. Les clients viennent au compte-gouttes. Vous avez l'impression d'improviser pendant que les autres ont un plan.",
       "choices": [
-        { "text": "Rester simple – miser sur la qualité", "hint": "Vous apprenez encore. C'est normal.", "outcome": "Vous n'avez pas joué les stars. Bon fromage, service honnête. Des habitués ont amené des amis. « Ma fromagère », disaient-ils. Ça faisait vrai." },
-        { "text": "En faire trop – faire comme si", "hint": "Faire comme si vous saviez", "outcome": "Vous êtes resté tard pour faire des paniers. Vous avez copié les grandes enseignes. Certains se sont vendus, d'autres non. Vous avez gagné de l'argent, mais vous vous êtes senti imposteur." },
-        { "text": "Demander conseil à d'autres commerçants", "hint": "Avaler votre fierté", "outcome": "Marie, la boulangère à côté, vous a montré comment elle gère décembre. « L'an prochain, vous saurez. » Elle avait raison. Vous avez plus appris en une conversation qu'en stage." }
+        {
+          "text": "Rester simple – miser sur la qualité",
+          "hint": "Vous apprenez encore. C'est normal.",
+          "outcome": "Vous n'avez pas joué les stars. Bon fromage, service honnête. Des habitués ont amené des amis. « Ma fromagère », disaient-ils. Ça faisait vrai."
+        },
+        {
+          "text": "En faire trop – faire comme si",
+          "hint": "Faire comme si vous saviez",
+          "outcome": "Vous êtes resté tard pour faire des paniers. Vous avez copié les grandes enseignes. Certains se sont vendus, d'autres non. Vous avez gagné de l'argent, mais vous vous êtes senti imposteur."
+        },
+        {
+          "text": "Demander conseil à d'autres commerçants",
+          "hint": "Avaler votre fierté",
+          "outcome": "Marie, la boulangère à côté, vous a montré comment elle gère décembre. « L'an prochain, vous saurez. » Elle avait raison. Vous avez plus appris en une conversation qu'en stage."
+        }
       ]
     },
     "christmas_market": {
       "title": "Le marché de Noël",
       "description": "La commune organise un marché de Noël place Dumont. On vous propose un stand. Trois week-ends, matinées dans le froid – mais vous pourriez vendre des parts de raclette, du vin chaud, des gaufres Tante Arlette.",
       "choices": [
-        { "text": "Prendre le stand", "hint": "Raclette + vin chaud = €€€", "outcome": "Trois week-ends, lever à 6 h, doigts gelés. Mais vous avez vendu 50 kg de raclette, 30 bouteilles. De nouveaux clients vous ont découvert. « Où est votre boutique ? »" },
-        { "text": "Se concentrer sur la boutique", "hint": "Décembre, c'est déjà le chaos", "outcome": "Vous êtes resté au chaud. Les commandes du samedi s'accumulaient quand même. Sans doute le bon choix pour votre santé." }
+        {
+          "text": "Prendre le stand",
+          "hint": "Raclette + vin chaud = €€€",
+          "outcome": "Trois week-ends, lever à 6 h, doigts gelés. Mais vous avez vendu 50 kg de raclette, 30 bouteilles. De nouveaux clients vous ont découvert. « Où est votre boutique ? »"
+        },
+        {
+          "text": "Se concentrer sur la boutique",
+          "hint": "Décembre, c'est déjà le chaos",
+          "outcome": "Vous êtes resté au chaud. Les commandes du samedi s'accumulaient quand même. Sans doute le bon choix pour votre santé."
+        }
       ]
     },
     "building_offer": {
       "title": "Madame Malfait vous appelle",
       "description": "La propriétaire du bâtiment au téléphone. « Je vends. 380 000 € au total. Il me faut 80 000 € d'apport avant juillet 2024. » Huit mois. Vous raccrochez. C'est votre rêve – et une somme que vous n'avez pas.",
       "choices": [
-        { "text": "Se lancer – on trouvera l'argent", "hint": "Huit mois pour tout donner", "outcome": "Vous avez dit oui. Le compte à rebours a commencé." },
-        { "text": "Refuser – trop risqué", "hint": "Rester locataire, garder de la marge", "outcome": "Vous avez décliné. Le bâtiment partira à quelqu'un d'autre. Vous restez locataire." }
+        {
+          "text": "Se lancer – on trouvera l'argent",
+          "hint": "Huit mois pour tout donner",
+          "outcome": "Vous avez dit oui. Le compte à rebours a commencé."
+        },
+        {
+          "text": "Refuser – trop risqué",
+          "hint": "Rester locataire, garder de la marge",
+          "outcome": "Vous avez décliné. Le bâtiment partira à quelqu'un d'autre. Vous restez locataire."
+        },
+        {
+          "text": "« Je n'ai pas les moyens. Merci quand même. »",
+          "hint": "Réaliste mais douloureux",
+          "outcome": "Vous avez laissé passer. Le bâtiment est parti à un investisseur. Votre nouveau propriétaire est... différent. Les augmentations de loyer ne tarderont pas."
+        }
       ]
     },
     "meet_lucas": {
       "title": "Le gamin d'à côté",
       "description": "Lucas travaille à la boulangerie voisine. Il vient souvent vous voir. « Vous cherchez pas quelqu'un ? J'adore la bouffe, le fromage... » Il est jeune, un peu chaotique, mais les clients l'aiment.",
       "choices": [
-        { "text": "L'embaucher", "hint": "Premier employé – un soulagement", "outcome": "Lucas a signé. Il charme les clients avec des échantillons de raclette. En décembre, il sera précieux." },
-        { "text": "Attendre", "hint": "Pas tout de suite", "outcome": "Vous avez dit peut-être plus tard. Vous gérez encore seul." }
+        {
+          "text": "L'embaucher",
+          "hint": "Premier employé – un soulagement",
+          "outcome": "Lucas a signé. Il charme les clients avec des échantillons de raclette. En décembre, il sera précieux."
+        },
+        {
+          "text": "Attendre",
+          "hint": "Pas tout de suite",
+          "outcome": "Vous avez dit peut-être plus tard. Vous gérez encore seul."
+        },
+        {
+          "text": "Pas tout de suite, continuer seul",
+          "hint": "Économiser, se sacrifier",
+          "outcome": "Vous avez continué seul. Chaque heure à la boutique était une heure loin de tout le reste."
+        }
       ]
     },
     "adopt_dog": {
       "title": "La question du chien",
       "description": "Une amie vous parle d'un berger australien à adopter. « Il a besoin d'un foyer. Les enfants l'adorent. » Vous imaginez Poncho dans la boutique. Les clients qui le caressent. Les balades obligatoires qui vous forceront à respirer.",
       "choices": [
-        { "text": "Adopter Poncho", "hint": "Un mascotte, et une raison de sortir", "outcome": "Poncho est arrivé. Ces yeux. Les clients viennent le voir. Les enfants le réclament. Il vous oblige à marcher – et ça vous fait du bien." },
-        { "text": "Pas maintenant", "hint": "Trop de responsabilités déjà", "outcome": "Vous avez dit non. La boutique suffit pour l'instant." }
+        {
+          "text": "Adopter Poncho",
+          "hint": "Un mascotte, et une raison de sortir",
+          "outcome": "Poncho est arrivé. Ces yeux. Les clients viennent le voir. Les enfants le réclament. Il vous oblige à marcher – et ça vous fait du bien."
+        },
+        {
+          "text": "Pas maintenant",
+          "hint": "Trop de responsabilités déjà",
+          "outcome": "Vous avez dit non. La boutique suffit pour l'instant."
+        }
       ]
     },
     "raclette_season": {
       "title": "La saison de la raclette !",
       "description": "L'hiver est là. Tout le monde veut de la raclette. Vous pourriez charger en fromage à raclette et louer des machines. Gros investissement, mais les marges sont énormes.",
       "choices": [
-        { "text": "Tout miser sur la raclette", "hint": "Gros investissement, gros retours", "outcome": "Vous avez acheté 200 kg de raclette et 5 machines à louer. Tout vendu en janvier. Le bénéfice était beau." },
-        { "text": "Stock d'hiver normal", "hint": "Rester prudent", "outcome": "Vous avez gardé un stock normal. Vous avez vendu ce que vous aviez, sans stress." }
+        {
+          "text": "Tout miser sur la raclette",
+          "hint": "Gros investissement, gros retours",
+          "outcome": "Vous avez acheté 200 kg de raclette et 5 machines à louer. Tout vendu en janvier. Le bénéfice était beau."
+        },
+        {
+          "text": "Stock d'hiver normal",
+          "hint": "Rester prudent",
+          "outcome": "Vous avez gardé un stock normal. Vous avez vendu ce que vous aviez, sans stress."
+        }
       ]
     },
     "birthday_forgot": {
       "title": "L'anniversaire oublié",
       "description": "Il est 22 h. Vous rentrez enfin, crevé. Votre téléphone vibre – une photo dans le groupe famille. Gâteau, bougies, votre mère qui sourit. La légende : « Tu nous a manqué aujourd'hui ! »\n\nL'anniversaire de votre mère. Vous avez complètement oublié. Pas même un coup de fil.",
       "choices": [
-        { "text": "Aller la voir tout de suite", "hint": "...", "outcome": "Elle a ouvert la porte, surprise. « Je savais que tu étais débordé. » Sa voix était douce, ce qui rendait les choses pires. Vous vous êtes excusé. Elle a dit que ce n'était pas grave. Ça ne l'était pas." },
-        { "text": "Envoyer des fleurs demain avec un long mot d'excuse", "hint": "...", "outcome": "Les fleurs sont arrivées le lendemain. Magnifiques. Chères. Votre mère a appelé pour vous remercier. La conversation a été courte. Polie. Vous sentiez la distance." }
+        {
+          "text": "Aller la voir tout de suite",
+          "hint": "...",
+          "outcome": "Elle a ouvert la porte, surprise. « Je savais que tu étais débordé. » Sa voix était douce, ce qui rendait les choses pires. Vous vous êtes excusé. Elle a dit que ce n'était pas grave. Ça ne l'était pas."
+        },
+        {
+          "text": "Envoyer des fleurs demain avec un long mot d'excuse",
+          "hint": "...",
+          "outcome": "Les fleurs sont arrivées le lendemain. Magnifiques. Chères. Votre mère a appelé pour vous remercier. La conversation a été courte. Polie. Vous sentiez la distance."
+        }
       ]
     },
     "christmas_day": {
       "title": "Le jour de Noël",
       "description": "25 décembre. La boutique est fermée aujourd'hui et demain – enfin. Votre famille vous attend à 13 h pour le déjeuner de Noël. Mais la boutique est en chaos. Du stock partout, des commandes à moitié préparées, la réouverture le 27 qui approche. Vous pourriez « passer une ou deux heures » ce matin pour avancer...",
       "choices": [
-        { "text": "Aller directement en famille", "hint": "C'est Noël", "outcome": "Vous avez laissé le chaos derrière. Trop mangé. Rigué avec les cousins. Vous vous êtes endormi sur le canapé. Le bazar vous attendait le 26. Vous vous en êtes occupé. Comme d'habitude." },
-        { "text": "« Juste quelques heures » à la boutique d'abord", "hint": "Je serai rapide", "outcome": "Quelques heures sont devenues six. Vous êtes arrivé à 19 h, le dessert déjà fini. « Te voilà ! » a dit votre mère, sans cacher sa déception. La boutique était prête pour le 27. Le prix était sur les visages de votre famille." },
-        { "text": "Travailler pendant Noël", "hint": "Ils comprendront", "outcome": "Vous avez passé Noël seul à la boutique, Radio Nostalgie en fond. Tout était parfait pour le 27. Vous avez appelé votre mère à 20 h. « Peut-être l'an prochain », a-t-elle dit." }
+        {
+          "text": "Aller directement en famille",
+          "hint": "C'est Noël",
+          "outcome": "Vous avez laissé le chaos derrière. Trop mangé. Rigué avec les cousins. Vous vous êtes endormi sur le canapé. Le bazar vous attendait le 26. Vous vous en êtes occupé. Comme d'habitude."
+        },
+        {
+          "text": "« Juste quelques heures » à la boutique d'abord",
+          "hint": "Je serai rapide",
+          "outcome": "Quelques heures sont devenues six. Vous êtes arrivé à 19 h, le dessert déjà fini. « Te voilà ! » a dit votre mère, sans cacher sa déception. La boutique était prête pour le 27. Le prix était sur les visages de votre famille."
+        },
+        {
+          "text": "Travailler pendant Noël",
+          "hint": "Ils comprendront",
+          "outcome": "Vous avez passé Noël seul à la boutique, Radio Nostalgie en fond. Tout était parfait pour le 27. Vous avez appelé votre mère à 20 h. « Peut-être l'an prochain », a-t-elle dit."
+        }
       ]
     },
     "family_dinner": {
       "title": "Le dîner du dimanche",
       "description": "Votre famille se réunit ce dimanche. Vous n'êtes pas allé à un dîner de famille depuis des mois. La boutique a besoin de vous. Eux aussi.",
       "choices": [
-        { "text": "Aller au dîner", "hint": "Fermer plus tôt, être présent", "outcome": "Le rôti était délicieux. Votre nièce a grandi. Pendant quelques heures, vous n'étiez pas commerçant – juste en famille." },
-        { "text": "Le travail d'abord", "hint": "La boutique a besoin de vous", "outcome": "Encore une chaise vide à table. Votre mère a demandé de vos nouvelles. Votre conjoint a trouvé des excuses. Mais la boutique a bien tourné." }
+        {
+          "text": "Aller au dîner",
+          "hint": "Fermer plus tôt, être présent",
+          "outcome": "Le rôti était délicieux. Votre nièce a grandi. Pendant quelques heures, vous n'étiez pas commerçant – juste en famille."
+        },
+        {
+          "text": "Le travail d'abord",
+          "hint": "La boutique a besoin de vous",
+          "outcome": "Encore une chaise vide à table. Votre mère a demandé de vos nouvelles. Votre conjoint a trouvé des excuses. Mais la boutique a bien tourné."
+        }
       ]
     },
     "the_invitation": {
       "title": "L'invitation",
       "description": "Votre ami Marc se marie. Samedi, bien sûr. Vous êtes invité – attendu, même. Vous le connaissez depuis la fac. La cérémonie à 14 h, le repas jusqu'à tard. Le samedi, c'est votre meilleur jour. Plus de 2 000 € de ventes, et les clients qui ne vous trouvent pas ouverts iront ailleurs.",
       "choices": [
-        { "text": "Fermer la boutique et y aller", "hint": "Marc ferait pareil pour moi", "outcome": "Vous avez dansé au mariage de Marc. La boutique était dans le noir. Certains clients ont trouvé d'autres boutiques ce jour-là. Certains ne sont jamais revenus. Mais Marc vous a serré dans ses bras : « Content que tu sois venu. » Ça comptait." },
-        { "text": "Faire couvrir par le personnel", "hint": "Ils peuvent gérer un samedi... non ?", "outcome": "Vous avez eu le coup de fil à 16 h. Problème de livraison. Client en colère. Vous avez quitté la réception tôt, encore en costard, et passé la soirée à tout arranger. Vous êtes revenu pour la dernière danse. De justesse." },
-        { "text": "Ne pas aller au mariage", "hint": "La boutique a besoin de moi", "outcome": "Vous avez envoyé un cadeau et une carte. Marc a dit qu'il comprenait. Vous avez travaillé un samedi normal. Le fromage s'est bien vendu. Vous avez essayé de ne pas y penser." }
+        {
+          "text": "Fermer la boutique et y aller",
+          "hint": "Marc ferait pareil pour moi",
+          "outcome": "Vous avez dansé au mariage de Marc. La boutique était dans le noir. Certains clients ont trouvé d'autres boutiques ce jour-là. Certains ne sont jamais revenus. Mais Marc vous a serré dans ses bras : « Content que tu sois venu. » Ça comptait."
+        },
+        {
+          "text": "Faire couvrir par le personnel",
+          "hint": "Ils peuvent gérer un samedi... non ?",
+          "outcome": "Vous avez eu le coup de fil à 16 h. Problème de livraison. Client en colère. Vous avez quitté la réception tôt, encore en costard, et passé la soirée à tout arranger. Vous êtes revenu pour la dernière danse. De justesse."
+        },
+        {
+          "text": "Ne pas aller au mariage",
+          "hint": "La boutique a besoin de moi",
+          "outcome": "Vous avez envoyé un cadeau et une carte. Marc a dit qu'il comprenait. Vous avez travaillé un samedi normal. Le fromage s'est bien vendu. Vous avez essayé de ne pas y penser."
+        }
       ]
     },
     "hospital_call": {
       "title": "L'appel de l'hôpital",
       "description": "Votre mère appelle. Votre père a fait une chute – il est à l'hôpital à Liège. Rien de grave, mais il a peur et vous demande. Nous sommes le 18 décembre. Votre semaine la plus chargée. La boutique est pleine de gens qui achètent du fromage de Noël.",
       "choices": [
-        { "text": "Fermer et partir tout de suite", "hint": "C'est mon père", "outcome": "Vous avez roulé jusqu'à Liège la même nuit. La boutique est restée fermée trois jours. Les clients sont allés ailleurs. Votre père a serré votre main : « Tu es venu. » Décembre a été un désastre financier. Mais vous étiez là." },
-        { "text": "Y aller après la fermeture chaque jour", "hint": "Je peux faire les deux", "outcome": "Vous avez travaillé de 6 h à 18 h, puis deux heures de route jusqu'à Liège, resté avec lui jusqu'à minuit, rentré, dormi quatre heures, et recommencé. Pendant une semaine. Votre corps s'en souvient." },
-        { "text": "Rester, appeler chaque jour", "hint": "La boutique ne peut pas se passer de moi maintenant", "outcome": "Vous avez appelé deux fois par jour. Envoyé des fleurs. La voix de votre mère était polie mais distante. Votre père s'est rétabli. Ils ont dit qu'ils comprenaient." }
+        {
+          "text": "Fermer et partir tout de suite",
+          "hint": "C'est mon père",
+          "outcome": "Vous avez roulé jusqu'à Liège la même nuit. La boutique est restée fermée trois jours. Les clients sont allés ailleurs. Votre père a serré votre main : « Tu es venu. » Décembre a été un désastre financier. Mais vous étiez là."
+        },
+        {
+          "text": "Y aller après la fermeture chaque jour",
+          "hint": "Je peux faire les deux",
+          "outcome": "Vous avez travaillé de 6 h à 18 h, puis deux heures de route jusqu'à Liège, resté avec lui jusqu'à minuit, rentré, dormi quatre heures, et recommencé. Pendant une semaine. Votre corps s'en souvient."
+        },
+        {
+          "text": "Rester, appeler chaque jour",
+          "hint": "La boutique ne peut pas se passer de moi maintenant",
+          "outcome": "Vous avez appelé deux fois par jour. Envoyé des fleurs. La voix de votre mère était polie mais distante. Votre père s'est rétabli. Ils ont dit qu'ils comprenaient."
+        }
       ]
     },
     "old_friend": {
       "title": "L'ami d'avant",
       "description": "Thomas passe par Bruxelles. Vous ne l'avez pas vu depuis trois ans – il a déménagé à Berlin, la vie a continué. Il est libre ce soir seulement. « Un verre ? Un resto ? Comme avant ? » C'est vendredi. Livraison de fromage demain à 6 h. Vous vous connaissez – si vous sortez ce soir, demain va faire mal.",
       "choices": [
-        { "text": "Sortir avec Thomas", "hint": "Il me manque", "outcome": "Vous êtes resté jusqu'à 2 h. Vous avez tout dit. Rigué jusqu'à en avoir mal au ventre. Le réveil à 5 h 30 a été brutal. Vous avez enchaîné le samedi comme un zombie. Ça valait le coup ? Vous pensez que oui." },
-        { "text": "L'inviter à la boutique", "hint": "Il verra ce que j'ai construit", "outcome": "Thomas est passé à 18 h. Vous lui avez fait le tour, l'histoire, les meilleurs fromages. Il était impressionné. « T'as vraiment construit un truc. » Ce n'était pas une vraie soirée, mais c'était bien." },
-        { "text": "Décliner", "hint": "Je ne peux pas, j'ai du travail demain", "outcome": "Vous avez envoyé « La prochaine fois, promis. » Il n'y a pas eu de prochaine fois. Thomas n'est pas repassé par Bruxelles. Vous vous demandez parfois ce que vous auriez dit." }
+        {
+          "text": "Sortir avec Thomas",
+          "hint": "Il me manque",
+          "outcome": "Vous êtes resté jusqu'à 2 h. Vous avez tout dit. Rigué jusqu'à en avoir mal au ventre. Le réveil à 5 h 30 a été brutal. Vous avez enchaîné le samedi comme un zombie. Ça valait le coup ? Vous pensez que oui."
+        },
+        {
+          "text": "L'inviter à la boutique",
+          "hint": "Il verra ce que j'ai construit",
+          "outcome": "Thomas est passé à 18 h. Vous lui avez fait le tour, l'histoire, les meilleurs fromages. Il était impressionné. « T'as vraiment construit un truc. » Ce n'était pas une vraie soirée, mais c'était bien."
+        },
+        {
+          "text": "Décliner",
+          "hint": "Je ne peux pas, j'ai du travail demain",
+          "outcome": "Vous avez envoyé « La prochaine fois, promis. » Il n'y a pas eu de prochaine fois. Thomas n'est pas repassé par Bruxelles. Vous vous demandez parfois ce que vous auriez dit."
+        }
       ]
     },
     "second_shop_offer": {
       "title": "L'appel de la rue au Bois",
       "description": "Votre téléphone sonne. C'est Marie, une fromagère. « Julien, je prends ma retraite. Ma boutique rue au Bois... j'ai pensé à toi en premier. 60 000 € pour tout – la clientèle, les fournisseurs, le nom. Intéressé ? »\n\nUne deuxième adresse. Le double de chiffre. Le double de complexité. Vous n'avez jamais acheté le bâtiment ici... mais vous pourriez construire un empire.",
       "choices": [
-        { "text": "On y va – agrandir l'empire", "hint": "60 000 € d'investissement, devenir une marque multi-boutiques", "outcome": "Vous avez signé. Chez Julien, ce sont maintenant deux boutiques. Votre comptable vous a regardé comme si vous étiez fou. Peut-être. Mais peut-être que... ce n'est que le début." },
-        { "text": "Une boutique me suffit", "hint": "Vous avez l'argent. Vous choisissez la paix.", "outcome": "« Je suis flatté, Marie. Mais j'ai construit quelque chose ici. Une boutique, bien faite. Ça me suffit. » Elle a souri. « Je comprends. Tu as trouvé ton contentement. »" }
+        {
+          "text": "On y va – agrandir l'empire",
+          "hint": "60 000 € d'investissement, devenir une marque multi-boutiques",
+          "outcome": "Vous avez signé. Chez Julien, ce sont maintenant deux boutiques. Votre comptable vous a regardé comme si vous étiez fou. Peut-être. Mais peut-être que... ce n'est que le début."
+        },
+        {
+          "text": "Une boutique me suffit",
+          "hint": "Vous avez l'argent. Vous choisissez la paix.",
+          "outcome": "« Je suis flatté, Marie. Mais j'ai construit quelque chose ici. Une boutique, bien faite. Ça me suffit. » Elle a souri. « Je comprends. Tu as trouvé ton contentement. »"
+        }
       ]
     },
     "charcuterie_question": {
       "title": "La question charcuterie",
       "description": "Un client s'attarde au comptoir. « Vous n'auriez pas de la charcuterie ? Un bon saucisson pour aller avec ce comté ? » Vous n'en avez pas. Mais Coprosain a d'excellents produits belges, et From'Un des importations italiennes...",
       "choices": [
-        { "text": "Ajouter de la charcuterie belge (Coprosain)", "hint": "Produits locaux, bonne histoire, investissement modeste", "outcome": "Vous avez appelé Coprosain. Fuet, saucisson d'Ardèche, coppa... L'angle belge plaît. « Local ET délicieux. »" },
-        { "text": "Ajouter des importations italiennes (premium)", "hint": "Marges plus hautes, positionnement premium", "outcome": "Jambon de Parme, bresaola, 'nduja... La sélection italienne attire une nouvelle clientèle. Prix plus hauts, marges plus hautes." },
-        { "text": "Rester focalisé sur le fromage", "hint": "Opérations plus simples, expertise plus profonde", "outcome": "« On est une fromagerie », avez-vous expliqué. Le client a acquiescé, a respecté le choix. La simplicité a sa valeur." }
+        {
+          "text": "Ajouter de la charcuterie belge (Coprosain)",
+          "hint": "Produits locaux, bonne histoire, investissement modeste",
+          "outcome": "Vous avez appelé Coprosain. Fuet, saucisson d'Ardèche, coppa... L'angle belge plaît. « Local ET délicieux. »"
+        },
+        {
+          "text": "Ajouter des importations italiennes (premium)",
+          "hint": "Marges plus hautes, positionnement premium",
+          "outcome": "Jambon de Parme, bresaola, 'nduja... La sélection italienne attire une nouvelle clientèle. Prix plus hauts, marges plus hautes."
+        },
+        {
+          "text": "Rester focalisé sur le fromage",
+          "hint": "Opérations plus simples, expertise plus profonde",
+          "outcome": "« On est une fromagerie », avez-vous expliqué. Le client a acquiescé, a respecté le choix. La simplicité a sa valeur."
+        }
       ]
     },
     "wine_dilemma": {
       "title": "Le dilemme du vin",
       "description": "« Quel vin avec ce fromage ? » On vous le demande tous les jours. La cave rue au Bois est bien, mais... et si vous aviez une petite sélection ici ? Fromage et vin ensemble se vendent mieux qu'à part.",
       "choices": [
-        { "text": "Sélection soignée (15 bouteilles)", "hint": "Risque faible, complète les ventes de fromage", "outcome": "Une petite sélection parfaite. Côtes du Rhône, bourgogne, quelques surprises. Les ventes de fromage ont même augmenté – les accords marchent." },
-        { "text": "Vrai rayon vin", "hint": "Gros investissement, nouveau segment, plus de complexité", "outcome": "Vous avez fait une formation vin, noué des liens avec des importateurs. Le rayon rivalise avec les cavistes. De nouveaux clients vous découvrent par le vin." },
-        { "text": "Partenariat avec la cave", "hint": "Pas d'investissement, renvois d'ascenseur", "outcome": "Vous avez passé un accord avec Marie à la cave. Vous vous recommandez mutuellement. Pas de stock à gérer, mais vous partagez le client." }
+        {
+          "text": "Sélection soignée (15 bouteilles)",
+          "hint": "Risque faible, complète les ventes de fromage",
+          "outcome": "Une petite sélection parfaite. Côtes du Rhône, bourgogne, quelques surprises. Les ventes de fromage ont même augmenté – les accords marchent."
+        },
+        {
+          "text": "Vrai rayon vin",
+          "hint": "Gros investissement, nouveau segment, plus de complexité",
+          "outcome": "Vous avez fait une formation vin, noué des liens avec des importateurs. Le rayon rivalise avec les cavistes. De nouveaux clients vous découvrent par le vin."
+        },
+        {
+          "text": "Partenariat avec la cave",
+          "hint": "Pas d'investissement, renvois d'ascenseur",
+          "outcome": "Vous avez passé un accord avec Marie à la cave. Vous vous recommandez mutuellement. Pas de stock à gérer, mais vous partagez le client."
+        }
       ]
     },
     "cheap_fridge": {
       "title": "Le frigo qui tient à peine",
       "description": "Vous avez trouvé un comptoir à fromage d'occasion à 800 €. Il est moche. Le compresseur fait un bruit de chat qui meurt. Mais il marche. Un vrai comptoir dernier cri coûterait 50 000 €.",
       "choices": [
-        { "text": "Acheter le moche à 800 €", "hint": "Garder du cash pour le bâtiment", "outcome": "Le frigo ronfle. Les clients blaguent. Mais le fromage reste au frais et vous avez 49 200 € de plus pour le reste. Malin." },
-        { "text": "Financer un vrai comptoir (50 000 €)", "hint": "800 €/mois sur 5 ans – magnifique mais coûteux", "outcome": "Le nouveau comptoir est magnifique. Zones à température contrôlée, éclairage LED, tout. 800 €/mois pendant 5 ans. On verra si ça valait le coup." }
+        {
+          "text": "Acheter le moche à 800 €",
+          "hint": "Garder du cash pour le bâtiment",
+          "outcome": "Le frigo ronfle. Les clients blaguent. Mais le fromage reste au frais et vous avez 49 200 € de plus pour le reste. Malin."
+        },
+        {
+          "text": "Financer un vrai comptoir (50 000 €)",
+          "hint": "800 €/mois sur 5 ans – magnifique mais coûteux",
+          "outcome": "Le nouveau comptoir est magnifique. Zones à température contrôlée, éclairage LED, tout. 800 €/mois pendant 5 ans. On verra si ça valait le coup."
+        }
       ]
     },
     "fine_food_choice": {
       "title": "Une nouvelle direction",
       "description": "En regardant la boutique, vous réalisez qu'elle change. Les bacs de vrac se vident, le comptoir à fromage s'anime. Un client dit : « On dirait plus une épicerie fine maintenant. »\n\nPeut-être qu'il est temps d'assumer cette identité ?",
       "choices": [
-        { "text": "Assumer l'épicerie fine – c'est qui nous sommes", "hint": "Privilégier la qualité à la quantité", "outcome": "Vous avez pris la décision. La boutique est officiellement une épicerie fine. Les marges s'améliorent. L'identité est claire." },
-        { "text": "Rester hybride", "hint": "Garder les deux", "outcome": "Vous avez gardé le vrac et le fromage. Un peu des deux. Pas de grand changement." }
+        {
+          "text": "Assumer l'épicerie fine – c'est qui nous sommes",
+          "hint": "Privilégier la qualité à la quantité",
+          "outcome": "Vous avez pris la décision. La boutique est officiellement une épicerie fine. Les marges s'améliorent. L'identité est claire."
+        },
+        {
+          "text": "Rester hybride",
+          "hint": "Garder les deux",
+          "outcome": "Vous avez gardé le vrac et le fromage. Un peu des deux. Pas de grand changement."
+        }
       ]
     },
     "building_deadline": {
@@ -540,516 +877,1132 @@
       "dynamicDescriptionCanAfford": "La date est là. Votre compte : {{bank}} €. Il en faut 80 000. Vous avez assez. De justesse. Mais vous avez assez.",
       "dynamicDescriptionCannotAfford": "La date est là. Votre compte : {{bank}} €. Il en faut 80 000. Ce n'est pas assez. Mais il y a peut-être encore une solution...",
       "choicesCanAfford": [
-        { "text": "Signer", "hint": "Payer 80 000 € – c'est le moment", "outcome": "Vous avez signé. Votre main tremblait. Le bâtiment – VOTRE bâtiment – n'est plus à un autre. Plus jamais un propriétaire pour vous virer." },
-        { "text": "Laisser tomber quand même", "hint": "La liberté, ce n'est peut-être pas la propriété", "outcome": "Vous avez dit non. Le bâtiment est parti à un autre. Vous restez locataire – mais avec vos économies et votre flexibilité." }
+        {
+          "text": "Signer",
+          "hint": "Payer 80 000 € – c'est le moment",
+          "outcome": "Vous avez signé. Votre main tremblait. Le bâtiment – VOTRE bâtiment – n'est plus à un autre. Plus jamais un propriétaire pour vous virer."
+        },
+        {
+          "text": "Laisser tomber quand même",
+          "hint": "La liberté, ce n'est peut-être pas la propriété",
+          "outcome": "Vous avez dit non. Le bâtiment est parti à un autre. Vous restez locataire – mais avec vos économies et votre flexibilité."
+        }
       ],
       "choicesCannotAfford": [
-        { "text": "Demander un mois de plus", "hint": "Un mois de plus – 5 000 € de pénalité à la signature", "outcome": "Vous avez supplié Madame Malfait. Elle a accepté – mais 5 000 € de pénalité pour le report, à payer à la signature. Un mois de plus. Il faut en profiter." },
-        { "text": "Laisser filer", "hint": "Il fallait 80 000 €. Vous avez {{bank}} €.", "outcome": "Les chiffres n'ont pas collé. Le bâtiment est parti à un autre. Vous restez locataire. Restez vulnérable." }
+        {
+          "text": "Demander un mois de plus",
+          "hint": "Un mois de plus – 5 000 € de pénalité à la signature",
+          "outcome": "Vous avez supplié Madame Malfait. Elle a accepté – mais 5 000 € de pénalité pour le report, à payer à la signature. Un mois de plus. Il faut en profiter."
+        },
+        {
+          "text": "Laisser filer",
+          "hint": "Il fallait 80 000 €. Vous avez {{bank}} €.",
+          "outcome": "Les chiffres n'ont pas collé. Le bâtiment est parti à un autre. Vous restez locataire. Restez vulnérable."
+        }
       ],
       "choices": [
-        { "text": "Signer – j'ai les 80 000 €", "hint": "Le bâtiment est à moi", "outcome": "Vous avez signé. Votre main tremblait. Le bâtiment – VOTRE bâtiment – n'est plus à quelqu'un d'autre. Plus jamais un propriétaire pour vous virer." },
-        { "text": "Ne pas acheter", "hint": "Garder l'argent et la flexibilité", "outcome": "Vous avez dit non. Le bâtiment est parti à quelqu'un d'autre. Vous restez locataire – mais avec vos économies et votre marge." },
-        { "text": "Demander un délai", "hint": "J'y suis presque", "outcome": "Vous avez supplié Madame Malfait. Elle a accepté – mais 5 000 € de pénalité pour le report, à payer à la signature. Un mois de plus. Il faut en profiter." }
+        {
+          "text": "Signer – j'ai les 80 000 €",
+          "hint": "Le bâtiment est à moi",
+          "outcome": "Vous avez signé. Votre main tremblait. Le bâtiment – VOTRE bâtiment – n'est plus à quelqu'un d'autre. Plus jamais un propriétaire pour vous virer."
+        },
+        {
+          "text": "Ne pas acheter",
+          "hint": "Garder l'argent et la flexibilité",
+          "outcome": "Vous avez dit non. Le bâtiment est parti à quelqu'un d'autre. Vous restez locataire – mais avec vos économies et votre marge."
+        },
+        {
+          "text": "Demander un délai",
+          "hint": "J'y suis presque",
+          "outcome": "Vous avez supplié Madame Malfait. Elle a accepté – mais 5 000 € de pénalité pour le report, à payer à la signature. Un mois de plus. Il faut en profiter."
+        }
       ]
     },
     "sunday_burnout": {
       "title": "Le crash",
       "description": "Vous ne vous souvenez pas d'être rentré. Vous vous réveillez à l'hôpital. « Épuisement. Vous devez vous arrêter. » Le médecin est formel. Les dimanches ouverts, les mois sans repos... le corps a dit stop.",
       "choices": [
-        { "text": "Fermer le dimanche – pour de bon", "hint": "Je n'ai pas le choix", "outcome": "Vous avez affiché « Fermé le dimanche » sur la vitrine. Pour toujours. Les clients ont compris. Vous avez récupéré. Lentement." },
-        { "text": "Prendre une semaine puis reprendre", "hint": "Juste une pause", "outcome": "Une semaine de repos. Puis vous avez rouvert le dimanche. Le médecin avait dit non. Trois mois plus tard, vous étiez de retour à l'hôpital." }
+        {
+          "text": "Fermer le dimanche – pour de bon",
+          "hint": "Je n'ai pas le choix",
+          "outcome": "Vous avez affiché « Fermé le dimanche » sur la vitrine. Pour toujours. Les clients ont compris. Vous avez récupéré. Lentement."
+        },
+        {
+          "text": "Prendre une semaine puis reprendre",
+          "hint": "Juste une pause",
+          "outcome": "Une semaine de repos. Puis vous avez rouvert le dimanche. Le médecin avait dit non. Trois mois plus tard, vous étiez de retour à l'hôpital."
+        }
       ]
     },
     "stop_sunday": {
       "title": "La décision du dimanche",
       "description": "Après le burnout, la question ne se pose plus. Vous ne pouvez plus ouvrir le dimanche. Votre corps – et le médecin – sont formels. Il faut l'afficher, en informer les clients.",
       "choices": [
-        { "text": "Fermer le dimanche définitivement", "hint": "C'est la seule option", "outcome": "« Fermé le dimanche » est sur la vitrine. Les habitués ont compris. Certains sont venus le samedi à la place. Vous respirez enfin." }
+        {
+          "text": "Fermer le dimanche définitivement",
+          "hint": "C'est la seule option",
+          "outcome": "« Fermé le dimanche » est sur la vitrine. Les habitués ont compris. Certains sont venus le samedi à la place. Vous respirez enfin."
+        },
+        {
+          "text": "Garder le dimanche, embaucher quelqu'un",
+          "hint": "Si vous pouvez vous le permettre",
+          "outcome": "Vous avez trouvé quelqu'un pour couvrir le dimanche. Ce n'est pas pareil, mais au moins vous n'y êtes pas."
+        }
       ]
     },
     "relationship_tension": {
       "title": "Les tensions",
       "description": "Votre conjoint a quelque chose à vous dire. « On ne te voit plus. La boutique, toujours la boutique. Tu rentres à 22 h, tu repars à 6 h. On est où, dans ton histoire ? »",
       "choices": [
-        { "text": "Promettre de changer", "hint": "Je vais faire des efforts", "outcome": "Vous avez promis. Vous avez essayé. Quelques dîners à la maison. Mais décembre est arrivé et la boutique a repris le dessus. La promesse sonnait creux." },
-        { "text": "« C'est temporaire, le temps de stabiliser »", "hint": "Ils doivent comprendre", "outcome": "Ils ont hoché la tête. « Temporaire. » Ça fait six mois que c'est temporaire. La distance grandit." }
+        {
+          "text": "Promettre de changer",
+          "hint": "Je vais faire des efforts",
+          "outcome": "Vous avez promis. Vous avez essayé. Quelques dîners à la maison. Mais décembre est arrivé et la boutique a repris le dessus. La promesse sonnait creux."
+        },
+        {
+          "text": "« C'est temporaire, le temps de stabiliser »",
+          "hint": "Ils doivent comprendre",
+          "outcome": "Ils ont hoché la tête. « Temporaire. » Ça fait six mois que c'est temporaire. La distance grandit."
+        },
+        {
+          "text": "Embaucher plus pour être présent",
+          "hint": "Du personnel en plus coûte cher",
+          "outcome": "Vous avez trouvé quelqu'un pour le samedi après-midi. Les soirées en couple sont revenues. Les 2 500 €/mois en salaires font mal. Mais le sourire à la maison n'a pas de prix."
+        }
       ]
     },
     "sleep_problems": {
       "title": "Les réveils à 3 h",
       "description": "Vous vous réveillez à 3 h. Encore. La tête qui tourne : la commande du jeudi, le frigo qui fait un bruit bizarre, le client mécontent de la semaine dernière. Vous ne vous rendormez pas avant 5 h 30. L'alarme sonne à 6 h.",
       "choices": [
-        { "text": "Continuer – ça passera", "hint": "C'est juste une phase", "outcome": "Ça n'est pas passé. Les nuits courtes s'accumulent. La fatigue devient votre normalité." },
-        { "text": "Réduire les heures, déléguer", "hint": "Prendre soin de soi", "outcome": "Vous avez fermé plus tôt deux soirs par semaine. Vous avez délégué une partie des commandes. Les nuits sont revenues. Lentement." }
+        {
+          "text": "Continuer – ça passera",
+          "hint": "C'est juste une phase",
+          "outcome": "Ça n'est pas passé. Les nuits courtes s'accumulent. La fatigue devient votre normalité."
+        },
+        {
+          "text": "Réduire les heures, déléguer",
+          "hint": "Prendre soin de soi",
+          "outcome": "Vous avez fermé plus tôt deux soirs par semaine. Vous avez délégué une partie des commandes. Les nuits sont revenues. Lentement."
+        },
+        {
+          "text": "Commencer les balades du soir avec Poncho",
+          "hint": "Décompresser naturellement",
+          "outcome": "Les balades sont devenues un rituel. Bruxelles au crépuscule. Poncho heureux. L'esprit plus calme. Le sommeil est revenu plus facilement."
+        }
       ]
     },
     "summer_flood": {
       "title": "L'inondation",
       "description": "Août. Une tempête d'été. Vous arrivez à la boutique : l'eau entre par le sous-sol. Le frigo à fromage va bien — il est surélevé — mais le stock du sous-sol est dévasté. Cartons, décos, vieux matériel. Tout est foutu.",
       "choices": [
-        { "text": "Déclarer à l'assurance", "hint": "C'est pour ça que vous avez payé", "outcome": "L'expert est venu sous 48 h. Ils ont couvert la plupart : 4 000 € de marchandise, 1 500 € de nettoyage, 1 000 € d'interruption. La franchise a fait mal, mais moins que 18 000 € de votre poche." },
-        { "text": "Nettoyer et absorber la perte", "hint": "Ça va dévaster vos économies", "outcome": "Une semaine de nettoyage. 18 000 € de stock et matériel perdus. Pas d'assurance. Vous regardez des mois d'économies s'envoler. C'est le prix d'une assurance au rabais." },
-        { "text": "Demander l'aide de la famille", "hint": "Ils ne pourront couvrir qu'une partie", "outcome": "Vos parents ont aidé au nettoyage. Votre frère a trouvé 5 000 €. Les dégâts font 18 000 €. Vous en perdez encore 13 000. La famille vous a évité la faillite, mais la dette morale reste." }
+        {
+          "text": "Déclarer à l'assurance",
+          "hint": "C'est pour ça que vous avez payé",
+          "outcome": "L'expert est venu sous 48 h. Ils ont couvert la plupart : 4 000 € de marchandise, 1 500 € de nettoyage, 1 000 € d'interruption. La franchise a fait mal, mais moins que 18 000 € de votre poche."
+        },
+        {
+          "text": "Nettoyer et absorber la perte",
+          "hint": "Ça va dévaster vos économies",
+          "outcome": "Une semaine de nettoyage. 18 000 € de stock et matériel perdus. Pas d'assurance. Vous regardez des mois d'économies s'envoler. C'est le prix d'une assurance au rabais."
+        },
+        {
+          "text": "Demander l'aide de la famille",
+          "hint": "Ils ne pourront couvrir qu'une partie",
+          "outcome": "Vos parents ont aidé au nettoyage. Votre frère a trouvé 5 000 €. Les dégâts font 18 000 €. Vous en perdez encore 13 000. La famille vous a évité la faillite, mais la dette morale reste."
+        }
       ]
     },
     "corporate_opportunity": {
       "title": "La demande d'un cabinet",
       "description": "Un cabinet d'avocats en centre-ville : « Nous cherchons un traiteur pour nos réunions hebdomadaires. Plateaux fromage, qualité exigée, ponctualité obligatoire. Livraison chaque jeudi ? »",
       "choices": [
-        { "text": "Accepter – revenus récurrents", "hint": "500 €/semaine garantis, mais vous êtes engagé", "outcome": "Chaque jeudi, 6 h, vous préparez leurs plateaux. C'est du boulot. Mais 2 000 €/mois, garantis. La stabilité." },
-        { "text": "Négocier de meilleures conditions", "hint": "Prix plus haut ou moins fréquent", "outcome": "Vous avez résisté. Ils ont accepté une livraison sur deux à meilleure marge. Moins régulier, moins épuisant." },
-        { "text": "Décliner poliment", "hint": "Protéger votre temps", "outcome": "« Nous nous concentrons sur nos clients en boutique », avez-vous expliqué. Ils ont compris. Vous restez maître de votre emploi du temps." }
+        {
+          "text": "Accepter – revenus récurrents",
+          "hint": "500 €/semaine garantis, mais vous êtes engagé",
+          "outcome": "Chaque jeudi, 6 h, vous préparez leurs plateaux. C'est du boulot. Mais 2 000 €/mois, garantis. La stabilité."
+        },
+        {
+          "text": "Négocier de meilleures conditions",
+          "hint": "Prix plus haut ou moins fréquent",
+          "outcome": "Vous avez résisté. Ils ont accepté une livraison sur deux à meilleure marge. Moins régulier, moins épuisant."
+        },
+        {
+          "text": "Décliner poliment",
+          "hint": "Protéger votre temps",
+          "outcome": "« Nous nous concentrons sur nos clients en boutique », avez-vous expliqué. Ils ont compris. Vous restez maître de votre emploi du temps."
+        }
       ]
     },
     "gradual_pivot": {
       "title": "La transformation progressive",
       "description": "Vous avez peu à peu remplacé les bacs de vrac par du fromage, de la charcuterie, des produits locaux. La transformation se voit. Les anciens clients râlent. Les nouveaux arrivent. « C'est encore une épicerie bio ? » demande quelqu'un.",
       "choices": [
-        { "text": "Poursuivre le pivot lent", "hint": "Une catégorie à la fois, trésorerie stable", "outcome": "Un autre rayon vrac devient fromage. La transformation continue, progressive et tenable." },
-        { "text": "Accélérer – transformer plus vite", "hint": "Risqué mais ça suit l'élan", "outcome": "Week-end de travaux. La boutique a changé. Certains habitués sont choqués. Les nouveaux sont ravis." }
+        {
+          "text": "Poursuivre le pivot lent",
+          "hint": "Une catégorie à la fois, trésorerie stable",
+          "outcome": "Un autre rayon vrac devient fromage. La transformation continue, progressive et tenable."
+        },
+        {
+          "text": "Accélérer – transformer plus vite",
+          "hint": "Risqué mais ça suit l'élan",
+          "outcome": "Week-end de travaux. La boutique a changé. Certains habitués sont choqués. Les nouveaux sont ravis."
+        }
       ]
     },
     "corporate_client": {
       "title": "Une demande d'entreprise",
       "description": "Un cabinet d'architecture veut des plateaux chaque mois pour leurs apéros du vendredi. « Trois fromages, un peu de charcuterie, les cookies de Gâteau sur la Cerise ? » Commande régulière, bonnes marges — mais il faudra préparer 8 plateaux chaque jeudi soir.",
       "choices": [
-        { "text": "Prendre le contrat", "hint": "+1 500 €/mois récurrent", "outcome": "Chaque jeudi vous préparez 8 plateaux : Comté 8 mois, Manchego DOP, Coppa, saucisson d'Ardèche. Revenus prévisibles. Votre comptable est content." },
-        { "text": "Rester focalisé sur le détail", "hint": "Le jeudi soir est déjà chargé", "outcome": "Vous avez poliment décliné. Le jeudi c'est déjà la livraison Interbio. Une tâche de plus vous achèverait." }
+        {
+          "text": "Prendre le contrat",
+          "hint": "+1 500 €/mois récurrent",
+          "outcome": "Chaque jeudi vous préparez 8 plateaux : Comté 8 mois, Manchego DOP, Coppa, saucisson d'Ardèche. Revenus prévisibles. Votre comptable est content."
+        },
+        {
+          "text": "Rester focalisé sur le détail",
+          "hint": "Le jeudi soir est déjà chargé",
+          "outcome": "Vous avez poliment décliné. Le jeudi c'est déjà la livraison Interbio. Une tâche de plus vous achèverait."
+        }
       ]
     },
     "wine_pairing": {
       "title": "Soirées vin et fromage",
       "description": "Un sommelier propose d'organiser des dégustations vin-fromage dans votre boutique. Un jeudi par mois. « On associe le Montepulciano-Merlot au Comté affiné, le Tenuta Ulisse au Manchego... » Part des bénéfices.",
       "choices": [
-        { "text": "Lancer les soirées vin", "hint": "Revenus en plus + réputation", "outcome": "La première soirée a fait le plein. Le bouche-à-oreille a marché. Des gens qui n'achetaient jamais de fromage sont devenus des habitués." },
-        { "text": "Trop à gérer", "hint": "Garder les choses simples", "outcome": "Vous avez passé. Peut-être une autre fois, quand ce sera plus calme." }
+        {
+          "text": "Lancer les soirées vin",
+          "hint": "Revenus en plus + réputation",
+          "outcome": "La première soirée a fait le plein. Le bouche-à-oreille a marché. Des gens qui n'achetaient jamais de fromage sont devenus des habitués."
+        },
+        {
+          "text": "Trop à gérer",
+          "hint": "Garder les choses simples",
+          "outcome": "Vous avez passé. Peut-être une autre fois, quand ce sera plus calme."
+        }
       ]
     },
     "first_raclette_season": {
       "title": "La question raclette",
       "description": "Octobre. Votre deuxième automne à la boutique. La température baisse. Les clients demandent : « Vous avez de la raclette ? » Vous avez quelques meules de base, mais vous pourriez faire plus. La saison raclette arrive.",
       "choices": [
-        { "text": "Tout miser sur la saison raclette", "hint": "Ça peut être énorme...", "outcome": "Vous avez commandé 8 raclettes : classique, fumée, poivre, herbes de Provence... L'étal est impressionnant. Les clients sont intrigués." },
-        { "text": "Quelques classiques", "hint": "Tester le terrain", "outcome": "Vous avez pris trois raclettes solides : une suisse, une française, une fumée. Suffisant sans prendre trop de risque." },
-        { "text": "Rester sur les autres fromages", "hint": "La raclette est partout", "outcome": "Vous avez laissé la mode raclette aux supermarchés." }
+        {
+          "text": "Tout miser sur la saison raclette",
+          "hint": "Ça peut être énorme...",
+          "outcome": "Vous avez commandé 8 raclettes : classique, fumée, poivre, herbes de Provence... L'étal est impressionnant. Les clients sont intrigués."
+        },
+        {
+          "text": "Quelques classiques",
+          "hint": "Tester le terrain",
+          "outcome": "Vous avez pris trois raclettes solides : une suisse, une française, une fumée. Suffisant sans prendre trop de risque."
+        },
+        {
+          "text": "Rester sur les autres fromages",
+          "hint": "La raclette est partout",
+          "outcome": "Vous avez laissé la mode raclette aux supermarchés."
+        }
       ]
     },
     "swiss_invitation": {
       "title": "L'invitation suisse",
       "description": "Un e-mail du Valais. Un producteur de raclette chez qui vous commandez. « Julien, pourquoi ne viendriez-vous pas ? Voir les vaches, les alpages, comprendre pourquoi notre raclette est différente. Une semaine. On vous montre tout. »\n\nÇa coûterait 4 000 € et la boutique fermerait une semaine. Mais les contacts, le savoir, l'histoire...",
       "choices": [
-        { "text": "Partir en Suisse", "hint": "Une semaine dans les Alpes avec des fromagers...", "outcome": "Les Alpes étaient à couper le souffle. Vous avez rencontré des producteurs dont les familles font de la raclette depuis des générations. Vous êtes revenu transformé." },
-        { "text": "Je ne peux pas me le permettre", "hint": "4 000 € et une semaine fermé, c'est trop", "outcome": "Vous avez répondu avec des regrets. « Peut-être l'an prochain. » L'invitation ne s'est pas représentée." }
+        {
+          "text": "Partir en Suisse",
+          "hint": "Une semaine dans les Alpes avec des fromagers...",
+          "outcome": "Les Alpes étaient à couper le souffle. Vous avez rencontré des producteurs dont les familles font de la raclette depuis des générations. Vous êtes revenu transformé."
+        },
+        {
+          "text": "Je ne peux pas me le permettre",
+          "hint": "4 000 € et une semaine fermé, c'est trop",
+          "outcome": "Vous avez répondu avec des regrets. « Peut-être l'an prochain. » L'invitation ne s'est pas représentée."
+        }
       ]
     },
     "raclette_kingdom": {
       "title": "Le royaume de la raclette",
       "description": "Vous avez bâti quelque chose de spécial. Les clients viennent de tout Bruxelles pour votre sélection raclette. Mais vous pourriez aller plus loin : un coin dédié, machines à louer toute l'année, devenir LA destination. Vingt variétés. Un bar à raclette.",
       "choices": [
-        { "text": "Construire le royaume raclette", "hint": "Aller jusqu'au bout", "outcome": "Vous avez refait le coin. Vingt raclettes présentées comme des bijoux. Cinq machines à louer. « La Maison de la Raclette. » Vous êtes devenu une destination." },
-        { "text": "Rester équilibré", "hint": "La raclette c'est bien, les autres fromages aussi", "outcome": "Vous avez gardé une excellente sélection sans tout miser. Une boutique équilibrée. C'est bien aussi." }
+        {
+          "text": "Construire le royaume raclette",
+          "hint": "Aller jusqu'au bout",
+          "outcome": "Vous avez refait le coin. Vingt raclettes présentées comme des bijoux. Cinq machines à louer. « La Maison de la Raclette. » Vous êtes devenu une destination."
+        },
+        {
+          "text": "Rester équilibré",
+          "hint": "La raclette c'est bien, les autres fromages aussi",
+          "outcome": "Vous avez gardé une excellente sélection sans tout miser. Une boutique équilibrée. C'est bien aussi."
+        }
       ]
     },
     "parmigiano_invitation": {
       "title": "Le roi des fromages vous appelle",
       "description": "Un e-mail d'Émilie-Romagne. Un consortium de producteurs de Parmigiano Reggiano a entendu parler de votre boutique. « Nous vous invitons. Trois jours, tout compris — voir les vaches, les meules, goûter 24, 36, 72 mois d'affinage. »\n\n6 000 €. Le voyage d'une vie pour un fromager.",
       "choices": [
-        { "text": "Partir en Émilie-Romagne", "hint": "C'est le rêve. Le sommet absolu.", "outcome": "Les Apennins. La traite à l'aube. Les chaudrons de cuivre. Le Parmigiano 72 mois vous a fait pleurer. Vous êtes revenu changé. Plus seulement commerçant. Un vrai fromager." },
-        { "text": "Je ne peux pas justifier 6 000 €", "hint": "C'est beaucoup d'argent...", "outcome": "Vous avez décliné. « Contraintes. » Ils ont compris. Vous vous êtes demandé, des années après, à quoi ressemblaient ces montagnes à l'aube." }
+        {
+          "text": "Partir en Émilie-Romagne",
+          "hint": "C'est le rêve. Le sommet absolu.",
+          "outcome": "Les Apennins. La traite à l'aube. Les chaudrons de cuivre. Le Parmigiano 72 mois vous a fait pleurer. Vous êtes revenu changé. Plus seulement commerçant. Un vrai fromager."
+        },
+        {
+          "text": "Je ne peux pas justifier 6 000 €",
+          "hint": "C'est beaucoup d'argent...",
+          "outcome": "Vous avez décliné. « Contraintes. » Ils ont compris. Vous vous êtes demandé, des années après, à quoi ressemblaient ces montagnes à l'aube."
+        }
       ]
     },
     "birthday_party": {
       "title": "Votre anniversaire approche",
       "description": "Votre anniversaire arrive. Votre conjoint fait des allusions. « On pourrait fêter ça à la boutique. Inviter tout le monde — clients, fournisseurs, amis. Célébrer ce que vous avez bâti. » Ce serait le chaos. Un beau chaos. Ou garder ça simple — dîner en petit comité.",
       "choices": [
-        { "text": "Faire la grande fête à la boutique", "hint": "Une vraie fête coûte cher", "outcome": "La boutique était pleine. Habitués, producteurs, vieux amis. Un gâteau en forme de meule de Comté. Bar ouvert, traiteur. Épuisant. Parfait." },
-        { "text": "Rester simple — dîner en amoureux", "hint": "Bon resto, bon vin", "outcome": "Un dîner tranquille. Bon vin. Les histoires. Ceux qui comptent savaient déjà." }
+        {
+          "text": "Faire la grande fête à la boutique",
+          "hint": "Une vraie fête coûte cher",
+          "outcome": "La boutique était pleine. Habitués, producteurs, vieux amis. Un gâteau en forme de meule de Comté. Bar ouvert, traiteur. Épuisant. Parfait."
+        },
+        {
+          "text": "Rester simple — dîner en amoureux",
+          "hint": "Bon resto, bon vin",
+          "outcome": "Un dîner tranquille. Bon vin. Les histoires. Ceux qui comptent savaient déjà."
+        }
       ]
     },
     "regular_appreciation": {
       "title": "Le cadeau des habitués",
       "description": "Un groupe de vos clients les plus fidèles arrive avec un paquet. « Trois ans que vous nous nourrissez. On voulait dire merci. » Dedans : une planche à fromage en bois, gravée « Chez Julien ».",
       "choices": [
-        { "text": "L'exposer fièrement en boutique", "hint": "Que tout le monde voie ce que communauté veut dire", "outcome": "Vous l'avez accrochée derrière le comptoir. Les clients demandent. « C'est quoi ? » « Un cadeau des habitués. » C'est devenu partie de l'histoire." },
-        { "text": "La garder à la maison pour les dîners en famille", "hint": "Certaines choses sont personnelles", "outcome": "Elle est sur votre table. Chaque soir fromage, vous pensez à eux." }
+        {
+          "text": "L'exposer fièrement en boutique",
+          "hint": "Que tout le monde voie ce que communauté veut dire",
+          "outcome": "Vous l'avez accrochée derrière le comptoir. Les clients demandent. « C'est quoi ? » « Un cadeau des habitués. » C'est devenu partie de l'histoire."
+        },
+        {
+          "text": "La garder à la maison pour les dîners en famille",
+          "hint": "Certaines choses sont personnelles",
+          "outcome": "Elle est sur votre table. Chaque soir fromage, vous pensez à eux."
+        }
       ]
     },
     "competitor_closes": {
       "title": "La concurrence ferme",
       "description": "Vous apprenez la nouvelle : la fromagerie de l'avenue Louise ferme. Ils n'ont pas tenu — loyer trop haut, pas assez de différenciation. Leurs clients chercheront ailleurs. Certains vous trouveront.",
       "choices": [
-        { "text": "Contacter leurs fournisseurs", "hint": "L'occasion frappe", "outcome": "Vous avez passé des coups de fil. Récupéré deux excellents fournisseurs. Leur perte, votre gain." },
-        { "text": "Laisser les clients vous trouver naturellement", "hint": "Pas besoin d'être agressif", "outcome": "Les mois suivants, des visages familiers sont apparus. « On allait avant à... » « Je sais. Bienvenue. »" }
+        {
+          "text": "Contacter leurs fournisseurs",
+          "hint": "L'occasion frappe",
+          "outcome": "Vous avez passé des coups de fil. Récupéré deux excellents fournisseurs. Leur perte, votre gain."
+        },
+        {
+          "text": "Laisser les clients vous trouver naturellement",
+          "hint": "Pas besoin d'être agressif",
+          "outcome": "Les mois suivants, des visages familiers sont apparus. « On allait avant à... » « Je sais. Bienvenue. »"
+        }
       ]
     },
     "apprentice_request": {
       "title": "L'apprenti",
       "description": "Un élève d'école hôtelière vous écrit. Il veut faire un stage dans votre boutique. « Je veux apprendre auprès de quelqu'un qui connaît vraiment le fromage. » Ce serait du travail de l'encadrer. Mais c'est aussi... flatteur.",
       "choices": [
-        { "text": "Le prendre un mois", "hint": "Main d'œuvre en plus, moment de transmission", "outcome": "Il était enthousiaste, maladroit, plein de questions. À la fin il tenait le comptoir seul. Il a parlé de vous dans son mémoire." },
-        { "text": "Décliner poliment", "hint": "Pas le temps d'enseigner", "outcome": "Vous avez répondu avec des regrets. « Peut-être l'an prochain quand ce sera plus calme. » Ça n'a jamais été plus calme." }
+        {
+          "text": "Le prendre un mois",
+          "hint": "Main d'œuvre en plus, moment de transmission",
+          "outcome": "Il était enthousiaste, maladroit, plein de questions. À la fin il tenait le comptoir seul. Il a parlé de vous dans son mémoire."
+        },
+        {
+          "text": "Décliner poliment",
+          "hint": "Pas le temps d'enseigner",
+          "outcome": "Vous avez répondu avec des regrets. « Peut-être l'an prochain quand ce sera plus calme. » Ça n'a jamais été plus calme."
+        }
       ]
     },
     "food_blogger_visit": {
       "title": "La blogueuse food",
       "description": "Quelqu'un prend beaucoup de photos dans la boutique. Vous la reconnaissez — 50 000 abonnés, elle écrit sur la scène food à Bruxelles. Elle demande si elle peut vous interviewer.",
       "choices": [
-        { "text": "Lui faire la visite et l'interview", "hint": "Pub gratuite pour 50 k abonnés", "outcome": "Elle a posté un carrousel de 10 photos avec des légendes élogieuses. Vos abonnés ont triplé. De nouveaux visages pendant des semaines." },
-        { "text": "Poliment refuser les projecteurs", "hint": "Vous n'avez pas besoin de l'attention", "outcome": "Elle était déçue mais a compris. Elle a pris quelques photos. Vous a tagué. Petite vague de nouveaux clients." }
+        {
+          "text": "Lui faire la visite et l'interview",
+          "hint": "Pub gratuite pour 50 k abonnés",
+          "outcome": "Elle a posté un carrousel de 10 photos avec des légendes élogieuses. Vos abonnés ont triplé. De nouveaux visages pendant des semaines."
+        },
+        {
+          "text": "Poliment refuser les projecteurs",
+          "hint": "Vous n'avez pas besoin de l'attention",
+          "outcome": "Elle était déçue mais a compris. Elle a pris quelques photos. Vous a tagué. Petite vague de nouveaux clients."
+        }
       ]
     },
     "reflection_moment": {
       "title": "Un moment pour réfléchir",
       "description": "C'est un mardi après-midi calme. La boutique est vide pour une fois. Vous regardez autour — le comptoir que vous avez bâti, les photos au mur, le rythme que vous avez créé. Le chemin parcouru depuis ce premier mois terrifiant.",
       "choices": [
-        { "text": "Faire le point et être fier", "hint": "Vous avez mérité ce moment", "outcome": "Vous vous êtes assis sur le tabouret, mangé un morceau de Comté, et souri. Tout n'était pas parfait. Mais vous avez bâti quelque chose de réel." },
-        { "text": "Commencer à planifier la suite", "hint": "Et après ?", "outcome": "Vous avez sorti un carnet. Agrandissement ? Enseigner ? Écrire un livre ? L'avenir était ouvert." }
+        {
+          "text": "Faire le point et être fier",
+          "hint": "Vous avez mérité ce moment",
+          "outcome": "Vous vous êtes assis sur le tabouret, mangé un morceau de Comté, et souri. Tout n'était pas parfait. Mais vous avez bâti quelque chose de réel."
+        },
+        {
+          "text": "Commencer à planifier la suite",
+          "hint": "Et après ?",
+          "outcome": "Vous avez sorti un carnet. Agrandissement ? Enseigner ? Écrire un livre ? L'avenir était ouvert."
+        }
       ]
     },
     "newspaper_feature": {
       "title": "Le journal local appelle",
       "description": "Un journaliste du journal local veut faire un reportage sur votre boutique. « La révolution fromagère du quartier. » De la pub gratuite.",
       "choices": [
-        { "text": "Accueillir le journaliste", "hint": "Pub gratuite !", "outcome": "L'article est sorti. Votre téléphone n'a pas arrêté. De nouveaux clients de trois communes." },
-        { "text": "Préférer rester discret", "hint": "Pas envie de l'attention", "outcome": "Vous avez poliment décliné. L'anonymat a sa valeur." }
+        {
+          "text": "Accueillir le journaliste",
+          "hint": "Pub gratuite !",
+          "outcome": "L'article est sorti. Votre téléphone n'a pas arrêté. De nouveaux clients de trois communes."
+        },
+        {
+          "text": "Préférer rester discret",
+          "hint": "Pas envie de l'attention",
+          "outcome": "Vous avez poliment décliné. L'anonymat a sa valeur."
+        }
       ]
     },
     "expand_hours": {
       "title": "Horaires étendus ?",
       "description": "Les clients demandent si vous pourriez fermer plus tard. « Je finis à 18 h, vous fermez à 18 h ! » Ouvrir jusqu'à 19 h 30 pourrait capter les gens après le boulot.",
       "choices": [
-        { "text": "Prolonger jusqu'à 19 h 30", "hint": "Plus de chiffre, plus d'heures", "outcome": "La clientèle après le travail vous a trouvée. Les ventes ont augmenté en semaine." },
-        { "text": "Garder les horaires actuels", "hint": "Protéger vos soirées", "outcome": "Vous avez gardé vos soirées. Certaines choses valent plus que l'argent." }
+        {
+          "text": "Prolonger jusqu'à 19 h 30",
+          "hint": "Plus de chiffre, plus d'heures",
+          "outcome": "La clientèle après le travail vous a trouvée. Les ventes ont augmenté en semaine."
+        },
+        {
+          "text": "Garder les horaires actuels",
+          "hint": "Protéger vos soirées",
+          "outcome": "Vous avez gardé vos soirées. Certaines choses valent plus que l'argent."
+        }
       ]
     },
     "talk_to_customers": {
       "title": "La tournée d'écoute",
       "description": "Vous avez remarqué : plus vous discutez avec les clients, plus vous comprenez ce qu'ils veulent. Madame Hermans a parlé d'un fromage italien précis. M. Peeters des accords vin. Ils vous disent quoi vendre.",
       "choices": [
-        { "text": "Prendre le temps des conversations", "hint": "Service plus lent mais fidélise", "outcome": "Vous avez passé plus de temps avec chaque client. Noms, préférences, histoires. Ils ont commencé à amener des amis." },
-        { "text": "Garder un service efficace", "hint": "Plus de clients à la porte", "outcome": "Rapide et pro. Mais vous avez raté quelque chose — le lien qui fait d'une boutique de quartier un lieu spécial." }
+        {
+          "text": "Prendre le temps des conversations",
+          "hint": "Service plus lent mais fidélise",
+          "outcome": "Vous avez passé plus de temps avec chaque client. Noms, préférences, histoires. Ils ont commencé à amener des amis."
+        },
+        {
+          "text": "Garder un service efficace",
+          "hint": "Plus de clients à la porte",
+          "outcome": "Rapide et pro. Mais vous avez raté quelque chose — le lien qui fait d'une boutique de quartier un lieu spécial."
+        }
       ]
     },
     "christmas_rush": {
       "title": "Le chaos de Noël",
       "description": "Décembre vous tombe dessus. Raclette, Comté, Beaufort — tout le monde veut des plateaux. La queue dépasse la porte. Vous n'avez pas déjeuné depuis trois jours.",
       "choices": [
-        { "text": "Tenir bon — c'est votre moment", "hint": "Revenus max mais stress max", "outcome": "Vous avez survécu à décembre. De justesse. 40 meules de raclette, 200 bouteilles. Le chiffre était incroyable. Votre corps un peu moins." },
-        { "text": "Poser des limites — fermer à l'heure, limiter les commandes", "hint": "Moins de revenus mais tenable", "outcome": "Vous avez arrêté les plateaux après le 20. Certains ont râlé. Mais vous êtes passé sans passer à l'hôpital." }
+        {
+          "text": "Tenir bon — c'est votre moment",
+          "hint": "Revenus max mais stress max",
+          "outcome": "Vous avez survécu à décembre. De justesse. 40 meules de raclette, 200 bouteilles. Le chiffre était incroyable. Votre corps un peu moins."
+        },
+        {
+          "text": "Poser des limites — fermer à l'heure, limiter les commandes",
+          "hint": "Moins de revenus mais tenable",
+          "outcome": "Vous avez arrêté les plateaux après le 20. Certains ont râlé. Mais vous êtes passé sans passer à l'hôpital."
+        }
       ]
     },
     "summer_slowdown": {
       "title": "La baisse d'été",
       "description": "Août. Bruxelles se vide. Vos habitués sont à la côte. Les ventes de fromage chutent de 40 %. La Tomme aux Fleurs vieillit plus vite qu'elle ne se vend.",
       "choices": [
-        { "text": "Réduire les commandes et tenir", "hint": "Éviter le gaspillage", "outcome": "Vous avez commandé au minimum. Du stock a quand même périmé. L'été est long." },
-        { "text": "Profiter pour rénover / promos", "hint": "Attirer ceux qui restent", "outcome": "Vous avez fait des promos ciblées. Quelques nouveaux clients. La saison est passée." }
+        {
+          "text": "Réduire les commandes et tenir",
+          "hint": "Éviter le gaspillage",
+          "outcome": "Vous avez commandé au minimum. Du stock a quand même périmé. L'été est long."
+        },
+        {
+          "text": "Profiter pour rénover / promos",
+          "hint": "Attirer ceux qui restent",
+          "outcome": "Vous avez fait des promos ciblées. Quelques nouveaux clients. La saison est passée."
+        },
+        {
+          "text": "Prendre une semaine de vacances",
+          "hint": "De vraies vacances coûtent de l'argent",
+          "outcome": "Vous avez fermé une semaine. Première vraie pause depuis des mois. La côte belge était réparatrice. Laissez le fromage s'affiner."
+        }
       ]
     },
     "heat_wave": {
       "title": "La canicule",
       "description": "Une vague de chaleur. Le frigo peine. Les clients hésitent à sortir. Vous devez jeter du fromage qui n'a pas tenu la température.",
       "choices": [
-        { "text": "Investir dans un meilleur climatiseur", "hint": "Coûteux mais protège le stock", "outcome": "Vous avez fait installer un climatiseur plus puissant. Le fromage a tenu. La facture d'électricité aussi." },
-        { "text": "Réduire les commandes et surveiller", "hint": "Limiter les pertes", "outcome": "Vous avez surveillé de près. Quelques pertes. La canicule est passée." }
+        {
+          "text": "Investir dans un meilleur climatiseur",
+          "hint": "Coûteux mais protège le stock",
+          "outcome": "Vous avez fait installer un climatiseur plus puissant. Le fromage a tenu. La facture d'électricité aussi."
+        },
+        {
+          "text": "Réduire les commandes et surveiller",
+          "hint": "Limiter les pertes",
+          "outcome": "Vous avez surveillé de près. Quelques pertes. La canicule est passée."
+        },
+        {
+          "text": "Fermer plus tôt les pires jours",
+          "hint": "Ça ne vaut pas le risque pour le stock",
+          "outcome": "Vous avez fermé à 15 h pendant trois jours. Des ventes perdues, mais le frigo a récupéré. Parfois, le repli est malin."
+        }
       ]
     },
     "snow_day": {
       "title": "Le jour de neige",
       "description": "Il neige. Vraiment. Les rues sont vides. Les livraisons sont annulées. Vous ouvrez quand même.",
       "choices": [
-        { "text": "Ouvrir normalement", "hint": "Les courageux viendront", "outcome": "Quelques habitués sont venus. Vous étiez là. Ça compte." },
-        { "text": "Fermer pour la journée", "hint": "Personne ne viendra", "outcome": "Vous avez affiché « Fermé ». Une journée de repos forcé. La neige a fondu le lendemain." }
+        {
+          "text": "Ouvrir normalement",
+          "hint": "Les courageux viendront",
+          "outcome": "Quelques habitués sont venus. Vous étiez là. Ça compte."
+        },
+        {
+          "text": "Fermer pour la journée",
+          "hint": "Personne ne viendra",
+          "outcome": "Vous avez affiché « Fermé ». Une journée de repos forcé. La neige a fondu le lendemain."
+        }
       ]
     },
     "back_to_school": {
       "title": "La rentrée",
       "description": "Septembre. Les familles reviennent. Les commandes repartent. C'est le moment de recréer du lien ou de lancer des promos.",
       "choices": [
-        { "text": "Promo rentrée et visibilité", "hint": "Attirer les familles", "outcome": "Vous avez fait une opération rentrée. Les ventes ont redémarré." },
-        { "text": "Rester sobre", "hint": "La qualité suffit", "outcome": "Vous n'avez rien changé. Les habitués sont revenus naturellement." }
+        {
+          "text": "Promo rentrée et visibilité",
+          "hint": "Attirer les familles",
+          "outcome": "Vous avez fait une opération rentrée. Les ventes ont redémarré."
+        },
+        {
+          "text": "Rester sobre",
+          "hint": "La qualité suffit",
+          "outcome": "Vous n'avez rien changé. Les habitués sont revenus naturellement."
+        }
       ]
     },
     "supplier_price_hike": {
       "title": "Hausse des fournisseurs",
       "description": "Vos fournisseurs annoncent une hausse des prix. L'inflation. Vous devez soit augmenter vos prix, soit rogner sur les marges.",
       "choices": [
-        { "text": "Augmenter les prix", "hint": "Risque de perdre des clients", "outcome": "Vous avez augmenté. Quelques clients ont râlé. La plupart ont compris." },
-        { "text": "Absorber une partie", "hint": "Marges en baisse", "outcome": "Vous avez gardé les prix. Vos marges ont souffert. Vous avez gardé la confiance." }
+        {
+          "text": "Augmenter les prix",
+          "hint": "Risque de perdre des clients",
+          "outcome": "Vous avez augmenté. Quelques clients ont râlé. La plupart ont compris."
+        },
+        {
+          "text": "Absorber une partie",
+          "hint": "Marges en baisse",
+          "outcome": "Vous avez gardé les prix. Vos marges ont souffert. Vous avez gardé la confiance."
+        },
+        {
+          "text": "Négocier – menacer de changer de fournisseur",
+          "hint": "Risqué, mais ça peut payer si vous avez du poids",
+          "outcome": "Vous avez appelé Lalero et insisté. Ils ont cédé. « Pour vous, Julien, 8 % au lieu de 15 %. » Les relations, ça sert."
+        }
       ]
     },
     "delivery_disaster": {
       "title": "Catastrophe de livraison",
       "description": "La livraison du jeudi n'arrive pas. Problème chez le transporteur. Vous n'avez pas de fromage pour le week-end.",
       "choices": [
-        { "text": "Commander en urgence ailleurs", "hint": "Cher mais vous avez du stock", "outcome": "Vous avez trouvé un autre fournisseur. Livraison express. Le week-end est sauvé, la marge un peu moins." },
-        { "text": "Afficher rupture et gérer", "hint": "Pas de fromage frais ce week-end", "outcome": "Vous avez affiché les ruptures. Les clients ont compris. Vous avez perdu des ventes." }
+        {
+          "text": "Commander en urgence ailleurs",
+          "hint": "Cher mais vous avez du stock",
+          "outcome": "Vous avez trouvé un autre fournisseur. Livraison express. Le week-end est sauvé, la marge un peu moins."
+        },
+        {
+          "text": "Afficher rupture et gérer",
+          "hint": "Pas de fromage frais ce week-end",
+          "outcome": "Vous avez affiché les ruptures. Les clients ont compris. Vous avez perdu des ventes."
+        }
       ]
     },
     "health_inspection": {
       "title": "Contrôle AFSCA",
       "description": "L'AFSCA annonce une visite. Contrôle d'hygiène. Tout doit être irréprochable.",
       "choices": [
-        { "text": "Tout préparer à fond", "hint": "Heures de travail", "outcome": "Vous avez tout nettoyé, tout rangé. Le contrôle s'est bien passé. Aucune remarque." },
-        { "text": "Rester normal", "hint": "On est déjà propres", "outcome": "Vous n'avez pas changé vos habitudes. Le contrôle a noté deux petits points. Rien de grave." }
+        {
+          "text": "Tout préparer à fond",
+          "hint": "Heures de travail",
+          "outcome": "Vous avez tout nettoyé, tout rangé. Le contrôle s'est bien passé. Aucune remarque."
+        },
+        {
+          "text": "Rester normal",
+          "hint": "On est déjà propres",
+          "outcome": "Vous n'avez pas changé vos habitudes. Le contrôle a noté deux petits points. Rien de grave."
+        }
       ]
     },
     "competitor_opens": {
       "title": "Un concurrent ouvre",
       "description": "Une nouvelle fromagerie ouvre à deux rues. Ils ont de beaux fromages. Les clients ont le choix.",
       "choices": [
-        { "text": "Renforcer votre offre et le lien client", "hint": "Qualité et relation", "outcome": "Vous avez mis l'accent sur le conseil et les produits qu'ils n'ont pas. Vos habitués sont restés." },
-        { "text": "Baisser les prix temporairement", "hint": "Guerre des prix", "outcome": "Vous avez fait des promos. Les marges ont souffert. Certains clients sont revenus." }
+        {
+          "text": "Renforcer votre offre et le lien client",
+          "hint": "Qualité et relation",
+          "outcome": "Vous avez mis l'accent sur le conseil et les produits qu'ils n'ont pas. Vos habitués sont restés."
+        },
+        {
+          "text": "Baisser les prix temporairement",
+          "hint": "Guerre des prix",
+          "outcome": "Vous avez fait des promos. Les marges ont souffert. Certains clients sont revenus."
+        },
+        {
+          "text": "Les ignorer et se concentrer sur son travail",
+          "hint": "Ne pas se laisser consumer",
+          "outcome": "Vous avez essayé de ne pas y penser. Mais chaque jour calme, vous vous demandiez s'ils étaient occupés."
+        }
       ]
     },
     "fridge_breakdown": {
       "title": "Le frigo lâche",
       "description": "Le compresseur du frigo à fromage fait un bruit bizarre. Puis plus rien. Il fait 18°C dans la vitrine.",
       "choices": [
-        { "text": "Appeler un dépanneur en urgence", "hint": "Cher mais vous sauvez le stock", "outcome": "Le dépanneur est venu en deux heures. Réparation coûteuse. Le fromage a tenu." },
-        { "text": "Transférer le stock au sous-sol / autre frigo", "hint": "Bricolage", "outcome": "Vous avez déplacé ce que vous pouviez. Vous en avez perdu. Le frigo a été réparé le lendemain." }
+        {
+          "text": "Appeler un dépanneur en urgence",
+          "hint": "Cher mais vous sauvez le stock",
+          "outcome": "Le dépanneur est venu en deux heures. Réparation coûteuse. Le fromage a tenu."
+        },
+        {
+          "text": "Transférer le stock au sous-sol / autre frigo",
+          "hint": "Bricolage",
+          "outcome": "Vous avez déplacé ce que vous pouviez. Vous en avez perdu. Le frigo a été réparé le lendemain."
+        }
       ]
     },
     "producer_visit_lalero": {
       "title": "Visite chez Lalero",
       "description": "Votre grossiste fromager propose une visite chez un producteur. Voir les vaches, les caves. Renforcer la relation.",
       "choices": [
-        { "text": "Y aller", "hint": "Une journée, relation renforcée", "outcome": "Vous avez passé la journée sur place. Vous comprenez mieux leurs fromages. La relation s'est renforcée." },
-        { "text": "Decliner", "hint": "Pas le temps", "outcome": "Vous avez décliné. La boutique ne peut pas se passer de vous un jour entier." }
+        {
+          "text": "Y aller",
+          "hint": "Une journée, relation renforcée",
+          "outcome": "Vous avez passé la journée sur place. Vous comprenez mieux leurs fromages. La relation s'est renforcée."
+        },
+        {
+          "text": "Decliner",
+          "hint": "Pas le temps",
+          "outcome": "Vous avez décliné. La boutique ne peut pas se passer de vous un jour entier."
+        },
+        {
+          "text": "Décliner – impossible de quitter la boutique",
+          "hint": "Jouer la sécurité",
+          "outcome": "« Peut-être l'an prochain », vous écrivez. L'opportunité passe. Il y aura toujours l'an prochain... non ?"
+        }
       ]
     },
     "cheese_course": {
       "title": "Formation fromage",
       "description": "Une formation professionnelle « Connaissance des fromages » est proposée. Trois jours. Coûteux mais ça vous différencie.",
       "choices": [
-        { "text": "S'inscrire", "hint": "Investissement en expertise", "outcome": "Vous avez suivi la formation. Vous parlez des fromages avec plus d'assurance. Les clients sentent la différence." },
-        { "text": "Passer", "hint": "Apprendre sur le tas", "outcome": "Vous avez passé. Vous continuez d'apprendre avec les producteurs et les livres." }
+        {
+          "text": "S'inscrire",
+          "hint": "Investissement en expertise",
+          "outcome": "Vous avez suivi la formation. Vous parlez des fromages avec plus d'assurance. Les clients sentent la différence."
+        },
+        {
+          "text": "Passer",
+          "hint": "Apprendre sur le tas",
+          "outcome": "Vous avez passé. Vous continuez d'apprendre avec les producteurs et les livres."
+        }
       ]
     },
     "bulk_supplier_deal": {
       "title": "Offre du fournisseur vrac",
       "description": "Votre fournisseur vrac propose un contrat annuel avec remise. Vous vous engagez sur des volumes.",
       "choices": [
-        { "text": "Signer le contrat", "hint": "Remise mais engagement", "outcome": "Vous avez signé. Les prix ont baissé. Vous devez écouler le volume." },
-        { "text": "Rester au coup par coup", "hint": "Flexibilité", "outcome": "Vous avez gardé la liberté. Pas de remise, pas d'engagement." }
+        {
+          "text": "Signer le contrat",
+          "hint": "Remise mais engagement",
+          "outcome": "Vous avez signé. Les prix ont baissé. Vous devez écouler le volume."
+        },
+        {
+          "text": "Rester au coup par coup",
+          "hint": "Flexibilité",
+          "outcome": "Vous avez gardé la liberté. Pas de remise, pas d'engagement."
+        },
+        {
+          "text": "Garder la flexibilité",
+          "hint": "Pas d'engagement, mais pas de remise",
+          "outcome": "Vous avez gardé votre trésorerie libre. La remise aurait été sympa, mais la liberté a de la valeur aussi."
+        }
       ]
     },
     "staff_training": {
       "title": "Former l'équipe",
       "description": "Lucas et Henry connaissent les bases. Vous pourriez leur faire une vraie formation fromage pour qu'ils conseillent comme vous.",
       "choices": [
-        { "text": "Organiser une formation", "hint": "Temps et coût", "outcome": "Vous leur avez fait une formation. Ils conseillent mieux. Vous pouvez déléguer davantage." },
-        { "text": "Continuer sur le tas", "hint": "Ils apprennent en faisant", "outcome": "Ils apprennent en vous regardant. Plus lent mais pas de coût de formation." }
+        {
+          "text": "Organiser une formation",
+          "hint": "Temps et coût",
+          "outcome": "Vous leur avez fait une formation. Ils conseillent mieux. Vous pouvez déléguer davantage."
+        },
+        {
+          "text": "Continuer sur le tas",
+          "hint": "Ils apprennent en faisant",
+          "outcome": "Ils apprennent en vous regardant. Plus lent mais pas de coût de formation."
+        }
       ]
     },
     "friend_needs_help": {
       "title": "Un ami a besoin d'aide",
       "description": "Un vieil ami vous appelle. Il traverse une mauvaise passe. Il a besoin de vous — d'un prêt, de votre temps, ou juste d'écouter.",
       "choices": [
-        { "text": "L'aider", "hint": "Ça coûte du temps ou de l'argent", "outcome": "Vous avez été là. Il ne l'oubliera pas. Vous non plus." },
-        { "text": "Rester à distance", "hint": "Vous avez déjà trop à gérer", "outcome": "Vous avez dit que vous ne pouviez pas. La relation s'est refroidie." }
+        {
+          "text": "L'aider",
+          "hint": "Ça coûte du temps ou de l'argent",
+          "outcome": "Vous avez été là. Il ne l'oubliera pas. Vous non plus."
+        },
+        {
+          "text": "Rester à distance",
+          "hint": "Vous avez déjà trop à gérer",
+          "outcome": "Vous avez dit que vous ne pouviez pas. La relation s'est refroidie."
+        }
       ]
     },
     "bad_review": {
       "title": "Mauvaise note",
       "description": "Un avis négatif apparaît en ligne. « Fromage correct mais le vendeur était désagréable. » Vous vous souvenez du client. Il avait raison sur un point : vous étiez à bout ce jour-là.",
       "choices": [
-        { "text": "Répondre publiquement et vous excuser", "hint": "Montrer l'humilité", "outcome": "Vous avez répondu calmement. Vous vous êtes excusé. D'autres clients ont défendu la boutique. L'impact s'est limité." },
-        { "text": "Ignorer", "hint": "Ne pas alimenter", "outcome": "Vous n'avez pas répondu. L'avis est resté. Quelques clients ont peut-être hésité." }
+        {
+          "text": "Répondre publiquement et vous excuser",
+          "hint": "Montrer l'humilité",
+          "outcome": "Vous avez répondu calmement. Vous vous êtes excusé. D'autres clients ont défendu la boutique. L'impact s'est limité."
+        },
+        {
+          "text": "Ignorer",
+          "hint": "Ne pas alimenter",
+          "outcome": "Vous n'avez pas répondu. L'avis est resté. Quelques clients ont peut-être hésité."
+        },
+        {
+          "text": "Demander aux clients fidèles de laisser des avis",
+          "hint": "Noyer le négatif dans le positif",
+          "outcome": "Des demandes gênantes au comptoir. Mais ça a marché. Vingt nouveaux avis 5 étoiles. L'avis négatif a disparu dans la masse."
+        }
       ]
     },
     "difficult_customer": {
       "title": "Le client difficile",
       "description": "Un client exige un remboursement pour un fromage qu'il dit « pas à son goût ». Vous savez que le fromage était correct. La politique : pas de remboursement goût.",
       "choices": [
-        { "text": "Rembourser pour apaiser", "hint": "Perte d'argent mais pas de conflit", "outcome": "Vous avez remboursé. Il est parti. Les autres clients n'ont rien vu." },
-        { "text": "Tenir la politique", "hint": "Risque de mauvaise ambiance", "outcome": "Vous avez expliqué la politique. Il n'a pas aimé. Il est parti en claquant la porte. Vous avez gardé votre ligne." }
+        {
+          "text": "Rembourser pour apaiser",
+          "hint": "Perte d'argent mais pas de conflit",
+          "outcome": "Vous avez remboursé. Il est parti. Les autres clients n'ont rien vu."
+        },
+        {
+          "text": "Tenir la politique",
+          "hint": "Risque de mauvaise ambiance",
+          "outcome": "Vous avez expliqué la politique. Il n'a pas aimé. Il est parti en claquant la porte. Vous avez gardé votre ligne."
+        },
+        {
+          "text": "Échanger contre quelque chose de plus doux",
+          "hint": "Trouver un compromis",
+          "outcome": "Vous avez proposé un gouda à la place. Ils ont accepté. Crise évitée. Relation sauvée."
+        }
       ]
     },
     "regular_moves_away": {
       "title": "Un habitué part",
       "description": "Madame Dubois vous annonce qu'elle déménage en Flandre. « On va vous manquer. Votre Comté 18 mois... » Elle était là depuis le début.",
       "choices": [
-        { "text": "Lui offrir un petit cadeau d'au revoir", "hint": "Un fromage, un geste", "outcome": "Vous lui avez offert une petite sélection. Elle avait les larmes aux yeux. Elle vous enverra des amis de passage." },
-        { "text": "La remercier simplement", "hint": "Rester sobre", "outcome": "Vous l'avez remerciée. Elle est partie. Les habitués restants sont toujours là." }
+        {
+          "text": "Lui offrir un petit cadeau d'au revoir",
+          "hint": "Un fromage, un geste",
+          "outcome": "Vous lui avez offert une petite sélection. Elle avait les larmes aux yeux. Elle vous enverra des amis de passage."
+        },
+        {
+          "text": "La remercier simplement",
+          "hint": "Rester sobre",
+          "outcome": "Vous l'avez remerciée. Elle est partie. Les habitués restants sont toujours là."
+        }
       ]
     },
     "theft_incident": {
       "title": "Vol",
       "description": "Vous constatez un vol. Du fromage, peut-être une bouteille. Pas énorme mais ça fait mal. Vous pourriez renforcer la surveillance ou lâcher du lest.",
       "choices": [
-        { "text": "Renforcer la vigilance", "hint": "Caméra ou positionnement", "outcome": "Vous avez déplacé les produits sensibles. Mis un miroir. Les vols ont diminué." },
-        { "text": "Accepter un peu de perte", "hint": "Éviter la parano", "outcome": "Vous n'avez pas changé grand-chose. Un vol occasionnel fait partie du métier. Vous ne voulez pas que la boutique ressemble à une forteresse." }
+        {
+          "text": "Renforcer la vigilance",
+          "hint": "Caméra ou positionnement",
+          "outcome": "Vous avez déplacé les produits sensibles. Mis un miroir. Les vols ont diminué."
+        },
+        {
+          "text": "Accepter un peu de perte",
+          "hint": "Éviter la parano",
+          "outcome": "Vous n'avez pas changé grand-chose. Un vol occasionnel fait partie du métier. Vous ne voulez pas que la boutique ressemble à une forteresse."
+        },
+        {
+          "text": "Poster (anonymement) dans les groupes locaux",
+          "hint": "Prévenir les autres commerçants",
+          "outcome": "D'autres commerçants ont répondu – ils savaient exactement de qui vous parliez. Le réseau de quartier s'est activé."
+        }
       ]
     },
     "signature_cheese": {
       "title": "Le fromage signature",
       "description": "Vos clients vous demandent « votre » fromage — celui que vous recommandez toujours. Vous pourriez en faire votre étendard.",
       "choices": [
-        { "text": "Choisir et promouvoir un fromage signature", "hint": "Comté 18 mois, ou Tomme Larzac...", "outcome": "Vous avez choisi. Vous en parlez à chaque client. Il est devenu votre best-seller. Les gens viennent pour lui." },
-        { "text": "Rester généraliste", "hint": "Tout dépend du client", "outcome": "Vous préférez conseiller selon les goûts. Pas de fromage unique. Une offre large." }
+        {
+          "text": "Choisir et promouvoir un fromage signature",
+          "hint": "Comté 18 mois, ou Tomme Larzac...",
+          "outcome": "Vous avez choisi. Vous en parlez à chaque client. Il est devenu votre best-seller. Les gens viennent pour lui."
+        },
+        {
+          "text": "Rester généraliste",
+          "hint": "Tout dépend du client",
+          "outcome": "Vous préférez conseiller selon les goûts. Pas de fromage unique. Une offre large."
+        }
       ]
     },
     "shop_philosophy": {
       "title": "La philosophie de la boutique",
       "description": "Un client vous demande : « C'est quoi, votre truc ? Pourquoi on devrait venir chez vous et pas ailleurs ? » Vous n'avez jamais formulé ça clairement.",
       "choices": [
-        { "text": "Qualité et relation", "hint": "Le bon produit, le bon conseil", "outcome": "Vous avez dit : qualité des produits et relation de confiance. Il a acquiescé. Vous vous êtes dit que c'était ça, votre truc." },
-        { "text": "Le quartier d'abord", "hint": "On est du coin", "outcome": "Vous avez parlé du quartier, des producteurs locaux, du lien. Il a aimé. Vous avez clarifié votre message." }
+        {
+          "text": "Qualité et relation",
+          "hint": "Le bon produit, le bon conseil",
+          "outcome": "Vous avez dit : qualité des produits et relation de confiance. Il a acquiescé. Vous vous êtes dit que c'était ça, votre truc."
+        },
+        {
+          "text": "Le quartier d'abord",
+          "hint": "On est du coin",
+          "outcome": "Vous avez parlé du quartier, des producteurs locaux, du lien. Il a aimé. Vous avez clarifié votre message."
+        },
+        {
+          "text": "« Le lien – je crée des relations, pas des transactions »",
+          "hint": "Retenir les noms, soutenir le local, faire partie du quartier",
+          "outcome": "Vous avez mémorisé le nom et les goûts de chaque habitué. Soutenu les événements de quartier. Devenu le cœur du voisinage."
+        }
       ]
     },
     "mentor_opportunity": {
       "title": "Un mentor",
       "description": "Un ancien fromager à la retraite propose de vous conseiller. Une fois par mois. Gratuit. Il a 40 ans de métier.",
       "choices": [
-        { "text": "Accepter", "hint": "Sagesse gratuite", "outcome": "Vous le voyez une fois par mois. Il vous donne des tuyaux, des contacts. Inestimable." },
-        { "text": "Décliner", "hint": "Vous préférez apprendre seul", "outcome": "Vous avez décliné. Vous avancez à votre rythme." }
+        {
+          "text": "Accepter",
+          "hint": "Sagesse gratuite",
+          "outcome": "Vous le voyez une fois par mois. Il vous donne des tuyaux, des contacts. Inestimable."
+        },
+        {
+          "text": "Décliner",
+          "hint": "Vous préférez apprendre seul",
+          "outcome": "Vous avez décliné. Vous avancez à votre rythme."
+        }
       ]
     },
     "neighborhood_collab": {
       "title": "Collaboration de quartier",
       "description": "La boulangerie et la cave proposent une opération commune : panier découverte. Vous fournissez le fromage, eux le pain et le vin.",
       "choices": [
-        { "text": "Participer", "hint": "Visibilité partagée", "outcome": "Vous avez participé. Les trois commerces ont gagné des clients. Le quartier en a parlé." },
-        { "text": "Rester solo", "hint": "Trop de coordination", "outcome": "Vous avez passé. Vous préférez gérer votre boutique sans dépendre des autres." }
+        {
+          "text": "Participer",
+          "hint": "Visibilité partagée",
+          "outcome": "Vous avez participé. Les trois commerces ont gagné des clients. Le quartier en a parlé."
+        },
+        {
+          "text": "Rester solo",
+          "hint": "Trop de coordination",
+          "outcome": "Vous avez passé. Vous préférez gérer votre boutique sans dépendre des autres."
+        }
       ]
     },
     "cookbook_idea": {
       "title": "L'idée du livre",
       "description": "Quelqu'un vous dit : « Vous devriez écrire un livre. Vos accords, vos histoires de fromage. » C'est un projet. Beaucoup de travail.",
       "choices": [
-        { "text": "Commencer à noter des idées", "hint": "Premier pas", "outcome": "Vous avez ouvert un carnet. Les idées s'accumulent. Un jour peut-être." },
-        { "text": "Sourire et oublier", "hint": "Pas le temps", "outcome": "Vous avez souri. Un livre. Avec la boutique à gérer. Peut-être à la retraite." }
+        {
+          "text": "Commencer à noter des idées",
+          "hint": "Premier pas",
+          "outcome": "Vous avez ouvert un carnet. Les idées s'accumulent. Un jour peut-être."
+        },
+        {
+          "text": "Sourire et oublier",
+          "hint": "Pas le temps",
+          "outcome": "Vous avez souri. Un livre. Avec la boutique à gérer. Peut-être à la retraite."
+        }
       ]
     },
     "seasonal_ritual": {
       "title": "Le rituel de saison",
       "description": "Chaque saison vous avez vos habitudes — les fromages d'été, la raclette en hiver, le pic de Noël. Vous pourriez formaliser ça pour les clients.",
       "choices": [
-        { "text": "Créer des affichages saisonniers", "hint": "Guider le client", "outcome": "Vous avez mis en avant les fromages de saison. Les clients suivent. Les ventes sont plus régulières." },
-        { "text": "Garder la spontanéité", "hint": "Surprise et découverte", "outcome": "Vous préférez que les clients découvrent. Pas de mise en avant trop structurée." }
+        {
+          "text": "Créer des affichages saisonniers",
+          "hint": "Guider le client",
+          "outcome": "Vous avez mis en avant les fromages de saison. Les clients suivent. Les ventes sont plus régulières."
+        },
+        {
+          "text": "Garder la spontanéité",
+          "hint": "Surprise et découverte",
+          "outcome": "Vous préférez que les clients découvrent. Pas de mise en avant trop structurée."
+        },
+        {
+          "text": "« École du fromage » – ateliers mensuels",
+          "hint": "Programme éducatif régulier",
+          "outcome": "Le premier samedi de chaque mois : l'École du Fromage. 8 personnes, 5 fromages, 2 heures de dégustation et d'apprentissage. Les participants sont devenus des ambassadeurs."
+        }
       ]
     },
     "lucas_growth": {
       "title": "Lucas grandit",
       "description": "Lucas n'est plus le stagiaire d'hier. Il gère le comptoir seul, conseille les clients. Il vous demande plus de responsabilités.",
       "choices": [
-        { "text": "Lui donner plus de marge", "hint": "Déléguer", "outcome": "Vous lui avez confié les commandes du jeudi. Il assume. Votre charge diminue." },
-        { "text": "Rester en pilotage", "hint": "Vous gardez la main", "outcome": "Vous gardez le contrôle. Il est un peu frustré mais il reste." }
+        {
+          "text": "Lui donner plus de marge",
+          "hint": "Déléguer",
+          "outcome": "Vous lui avez confié les commandes du jeudi. Il assume. Votre charge diminue."
+        },
+        {
+          "text": "Rester en pilotage",
+          "hint": "Vous gardez la main",
+          "outcome": "Vous gardez le contrôle. Il est un peu frustré mais il reste."
+        }
       ]
     },
     "your_counter_story": {
       "title": "L'histoire du comptoir",
       "description": "Un client vous demande comment vous en êtes arrivé là. « Ce comptoir, cette boutique. Racontez. »",
       "choices": [
-        { "text": "Raconter votre parcours", "hint": "Vrai et personnel", "outcome": "Vous avez raconté. Il a écouté. Il est reparti en disant qu'il reviendrait. Le lien s'est créé." },
-        { "text": "Rester discret", "hint": "Le fromage parle", "outcome": "Vous avez dit : « C'est une longue histoire. » Il a souri. Le fromage a parlé pour vous." }
+        {
+          "text": "Raconter votre parcours",
+          "hint": "Vrai et personnel",
+          "outcome": "Vous avez raconté. Il a écouté. Il est reparti en disant qu'il reviendrait. Le lien s'est créé."
+        },
+        {
+          "text": "Rester discret",
+          "hint": "Le fromage parle",
+          "outcome": "Vous avez dit : « C'est une longue histoire. » Il a souri. Le fromage a parlé pour vous."
+        }
       ]
     },
     "expansion_dream": {
       "title": "Le rêve d'agrandissement",
       "description": "Vous avez les chiffres. La trésorerie. Vous pourriez ouvrir un second point de vente. Ou agrandir celui-ci. Le rêve d'empire.",
       "choices": [
-        { "text": "Étudier une deuxième boutique", "hint": "Risque et ambition", "outcome": "Vous avez regardé les annonces. Trouvé un local. Les chiffres sont serrés mais c'est possible." },
-        { "text": "Rester sur une boutique", "hint": "Une bien faite vaut mieux", "outcome": "Vous avez décidé de rester concentré. Une boutique, bien faite. La paix." }
+        {
+          "text": "Étudier une deuxième boutique",
+          "hint": "Risque et ambition",
+          "outcome": "Vous avez regardé les annonces. Trouvé un local. Les chiffres sont serrés mais c'est possible."
+        },
+        {
+          "text": "Rester sur une boutique",
+          "hint": "Une bien faite vaut mieux",
+          "outcome": "Vous avez décidé de rester concentré. Une boutique, bien faite. La paix."
+        }
       ]
     },
     "documentary_approach": {
       "title": "Une équipe TV",
       "description": "Une équipe de documentaire veut tourner une séquence dans votre boutique. « Les commerces de quartier qui résistent. »",
       "choices": [
-        { "text": "Accepter", "hint": "Visibilité nationale", "outcome": "Ils ont tourné une journée. Le reportage est passé. Des clients sont venus de partout." },
-        { "text": "Refuser", "hint": "Pas envie d'être sous les projecteurs", "outcome": "Vous avez refusé. La boutique reste votre espace. Pas de caméra." }
+        {
+          "text": "Accepter",
+          "hint": "Visibilité nationale",
+          "outcome": "Ils ont tourné une journée. Le reportage est passé. Des clients sont venus de partout."
+        },
+        {
+          "text": "Refuser",
+          "hint": "Pas envie d'être sous les projecteurs",
+          "outcome": "Vous avez refusé. La boutique reste votre espace. Pas de caméra."
+        }
       ]
     },
     "charity_choice": {
       "title": "Don ou mécénat",
       "description": "Une association de quartier demande un don ou des invendus pour une distribution. Vous pourriez donner du fromage ou une somme.",
       "choices": [
-        { "text": "Donner des invendus", "hint": "Pas de perte nette", "outcome": "Vous avez donné ce qui partait en date. L'association était contente. Le quartier vous voit bien." },
-        { "text": "Faire un don en argent", "hint": "Plus flexible pour eux", "outcome": "Vous avez fait un chèque. Ils vous ont remercié chaleureusement." },
-        { "text": "Décliner", "hint": "Pas les moyens cette fois", "outcome": "Vous avez décliné. Vous vous sentez un peu mal mais la trésorerie est serrée." }
+        {
+          "text": "Donner des invendus",
+          "hint": "Pas de perte nette",
+          "outcome": "Vous avez donné ce qui partait en date. L'association était contente. Le quartier vous voit bien."
+        },
+        {
+          "text": "Faire un don en argent",
+          "hint": "Plus flexible pour eux",
+          "outcome": "Vous avez fait un chèque. Ils vous ont remercié chaleureusement."
+        },
+        {
+          "text": "Décliner",
+          "hint": "Pas les moyens cette fois",
+          "outcome": "Vous avez décliné. Vous vous sentez un peu mal mais la trésorerie est serrée."
+        }
       ]
     },
     "naming_ceremony": {
       "title": "Baptême de la boutique",
       "description": "Vous avez enfin choisi le nom officiel. Certains veulent faire une petite fête pour l'inauguration du nom.",
       "choices": [
-        { "text": "Organiser une petite fête", "hint": "Clients et fournisseurs", "outcome": "Vous avez organisé un apéro. Le nom est officiel. Tout le monde sait que c'est Chez Julien." },
-        { "text": "Juste changer la vitrine", "hint": "Sobre", "outcome": "Vous avez peint le nom. Pas de fête. Le nom est là." }
+        {
+          "text": "Organiser une petite fête",
+          "hint": "Clients et fournisseurs",
+          "outcome": "Vous avez organisé un apéro. Le nom est officiel. Tout le monde sait que c'est Chez Julien."
+        },
+        {
+          "text": "Juste changer la vitrine",
+          "hint": "Sobre",
+          "outcome": "Vous avez peint le nom. Pas de fête. Le nom est là."
+        }
       ]
     },
     "special_order": {
       "title": "Commande spéciale",
       "description": "Un client demande un fromage que vous n'avez pas. Vous pourriez le commander spécialement pour lui. Un effort mais il reviendra.",
       "choices": [
-        { "text": "Commander pour lui", "hint": "Service personnalisé", "outcome": "Vous avez passé commande. Le fromage est arrivé. Il est revenu. Et en a parlé." },
-        { "text": "L'orienter ailleurs", "hint": "Pas le temps", "outcome": "Vous lui avez donné une adresse. Il est parti. Peut-être qu'il reviendra pour le reste." }
+        {
+          "text": "Commander pour lui",
+          "hint": "Service personnalisé",
+          "outcome": "Vous avez passé commande. Le fromage est arrivé. Il est revenu. Et en a parlé."
+        },
+        {
+          "text": "L'orienter ailleurs",
+          "hint": "Pas le temps",
+          "outcome": "Vous lui avez donné une adresse. Il est parti. Peut-être qu'il reviendra pour le reste."
+        }
       ]
     },
     "lucas_brings_henry": {
       "title": "Lucas amène Henry",
       "description": "Lucas vous parle d'un ami : Henry. Calme, fiable, passionné de fromage. « Il cherche un truc. Tu cherches quelqu'un. »",
       "choices": [
-        { "text": "Rencontrer Henry", "hint": "Équilibre avec Lucas", "outcome": "Henry a signé. Avec lui et Lucas, vous pouvez enfin déléguer. La boutique tourne sans vous." },
-        { "text": "Pas maintenant", "hint": "L'équipe actuelle suffit", "outcome": "Vous avez dit peut-être plus tard. Vous gérez encore à deux." }
+        {
+          "text": "Rencontrer Henry",
+          "hint": "Équilibre avec Lucas",
+          "outcome": "Henry a signé. Avec lui et Lucas, vous pouvez enfin déléguer. La boutique tourne sans vous."
+        },
+        {
+          "text": "Pas maintenant",
+          "hint": "L'équipe actuelle suffit",
+          "outcome": "Vous avez dit peut-être plus tard. Vous gérez encore à deux."
+        }
       ]
     },
     "direct_hire_help": {
       "title": "Recruter en direct",
       "description": "Vous avez besoin de renfort. Une annonce ou le bouche-à-oreille. Quelqu'un se présente.",
       "choices": [
-        { "text": "L'embaucher", "hint": "Soulagement", "outcome": "Vous avez embauché. Les journées deviennent tenables." },
-        { "text": "Attendre", "hint": "Pas le bon profil", "outcome": "Vous avez décliné. Vous continuez à tenir seul ou avec l'équipe actuelle." }
+        {
+          "text": "L'embaucher",
+          "hint": "Soulagement",
+          "outcome": "Vous avez embauché. Les journées deviennent tenables."
+        },
+        {
+          "text": "Attendre",
+          "hint": "Pas le bon profil",
+          "outcome": "Vous avez décliné. Vous continuez à tenir seul ou avec l'équipe actuelle."
+        },
+        {
+          "text": "Continuer seul",
+          "hint": "L'argent reste dans l'entreprise",
+          "outcome": "Vous avez tenu le coup. Votre corps tenait les comptes."
+        }
       ]
     },
     "student_trap": {
       "title": "Le piège de l'étudiant",
       "description": "Un étudiant propose de travailler pour pas cher. « Juste pour apprendre. » Vous savez que c'est tentant mais risqué.",
       "choices": [
-        { "text": "Le prendre en stage", "hint": "Main-d'œuvre pas chère", "outcome": "Il a tenu deux semaines. Puis il a disparu. Vous avez perdu du temps." },
-        { "text": "Refuser", "hint": "Stabilité d'abord", "outcome": "Vous avez refusé. Vous préférez des gens engagés." }
+        {
+          "text": "Le prendre en stage",
+          "hint": "Main-d'œuvre pas chère",
+          "outcome": "Il a tenu deux semaines. Puis il a disparu. Vous avez perdu du temps."
+        },
+        {
+          "text": "Refuser",
+          "hint": "Stabilité d'abord",
+          "outcome": "Vous avez refusé. Vous préférez des gens engagés."
+        }
       ]
     },
     "peak_performance": {
       "title": "Au sommet",
       "description": "Un mois exceptionnel. Les ventes, la réputation, l'énergie. Tout aligné. Vous sentez que vous pouvez capitaliser ou souffler.",
       "choices": [
-        { "text": "Capitaliser — promos, visibilité", "hint": "Saisir l'élan", "outcome": "Vous avez lancé une opération. Les ventes ont encore monté. Vous êtes épuisé mais content." },
-        { "text": "Souffler un peu", "hint": "Éviter le burnout", "outcome": "Vous avez pris un week-end. Repos. Le mois suivant a été normal. Vous étiez en forme." }
+        {
+          "text": "Capitaliser — promos, visibilité",
+          "hint": "Saisir l'élan",
+          "outcome": "Vous avez lancé une opération. Les ventes ont encore monté. Vous êtes épuisé mais content."
+        },
+        {
+          "text": "Souffler un peu",
+          "hint": "Éviter le burnout",
+          "outcome": "Vous avez pris un week-end. Repos. Le mois suivant a été normal. Vous étiez en forme."
+        },
+        {
+          "text": "Prendre une journée surprise avec votre conjoint",
+          "hint": "Fermer tôt coûte une journée de ventes",
+          "outcome": "Vous avez fermé tôt et surpris votre conjoint. Un long déjeuner, une balade le long du canal, une vraie conversation. Ça faisait longtemps."
+        },
+        {
+          "text": "Juste profiter du moment",
+          "hint": "Parfois la récompense, c'est l'énergie elle-même",
+          "outcome": "Vous n'avez rien fait de spécial – juste travaillé avec une légèreté que vous aviez oubliée. Les clients l'ont senti. Les ventes étaient bonnes. Pas besoin de grand geste."
+        }
       ]
     },
     "dog_in_shop": {
       "title": "Poncho à la boutique",
       "description": "Poncho est devenu une attraction. Les clients viennent le voir. Les enfants le réclament. Mais parfois il renverse des choses.",
       "choices": [
-        { "text": "Le garder au comptoir", "hint": "Il fait partie de la marque", "outcome": "Vous l'avez gardé. Un jour il a renversé un plateau. Personne n'a râlé. C'est Poncho." },
-        { "text": "Le laisser à la maison certains jours", "hint": "Moins de risque", "outcome": "Les jours de grosse affluence il reste à la maison. Les clients demandent où il est." }
+        {
+          "text": "Le garder au comptoir",
+          "hint": "Il fait partie de la marque",
+          "outcome": "Vous l'avez gardé. Un jour il a renversé un plateau. Personne n'a râlé. C'est Poncho."
+        },
+        {
+          "text": "Le laisser à la maison certains jours",
+          "hint": "Moins de risque",
+          "outcome": "Les jours de grosse affluence il reste à la maison. Les clients demandent où il est."
+        }
       ]
     },
     "poncho_cheese_emergency": {
       "title": "Poncho et le fromage",
       "description": "Poncho a mangé un morceau de fromage laissé à portée. Il va bien mais vous avez paniqué. Et perdu une vente.",
       "choices": [
-        { "text": "Renforcer les règles", "hint": "Plus de fromage à sa portée", "outcome": "Vous avez tout mis hors de sa portée. Plus d'incident." },
-        { "text": "Rire et accepter", "hint": "C'est un chien", "outcome": "Vous avez haussé les épaules. Les clients ont rigolé. Poncho est Poncho." }
+        {
+          "text": "Renforcer les règles",
+          "hint": "Plus de fromage à sa portée",
+          "outcome": "Vous avez tout mis hors de sa portée. Plus d'incident."
+        },
+        {
+          "text": "Rire et accepter",
+          "hint": "C'est un chien",
+          "outcome": "Vous avez haussé les épaules. Les clients ont rigolé. Poncho est Poncho."
+        }
       ]
     },
     "poncho_anniversary": {
       "title": "Un an avec Poncho",
-      "description": "Cela fait un an que Poncho est avec vous. Il a grandi. Il fait partie de la boutique.",
+      "description": "Il y a un an, ces yeux vous regardaient depuis le refuge. Maintenant Poncho est le patron — sa chaise à l'entrée, sa place sous le comptoir à fromage, ses fans qui viennent juste pour le voir. Ce n'est plus un chiot. C'est la famille.",
       "choices": [
-        { "text": "Fêter avec les clients", "hint": "Petite dégustation", "outcome": "Vous avez fait une mini-fête. Les clients ont adoré. Poncho a eu des friandises." },
-        { "text": "Fêter en famille", "hint": "Juste nous", "outcome": "Vous avez fêté à la maison. Un gâteau pour lui. Les souvenirs restent." }
+        {
+          "text": "Lui donner des friandises en plus",
+          "hint": "🦴 Bon garçon",
+          "outcome": "Vous lui avez donné une tranche entière de Beaufort. Il le méritait. Lucia a pris des photos de lui endormi dans son fauteuil préféré — tout grand maintenant."
+        }
       ]
     },
     "building_countdown": {
       "title": "Compte à rebours bâtiment",
       "description": "La date d'échéance pour les 80 000 € approche. Vous voyez votre compte. Vous savez si vous y serez ou non.",
       "choices": [
-        { "text": "Continuer à épargner", "hint": "Chaque euro compte", "outcome": "Vous serrez les dents. Chaque vente compte. Vous vous rapprochez." },
-        { "text": "Vérifier les options", "hint": "Prêt, report...", "outcome": "Vous avez vérifié. Les options sont limitées. Vous savez où vous en êtes." }
+        {
+          "text": "Continuer à épargner",
+          "hint": "Chaque euro compte",
+          "outcome": "Vous serrez les dents. Chaque vente compte. Vous vous rapprochez."
+        },
+        {
+          "text": "Vérifier les options",
+          "hint": "Prêt, report...",
+          "outcome": "Vous avez vérifié. Les options sont limitées. Vous savez où vous en êtes."
+        }
       ]
     },
     "building_deadline_extended": {
@@ -1058,195 +2011,544 @@
       "dynamicDescriptionCanAfford": "Le délai prolongé est là. Votre compte : {{bank}} €. Il en faut 85 000 au total (80 k + 5 k de pénalité). Vous avez assez.",
       "dynamicDescriptionCannotAfford": "Le délai prolongé est là. Votre compte : {{bank}} €. Il en faut au moins 80 000. Ce n'est pas assez.",
       "choicesExtendedCanAfford": [
-        { "text": "Signer", "hint": "Payer 85 000 € (80 k + 5 k de pénalité) – c'est le moment", "hintStruggling": "Rassembler {{payment}} € – jusqu'au dernier euro", "outcome": "Vous avez signé. Les 5 000 € de pénalité ont fait mal. Mais vous y êtes arrivé. Le bâtiment est à vous.", "outcomeStruggling": "Vous avez signé. Il a fallu chaque euro – la pénalité a tout pris. Mais vous y êtes arrivé. Le bâtiment est à vous." },
-        { "text": "Laisser tomber quand même", "hint": "La liberté, ce n'est peut-être pas la propriété", "outcome": "Vous avez dit non. Le bâtiment est parti. Vous restez locataire – mais avec vos économies." }
+        {
+          "text": "Signer",
+          "hint": "Payer 85 000 € (80 k + 5 k de pénalité) – c'est le moment",
+          "hintStruggling": "Rassembler {{payment}} € – jusqu'au dernier euro",
+          "outcome": "Vous avez signé. Les 5 000 € de pénalité ont fait mal. Mais vous y êtes arrivé. Le bâtiment est à vous.",
+          "outcomeStruggling": "Vous avez signé. Il a fallu chaque euro – la pénalité a tout pris. Mais vous y êtes arrivé. Le bâtiment est à vous."
+        },
+        {
+          "text": "Laisser tomber quand même",
+          "hint": "La liberté, ce n'est peut-être pas la propriété",
+          "outcome": "Vous avez dit non. Le bâtiment est parti. Vous restez locataire – mais avec vos économies."
+        }
       ],
       "choicesExtendedCannotAfford": [
-        { "text": "Laisser filer", "hint": "Il fallait au moins 80 000 €. Vous avez {{bank}} €.", "outcome": "Même avec le mois de plus, vous n'avez pas atteint les 80 000 €. Le bâtiment est parti. Vous restez locataire." }
+        {
+          "text": "Laisser filer",
+          "hint": "Il fallait au moins 80 000 €. Vous avez {{bank}} €.",
+          "outcome": "Même avec le mois de plus, vous n'avez pas atteint les 80 000 €. Le bâtiment est parti. Vous restez locataire."
+        }
       ],
       "choices": [
-        { "text": "Signer", "hint": "J'ai les 85 000 €", "outcome": "Vous avez signé. Le bâtiment est à vous. La pénalité a fait mal mais c'est fait." },
-        { "text": "Abandonner", "hint": "Trop tard", "outcome": "Vous avez renoncé. Le bâtiment est parti. Vous restez locataire." }
+        {
+          "text": "Signer",
+          "hint": "J'ai les 85 000 €",
+          "outcome": "Vous avez signé. Le bâtiment est à vous. La pénalité a fait mal mais c'est fait."
+        },
+        {
+          "text": "Abandonner",
+          "hint": "Trop tard",
+          "outcome": "Vous avez renoncé. Le bâtiment est parti. Vous restez locataire."
+        }
       ]
     },
     "fancy_sign": {
       "title": "L'enseigne",
       "description": "Votre enseigne actuelle est basique. Un vrai créateur propose une enseigne sur mesure. Cher mais visible.",
       "choices": [
-        { "text": "Investir dans une belle enseigne", "hint": "Image de marque", "outcome": "La nouvelle enseigne attire l'œil. Les passants s'arrêtent. L'investissement a payé." },
-        { "text": "Garder l'actuelle", "hint": "Économiser", "outcome": "Vous avez gardé l'enseigne. L'argent part ailleurs. La boutique se fait connaître autrement." }
+        {
+          "text": "Investir dans une belle enseigne",
+          "hint": "Image de marque",
+          "outcome": "La nouvelle enseigne attire l'œil. Les passants s'arrêtent. L'investissement a payé."
+        },
+        {
+          "text": "Garder l'actuelle",
+          "hint": "Économiser",
+          "outcome": "Vous avez gardé l'enseigne. L'argent part ailleurs. La boutique se fait connaître autrement."
+        }
       ]
     },
     "producer_opportunity": {
       "title": "Visite chez un producteur",
       "description": "Un producteur vous invite. Voir les vaches, les caves. Renforcer la relation et comprendre le fromage.",
       "choices": [
-        { "text": "Y aller", "hint": "Relation et savoir", "outcome": "Vous y êtes allé. Vous comprenez mieux leurs fromages. La relation s'est renforcée." },
-        { "text": "Décliner", "hint": "Pas le temps", "outcome": "Vous avez décliné. La boutique ne peut pas se passer de vous." }
+        {
+          "text": "Y aller",
+          "hint": "Relation et savoir",
+          "outcome": "Vous y êtes allé. Vous comprenez mieux leurs fromages. La relation s'est renforcée."
+        },
+        {
+          "text": "Décliner",
+          "hint": "Pas le temps",
+          "outcome": "Vous avez décliné. La boutique ne peut pas se passer de vous."
+        },
+        {
+          "text": "Envoyer Lucas à la visite",
+          "hint": "Il y va, vous restez ouvert",
+          "outcome": "Lucas est revenu enthousiaste, plein d'histoires. Pas tout à fait comme y aller soi-même, mais la boutique est restée ouverte."
+        }
       ]
     },
     "delegation_moment": {
       "title": "Le moment de déléguer",
       "description": "Vous ne pouvez plus tout faire. Il faut confier des tâches clés à Lucas ou Henry. Commande, ouverture, fermeture.",
       "choices": [
-        { "text": "Déléguer les commandes", "hint": "Grosse charge en moins", "outcome": "Vous leur avez confié les commandes. Vous contrôlez encore mais vous respirez." },
-        { "text": "Garder la main", "hint": "Trop tôt", "outcome": "Vous gardez le contrôle. Vous êtes épuisé mais vous ne lâchez pas." }
+        {
+          "text": "Déléguer les commandes",
+          "hint": "Grosse charge en moins",
+          "outcome": "Vous leur avez confié les commandes. Vous contrôlez encore mais vous respirez."
+        },
+        {
+          "text": "Garder la main",
+          "hint": "Trop tôt",
+          "outcome": "Vous gardez le contrôle. Vous êtes épuisé mais vous ne lâchez pas."
+        }
       ]
     },
     "take_holiday": {
       "title": "Prendre des vacances",
       "description": "Vous n'avez pas pris de vraies vacances depuis des mois. L'équipe peut tenir une semaine. Vous pourriez partir.",
       "choices": [
-        { "text": "Partir une semaine", "hint": "Repos", "outcome": "Vous êtes parti. La boutique a tenu. Vous êtes revenu transformé." },
-        { "text": "Rester", "hint": "Trop de stress à déléguer", "outcome": "Vous êtes resté. Les vacances attendront. Vous vous sentez indispensable." }
+        {
+          "text": "Partir une semaine",
+          "hint": "Repos",
+          "outcome": "Vous êtes parti. La boutique a tenu. Vous êtes revenu transformé."
+        },
+        {
+          "text": "Rester",
+          "hint": "Trop de stress à déléguer",
+          "outcome": "Vous êtes resté. Les vacances attendront. Vous vous sentez indispensable."
+        },
+        {
+          "text": "Pas cette fois",
+          "hint": "La boutique a besoin de vous",
+          "outcome": "Vous êtes resté. Votre conjoint est parti sans vous. La boutique a bien tourné. La relation... moins."
+        }
       ]
     },
     "december_rush": {
       "title": "La ruée de décembre",
       "description": "Décembre. Tout s'accélère. Les plateaux, les raclettes, les bouteilles. Vous pourriez tout assumer ou poser des limites.",
       "choices": [
-        { "text": "Tout assumer", "hint": "Revenus max, stress max", "outcome": "Vous avez tenu. Les ventes ont explosé. Votre corps a encaissé." },
-        { "text": "Limiter les commandes", "hint": "Tenable", "outcome": "Vous avez refusé des commandes après le 20. Certains ont râlé. Vous avez tenu." }
+        {
+          "text": "Tout assumer",
+          "hint": "Revenus max, stress max",
+          "outcome": "Vous avez tenu. Les ventes ont explosé. Votre corps a encaissé."
+        },
+        {
+          "text": "Limiter les commandes",
+          "hint": "Tenable",
+          "outcome": "Vous avez refusé des commandes après le 20. Certains ont râlé. Vous avez tenu."
+        }
       ]
     },
     "systems_project": {
       "title": "Mieux s'organiser",
       "description": "Vous pourriez mettre en place de vrais process : fiches produits, planning des commandes. Du temps au début, du gain après.",
       "choices": [
-        { "text": "Mettre en place des process", "hint": "Investissement temps", "outcome": "Vous avez écrit les process. L'équipe s'y met. Les oublis ont diminué." },
-        { "text": "Continuer à l'instinct", "hint": "Ça marche déjà", "outcome": "Vous avez gardé vos habitudes. Parfois vous oubliez des choses. Vous assumez." }
+        {
+          "text": "Mettre en place des process",
+          "hint": "Investissement temps",
+          "outcome": "Vous avez écrit les process. L'équipe s'y met. Les oublis ont diminué."
+        },
+        {
+          "text": "Continuer à l'instinct",
+          "hint": "Ça marche déjà",
+          "outcome": "Vous avez gardé vos habitudes. Parfois vous oubliez des choses. Vous assumez."
+        },
+        {
+          "text": "Continuer à tout faire soi-même",
+          "hint": "Économiser l'argent",
+          "outcome": "Vous avez rangé l'idée. Peut-être plus tard, quand il y aura plus de marge."
+        }
       ]
     },
     "visibility_push": {
       "title": "Coup de projecteur",
       "description": "Vous pourriez faire un push visibilité : réseaux, flyers, partenariats. Coût et temps.",
       "choices": [
-        { "text": "Lancer une campagne", "hint": "Coût, gain potentiel", "outcome": "Vous avez fait un push. Plus de followers, plus de passage. La notoriété a augmenté." },
-        { "text": "Rester sur le bouche-à-oreille", "hint": "Gratuit", "outcome": "Vous n'avez rien changé. Le bouche-à-oreille continue. Lent mais sûr." }
+        {
+          "text": "Lancer une campagne",
+          "hint": "Coût, gain potentiel",
+          "outcome": "Vous avez fait un push. Plus de followers, plus de passage. La notoriété a augmenté."
+        },
+        {
+          "text": "Rester sur le bouche-à-oreille",
+          "hint": "Gratuit",
+          "outcome": "Vous n'avez rien changé. Le bouche-à-oreille continue. Lent mais sûr."
+        },
+        {
+          "text": "Se concentrer sur les clients existants",
+          "hint": "Le bouche-à-oreille suffit",
+          "outcome": "Vous êtes resté dans votre couloir. Les habitués sont fidèles. Ça compte."
+        }
       ]
     },
     "personal_recharge": {
       "title": "Se recharger",
       "description": "Vous êtes à plat. Un week-end off, un massage, un rien. L'équipe peut tenir.",
       "choices": [
-        { "text": "Prendre un week-end", "hint": "Repos", "outcome": "Vous vous êtes reposé. Vous êtes revenu en forme." },
-        { "text": "Tenir", "hint": "Pas le moment", "outcome": "Vous avez tenu. La fatigue s'accumule." }
+        {
+          "text": "Prendre un week-end",
+          "hint": "Repos",
+          "outcome": "Vous vous êtes reposé. Vous êtes revenu en forme."
+        },
+        {
+          "text": "Tenir",
+          "hint": "Pas le moment",
+          "outcome": "Vous avez tenu. La fatigue s'accumule."
+        },
+        {
+          "text": "Continuer à pousser",
+          "hint": "Pas le temps de souffler",
+          "outcome": "Encore un mois à fond. La boutique avance. Vous... moins. Mais l'élan est l'élan."
+        }
       ]
     },
     "pricing_strategy": {
       "title": "Stratégie de prix",
       "description": "Vos prix sont dans la moyenne. Vous pourriez monter un peu (marge) ou rester accessibles (volume).",
       "choices": [
-        { "text": "Monter légèrement les prix", "hint": "Marge", "outcome": "Vous avez augmenté. Les marges sont meilleures. Quelques clients ont tiqué." },
-        { "text": "Garder les prix", "hint": "Accessibilité", "outcome": "Vous avez gardé les prix. Le volume compense. Les clients sont fidèles." }
+        {
+          "text": "Monter légèrement les prix",
+          "hint": "Marge",
+          "outcome": "Vous avez augmenté. Les marges sont meilleures. Quelques clients ont tiqué."
+        },
+        {
+          "text": "Garder les prix",
+          "hint": "Accessibilité",
+          "outcome": "Vous avez gardé les prix. Le volume compense. Les clients sont fidèles."
+        },
+        {
+          "text": "Stratégie mixte – quotidien et occasions spéciales",
+          "hint": "Quelque chose pour tout le monde",
+          "outcome": "Vous avez créé deux gammes. Les fromages du quotidien sont restés accessibles. Les pièces d'exception ont pris un prix premium. Tout le monde y trouve son compte."
+        }
       ]
     },
     "supplier_relationship": {
       "title": "Relation fournisseur",
       "description": "Votre fournisseur principal propose un contrat de fidélité. Remise en échange d'engagement.",
       "choices": [
-        { "text": "Signer", "hint": "Remise, engagement", "outcome": "Vous avez signé. Les prix ont baissé. Vous êtes lié pour un an." },
-        { "text": "Rester libre", "hint": "Flexibilité", "outcome": "Vous avez gardé la liberté. Pas de remise. Vous négociez au coup par coup." }
+        {
+          "text": "Signer",
+          "hint": "Remise, engagement",
+          "outcome": "Vous avez signé. Les prix ont baissé. Vous êtes lié pour un an."
+        },
+        {
+          "text": "Rester libre",
+          "hint": "Flexibilité",
+          "outcome": "Vous avez gardé la liberté. Pas de remise. Vous négociez au coup par coup."
+        },
+        {
+          "text": "Garder l'équilibre actuel",
+          "hint": "Si ça marche, ne changez rien",
+          "outcome": "Vous avez maintenu ce qui fonctionnait. Parfois le bon choix, c'est de ne rien changer."
+        }
       ]
     },
     "weekly_rhythm": {
       "title": "Le rythme hebdo",
       "description": "Votre semaine est chargée. Livraison jeudi, rush samedi. Vous pourriez réorganiser pour souffler.",
       "choices": [
-        { "text": "Réorganiser", "hint": "Moins de pics", "outcome": "Vous avez décalé quelques choses. La charge est mieux répartie." },
-        { "text": "Garder le rythme", "hint": "Habititude", "outcome": "Vous gardez vos habitudes. Vous savez à quoi vous attendre." }
+        {
+          "text": "Réorganiser",
+          "hint": "Moins de pics",
+          "outcome": "Vous avez décalé quelques choses. La charge est mieux répartie."
+        },
+        {
+          "text": "Garder le rythme",
+          "hint": "Habititude",
+          "outcome": "Vous gardez vos habitudes. Vous savez à quoi vous attendre."
+        },
+        {
+          "text": "Rester flexible",
+          "hint": "Chaque jour est différent de toute façon",
+          "outcome": "Vous avez gardé la spontanéité. C'était peut-être ça, le charme."
+        }
       ]
     },
     "learning_investment": {
       "title": "Formation",
       "description": "Une formation fromage ou gestion vous ferait du bien. Coûteuse. Utile.",
       "choices": [
-        { "text": "S'inscrire", "hint": "Investissement", "outcome": "Vous avez suivi la formation. Vous vous sentez plus compétent." },
-        { "text": "Passer", "hint": "Pas le budget", "outcome": "Vous avez passé. Vous apprenez sur le tas." }
+        {
+          "text": "S'inscrire",
+          "hint": "Investissement",
+          "outcome": "Vous avez suivi la formation. Vous vous sentez plus compétent."
+        },
+        {
+          "text": "Passer",
+          "hint": "Pas le budget",
+          "outcome": "Vous avez passé. Vous apprenez sur le tas."
+        },
+        {
+          "text": "Apprendre sur le tas",
+          "hint": "Économiser l'argent et le temps",
+          "outcome": "Chaque meule vous a appris quelque chose. Pas besoin de certificat pour ça."
+        }
       ]
     },
     "shop_atmosphere": {
       "title": "L'ambiance de la boutique",
       "description": "Vous pourriez améliorer l'ambiance : musique, éclairage, déco. Les clients restent plus longtemps.",
       "choices": [
-        { "text": "Améliorer l'ambiance", "hint": "Coût", "outcome": "Vous avez retravaillé l'éclairage et la déco. Les clients le remarquent." },
-        { "text": "Garder tel quel", "hint": "Priorité au produit", "outcome": "Le fromage parle. Vous ne changez rien." }
+        {
+          "text": "Améliorer l'ambiance",
+          "hint": "Coût",
+          "outcome": "Vous avez retravaillé l'éclairage et la déco. Les clients le remarquent."
+        },
+        {
+          "text": "Garder tel quel",
+          "hint": "Priorité au produit",
+          "outcome": "Le fromage parle. Vous ne changez rien."
+        },
+        {
+          "text": "Garder l'authenticité",
+          "hint": "Le charme tel quel",
+          "outcome": "La boutique avait du caractère. C'était peut-être suffisant."
+        }
       ]
     },
     "catering_opportunity": {
       "title": "Traiteur",
       "description": "Une entreprise demande des plateaux pour un séminaire. Grosse commande. Beaucoup de travail.",
       "choices": [
-        { "text": "Accepter", "hint": "Gros chiffre", "outcome": "Vous avez livré. La commande était lourde. Le chèque aussi." },
-        { "text": "Décliner", "hint": "Trop pour cette fois", "outcome": "Vous avez décliné. Vous préférez le détail." }
+        {
+          "text": "Accepter",
+          "hint": "Gros chiffre",
+          "outcome": "Vous avez livré. La commande était lourde. Le chèque aussi."
+        },
+        {
+          "text": "Décliner",
+          "hint": "Trop pour cette fois",
+          "outcome": "Vous avez décliné. Vous préférez le détail."
+        },
+        {
+          "text": "Décliner poliment",
+          "hint": "Se concentrer sur la boutique",
+          "outcome": "Tout ne mérite pas d'être poursuivi. Votre emploi du temps est déjà serré."
+        }
       ]
     },
     "private_tasting": {
       "title": "Dégustation privée",
       "description": "Un groupe veut une dégustation privée. Soirée sur mesure. Bonne marge.",
       "choices": [
-        { "text": "Organiser", "hint": "Revenus et image", "outcome": "Vous avez organisé la soirée. Ils ont adoré. Ils reviendront." },
-        { "text": "Décliner", "hint": "Pas le temps", "outcome": "Vous avez décliné. Vous concentrez sur le quotidien." }
+        {
+          "text": "Organiser",
+          "hint": "Revenus et image",
+          "outcome": "Vous avez organisé la soirée. Ils ont adoré. Ils reviendront."
+        },
+        {
+          "text": "Décliner",
+          "hint": "Pas le temps",
+          "outcome": "Vous avez décliné. Vous concentrez sur le quotidien."
+        },
+        {
+          "text": "Suggérer de venir pendant les heures d'ouverture",
+          "hint": "Vos soirées sont sacrées",
+          "outcome": "Ils ont compris. Certaines choses ne valent pas la peine de bouleverser votre rythme."
+        }
       ]
     },
     "bulk_order": {
       "title": "Grosse commande",
       "description": "Un client (restaurant ou particulier) veut une grosse commande. Il faut préparer, livrer peut-être.",
       "choices": [
-        { "text": "Accepter", "hint": "Chiffre", "outcome": "Vous avez préparé la commande. Livraison ou retrait. Bonne vente." },
-        { "text": "Refuser", "hint": "Trop complexe", "outcome": "Vous avez refusé. Vous n'avez pas la logistique." }
+        {
+          "text": "Accepter",
+          "hint": "Chiffre",
+          "outcome": "Vous avez préparé la commande. Livraison ou retrait. Bonne vente."
+        },
+        {
+          "text": "Refuser",
+          "hint": "Trop complexe",
+          "outcome": "Vous avez refusé. Vous n'avez pas la logistique."
+        },
+        {
+          "text": "Décliner – focus sur le détail",
+          "hint": "Les restos veulent des marges basses",
+          "outcome": "Vous êtes une boutique, pas un grossiste. Vous restez concentré."
+        }
       ]
     },
     "market_stall": {
       "title": "Stand au marché",
       "description": "Le marché hebdo cherche un fromager. Vous pourriez tenir un stand un jour par semaine.",
       "choices": [
-        { "text": "Prendre un stand", "hint": "Visibilité, fatigue", "outcome": "Vous avez pris le stand. Nouveaux clients. Vous êtes plus fatigué." },
-        { "text": "Rester en boutique", "hint": "Une seule adresse", "outcome": "Vous restez en boutique. Une seule adresse, plus simple." }
+        {
+          "text": "Prendre un stand",
+          "hint": "Visibilité, fatigue",
+          "outcome": "Vous avez pris le stand. Nouveaux clients. Vous êtes plus fatigué."
+        },
+        {
+          "text": "Rester en boutique",
+          "hint": "Une seule adresse",
+          "outcome": "Vous restez en boutique. Une seule adresse, plus simple."
+        },
+        {
+          "text": "Passer son tour",
+          "hint": "La boutique suffit",
+          "outcome": "Vous avez laissé la place à quelqu'un d'autre. Chaque chose en son temps."
+        }
       ]
     },
     "good_month": {
       "title": "Bon mois",
       "description": "Ce mois-ci tout a bien marché. Les ventes, la réputation. Vous pouvez en profiter ou capitaliser.",
       "choices": [
-        { "text": "Capitaliser", "hint": "Promo, visibilité", "outcome": "Vous avez lancé une action. Le mois suivant a suivi." },
-        { "text": "Souffler", "hint": "Repos", "outcome": "Vous avez soufflé. Vous étiez en forme pour la suite." }
+        {
+          "text": "Capitaliser",
+          "hint": "Promo, visibilité",
+          "outcome": "Vous avez lancé une action. Le mois suivant a suivi."
+        },
+        {
+          "text": "Souffler",
+          "hint": "Repos",
+          "outcome": "Vous avez soufflé. Vous étiez en forme pour la suite."
+        },
+        {
+          "text": "Fêter ça en famille",
+          "hint": "Partager le succès",
+          "outcome": "Un bon dîner au restaurant. L'histoire du samedi de folie. Votre famille vous a vu heureux de votre travail pour la première fois depuis longtemps."
+        }
       ]
     },
     "quiet_month": {
       "title": "Mois calme",
       "description": "Un mois sans événement majeur. Les ventes sont normales. Vous avancez.",
       "choices": [
-        { "text": "Avancer sereinement", "hint": "Routine", "outcome": "Vous avez avancé. Rien d'exceptionnel. La boutique tourne." },
-        { "text": "Provoquer quelque chose", "hint": "Action", "outcome": "Vous avez lancé une opération. Le mois s'est animé." }
+        {
+          "text": "Avancer sereinement",
+          "hint": "Routine",
+          "outcome": "Vous avez avancé. Rien d'exceptionnel. La boutique tourne."
+        },
+        {
+          "text": "Provoquer quelque chose",
+          "hint": "Action",
+          "outcome": "Vous avez lancé une opération. Le mois s'est animé."
+        }
       ]
     }
   },
   "photos": {
-    "shop_front": { "title": "La façade", "description": "Chez Julien... chez moi, chez vous, chez mes potes !", "date": "Juillet 2022" },
-    "first_cheese": { "title": "Le comptoir à fromage", "description": "Le premier bon fromage du quartier !", "date": "2023" },
-    "poncho": { "title": "Poncho arrive", "description": "Ces yeux ! Le berger australien qui a volé tous les cœurs", "date": "Septembre 2023" },
-    "henry_joins": { "title": "Henry – le calme", "description": "Enfin quelqu'un qui sait ce qu'il fait", "date": "Début 2025" },
-    "christmas_chaos": { "title": "Marché de Noël", "description": "Lucas qui racle la raclette sur les baguettes dans le froid. La queue jusqu'au bout de la rue.", "date": "Décembre 2023" },
-    "team_photo": { "title": "L'équipe au complet", "description": "Julien, Lucas et Henry – bonnets de père Noël obligatoires", "date": "Noël 2024" },
-    "flood_disaster": { "title": "L'inondation d'été", "description": "De l'eau jusqu'aux chevilles en réserve. L'assurance nous a sauvés.", "date": "Été" },
-    "anniversary": { "title": "Un an !", "description": "Chez Julien a 1 an ! Promos et dégustations !", "date": "Juillet 2023" },
-    "wine_evening": { "title": "Le coin vin", "description": "Chaque bouteille avec son histoire écrite à la main", "date": "2024" },
-    "cheese_wall": { "title": "Maître fromager", "description": "50+ variétés. Des années de relations. Un mur d'art.", "date": "2024" },
-    "producer_friend": { "title": "Rencontre avec les producteurs", "description": "Avant la boutique, vous avez voyagé. Vous avez tissé des liens.", "date": "Avant 2022" },
-    "poncho_grown": { "title": "Poncho a grandi", "description": "Il vole encore les cœurs. Maintenant depuis son fauteuil préféré.", "date": "Septembre 2024" },
-    "swiss_alps": { "title": "Visite en Suisse", "description": "Les fabricants de raclette en Valais. Les vaches, les montagnes, le fromage.", "date": "" },
-    "raclette_kingdom": { "title": "Royaume de la raclette", "description": "20 variétés. La destination est complète.", "date": "" },
-    "building_keys": { "title": "Les clés", "description": "Vous êtes propriétaire. Plus de loyer.", "date": "Juillet 2024" },
-    "burnout_recovery": { "title": "La récupération", "description": "Vous avez craqué. Vous êtes revenu. Plus fort.", "date": "" },
-    "lucas_joins": { "title": "Lucas arrive !", "description": "Votre premier employé. Il charme déjà les clients avec des échantillons de raclette.", "date": "2023" },
-    "busy_shop": { "title": "La ruée", "description": "Chaos de septembre. Le meilleur des problèmes.", "date": "Septembre" },
-    "julien_cheese": { "title": "Vin et fromage", "description": "L'association parfaite. Chaque bouteille raconte une histoire.", "date": "" },
-    "christmas_gifts": { "title": "Coffrets de Noël", "description": "Coffrets faits main avec la touche Chez Julien.", "date": "Décembre 2022" },
-    "shop_party": { "title": "La fête !", "description": "Quand la boutique devient une fête. Que des bonnes ondes.", "date": "" },
-    "poncho_surgery": { "title": "Le cornet de la honte", "description": "Trop de dégustation de fromage ! Poncho a dû être opéré. Lucia l'a soigné.", "date": "" },
-    "lucia_christmas": { "title": "Artiste de Noël", "description": "Lucia qui peint les vitrines. L'amour est dans les détails.", "date": "Décembre 2022" },
-    "family_visit": { "title": "Soutien familial", "description": "Vos parents sont venus. Poncho a approuvé.", "date": "" },
-    "parmigiano_dream": { "title": "Le voyage de rêve", "description": "Émilie-Romagne. Les caves du Parmigiano. Le paradis du fromage.", "date": "" }
+    "shop_front": {
+      "title": "La façade",
+      "description": "Chez Julien... chez moi, chez vous, chez mes potes !",
+      "date": "Juillet 2022"
+    },
+    "first_cheese": {
+      "title": "Le comptoir à fromage",
+      "description": "Le premier bon fromage du quartier !",
+      "date": "2023"
+    },
+    "poncho": {
+      "title": "Poncho arrive",
+      "description": "Ces yeux ! Le berger australien qui a volé tous les cœurs",
+      "date": "Septembre 2023"
+    },
+    "henry_joins": {
+      "title": "Henry – le calme",
+      "description": "Enfin quelqu'un qui sait ce qu'il fait",
+      "date": "Début 2025"
+    },
+    "christmas_chaos": {
+      "title": "Marché de Noël",
+      "description": "Lucas qui racle la raclette sur les baguettes dans le froid. La queue jusqu'au bout de la rue.",
+      "date": "Décembre 2023"
+    },
+    "team_photo": {
+      "title": "L'équipe au complet",
+      "description": "Julien, Lucas et Henry – bonnets de père Noël obligatoires",
+      "date": "Noël 2024"
+    },
+    "flood_disaster": {
+      "title": "L'inondation d'été",
+      "description": "De l'eau jusqu'aux chevilles en réserve. L'assurance nous a sauvés.",
+      "date": "Été"
+    },
+    "anniversary": {
+      "title": "Un an !",
+      "description": "Chez Julien a 1 an ! Promos et dégustations !",
+      "date": "Juillet 2023"
+    },
+    "wine_evening": {
+      "title": "Le coin vin",
+      "description": "Chaque bouteille avec son histoire écrite à la main",
+      "date": "2024"
+    },
+    "cheese_wall": {
+      "title": "Maître fromager",
+      "description": "50+ variétés. Des années de relations. Un mur d'art.",
+      "date": "2024"
+    },
+    "producer_friend": {
+      "title": "Rencontre avec les producteurs",
+      "description": "Avant la boutique, vous avez voyagé. Vous avez tissé des liens.",
+      "date": "Avant 2022"
+    },
+    "poncho_grown": {
+      "title": "Poncho a grandi",
+      "description": "Il vole encore les cœurs. Maintenant depuis son fauteuil préféré.",
+      "date": "Septembre 2024"
+    },
+    "swiss_alps": {
+      "title": "Visite en Suisse",
+      "description": "Les fabricants de raclette en Valais. Les vaches, les montagnes, le fromage.",
+      "date": ""
+    },
+    "raclette_kingdom": {
+      "title": "Royaume de la raclette",
+      "description": "20 variétés. La destination est complète.",
+      "date": ""
+    },
+    "building_keys": {
+      "title": "Les clés",
+      "description": "Vous êtes propriétaire. Plus de loyer.",
+      "date": "Juillet 2024"
+    },
+    "burnout_recovery": {
+      "title": "La récupération",
+      "description": "Vous avez craqué. Vous êtes revenu. Plus fort.",
+      "date": ""
+    },
+    "lucas_joins": {
+      "title": "Lucas arrive !",
+      "description": "Votre premier employé. Il charme déjà les clients avec des échantillons de raclette.",
+      "date": "2023"
+    },
+    "busy_shop": {
+      "title": "La ruée",
+      "description": "Chaos de septembre. Le meilleur des problèmes.",
+      "date": "Septembre"
+    },
+    "julien_cheese": {
+      "title": "Vin et fromage",
+      "description": "L'association parfaite. Chaque bouteille raconte une histoire.",
+      "date": ""
+    },
+    "christmas_gifts": {
+      "title": "Coffrets de Noël",
+      "description": "Coffrets faits main avec la touche Chez Julien.",
+      "date": "Décembre 2022"
+    },
+    "shop_party": {
+      "title": "La fête !",
+      "description": "Quand la boutique devient une fête. Que des bonnes ondes.",
+      "date": ""
+    },
+    "poncho_surgery": {
+      "title": "Le cornet de la honte",
+      "description": "Trop de dégustation de fromage ! Poncho a dû être opéré. Lucia l'a soigné.",
+      "date": ""
+    },
+    "lucia_christmas": {
+      "title": "Artiste de Noël",
+      "description": "Lucia qui peint les vitrines. L'amour est dans les détails.",
+      "date": "Décembre 2022"
+    },
+    "family_visit": {
+      "title": "Soutien familial",
+      "description": "Vos parents sont venus. Poncho a approuvé.",
+      "date": ""
+    },
+    "parmigiano_dream": {
+      "title": "Le voyage de rêve",
+      "description": "Émilie-Romagne. Les caves du Parmigiano. Le paradis du fromage.",
+      "date": ""
+    }
   }
 }

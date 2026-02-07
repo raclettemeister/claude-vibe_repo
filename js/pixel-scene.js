@@ -665,13 +665,12 @@
         ctx.fillRect(75, 172, 44, 1);
         
         // Inside customer queue (on floor, in front of fridge/wine, behind stalls)
-        // 1 at 35+, 2 at 50+, 3 at 70+, 4 at 90+
+        // Gradual scaling: no customers at 50, first at 65, then 85, then 100
         const isRainingDoor = (gameState.month === 9 || gameState.month === 2);
-        if (gameState.reputation >= 35 && !isRainingDoor) {
+        if (gameState.reputation >= 65 && !isRainingDoor) {
             let queueCount = 1;
-            if (gameState.reputation >= 90) queueCount = 4;
-            else if (gameState.reputation >= 70) queueCount = 3;
-            else if (gameState.reputation >= 50) queueCount = 2;
+            if (gameState.reputation >= 100) queueCount = 3;
+            else if (gameState.reputation >= 85) queueCount = 2;
             drawInsideCustomerQueue(ctx, queueCount, frameTime);
         }
         
@@ -856,14 +855,16 @@
         }
 
         // === CHARACTERS ===
+        // Skip all characters during cutscene — cutscene draws its own
+        if (!gameState.isCutscene) {
         const isRaining = month === 9 || month === 2;
         
         // JULIEN - Main character, stands outside near left building
         drawJulien(ctx, 45, 150, gameState, frameTime);
         
-        // Umbrella for Julien when raining (positioned over his head)
+        // Umbrella for Julien when raining (positioned over his head, held by right hand)
         if (isRaining) {
-            drawUmbrella(ctx, 35, 128);
+            drawUmbrella(ctx, 36, 125);
         }
         
         // Poncho next to Julien (on his left side, slightly apart)
@@ -875,9 +876,10 @@
         }
         
         // Outside customers on sidewalk (elderly, chatting group with kid)
-        if (!isRaining && gameState.reputation >= 35) {
+        if (!isRaining && gameState.reputation >= 65) {
             drawOutsideCustomers(ctx, gameState.reputation, frameTime);
         }
+        } // end !isCutscene
         
         // Henry is drawn inside the shop (visible through door)
 
@@ -893,8 +895,6 @@
         }
 
         if (month === 7) {
-            // Belgian flag in Julien's left hand
-            drawBelgianFlagInHand(ctx, 38, 160, frameTime);
             // Balloons and bunting flags only in July (month 7)
             drawPartyDecorations(ctx, frameTime);
         }
@@ -1129,7 +1129,7 @@
 
     function drawShopWindowActivity(ctx, x, y, w, h, reputation, frameTime = Date.now()) {
         // Customers visible through shop window
-        const customerCount = Math.min(2, Math.floor(reputation / 40));
+        const customerCount = Math.min(2, Math.floor(reputation / 65));
         for (let i = 0; i < customerCount; i++) {
             const cx = x + 15 + i * 25;
             const cy = y + h - 15;
@@ -1304,12 +1304,12 @@
     // === OUTSIDE CUSTOMERS ===
     function drawOutsideCustomers(ctx, reputation, frameTime) {
         // Customers outside the shop on the sidewalk
-        // 35+: Elderly, 50+: +Adult1, 70+: +Adult2 (chatting), 90+: +Kid
+        // 65+: Elderly, 75+: +Adult1, 85+: +Adult2 (chatting), 100: +Kid
         
         const time = frameTime || Date.now();
         
-        // === ELDERLY PERSON (appears at 35+) ===
-        if (reputation >= 35) {
+        // === ELDERLY PERSON (appears at 65+) ===
+        if (reputation >= 65) {
             const ex = 200, ey = 162;
             
             // Legs (dark pants)
@@ -1370,8 +1370,8 @@
             ctx.fillRect(ex - 2, ey + 3, 2, 4);
         }
         
-        // === ADULT 1 - Woman (appears at 50+) ===
-        if (reputation >= 50) {
+        // === ADULT 1 - Woman (appears at 75+) ===
+        if (reputation >= 75) {
             const ax = 230, ay = 160;
             const headBob = Math.sin(time / 800) * 0.5;
             
@@ -1420,8 +1420,8 @@
             ctx.fillRect(ax - 2, ay + 8, 2, 1);
         }
         
-        // === ADULT 2 - Man (appears at 70+, chatting with Adult 1) ===
-        if (reputation >= 70) {
+        // === ADULT 2 - Man (appears at 85+, chatting with Adult 1) ===
+        if (reputation >= 85) {
             const mx = 248, my = 158;
             const headBob = Math.sin(time / 800 + 1.5) * 0.5;
             
@@ -1470,8 +1470,8 @@
             ctx.fillRect(mx + 13, my + 6, 3, 3);
         }
         
-        // === KID (appears at 90+) ===
-        if (reputation >= 90) {
+        // === KID (appears at 100) ===
+        if (reputation >= 100) {
             const kx = 240, ky = 168;
             const bounce = Math.abs(Math.sin(time / 400)) * 1;
             
@@ -2416,36 +2416,36 @@
     }
 
     function drawUmbrella(ctx, x, y) {
-        // Umbrella centered over Julien's head
-        // Canopy above head
+        // Wide umbrella held by Julien's right hand
+        // Canopy - wider arc shape
         ctx.fillStyle = '#1A237E';
         ctx.beginPath();
-        ctx.moveTo(x + 2, y + 5);
-        ctx.lineTo(x + 12, y - 5);
-        ctx.lineTo(x + 22, y + 5);
+        ctx.moveTo(x - 2, y + 5);
+        ctx.lineTo(x + 15, y - 8);
+        ctx.lineTo(x + 32, y + 5);
         ctx.closePath();
         ctx.fill();
         
         // Canopy highlight
         ctx.fillStyle = '#283593';
         ctx.beginPath();
-        ctx.moveTo(x + 5, y + 3);
-        ctx.lineTo(x + 12, y - 3);
-        ctx.lineTo(x + 19, y + 3);
+        ctx.moveTo(x + 3, y + 3);
+        ctx.lineTo(x + 15, y - 5);
+        ctx.lineTo(x + 27, y + 3);
         ctx.closePath();
         ctx.fill();
         
-        // Canopy edge
+        // Canopy edge (scalloped bottom)
         ctx.fillStyle = '#0D1B5E';
-        ctx.fillRect(x + 2, y + 4, 20, 2);
+        ctx.fillRect(x - 2, y + 4, 34, 2);
         
-        // Handle going down
+        // Handle - angled down to Julien's raised right hand
         ctx.fillStyle = '#5D4037';
-        ctx.fillRect(x + 11, y + 4, 2, 20);
+        ctx.fillRect(x + 14, y + 5, 2, 16);
         
-        // Curved handle bottom
-        ctx.fillRect(x + 9, y + 22, 2, 2);
-        ctx.fillRect(x + 7, y + 23, 2, 2);
+        // Curved handle bottom (the grip)
+        ctx.fillRect(x + 12, y + 19, 2, 2);
+        ctx.fillRect(x + 10, y + 20, 2, 2);
     }
 
     function drawFlowerBox(ctx, x, y, isWinter, isAutumn) {
@@ -2685,19 +2685,30 @@
         const isWaving = isHappy && gestureFrame === 1;
         const isPanicGesture = isPanicking && gestureFrame < 2;
         
-        // Left arm (always normal)
-        ctx.fillStyle = '#FFFFFF';
-        ctx.fillRect(x + ox, y + 2, 4, 7);
-        ctx.fillStyle = '#E8E8E8';
-        ctx.fillRect(x + ox, y + 6, 1, 3);
-        ctx.fillStyle = skin;
-        if (isPanicGesture) {
-            // Hand on head
-            ctx.fillRect(x + 2 + ox, y - 10, 3, 3);
-        } else if (isBurnout) {
-            ctx.fillRect(x - 1 + ox, y + 12, 4, 5);
+        // Left arm (holds umbrella when raining)
+        const isRaining = gameState.month === 9 || gameState.month === 2;
+        if (isRaining) {
+            // Arm raised up holding umbrella handle
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(x + ox, y + 2, 4, 3);
+            ctx.fillRect(x + 1 + ox, y - 4, 3, 7);
+            // Hand gripping handle
+            ctx.fillStyle = skin;
+            ctx.fillRect(x + ox, y - 8, 4, 5);
         } else {
-            ctx.fillRect(x + ox, y + 9, 4, 5);
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(x + ox, y + 2, 4, 7);
+            ctx.fillStyle = '#E8E8E8';
+            ctx.fillRect(x + ox, y + 6, 1, 3);
+            ctx.fillStyle = skin;
+            if (isPanicGesture) {
+                // Hand on head
+                ctx.fillRect(x + 2 + ox, y - 10, 3, 3);
+            } else if (isBurnout) {
+                ctx.fillRect(x - 1 + ox, y + 12, 4, 5);
+            } else {
+                ctx.fillRect(x + ox, y + 9, 4, 5);
+            }
         }
         
         // Right arm (changes when waving)
@@ -2861,7 +2872,7 @@
         const wagFrame = Math.floor(time / 100) % 4;
         const breathe = Math.sin(time / 600) * 0.2;
         const reputation = gameState.reputation || 0;
-        const isAdult = gameState.ponchoAnniversary || false;
+        const isAdult = gameState.ponchoAnniversary || (gameState.dogMonth >= 12) || false;
         
         // Puppy sits closer to Julien, adult sits further away
         if (!isAdult) {

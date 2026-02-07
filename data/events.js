@@ -239,7 +239,7 @@ const events = [
                     {
                         text: 'Go big - state of the art counter',
                         hint: '€50,000 financed - serious commitment',
-                        effects: { bank: -5000, stress: 20, energy: -15 },
+                        effects: { bank: -5000, stress: 10, energy: -10 },
                         outcome: 'You bought a €50,000 professional cheese counter. Stunning. The monthly payments are brutal, but this is a statement: you\'re serious about cheese.',
                         flags: { cheeseTypes: 15, hasProCounter: true },
                         conditionalEffects: () => ({ reputation: 10, conceptPivotProgress: 40, monthlyPayment: 800 })

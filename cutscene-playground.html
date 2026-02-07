@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cutscene Playground — Chez Julien</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 20px;
+        }
+        .controls {
+            background: #2a2a2a;
+            padding: 20px;
+            border-radius: 8px;
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+        .controls h2 {
+            margin-bottom: 16px;
+            color: #f4a460;
+            font-size: 16px;
+        }
+        .controls h3 {
+            margin: 16px 0 8px;
+            color: #888;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-top: 1px solid #3a3a3a;
+            padding-top: 12px;
+        }
+        .control-group {
+            margin-bottom: 12px;
+        }
+        .control-group label {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 12px;
+            color: #aaa;
+        }
+        .control-group input[type="range"] {
+            width: 100%;
+            margin-bottom: 3px;
+        }
+        .control-group .value {
+            font-size: 11px;
+            color: #888;
+        }
+        .canvas-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .canvas-wrapper {
+            background: #000;
+            border: 2px solid #3a3a3a;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+        #playground-canvas {
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+            display: block;
+            width: 960px;
+            height: 540px;
+        }
+        /* Overlay elements (mirroring the real cutscene HTML) */
+        .intro-location {
+            position: absolute;
+            top: 6%;
+            left: 5%;
+            color: #fff;
+            font-family: Georgia, serif;
+            font-size: 13px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            opacity: 0;
+            transition: opacity 1.2s ease;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.9);
+            z-index: 10;
+            pointer-events: none;
+        }
+        .intro-location.visible { opacity: 1; }
+        .intro-text-overlay {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            z-index: 10;
+            padding: 1.5rem 2rem 2rem;
+            pointer-events: none;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.75) 100%);
+        }
+        .intro-narrative {
+            color: #e8e8e8;
+            font-family: Georgia, serif;
+            font-size: 15px;
+            line-height: 1.65;
+            max-width: 640px;
+            margin: 0 auto;
+            opacity: 0;
+            transition: opacity 0.7s ease;
+            text-shadow: 1px 1px 6px rgba(0,0,0,0.9);
+        }
+        .intro-narrative.visible { opacity: 1; }
+        .intro-narrative.emphasis {
+            color: #ffd700;
+            font-size: 18px;
+            font-weight: bold;
+            text-shadow: 0 0 12px rgba(255,215,0,0.4);
+        }
+        .intro-narrative.italic { font-style: italic; color: #d4c8b0; }
+        /* iPhone with WhatsApp message */
+        .intro-phone {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%) scale(0.85);
+            width: 220px;
+            height: 440px;
+            background: #1c1c1e;
+            border-radius: 30px;
+            border: 3px solid #3a3a3c;
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: hidden;
+            box-shadow: 0 8px 60px rgba(0,0,0,0.85), inset 0 0 0 1px rgba(255,255,255,0.05);
+        }
+        .intro-phone.visible {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        .intro-phone.ringing {
+            animation: phone-vibrate 0.08s linear infinite;
+        }
+        @keyframes phone-vibrate {
+            0%, 100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+            25% { transform: translate(calc(-50% + 1px), -50%) scale(1) rotate(0.5deg); }
+            75% { transform: translate(calc(-50% - 1px), -50%) scale(1) rotate(-0.5deg); }
+        }
+        .iphone-notch {
+            width: 70px; height: 18px;
+            background: #000;
+            border-radius: 0 0 12px 12px;
+            margin-top: 6px;
+            z-index: 3;
+        }
+        .iphone-screen {
+            flex: 1;
+            width: calc(100% - 8px);
+            margin: 3px 4px 0;
+            border-radius: 2px;
+            background: #0b141a;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .iphone-ring-screen {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            background: linear-gradient(160deg, #075e54, #128c7e, #25d366);
+            z-index: 2;
+            opacity: 1;
+            transition: opacity 0.6s ease;
+        }
+        .intro-phone.show-message .iphone-ring-screen { opacity: 0; pointer-events: none; }
+        .ring-icon { font-size: 32px; margin-bottom: 10px; animation: ring-pulse 0.8s ease infinite; }
+        @keyframes ring-pulse {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+            25% { transform: scale(1.1) rotate(12deg); }
+            50% { transform: scale(1) rotate(0deg); opacity: 1; }
+            75% { transform: scale(1.1) rotate(-12deg); }
+        }
+        .ring-caller-name {
+            color: #fff;
+            font-family: -apple-system, 'Helvetica Neue', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+        .ring-label {
+            color: rgba(255,255,255,0.6);
+            font-family: -apple-system, 'Helvetica Neue', sans-serif;
+            font-size: 0.65rem;
+            margin-top: 4px;
+        }
+        .iphone-wa-screen {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            transition: opacity 0.6s ease 0.3s;
+        }
+        .intro-phone.show-message .iphone-wa-screen { opacity: 1; }
+        .wa-header {
+            background: #1f2c34;
+            padding: 7px 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .wa-back { color: #00a884; font-size: 14px; font-family: sans-serif; }
+        .wa-avatar {
+            width: 24px; height: 24px;
+            border-radius: 50%;
+            background: #00a884;
+            color: #fff;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 11px; font-weight: bold; font-family: sans-serif;
+        }
+        .wa-name {
+            color: #e9edef;
+            font-family: -apple-system, 'Helvetica Neue', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        .wa-chat { flex: 1; padding: 10px 8px; overflow: hidden; }
+        .wa-bubble {
+            background: #005c4b;
+            color: #e9edef;
+            padding: 6px 8px;
+            border-radius: 6px 6px 0 6px;
+            font-family: -apple-system, 'Helvetica Neue', sans-serif;
+            font-size: 0.72rem;
+            line-height: 1.5;
+            max-width: 92%;
+        }
+        .wa-time {
+            font-size: 0.5rem;
+            color: rgba(255,255,255,0.4);
+            text-align: right;
+            margin-top: 3px;
+        }
+        .wa-input { background: #1f2c34; padding: 5px 8px; }
+        .wa-input-field {
+            background: #2a3942;
+            border-radius: 14px;
+            padding: 5px 10px;
+            color: #8696a0;
+            font-family: -apple-system, 'Helvetica Neue', sans-serif;
+            font-size: 0.65rem;
+        }
+        .iphone-banana {
+            font-size: 13px;
+            margin: 2px 0 7px;
+            opacity: 0.3;
+            filter: grayscale(70%);
+        }
+        .info {
+            margin-top: 12px;
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+        }
+        .time-display {
+            font-family: monospace;
+            font-size: 14px;
+            color: #f4a460;
+            background: #2a2a2a;
+            padding: 4px 12px;
+            border-radius: 4px;
+            margin-top: 8px;
+        }
+        button {
+            background: #2C5530;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 6px;
+            width: 100%;
+            font-size: 12px;
+        }
+        button:hover { background: #3D7042; }
+        button.active { background: #D4A017; color: #1a1a1a; }
+        .btn-row {
+            display: flex;
+            gap: 6px;
+        }
+        .btn-row button { flex: 1; }
+        .scene-btn {
+            background: #333;
+            font-size: 11px;
+            padding: 6px 8px;
+        }
+        .scene-btn:hover { background: #444; }
+        .scene-btn.active { background: #D4A017; color: #1a1a1a; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="controls">
+            <h2>🎬 Cutscene Playground</h2>
+
+            <h3>Playback</h3>
+            <div class="control-group">
+                <label>Time (seconds)</label>
+                <input type="range" id="time-slider" min="0" max="59" value="0" step="0.1">
+                <div class="value" id="time-val">0.0s — Scene 1</div>
+            </div>
+            <div class="btn-row">
+                <button id="play-btn" onclick="togglePlay()">▶ Play</button>
+                <button onclick="resetTime()">⏮ Reset</button>
+            </div>
+
+            <h3>Jump to Scene</h3>
+            <div class="btn-row" style="flex-wrap: wrap;">
+                <button class="scene-btn" onclick="jumpToScene(1)">1 Island</button>
+                <button class="scene-btn" onclick="jumpToScene(2)">2 Message</button>
+                <button class="scene-btn" onclick="jumpToScene(3)">3 Proposition</button>
+            </div>
+            <div class="btn-row" style="margin-top: 4px;">
+                <button class="scene-btn" onclick="jumpToScene(4)">4 The Bet</button>
+                <button class="scene-btn" onclick="jumpToScene(5)">5 Opening</button>
+            </div>
+
+            <h3>Individual Scenes (static)</h3>
+            <button onclick="showStatic('tropical')">🏝 Tropical Beach</button>
+            <button onclick="showStatic('brussels')">🏙 Brussels</button>
+            <button onclick="showStatic('shop')">🏪 Shop (via pixel-scene.js)</button>
+            <button onclick="showStatic('characters')">👤 Characters Lineup</button>
+
+            <h3>Character Position</h3>
+            <div class="control-group">
+                <label>Julien X</label>
+                <input type="range" id="julien-x" min="0" max="300" value="150">
+                <div class="value" id="julien-x-val">150</div>
+            </div>
+            <div class="control-group">
+                <label>Julien Y</label>
+                <input type="range" id="julien-y" min="60" max="170" value="130">
+                <div class="value" id="julien-y-val">130</div>
+            </div>
+            <div class="control-group">
+                <label>Geneviève X</label>
+                <input type="range" id="gen-x" min="0" max="300" value="175">
+                <div class="value" id="gen-x-val">175</div>
+            </div>
+        </div>
+
+        <div class="canvas-area">
+            <div class="canvas-wrapper">
+                <canvas id="playground-canvas" width="320" height="180"></canvas>
+                <div class="intro-location" id="intro-location"></div>
+                <div class="intro-phone" id="intro-phone">
+                    <div class="iphone-notch"></div>
+                    <div class="iphone-screen">
+                        <div class="iphone-ring-screen" id="iphone-ring-screen">
+                            <div class="ring-icon">📱</div>
+                            <div class="ring-caller-name" id="ring-caller-name">Geneviève</div>
+                            <div class="ring-label">WhatsApp Message</div>
+                        </div>
+                        <div class="iphone-wa-screen">
+                            <div class="wa-header">
+                                <span class="wa-back">‹</span>
+                                <div class="wa-avatar">G</div>
+                                <div class="wa-name" id="wa-sender-name">Geneviève</div>
+                            </div>
+                            <div class="wa-chat">
+                                <div class="wa-bubble" id="intro-phone-text"></div>
+                                <div class="wa-time">14:32</div>
+                            </div>
+                            <div class="wa-input">
+                                <div class="wa-input-field">Type a message</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="iphone-banana">🍌</div>
+                </div>
+                <div class="intro-text-overlay">
+                    <p class="intro-narrative" id="intro-narrative"></p>
+                </div>
+            </div>
+            <div class="info">
+                320×180 rendered at 3× | Drag the time slider or press Play to see the full cutscene
+            </div>
+            <div class="time-display" id="time-display">0.0s | Scene 1 — The Island</div>
+        </div>
+    </div>
+
+    <!-- Load pixel-scene.js for the shop renderer -->
+    <script src="js/pixel-scene.js"></script>
+    <script>
+        const canvas = document.getElementById('playground-canvas');
+        const ctx = canvas.getContext('2d');
+        ctx.imageSmoothingEnabled = false;
+
+        const locEl = document.getElementById('intro-location');
+        const narrEl = document.getElementById('intro-narrative');
+        const phoneEl = document.getElementById('intro-phone');
+        const phoneText = document.getElementById('intro-phone-text');
+        const timeSlider = document.getElementById('time-slider');
+        const timeDisplay = document.getElementById('time-display');
+
+        // ── State ──
+        let isPlaying = false;
+        let playStartReal = 0;   // real timestamp when play started
+        let playStartSim = 0;    // simulated time when play started
+        let staticMode = null;   // null = cutscene, 'tropical' | 'brussels' | 'shop' | 'characters'
+
+        const SCENE_NAMES = {
+            1: 'The Island',
+            2: 'The Message',
+            3: 'The Proposition',
+            4: 'The Bet',
+            5: 'The Opening'
+        };
+
+        // ════════════════════════════════════════════════
+        //  PIXEL ART FUNCTIONS (identical to index.html)
+        // ════════════════════════════════════════════════
+
+        function drawTropicalScene(ctx, W, H, elapsed) {
+            const skyG = ctx.createLinearGradient(0, 0, 0, H * 0.55);
+            skyG.addColorStop(0, '#FF9A56');
+            skyG.addColorStop(0.35, '#FFD08A');
+            skyG.addColorStop(0.7, '#FFF0C8');
+            skyG.addColorStop(1, '#A0E7F0');
+            ctx.fillStyle = skyG;
+            ctx.fillRect(0, 0, W, H * 0.55);
+
+            ctx.fillStyle = '#FFF4D0';
+            ctx.beginPath(); ctx.arc(W * 0.8, H * 0.18, 14, 0, Math.PI * 2); ctx.fill();
+            ctx.fillStyle = 'rgba(255,244,208,0.3)';
+            ctx.beginPath(); ctx.arc(W * 0.8, H * 0.18, 20, 0, Math.PI * 2); ctx.fill();
+
+            const cT = elapsed / 18000;
+            for (let i = 0; i < 3; i++) {
+                const cx = ((i * 120 + cT * 40) % (W + 60)) - 30;
+                const cy = 15 + i * 12;
+                ctx.fillStyle = 'rgba(255,255,255,0.6)';
+                ctx.fillRect(cx, cy, 28, 5);
+                ctx.fillRect(cx + 4, cy - 3, 20, 4);
+                ctx.fillRect(cx + 8, cy - 5, 12, 3);
+            }
+
+            const oceanY = Math.floor(H * 0.55);
+            const oceanG = ctx.createLinearGradient(0, oceanY, 0, H * 0.72);
+            oceanG.addColorStop(0, '#1ABED0');
+            oceanG.addColorStop(0.5, '#14A0BB');
+            oceanG.addColorStop(1, '#0E7F96');
+            ctx.fillStyle = oceanG;
+            ctx.fillRect(0, oceanY, W, H * 0.17);
+
+            ctx.fillStyle = 'rgba(255,255,255,0.35)';
+            for (let x = 0; x < W; x += 3) {
+                const waveY = oceanY + 2 + Math.sin((x + elapsed / 400) * 0.08) * 2;
+                ctx.fillRect(x, waveY, 2, 1);
+            }
+            ctx.fillStyle = 'rgba(255,255,255,0.2)';
+            for (let x = 0; x < W; x += 5) {
+                const waveY = oceanY + 8 + Math.sin((x + elapsed / 600) * 0.06) * 1.5;
+                ctx.fillRect(x, waveY, 3, 1);
+            }
+
+            // Surfer riding a wave
+            const surferSpeed = 0.025;
+            const surferX = ((elapsed * surferSpeed) % (W + 40)) - 20;
+            const surferBaseY = oceanY + 6 + Math.sin((surferX + elapsed / 400) * 0.08) * 2;
+            ctx.fillStyle = '#F5E6C8';
+            ctx.fillRect(surferX - 3, surferBaseY + 1, 10, 2);
+            ctx.fillStyle = '#DAA520';
+            ctx.fillRect(surferX - 1, surferBaseY + 1, 6, 1);
+            ctx.fillStyle = '#DEB887';
+            ctx.fillRect(surferX + 1, surferBaseY - 3, 2, 4);
+            ctx.fillRect(surferX + 4, surferBaseY - 2, 2, 3);
+            ctx.fillStyle = '#1A1A2E';
+            ctx.fillRect(surferX + 1, surferBaseY - 7, 5, 5);
+            ctx.fillStyle = '#FFDAB9';
+            ctx.fillRect(surferX + 2, surferBaseY - 10, 3, 3);
+            ctx.fillStyle = '#8B4513';
+            ctx.fillRect(surferX + 1, surferBaseY - 11, 4, 2);
+            ctx.fillRect(surferX, surferBaseY - 10, 2, 1);
+            ctx.fillStyle = '#FFDAB9';
+            ctx.fillRect(surferX - 2, surferBaseY - 6, 3, 1);
+            ctx.fillRect(surferX + 6, surferBaseY - 7, 3, 1);
+            ctx.fillStyle = 'rgba(255,255,255,0.5)';
+            ctx.fillRect(surferX - 4, surferBaseY, 2, 1);
+            ctx.fillRect(surferX + 8, surferBaseY + 1, 2, 1);
+            ctx.fillRect(surferX - 3, surferBaseY + 2, 1, 1);
+
+            const sandY = Math.floor(H * 0.72);
+            ctx.fillStyle = '#F5E6C8';
+            ctx.fillRect(0, sandY, W, H - sandY);
+            ctx.fillStyle = '#D4C4A0';
+            ctx.fillRect(0, sandY, W, 4);
+
+            const hutX = 30, hutY = sandY - 22;
+            ctx.fillStyle = '#8B6F47';
+            ctx.fillRect(hutX + 2, hutY + 14, 2, 10);
+            ctx.fillRect(hutX + 18, hutY + 14, 2, 10);
+            ctx.fillStyle = '#A87F5F';
+            ctx.fillRect(hutX, hutY + 12, 22, 3);
+            ctx.fillStyle = '#D4C4A0';
+            ctx.fillRect(hutX + 2, hutY + 2, 18, 10);
+            ctx.fillStyle = '#6B4F2F';
+            ctx.fillRect(hutX + 8, hutY + 5, 6, 7);
+            ctx.fillStyle = '#8B7355';
+            ctx.fillRect(hutX - 2, hutY, 26, 3);
+            ctx.fillRect(hutX, hutY - 2, 22, 3);
+            ctx.fillRect(hutX + 4, hutY - 4, 14, 3);
+            ctx.fillRect(hutX + 7, hutY - 5, 8, 2);
+
+            drawPalmTree(ctx, 95, sandY + 2, elapsed);
+            drawPalmTree(ctx, 260, sandY + 2, elapsed);
+            drawPalmTree(ctx, 300, sandY + 2, elapsed, 0.7);
+
+            // (boat removed)
+        }
+
+        function drawPalmTree(ctx, x, baseY, elapsed, scale) {
+            scale = scale || 1;
+            const trunkH = Math.floor(35 * scale);
+            ctx.fillStyle = '#6B4F2F';
+            ctx.fillRect(x, baseY - trunkH, 3, trunkH);
+            ctx.fillStyle = '#8B6F47';
+            ctx.fillRect(x + 1, baseY - trunkH, 1, trunkH);
+            for (let r = 0; r < trunkH; r += 5) {
+                ctx.fillStyle = '#5A3F1F';
+                ctx.fillRect(x, baseY - r, 3, 1);
+            }
+            const sway = Math.sin(elapsed / 1200 + x) * 1.5;
+            const topY = baseY - trunkH, topX = x + 1;
+            const leafLen = Math.floor(18 * scale);
+            ctx.fillStyle = '#2D8B2D';
+            for (let i = 0; i < 3; i++) {
+                const angle = -0.4 + i * 0.3 + sway * 0.02;
+                for (let l = 0; l < leafLen; l++) {
+                    ctx.fillRect(topX + Math.cos(angle) * l + sway, topY + Math.sin(angle) * l * 0.5 + l * 0.3, 2, 1);
+                }
+            }
+            ctx.fillStyle = '#1E7A1E';
+            for (let i = 0; i < 3; i++) {
+                const angle = Math.PI + 0.4 - i * 0.3 + sway * 0.02;
+                for (let l = 0; l < leafLen; l++) {
+                    ctx.fillRect(topX + Math.cos(angle) * l + sway, topY + Math.sin(angle) * l * 0.5 + l * 0.3, 2, 1);
+                }
+            }
+            ctx.fillStyle = '#5A3F1F';
+            ctx.fillRect(topX - 1, topY + 1, 2, 2);
+            ctx.fillRect(topX + 2, topY + 2, 2, 2);
+        }
+
+        function drawBackpackerJulien(ctx, x, y, elapsed, facing, walking, hasBackpack) {
+            facing = facing || 1;
+            const walkFrame = walking ? Math.floor(elapsed / 250) % 4 : 0;
+            const legOffset = walking ? [0, -2, 0, 2][walkFrame] : 0;
+            const armSwing = walking ? [-2, 0, 2, 0][walkFrame] : 0;
+            const bobY = walking ? [0, -1, 0, -1][walkFrame] : 0;
+            const skin = '#FFDAB9';
+            const by = y + bobY;
+
+            ctx.fillStyle = 'rgba(0,0,0,0.15)';
+            ctx.beginPath(); ctx.ellipse(x + 10, by + 32, 7, 2, 0, 0, Math.PI * 2); ctx.fill();
+
+            ctx.fillStyle = '#C8B896';
+            ctx.fillRect(x + 5, by + 18, 4, 8);
+            ctx.fillRect(x + 11, by + 18, 4, 8);
+            ctx.fillStyle = skin;
+            ctx.fillRect(x + 5, by + 26 + legOffset, 4, 4);
+            ctx.fillRect(x + 11, by + 26 - legOffset, 4, 4);
+            ctx.fillStyle = '#6B4F2F';
+            ctx.fillRect(x + 4, by + 30 + legOffset, 6, 2);
+            ctx.fillRect(x + 10, by + 30 - legOffset, 6, 2);
+
+            ctx.fillStyle = '#2E8B8B';
+            ctx.fillRect(x + 3, by + 2, 14, 16);
+            ctx.fillStyle = '#3A9E9E';
+            ctx.fillRect(x + 5, by + 3, 2, 14);
+
+            ctx.fillStyle = skin;
+            ctx.fillRect(x + 7, by - 2, 6, 4);
+
+            ctx.fillStyle = skin;
+            ctx.fillRect(x, by + 3 + armSwing, 4, 10);
+            ctx.fillRect(x + 16, by + 3 - armSwing, 4, 10);
+
+            if (hasBackpack !== false) {
+                const bpSide = facing > 0 ? -3 : 15;
+                ctx.fillStyle = '#8B4513';
+                ctx.fillRect(x + bpSide, by + 2, 6, 14);
+                ctx.fillStyle = '#A0522D';
+                ctx.fillRect(x + bpSide + 1, by + 3, 4, 12);
+                ctx.fillStyle = '#6B3410';
+                ctx.fillRect(x + bpSide + 2, by, 1, 4);
+                ctx.fillRect(x + bpSide + 4, by, 1, 4);
+                ctx.fillStyle = '#7A3E10';
+                ctx.fillRect(x + bpSide, by + 1, 6, 3);
+                ctx.fillStyle = '#DAA520';
+                ctx.fillRect(x + bpSide + 2, by + 4, 2, 1);
+            }
+
+            ctx.fillStyle = skin;
+            ctx.fillRect(x + 6, by - 10, 8, 9);
+
+            ctx.fillStyle = '#3A2A1A';
+            ctx.fillRect(x + 6, by - 12, 8, 3);
+            ctx.fillRect(x + 5, by - 11, 2, 2);
+            ctx.fillRect(x + 13, by - 11, 2, 2);
+            ctx.fillStyle = '#4A3A2A';
+            ctx.fillRect(x + 8, by - 11, 2, 1);
+            ctx.fillRect(x + 10, by - 10, 2, 1);
+
+            const blink = (elapsed % 3500) > 3350;
+            if (blink) {
+                ctx.fillStyle = '#3A2A1A';
+                ctx.fillRect(x + 7, by - 6, 2, 1);
+                ctx.fillRect(x + 11, by - 6, 2, 1);
+            } else {
+                ctx.fillStyle = '#FFFFFF';
+                ctx.fillRect(x + 7, by - 7, 2, 2);
+                ctx.fillRect(x + 11, by - 7, 2, 2);
+                ctx.fillStyle = '#2C2C2C';
+                const lookX = facing > 0 ? 1 : 0;
+                ctx.fillRect(x + 7 + lookX, by - 6, 1, 1);
+                ctx.fillRect(x + 11 + lookX, by - 6, 1, 1);
+            }
+
+            ctx.fillStyle = '#3A2A1A';
+            ctx.fillRect(x + 7, by - 8, 2, 1);
+            ctx.fillRect(x + 11, by - 8, 2, 1);
+
+            ctx.fillStyle = '#E08080';
+            ctx.fillRect(x + 8, by - 3, 4, 1);
+        }
+
+        /* ── Surprise "!" exclamation (classic RPG style) ── */
+        function drawExclamation(ctx, x, y, elapsed) {
+            const bounce = Math.sin(elapsed * 0.01) * 1.5;
+            const ex = x + 5;
+            const ey = y - 10 + bounce;
+            ctx.fillStyle = '#FFD700';
+            ctx.fillRect(ex, ey, 2, 5);
+            ctx.fillRect(ex, ey + 7, 2, 2);
+            ctx.fillStyle = 'rgba(0,0,0,0.3)';
+            ctx.fillRect(ex + 2, ey, 1, 5);
+            ctx.fillRect(ex - 1, ey, 1, 5);
+            ctx.fillRect(ex + 2, ey + 7, 1, 2);
+            ctx.fillRect(ex - 1, ey + 7, 1, 2);
+        }
+
+        function drawGenevieve(ctx, x, y, elapsed) {
+            const skin = '#FFE4C4';
+            const time = elapsed || Date.now();
+            const idleBob = Math.sin(time / 1000) * 0.3;
+
+            ctx.fillStyle = 'rgba(0,0,0,0.15)';
+            ctx.beginPath(); ctx.ellipse(x + 7, y + 27, 6, 2, 0, 0, Math.PI * 2); ctx.fill();
+
+            ctx.fillStyle = '#2C3E50';
+            ctx.fillRect(x + 2, y + 16, 4, 10);
+            ctx.fillRect(x + 8, y + 16, 4, 10);
+
+            ctx.fillStyle = '#1A1A2E';
+            ctx.fillRect(x + 1, y + 25, 6, 2);
+            ctx.fillRect(x + 7, y + 25, 6, 2);
+
+            ctx.fillStyle = '#722F37';
+            ctx.fillRect(x, y, 14, 17);
+            ctx.fillStyle = '#8B3A42';
+            ctx.fillRect(x + 2, y + 1, 4, 8);
+            ctx.fillRect(x + 8, y + 1, 4, 8);
+            ctx.fillStyle = '#F5F5F0';
+            ctx.fillRect(x + 5, y + 1, 4, 10);
+            ctx.fillStyle = '#DAA520';
+            ctx.fillRect(x + 6, y + 3, 1, 1);
+            ctx.fillRect(x + 6, y + 6, 1, 1);
+            ctx.fillRect(x + 6, y + 9, 1, 1);
+
+            ctx.fillStyle = '#722F37';
+            ctx.fillRect(x - 2, y + 2 + idleBob, 3, 10);
+            ctx.fillRect(x + 13, y + 2 - idleBob, 3, 10);
+            ctx.fillStyle = skin;
+            ctx.fillRect(x - 2, y + 12, 3, 3);
+            ctx.fillRect(x + 13, y + 12, 3, 3);
+
+            ctx.fillStyle = skin;
+            ctx.fillRect(x + 4, y - 2, 6, 3);
+
+            ctx.fillStyle = skin;
+            ctx.fillRect(x + 2, y - 12, 10, 11);
+
+            ctx.fillStyle = '#DAA520';
+            ctx.fillRect(x + 1, y - 14, 12, 4);
+            ctx.fillRect(x, y - 12, 2, 10);
+            ctx.fillRect(x + 12, y - 12, 2, 10);
+            ctx.fillStyle = '#FFD700';
+            ctx.fillRect(x + 3, y - 13, 3, 1);
+            ctx.fillRect(x + 7, y - 12, 2, 1);
+            ctx.fillStyle = '#DAA520';
+            ctx.fillRect(x - 1, y - 3, 2, 2);
+            ctx.fillRect(x + 13, y - 3, 2, 2);
+
+            const blink = (time % 4000) > 3850;
+            if (blink) {
+                ctx.fillStyle = '#3A2A1A';
+                ctx.fillRect(x + 4, y - 8, 2, 1);
+                ctx.fillRect(x + 8, y - 8, 2, 1);
+            } else {
+                ctx.fillStyle = '#4A6FA5';
+                ctx.fillRect(x + 4, y - 9, 2, 2);
+                ctx.fillRect(x + 8, y - 9, 2, 2);
+                ctx.fillStyle = '#2C2C2C';
+                ctx.fillRect(x + 4, y - 8, 1, 1);
+                ctx.fillRect(x + 9, y - 8, 1, 1);
+            }
+
+            ctx.fillStyle = '#B8860B';
+            ctx.fillRect(x + 4, y - 10, 2, 1);
+            ctx.fillRect(x + 8, y - 10, 2, 1);
+
+            ctx.fillStyle = '#E08080';
+            ctx.fillRect(x + 5, y - 5, 4, 1);
+            ctx.fillRect(x + 4, y - 6, 1, 1);
+            ctx.fillRect(x + 9, y - 6, 1, 1);
+        }
+
+        function drawBrusselsScene(ctx, W, H, elapsed) {
+            // Gray/blue sky — large sky area
+            const skyG = ctx.createLinearGradient(0, 0, 0, H * 0.85);
+            skyG.addColorStop(0, '#9DB8C7');
+            skyG.addColorStop(0.6, '#B8D0DD');
+            skyG.addColorStop(1, '#D4E5ED');
+            ctx.fillStyle = skyG;
+            ctx.fillRect(0, 0, W, H * 0.85);
+
+            // Animated plane flying across the sky
+            const planeSpeed = 12;
+            const planeX = ((elapsed / 1000 * planeSpeed) % (W + 60)) - 30;
+            const planeY = 22 + Math.sin(elapsed / 3000) * 3;
+            ctx.fillStyle = '#F0F4F8';
+            ctx.fillRect(planeX, planeY, 8, 2);
+            ctx.fillRect(planeX + 2, planeY - 1, 4, 1);
+            ctx.fillRect(planeX + 2, planeY + 2, 4, 1);
+            ctx.fillRect(planeX, planeY - 2, 2, 2);
+            ctx.fillStyle = 'rgba(255,255,255,0.25)';
+            ctx.fillRect(planeX - 18, planeY + 1, 18, 1);
+            ctx.fillStyle = 'rgba(255,255,255,0.12)';
+            ctx.fillRect(planeX - 40, planeY + 1, 22, 1);
+
+            // Distant Brussels rooftops — lower on screen
+            ctx.fillStyle = '#7B8A9A';
+            const roofLine = H * 0.65;
+            for (let bx = 0; bx < W; bx += 22) {
+                const bh = 15 + Math.sin(bx * 0.15) * 10 + (bx % 44 === 0 ? 8 : 0);
+                ctx.fillRect(bx, roofLine - bh, 20, bh + 5);
+                ctx.fillStyle = '#A8B8C8';
+                for (let wy = roofLine - bh + 3; wy < roofLine; wy += 6) {
+                    ctx.fillRect(bx + 3, wy, 3, 3);
+                    ctx.fillRect(bx + 10, wy, 3, 3);
+                }
+                ctx.fillStyle = '#7B8A9A';
+            }
+
+            // Prominent tower (South Tower style)
+            const towerX = Math.floor(W * 0.62);
+            const towerW = 16;
+            const towerH = 48;
+            const towerY = roofLine - towerH + 5;
+            ctx.fillStyle = '#6A7A8C';
+            ctx.fillRect(towerX, towerY, towerW, towerH);
+            ctx.fillStyle = '#8BA0B4';
+            for (let ty = towerY + 2; ty < roofLine + 3; ty += 4) {
+                ctx.fillRect(towerX + 1, ty, towerW - 2, 2);
+            }
+            ctx.fillStyle = '#5A6A7C';
+            ctx.fillRect(towerX - 1, towerY - 2, towerW + 2, 3);
+            ctx.fillRect(towerX + 3, towerY - 5, towerW - 6, 3);
+            ctx.fillStyle = '#8A9AAA';
+            ctx.fillRect(towerX + 7, towerY - 10, 2, 6);
+
+            // Atomium — wider cube structure sprite-map
+            const ATOMIUM_COLORS = {
+                's': '#C0D0E0', 'h': '#D8E8F0', 'd': '#A0B0C0',
+                't': '#98A8B8', 'p': '#8898A8', 'b': '#788898',
+                'g': '#B0B8C8'
+            };
+            const ATOMIUM_SPRITE = [
+                '........hsh...hsh...........',
+                '.......hsssh.hgssh..........',
+                '........dsd...dsd...........',
+                '.......t..t..t..t...........',
+                '......t...t.t...t...........',
+                '.....t....tt....t...........',
+                '....t.....t......t..........',
+                '...hsh...hsh....hsh.........',
+                '..hsssh.hsssh..hgssh........',
+                '...dsd...dsd....dsd.........',
+                '....t.....t......t..........',
+                '.....t....tt....t...........',
+                '......t...t.t...t...........',
+                '.......t..t..t..t...........',
+                '........hsh...hsh...........',
+                '.......hsssh.hgssh..........',
+                '........dsd...dsd...........',
+                '..........ppp...............',
+                '..........ppp...............',
+                '..........ppp...............',
+                '.........bbbbb..............',
+            ];
+            const ax = Math.floor(W * 0.22);
+            const ay = roofLine + 5 - ATOMIUM_SPRITE.length;
+            for (let row = 0; row < ATOMIUM_SPRITE.length; row++) {
+                const line = ATOMIUM_SPRITE[row];
+                for (let col = 0; col < line.length; col++) {
+                    const c = line[col];
+                    if (c !== '.' && ATOMIUM_COLORS[c]) {
+                        ctx.fillStyle = ATOMIUM_COLORS[c];
+                        ctx.fillRect(ax + col, ay + row, 1, 1);
+                    }
+                }
+            }
+
+            ctx.fillStyle = '#8A8A8A';
+            ctx.fillRect(0, roofLine + 5, W, H - roofLine - 5);
+            ctx.fillStyle = '#9E9E9E';
+            ctx.fillRect(0, roofLine + 5, W, 4);
+
+            // Clouds — spread across the larger sky
+            ctx.fillStyle = 'rgba(255,255,255,0.4)';
+            const cT = elapsed / 20000;
+            for (let i = 0; i < 5; i++) {
+                const cx = ((i * 75 + cT * 25) % (W + 40)) - 20;
+                const cy = 10 + i * 16;
+                ctx.fillRect(cx, cy, 30, 4);
+                ctx.fillRect(cx + 4, cy - 2, 22, 3);
+            }
+        }
+
+        function drawShopScene(ctx, W, H) {
+            const introState = {
+                monthsPlayed: 1, month: 6, timeOfDay: 0, stress: 0,
+                bank: 0, dayInMonth: 1, shopRenamed: false, signInstalled: false,
+                employees: [], upgrades: {}, recovering: false, difficulty: 'realistic',
+                isCutscene: true
+            };
+            if (window.PixelScene && window.PixelScene.renderShopToCanvas) {
+                window.PixelScene.renderShopToCanvas(ctx, W, H, introState);
+            } else {
+                ctx.fillStyle = '#555';
+                ctx.fillRect(0, 0, W, H);
+                ctx.fillStyle = '#aaa';
+                ctx.font = '10px sans-serif';
+                ctx.fillText('pixel-scene.js not loaded', 80, 90);
+            }
+        }
+
+        // ════════════════════════════════════════════════
+        //  SCENE ENGINE (matches index.html cutscene)
+        // ════════════════════════════════════════════════
+
+        const SCENE_TIMING = {
+            1: { start: 0,     duration: 10000 },
+            2: { start: 10000, duration: 15000 },
+            3: { start: 25000, duration: 16000 },
+            4: { start: 41000, duration: 10000 },
+            5: { start: 51000, duration: 8000  }
+        };
+        const FADE_DURATION = 800;
+        const TOTAL_DURATION = 59000;
+
+        const narratives = {
+            1: [
+                { at: 1500, text: "I'd been backpacking through Central America for months.", style: '' },
+                { at: 5000, text: 'But something was pulling me home.', style: 'italic' },
+            ],
+            2: [],
+            3: [
+                { at: 2000, text: '"If you want, you can buy this shop."', style: 'italic' },
+                { at: 6000, text: '"I put a lot of effort and love into it, but it\'s time for a fresh start."', style: 'italic' },
+                { at: 10500, text: '"People need more fresh produce. I\'d be happy knowing a young, motivated person keeps it alive."', style: 'italic' },
+            ],
+            4: [
+                { at: 1000, text: 'The deal cost me everything. All my savings. Help from my family. A loan to repay in a year.', style: '' },
+                { at: 4500, text: '€0 in my bank account. €10,000 in cash to survive the first month.', style: '' },
+                { at: 7000, text: 'A big bet. No way back.', style: '' },
+                { at: 8500, text: 'Only forward.', style: 'emphasis' },
+            ],
+            5: [],
+        };
+
+        let lastNarrText = '', lastNarrStyle = '';
+
+        function setNarrative(text, style) {
+            if (text === lastNarrText && style === lastNarrStyle) return;
+            lastNarrText = text;
+            lastNarrStyle = style;
+            if (!text) { narrEl.classList.remove('visible'); return; }
+            narrEl.classList.remove('visible', 'emphasis', 'italic');
+            narrEl.textContent = text;
+            if (style) narrEl.classList.add(style);
+            void narrEl.offsetWidth;
+            narrEl.classList.add('visible');
+        }
+
+        function setLocation(text) {
+            if (text) { locEl.textContent = text; locEl.classList.add('visible'); }
+            else { locEl.classList.remove('visible'); }
+        }
+
+        function showPhoneRinging(sender) {
+            document.getElementById('ring-caller-name').textContent = sender;
+            document.getElementById('wa-sender-name').textContent = sender;
+            phoneEl.classList.add('visible', 'ringing');
+            phoneEl.classList.remove('show-message');
+        }
+
+        function showPhoneMessage(sender, text) {
+            document.getElementById('ring-caller-name').textContent = sender;
+            document.getElementById('wa-sender-name').textContent = sender;
+            phoneText.textContent = text;
+            phoneEl.classList.remove('ringing');
+            phoneEl.classList.add('visible', 'show-message');
+        }
+
+        function hidePhone() { phoneEl.classList.remove('visible', 'ringing', 'show-message'); }
+
+        function getSceneForTime(elapsed) {
+            for (let s = 5; s >= 1; s--) {
+                if (elapsed >= SCENE_TIMING[s].start) return s;
+            }
+            return 1;
+        }
+
+        function getFadeAlpha(elapsed, scene) {
+            const st = SCENE_TIMING[scene];
+            const se = elapsed - st.start;
+            if (se < FADE_DURATION) return se / FADE_DURATION;
+            if (se > st.duration - FADE_DURATION) return Math.max(0, (st.duration - se) / FADE_DURATION);
+            return 1;
+        }
+
+        // ════════════════════════════════════════════════
+        //  RENDER FRAME AT A GIVEN SIMULATED TIME
+        // ════════════════════════════════════════════════
+
+        let currentScene = 0;
+        let julienX = -20;
+        let genevievelVisible = true;
+
+        function renderAtTime(elapsedMs) {
+            const W = 320, H = 180;
+            ctx.clearRect(0, 0, W, H);
+
+            if (staticMode) {
+                renderStatic(staticMode, elapsedMs);
+                return;
+            }
+
+            const elapsed = Math.min(elapsedMs, TOTAL_DURATION);
+            const scene = getSceneForTime(elapsed);
+            const sceneElapsed = elapsed - SCENE_TIMING[scene].start;
+            const fadeAlpha = getFadeAlpha(elapsed, scene);
+
+            if (scene !== currentScene) {
+                currentScene = scene;
+                setNarrative('', '');
+                hidePhone();
+                setLocation('');
+                julienX = -20;
+                genevievelVisible = true;
+            }
+
+            // SCENE 1
+            if (scene === 1) {
+                drawTropicalScene(ctx, W, H, sceneElapsed);
+                setLocation('Corn Island, Nicaragua — June 2022');
+                const jx = 150, jy = Math.floor(H * 0.72) - 32;
+                drawBackpackerJulien(ctx, jx, jy, sceneElapsed, 1, false, true);
+            }
+            // SCENE 2
+            else if (scene === 2) {
+                drawBrusselsScene(ctx, W, H, sceneElapsed);
+                setLocation('Brussels, Belgium');
+                const walkTarget = W * 0.45;
+                if (julienX < -15) julienX = -20;
+                const walkDone = julienX >= walkTarget;
+                if (!walkDone) julienX = Math.min(walkTarget, -20 + sceneElapsed * 0.04);
+                const julienWalkY = Math.floor(H * 0.65) + 5 - 32;
+                drawBackpackerJulien(ctx, julienX, julienWalkY, sceneElapsed, 1, !walkDone, true);
+                // Surprise "!" when phone rings
+                if (walkDone && sceneElapsed > 3800 && sceneElapsed < 7000) {
+                    drawExclamation(ctx, julienX + 4, julienWalkY - 2, sceneElapsed);
+                }
+                // Phase 1: Phone ringing
+                if (walkDone && sceneElapsed > 4500 && sceneElapsed < 7500) {
+                    showPhoneRinging('Geneviève');
+                }
+                // Phase 2: WhatsApp message
+                else if (walkDone && sceneElapsed >= 7500) {
+                    showPhoneMessage('Geneviève', '"Hey Julien, it\'s Geneviève, the owner of the Refil Store. You remember me? I heard you\'re coming back to Belgium. I have a proposition that might interest you."');
+                }
+            }
+            // SCENE 3
+            else if (scene === 3) {
+                ctx.save();
+                ctx.translate(0, -20);
+                drawShopScene(ctx, W, H);
+                const stopX = 110;
+                if (julienX < -15) julienX = -20;
+                const arrived = julienX >= stopX;
+                if (!arrived) julienX = Math.min(stopX, -20 + sceneElapsed * 0.035);
+                const shopGroundY = 143;
+                drawBackpackerJulien(ctx, julienX, shopGroundY, sceneElapsed, 1, !arrived, true);
+                if (genevievelVisible) drawGenevieve(ctx, 175, shopGroundY + 3, sceneElapsed);
+                if (sceneElapsed > 14000) genevievelVisible = false;
+                ctx.restore();
+            }
+            // SCENE 4
+            else if (scene === 4) {
+                ctx.save();
+                ctx.translate(0, -20);
+                drawShopScene(ctx, W, H);
+                drawBackpackerJulien(ctx, 140, 143, sceneElapsed, 1, false, true);
+                ctx.restore();
+            }
+            // SCENE 5 — Julien walks to door, camera zooms into doorway
+            else if (scene === 5) {
+                const zoomProgress = Math.min(1, sceneElapsed / (SCENE_TIMING[5].duration - 1000));
+                const zoomLevel = 1 + zoomProgress * 2.0;
+                ctx.save();
+                const zoomCenterX = 97;  // door center
+                const zoomCenterY = 148;
+                ctx.translate(
+                    W / 2 - zoomCenterX * zoomLevel,
+                    H / 2 - zoomCenterY * zoomLevel
+                );
+                ctx.scale(zoomLevel, zoomLevel);
+                drawShopScene(ctx, W, H);
+                const walkProg = Math.min(1, sceneElapsed / 4000);
+                const jx = 140 - (140 - 100) * walkProg;
+                if (walkProg < 1) drawBackpackerJulien(ctx, jx, 143, sceneElapsed, 1, true, true);
+                ctx.restore();
+                const barH = Math.floor(zoomProgress * 25);
+                ctx.fillStyle = '#000';
+                ctx.fillRect(0, 0, W, barH);
+                ctx.fillRect(0, H - barH, W, barH);
+            }
+
+            // Narratives
+            const sceneNarrs = narratives[scene] || [];
+            let activeNarr = null;
+            for (let i = sceneNarrs.length - 1; i >= 0; i--) {
+                if (sceneElapsed >= sceneNarrs[i].at) { activeNarr = sceneNarrs[i]; break; }
+            }
+            if (activeNarr) setNarrative(activeNarr.text, activeNarr.style);
+
+            // Fade
+            if (fadeAlpha < 1) {
+                ctx.fillStyle = 'rgba(0,0,0,' + (1 - fadeAlpha) + ')';
+                ctx.fillRect(0, 0, W, H);
+            }
+
+            // Update time display
+            const sceneName = SCENE_NAMES[scene] || '?';
+            timeDisplay.textContent = (elapsed / 1000).toFixed(1) + 's | Scene ' + scene + ' — ' + sceneName;
+        }
+
+        function renderStatic(mode, elapsed) {
+            const W = 320, H = 180;
+            setNarrative('', '');
+            hidePhone();
+            setLocation('');
+
+            if (mode === 'tropical') {
+                drawTropicalScene(ctx, W, H, elapsed);
+                setLocation('Corn Island, Nicaragua — June 2022');
+                drawBackpackerJulien(ctx, parseInt(document.getElementById('julien-x').value), parseInt(document.getElementById('julien-y').value), elapsed, 1, false, true);
+            } else if (mode === 'brussels') {
+                drawBrusselsScene(ctx, W, H, elapsed);
+                setLocation('Brussels, Belgium');
+                drawBackpackerJulien(ctx, parseInt(document.getElementById('julien-x').value), parseInt(document.getElementById('julien-y').value), elapsed, 1, false, true);
+            } else if (mode === 'shop') {
+                ctx.save();
+                ctx.translate(0, -20);
+                drawShopScene(ctx, W, H);
+                setLocation('Woluwe-Saint-Pierre, Brussels');
+                const jx = parseInt(document.getElementById('julien-x').value);
+                const jy = parseInt(document.getElementById('julien-y').value);
+                const gx = parseInt(document.getElementById('gen-x').value);
+                drawBackpackerJulien(ctx, jx, jy, elapsed, 1, false, true);
+                drawGenevieve(ctx, gx, jy + 2, elapsed);
+                ctx.restore();
+            } else if (mode === 'characters') {
+                ctx.fillStyle = '#4A90B8';
+                ctx.fillRect(0, 0, W, H);
+                ctx.fillStyle = '#3A3A3A';
+                ctx.fillRect(0, 145, W, 35);
+                // Label
+                ctx.fillStyle = '#FFF';
+                ctx.font = '8px sans-serif';
+                ctx.fillText('Backpacker Julien', 20, 175);
+                ctx.fillText('Julien (walking)', 100, 175);
+                ctx.fillText('Geneviève', 200, 175);
+                // Characters
+                drawBackpackerJulien(ctx, 30, 110, elapsed, 1, false, true);
+                drawBackpackerJulien(ctx, 110, 110, elapsed, 1, true, true);
+                drawGenevieve(ctx, 210, 112, elapsed);
+            }
+
+            timeDisplay.textContent = 'Static: ' + mode + ' | ' + (elapsed / 1000).toFixed(1) + 's anim';
+        }
+
+        // ════════════════════════════════════════════════
+        //  CONTROLS
+        // ════════════════════════════════════════════════
+
+        function getSimTime() {
+            return parseFloat(timeSlider.value) * 1000;
+        }
+
+        function togglePlay() {
+            isPlaying = !isPlaying;
+            staticMode = null;
+            document.getElementById('play-btn').textContent = isPlaying ? '⏸ Pause' : '▶ Play';
+            document.getElementById('play-btn').classList.toggle('active', isPlaying);
+            if (isPlaying) {
+                playStartReal = performance.now();
+                playStartSim = getSimTime();
+            }
+        }
+
+        function resetTime() {
+            isPlaying = false;
+            staticMode = null;
+            currentScene = 0;
+            julienX = -20;
+            genevievelVisible = true;
+            document.getElementById('play-btn').textContent = '▶ Play';
+            document.getElementById('play-btn').classList.remove('active');
+            timeSlider.value = 0;
+            document.getElementById('time-val').textContent = '0.0s — Scene 1';
+            setNarrative('', '');
+            hidePhone();
+            setLocation('');
+        }
+
+        function jumpToScene(n) {
+            staticMode = null;
+            isPlaying = false;
+            currentScene = 0;
+            julienX = -20;
+            genevievelVisible = true;
+            document.getElementById('play-btn').textContent = '▶ Play';
+            document.getElementById('play-btn').classList.remove('active');
+            const t = SCENE_TIMING[n].start / 1000 + 0.1;
+            timeSlider.value = t;
+            document.getElementById('time-val').textContent = t.toFixed(1) + 's — Scene ' + n;
+            setNarrative('', '');
+            hidePhone();
+            setLocation('');
+        }
+
+        function showStatic(mode) {
+            isPlaying = false;
+            staticMode = mode;
+            currentScene = 0;
+            document.getElementById('play-btn').textContent = '▶ Play';
+            document.getElementById('play-btn').classList.remove('active');
+            setNarrative('', '');
+            hidePhone();
+            setLocation('');
+        }
+
+        // Slider input
+        timeSlider.addEventListener('input', () => {
+            if (isPlaying) {
+                isPlaying = false;
+                document.getElementById('play-btn').textContent = '▶ Play';
+                document.getElementById('play-btn').classList.remove('active');
+            }
+            staticMode = null;
+            currentScene = 0;
+            julienX = -20;
+            genevievelVisible = true;
+            setNarrative('', '');
+            hidePhone();
+            setLocation('');
+            const t = parseFloat(timeSlider.value);
+            const scene = getSceneForTime(t * 1000);
+            document.getElementById('time-val').textContent = t.toFixed(1) + 's — Scene ' + scene;
+        });
+
+        // Character position sliders
+        ['julien-x', 'julien-y', 'gen-x'].forEach(id => {
+            document.getElementById(id).addEventListener('input', (e) => {
+                document.getElementById(id + '-val').textContent = e.target.value;
+            });
+        });
+
+        // ════════════════════════════════════════════════
+        //  ANIMATION LOOP
+        // ════════════════════════════════════════════════
+
+        function animate() {
+            let elapsed;
+            if (isPlaying) {
+                elapsed = playStartSim + (performance.now() - playStartReal);
+                const sec = elapsed / 1000;
+                if (sec >= 56) {
+                    isPlaying = false;
+                    document.getElementById('play-btn').textContent = '▶ Play';
+                    document.getElementById('play-btn').classList.remove('active');
+                    elapsed = TOTAL_DURATION;
+                }
+                timeSlider.value = (elapsed / 1000).toFixed(1);
+                document.getElementById('time-val').textContent = (elapsed / 1000).toFixed(1) + 's — Scene ' + getSceneForTime(elapsed);
+            } else if (staticMode) {
+                elapsed = performance.now(); // just for animation
+            } else {
+                elapsed = getSimTime();
+            }
+
+            renderAtTime(elapsed);
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+</html>
