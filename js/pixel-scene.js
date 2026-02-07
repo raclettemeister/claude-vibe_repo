@@ -2010,8 +2010,9 @@
         // Deterministic "random" position based on month (changes each month)
         const positionSeed = (monthsPlayed * 7) % 5;
         
-        // Bird/Pigeon story progression
-        const birdStage = monthsPlayed < 6 ? 0 : (monthsPlayed < 12 ? 1 : 2);
+        // Bird/Pigeon story progression (slow growth over 42-month game)
+        // Stage 0: first 2 years (months 0-23), Stage 1: year 3 (months 24-35), Stage 2: last ~6 months (36+)
+        const birdStage = monthsPlayed < 24 ? 0 : (monthsPlayed < 36 ? 1 : 2);
         // 0 = alone, 1 = found mate (2 birds), 2 = has nest
         
         // === PIGEON (Autumn) - On building roof edge (only Oct/Nov, not Sept) ===
@@ -2092,11 +2093,12 @@
                 { x: 255, y: 160, offset: 800 },   // Middle right
             ];
             
-            // Progressive butterfly count based on months played
+            // Progressive butterfly count based on months played (slow growth over 42-month game)
+            // Stage 1: first 2 years, Stage 2: year 3, Stage 3: last ~6 months
             let butterflyCount = 1;
-            if (monthsPlayed >= 12) {
+            if (monthsPlayed >= 36) {
                 butterflyCount = 5; // Full multicolor flock
-            } else if (monthsPlayed >= 6) {
+            } else if (monthsPlayed >= 24) {
                 butterflyCount = 2; // A pair
             }
             

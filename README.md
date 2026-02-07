@@ -44,6 +44,7 @@ See [TESTING.md](TESTING.md) for why and what is tested.
 
 ## Version History
 
+- **v4.0** — **Cinematic Edition** — Complete intro cutscene rework (Stardew Valley-style pixel art scenes: tropical island, Brussels cityscape, shop meeting with Geneviève). Click-to-advance beat system. Multiple Julien sprites (Hawaiian shirt for island, T-shirt + backpack for Brussels, T-shirt for shop). Real audio files for all scenes (ocean waves, city ambiance, phone ring, shop music, epic ending). File-based game music system with 4 tracks (start, countdown to shop, after buying, happy). iPhone WhatsApp UI for phone message scene. "Click to begin" overlay for audio unlock.
 - **v3.2** — **Mobile + Bugfixes** — Mobile-responsive layout (event-first stack, Chart tab, touch-friendly). Fixed building deadline choices (no "Sign" when can't afford). Fixed burnout event localization. Added automated E2E tests.
 - **v3.1** — **Building Choice Fix** — Fixed building deadline showing "Sign" option when player can't afford (FR locale bug).
 - **v3.0** — **FR/EN** — Full French/English translation (UI, events, photos, end screen, warnings, bank, burnout). Language switcher on title screen. Raclette event order fix.
