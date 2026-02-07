@@ -2009,9 +2009,9 @@ const events = [
                 title: 'Lucas Has a Friend',
                 description: 'Lucas has been great. Unreliable sometimes, but customers adore him. One day he mentions his best friend Henry: "He\'s looking for work. Most reliable person I know. Complete opposite of me, actually."',
                 type: 'hiring',
-                monthRange: [28, 42],  // Wider range to ensure it triggers
+                monthRange: [40, 42],  // Wider range to ensure it triggers
                 priority: 85,  // High priority - important hire event
-                condition: () => gameState.hasLucas && gameState.lucasMonthsWorked >= 2 && !gameState.hasHenry,  // 2+ months with Lucas (was 3)
+                condition: () => gameState.hasLucas && gameState.lucasMonthsWorked >= 12 && !gameState.hasHenry,  // 12+ months with Lucas
                 choices: [
                     {
                         text: 'Hire Henry',

@@ -43,6 +43,24 @@
     "logCopied": "Journal de partie copié dans le presse-papiers !",
     "copyLogTitle": "Copiez ce journal :"
   },
+  "cutscene": {
+    "scene1_location": "Corn Island, Nicaragua — Juin 2022",
+    "scene1_text1": "Je voyageais sac au dos en Amérique Centrale depuis des mois.",
+    "scene1_text2": "Mais quelque chose me ramenait chez moi. Je voulais créer quelque chose qui compte.",
+    "scene2_location": "Bruxelles, Belgique",
+    "scene3_location": "Woluwe-Saint-Pierre, Bruxelles",
+    "scene3_text1": "« Si tu veux, tu peux acheter cette boutique. »",
+    "scene3_text2": "« J'y ai mis beaucoup d'efforts et d'amour, mais il est temps de tourner la page. »",
+    "scene3_text3": "« Les gens ont besoin de plus de produits frais. Je serais heureuse de savoir qu'une personne jeune et motivée lui donne vie. »",
+    "scene4_text1": "L'accord m'a coûté tout. Toutes mes économies. L'aide de ma famille. Un prêt à rembourser en un an.",
+    "scene4_text2": "0€ sur mon compte en banque. 10 000€ de réserves pour survivre le premier mois.",
+    "scene4_text3": "Un gros pari. Pas de retour en arrière.",
+    "scene4_text4": "Seulement en avant.",
+    "clickToBegin": "Cliquez pour commencer votre histoire",
+    "incomingCall": "Appel WhatsApp entrant...",
+    "whatsappLabel": "Message WhatsApp",
+    "phoneMessageText": "\u201CSalut Julien, c\u2019est Genevi\u00e8ve, la propri\u00e9taire du Refil Store. Tu te souviens de moi ? J\u2019ai entendu dire que tu rentrais en Belgique. J\u2019ai une proposition qui pourrait t\u2019int\u00e9resser.\u201D"
+  },
   "game": {
     "phase_starting": "🌱 Débuts",
     "phase_pivoting": "🔄 Pivot",
