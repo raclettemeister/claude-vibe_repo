@@ -1,16 +1,23 @@
 /**
  * Balance Constants for Chez Julien Simulator
  * 
+ * ⚠️  IMPORTANT: This file is NOT imported by index.html.
+ * The actual game logic lives inline in index.html.
+ * This file is kept as a REFERENCE DOCUMENT only.
+ * When updating game balance, update index.html directly
+ * and then sync the values here for documentation.
+ * 
+ * Last synced: Feb 8, 2026
+ * 
  * Centralized balance values referenced in BALANCE_REFERENCE.md
- * These should be the single source of truth for game balance.
  */
 
 // ============================================
 // FINANCIAL CONSTANTS
 // ============================================
 
-/** Starting bank balance (realistic difficulty) */
-export const STARTING_BANK = 15000;
+/** Starting bank balance (realistic difficulty) — per GAME_DESIGN.md: "Start at €12,000" */
+export const STARTING_BANK = 12000;
 
 /** Building purchase cost */
 export const BUILDING_COST = 80000;
@@ -172,18 +179,22 @@ export const STARTING_YEAR = 2022;
 // DIFFICULTY MODIFIERS
 // ============================================
 
+// NOTE: These must match the difficultyModifiers object in index.html
 export const DIFFICULTY_MODIFIERS = {
     realistic: {
         salesMod: 1.0,
-        costMod: 1.0
+        costMod: 1.0,
+        meterDrain: 1.0
     },
     forgiving: {
-        salesMod: 1.1,
-        costMod: 0.9
+        salesMod: 1.12,
+        costMod: 0.92,
+        meterDrain: 0.7
     },
     brutal: {
-        salesMod: 0.9,
-        costMod: 1.15
+        salesMod: 0.88,
+        costMod: 1.08,
+        meterDrain: 1.2
     }
 };
 

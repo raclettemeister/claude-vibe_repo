@@ -563,11 +563,11 @@ const events = [
                     ? 'Winter is here. Your raclette reputation precedes you. Customers call in advance. "Are you the shop with 15 different raclettes?" The question is how hard to push.'
                     : 'Winter is here and everyone wants raclette. You could stock up big on raclette cheese and rent machines. High investment but the margins are incredible.',
                 type: 'opportunity',
-                monthRange: [17, 20], // Nov Year 2–Feb (after "The Raclette Question" in Oct; winter = Nov–Jan)
+                monthRange: [17, 42], // Nov–Feb recurring every winter (after "The Raclette Question" in Oct)
                 recurring: true,
                 cooldown: 12,
                 priority: 85,
-                condition: () => (gameState.month >= 11 || gameState.month <= 1) && gameState.cheeseTypes >= 25,
+                condition: () => (gameState.month >= 11 || gameState.month <= 2) && gameState.cheeseTypes >= 25,
                 choices: [
                     {
                         text: 'Go all-in on raclette',
@@ -907,7 +907,7 @@ const events = [
                 title: 'Extended Hours?',
                 description: 'Customers keep asking if you could stay open later. "I get off work at 6, you close at 6!" Opening until 7:30pm could capture the after-work crowd.',
                 type: 'decision',
-                monthRange: [6, 30],
+                monthRange: [6, 38],
                 condition: () => !gameState.extendedHours && (gameState.hasLucas || gameState.hasHenry),
                 choices: [
                     {
@@ -980,7 +980,7 @@ const events = [
                 title: 'Summer Drought',
                 description: 'August. Brussels empties. Your regulars are at the coast. The Melon Charentais bio sells well, but cheese sales drop 40%. The Tomme aux Fleurs Moosbrugger is aging faster than it\'s selling. Pasta Mobil is on vacation—no fresh ravioli deliveries. Even Terra\'s webshop feels empty.',
                 type: 'crisis',
-                monthRange: [13, 14], // August
+                monthRange: [13, 42], // August (recurring every year)
                 condition: () => gameState.month === 8 && gameState.cheeseTypes >= 10,
                 recurring: true,
                 cooldown: 12,
@@ -1011,7 +1011,7 @@ const events = [
                 title: 'The Heat Wave',
                 description: 'July. 38°C outside. The cheese display fridge is struggling. The AC can barely keep up. Customers don\'t want to cook—they want salads, cold cuts, fresh things. Heavy cheeses sit untouched.',
                 type: 'crisis',
-                monthRange: [12, 13], // July-August
+                monthRange: [12, 42], // July-August (recurring every year)
                 condition: () => gameState.month === 7 || gameState.month === 8,
                 recurring: true,
                 cooldown: 12,
@@ -1043,7 +1043,7 @@ const events = [
                 title: 'Brussels Under Snow',
                 description: 'You wake up to 20cm of snow. Brussels is paralyzed. The tram isn\'t running. Cars are stuck. Your delivery from Lalero? "Impossible today." But some brave souls might still walk to shops...',
                 type: 'decision',
-                monthRange: [5, 7], // Dec-Feb (game months)
+                monthRange: [5, 42], // Dec-Feb (recurring every winter)
                 condition: () => gameState.month === 12 || gameState.month === 1 || gameState.month === 2,
                 unique: true,
                 priority: 85,
@@ -1068,7 +1068,7 @@ const events = [
                 title: 'September Rush',
                 description: 'School\'s back. Everyone\'s returning from holidays. Suddenly they need everything: Filet de Poulet Coprosain for quick dinners, Bolognaise Fraîche for the kids, cheese for the raclette they\'re already craving. Your September stats show €35,000 turnover, 1,649 clients. The rhythm is brutal after summer\'s calm.',
                 type: 'decision',
-                monthRange: [14, 15], // September
+                monthRange: [14, 42], // September (recurring every year)
                 condition: () => gameState.month === 9,
                 recurring: true,
                 cooldown: 12,
@@ -2009,9 +2009,9 @@ const events = [
                 title: 'Lucas Has a Friend',
                 description: 'Lucas has been great. Unreliable sometimes, but customers adore him. One day he mentions his best friend Henry: "He\'s looking for work. Most reliable person I know. Complete opposite of me, actually."',
                 type: 'hiring',
-                monthRange: [40, 42],  // Wider range to ensure it triggers
+                monthRange: [39, 42],  // Nov 2025 = month 41 (real timeline), window from Sep–Dec 2025
                 priority: 85,  // High priority - important hire event
-                condition: () => gameState.hasLucas && gameState.lucasMonthsWorked >= 12 && !gameState.hasHenry,  // 12+ months with Lucas
+                condition: () => gameState.hasLucas && gameState.lucasMonthsWorked >= 12 && !gameState.hasHenry,  // 12+ months with Lucas (he joins ~month 27, so met from month 39)
                 choices: [
                     {
                         text: 'Hire Henry',
@@ -2220,7 +2220,7 @@ const events = [
                 title: 'Poncho\'s First Year',
                 description: 'One year ago, those eyes looked up at you from the shelter. Now Poncho owns the shop—his chair by the door, his spot under the cheese counter, his adoring fans who come just to see him. He\'s not a puppy anymore. He\'s family.',
                 type: 'milestone',
-                monthRange: [27, 27], // September 2024 - 1 year after adoption
+                monthRange: [26, 28], // Around September 2024 - ~1 year after adoption (wider window to avoid collision with meet_lucas)
                 condition: () => gameState.hasDog,
                 mandatory: true,
                 unique: true,
@@ -2468,7 +2468,7 @@ const events = [
             {
                 id: 'delegation_moment',
                 title: 'Learning to Let Go',
-                description: 'You\'ve been doing everything yourself. Opening, closing, ordering, pricing, cleaning. Lucas and Henry are capable, but you can\'t stop micromanaging. "You don\'t trust us," Lucas jokes. He\'s not entirely joking.',
+                description: 'You\'ve been doing everything yourself. Opening, closing, ordering, pricing, cleaning. Lucas is capable, but you can\'t stop micromanaging. "You don\'t trust me," Lucas jokes. He\'s not entirely joking.',
                 type: 'personal',
                 monthRange: [28, 40],
                 condition: () => gameState.hasLucas && gameState.autonomy < 50,

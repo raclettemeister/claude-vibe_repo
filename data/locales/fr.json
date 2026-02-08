@@ -41,7 +41,12 @@
     "eventType_strategy": "Stratégie",
     "confirmRestart": "Êtes-vous sûr de vouloir recommencer ? Toute progression sera perdue.",
     "logCopied": "Journal de partie copié dans le presse-papiers !",
-    "copyLogTitle": "Copiez ce journal :"
+    "copyLogTitle": "Copiez ce journal :",
+    "newPhotoUnlocked": "📸 Nouvelle photo débloquée !",
+    "checkYourAlbum": "Voir votre album",
+    "platinumTrophy": "Trophée platine",
+    "platinumTrophyUnlocked": "TROPHÉE PLATINE",
+    "platinumTrophyDesc": "Vrai fromager — 100 % accompli !"
   },
   "cutscene": {
     "scene1_location": "Corn Island, Nicaragua — Juin 2022",
@@ -379,6 +384,7 @@
     "lesson_birthday": "Cette fête d'anniversaire — tout le monde a vu ce que vous aviez bâti. Chaque moment de chaos en valait la peine.",
     "lesson_reputation": "Votre réputation est devenue votre atout. Le bouche-à-oreille est puissant.",
     "lesson_full_menu": "Diversifier les produits a créé plusieurs sources de revenus.",
+    "achievementsTitle": "🏆 Récompenses",
     "ach_homeowner": "Propriétaire",
     "ach_empire": "Bâtisseur d'empire",
     "ach_enough": "Assez",
