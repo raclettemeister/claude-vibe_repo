@@ -1,0 +1,59 @@
+{
+  "meta": {
+    "description": "Single source of truth: all events (code + system + photo keys). Events array from events-map.json; system and photo keys listed here.",
+    "eventsSource": "data/events.js (see events-map.json for full 106)",
+    "generatedFor": "Timeline planning and AI context"
+  },
+  "poolEventIds": [
+    "cash_crisis", "sunday_opening", "stock_reality", "shop_name", "insurance_decision", "summer_flood", "first_cheese", "charcuterie_question", "wine_dilemma", "corporate_opportunity", "cheap_fridge", "fine_food_choice", "gradual_pivot", "first_christmas", "christmas_market", "corporate_client", "wine_pairing", "raclette_season", "first_raclette_season", "swiss_invitation", "raclette_kingdom", "parmigiano_invitation", "birthday_party", "regular_appreciation", "competitor_closes", "apprentice_request", "food_blogger_visit", "reflection_moment", "newspaper_feature", "expand_hours", "talk_to_customers", "christmas_rush", "summer_slowdown", "heat_wave", "snow_day", "back_to_school", "supplier_price_hike", "delivery_disaster", "health_inspection", "competitor_opens", "fridge_breakdown", "producer_visit_lalero", "cheese_course", "bulk_supplier_deal", "staff_training", "sleep_problems", "relationship_tension", "friend_needs_help", "bad_review", "difficult_customer", "regular_moves_away", "theft_incident", "signature_cheese", "shop_philosophy", "mentor_opportunity", "neighborhood_collab", "cookbook_idea", "seasonal_ritual", "lucas_growth", "your_counter_story", "expansion_dream", "documentary_approach", "charity_choice", "naming_ceremony", "special_order", "sunday_burnout", "stop_sunday", "meet_lucas", "lucas_brings_henry", "direct_hire_help", "student_trap", "peak_performance", "adopt_dog", "dog_in_shop", "poncho_cheese_emergency", "poncho_anniversary", "building_offer", "building_countdown", "building_deadline", "building_deadline_extended", "fancy_sign", "producer_opportunity", "delegation_moment", "take_holiday", "december_rush", "family_dinner", "the_invitation", "hospital_call", "old_friend", "birthday_forgot", "christmas_day", "second_shop_offer", "systems_project", "visibility_push", "personal_recharge", "pricing_strategy", "supplier_relationship", "weekly_rhythm", "learning_investment", "shop_atmosphere", "catering_opportunity", "private_tasting", "bulk_order", "market_stall", "good_month", "quiet_month"
+  ],
+  "systemTriggeredNotInPool": [
+    {
+      "id": "burnout_popup",
+      "special": "burnout",
+      "when": "stress >= 80, monthsPlayed >= 6",
+      "note": "Popup shown; 3rd = game over. Narrative event sunday_burnout is separate."
+    },
+    {
+      "id": "cash_crisis_trigger",
+      "note": "Selects cash_crisis event from pool when cashCrisisTriggered; not a separate event."
+    }
+  ],
+  "gameOverReasons": ["completed", "burnout", "suppliers", "bankruptcy", "health", "relationships"],
+  "photoUnlockKeys": [
+    "game_start",
+    "game_end",
+    "adopt_poncho",
+    "hire_lucas",
+    "hire_henry",
+    "building_purchased",
+    "cheese_milestone_50",
+    "birthday_party",
+    "september_rush",
+    "first_cheese",
+    "first_christmas",
+    "summer_flood",
+    "wine_pairing",
+    "wine_dilemma",
+    "producer_visit",
+    "swiss_invitation",
+    "parmigiano_invitation",
+    "poncho_cheese_emergency",
+    "christmas_market",
+    "poncho_anniversary"
+  ],
+  "mandatoryEventIds": [
+    "first_christmas",
+    "christmas_market",
+    "christmas_rush",
+    "meet_lucas",
+    "adopt_dog",
+    "poncho_anniversary",
+    "building_offer",
+    "building_deadline",
+    "building_deadline_extended",
+    "christmas_day"
+  ],
+  "dynamicChoicesInIndexHtml": ["building_deadline", "building_deadline_extended"],
+  "specialTriggerOnly": ["cash_crisis"]
+}
