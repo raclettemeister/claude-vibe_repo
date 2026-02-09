@@ -2,7 +2,7 @@
   "langCode": "fr",
   "ui": {
     "title": "🧀 Shop Simulator V1.0",
-    "subtitle": "L'histoire vraie d'une fromagerie à Bruxelles",
+    "subtitle": "L'aventure d'une épicerie familiale.",
     "trophyCollection": "🏆 Trophées",
     "achievementCount": "/17",
     "tabPlay": "🎮 Jouer",
@@ -49,22 +49,25 @@
     "platinumTrophyDesc": "Vrai fromager — 100 % accompli !"
   },
   "cutscene": {
+    "openingTitle": "Il était une fois",
     "scene1_location": "Corn Island, Nicaragua — Juin 2022",
-    "scene1_text1": "Ça faisait des mois que je vadrouillais en Amérique Centrale. Sac à dos, hamac, pas de plan.",
-    "scene1_text2": "Mais un truc me tirait vers la Belgique. L'envie de construire quelque chose. Un vrai truc à moi.",
+    "scene1_text1": "Ça faisait des mois que je backpackais en Amérique Centrale. Avec mon sac à dos et mon hamac à la découverte du monde et de moi-même.",
+    "scene1_text2": "Mais quelque chose me tirait vers la Belgique. L'envie de construire. Un vrai projet à moi.",
     "scene2_location": "Bruxelles, Belgique",
     "scene3_location": "Woluwe-Saint-Pierre, Bruxelles",
     "scene3_text1": "« Julien, si tu veux, la boutique est à toi. »",
-    "scene3_text2": "« J'y ai mis tout mon cœur, mais mes jambes ne suivent plus. Il faut du sang neuf. »",
-    "scene3_text3": "« Le quartier a besoin de quelqu'un comme toi. Quelqu'un de jeune, de motivé, qui a la flamme. »",
-    "scene4_text1": "L'achat m'a vidé. Toutes mes économies. L'aide de mes parents. Un prêt à rembourser en un an.",
-    "scene4_text2": "0 € en banque. 10 000 € de côté pour tenir les premiers mois.",
-    "scene4_text3": "Le pari de ma vie. Pas de marche arrière possible.",
-    "scene4_text4": "Juste en avant.",
+    "scene3_text2": "« J'ai mis tout mon cœur, mais il est temps pour moi de passer à autre chose. Le magasin a besoin d'un nouveau gérant. »",
+    "scene3_text3": "« Le quartier a besoin de quelqu'un comme toi. De jeune, de motivé, qui a la flamme. »",
+    "scene4_text1": "L'achat du magasin m'a dépouillé de toutes mes économies ainsi que l'aide de ma famille. Mais aussi un prêt à rembourser en un an.",
+    "scene4_text2": "0 € sur mon compte privé, 10 000 € sur le compte du magasin pour tenir les premiers mois.",
+    "scene4_text3": "Le pari de ma vie. All in. Impossible de faire marche arrière.",
+    "scene4_text_cinematic": "Selon Shakespeare, le monde est un théâtre. Pour les trois prochaines années, le mien se joue au 26, Parvis Saint-Alix.",
+    "scene4_text4": "Dans ce jeu, je te propose de prendre le rôle principal de cette pièce. Moi, Julien Thibaut.",
+    "scene5_readyChallenge": "Es-tu prêt à relever le défi ?",
     "clickToBegin": "Cliquez pour commencer votre histoire",
     "incomingCall": "Appel WhatsApp entrant...",
     "whatsappLabel": "Message WhatsApp",
-    "phoneMessageText": "\u201CSalut Julien, c\u2019est Genevi\u00e8ve du Refil Store \u00e0 Woluwe. Tu te souviens de moi\u00a0? J\u2019ai entendu dire que tu rentrais au pays. J\u2019aurais un truc \u00e0 te proposer, passe me voir.\u201D"
+    "phoneMessageText": "\u201CSalut Julien, c\u2019est Genevi\u00e8ve du Refil Store \u00e0 Woluwe. Tu te souviens de moi\u00a0? J\u2019ai entendu dire que tu rentrais au pays. J\u2019aurais une proposition \u00e0 te faire, passe me voir.\u201D"
   },
   "game": {
     "phase_starting": "🌱 Débuts",
@@ -146,7 +149,7 @@
     "buildingMonthsUntil": "{{count}} mois avant échéance juillet 2024",
     "burnoutTitle": "BURNOUT",
     "burnoutTitleNum": "BURNOUT n°{{num}}",
-    "burnoutDesc1": "Votre corps a lâché. Vous vous réveillez et vous ne pouvez pas vous lever. Pas au sens figuré — physiquement impossible. Le stress a fini par vous rattraper.\n\nUne semaine de fermeture forcée. {{salesLost}} de ventes perdues. Le dimanche, c'est fini — votre corps refuse les 7 jours.\n\nVotre énergie max est plafonnée à {{cap}} % désormais. C'est le prix.",
+    "burnoutDesc1": "Votre corps a lâché. Vous ne pouvez pas vous lever. Physiquement. Le stress vous a rattrapé.\n\nUne semaine fermée. {{salesLost}} perdus. Votre énergie max est plafonnée à {{cap}} %. C'est le prix.",
     "burnoutDesc2": "Rebelote. Le deuxième crash fait encore plus mal. Votre corps se souvient du premier, et il est furieux.\n\nEncore une semaine fermée. {{salesLost}} perdus. L'énergie max descend à {{cap}} %.\n\nLe médecin vous fixe : « Julien, vous ne pouvez pas continuer comme ça. »",
     "burnoutDesc3": "Burnout n°{{num}}. À ce stade, votre corps ne tourne plus. {{salesLost}} perdus cette fois.\n\nÉnergie max : {{cap}} %.\n\n{{question}}",
     "burnoutQuestionLow": "Vous tenez sur les nerfs. Est-ce que cette boutique vaut votre santé ?",
@@ -200,14 +203,14 @@
   },
   "story": {
     "title": "📖 La vraie histoire derrière le jeu",
-    "p1": "<strong>Julien</strong> existe vraiment. En <strong>juillet 2022</strong>, il a repris une épicerie vrac à la ramasse à <strong>Woluwe-Saint-Pierre</strong>, Bruxelles. <strong>Geneviève</strong>, l'ancienne proprio, voulait raccrocher. Julien a débarqué avec quasi rien en poche : pas d'économies, juste l'idée un peu folle de transformer ce commerce moribond en quelque chose de spécial.",
-    "p2": "Sur le papier, la boutique avait 38 000 € de stock. En vrai ? Du quinoa de 2019, des lentilles bio qui sentaient le renfermé, du cacao en poudre que même les souris ignoraient. L'épicerie sèche était en chute libre — -23 % dans le secteur. Mais Julien a vu ce que les autres ne voyaient pas : le quartier crevait d'envie d'une <strong>vraie fromagerie</strong>.",
-    "p3": "En <strong>septembre 2023</strong>, <strong>Poncho</strong> a débarqué — un berger australien complètement fou, devenu la star de la boutique du jour au lendemain. Les clients venaient juste pour le voir. Les gosses du quartier passaient tous les jours. Et surtout, il forçait Julien à marcher. Le meilleur anti-stress qu'il ait jamais eu.",
-    "p4": "<strong>Novembre 2023</strong> : coup de fil de <strong>Madame Malfait</strong>, la propriétaire du bâtiment. Elle vend. 380 000 €. Il faut 80 000 € d'apport avant <strong>juillet 2024</strong>. Huit mois pour trouver l'impossible. Le compte à rebours le plus stressant de sa vie a commencé.",
-    "p5": "<strong>Juillet 2024</strong> : contre toute logique, Julien a signé. Sa main tremblait sur le stylo. Le bâtiment était à lui. Plus jamais de proprio qui peut te virer. Plus jamais vulnérable.",
-    "p6": "<strong>Septembre 2024</strong> : <strong>Lucas</strong> a rejoint l'aventure — jeune, bordélique, passionné de bouffe. Il venait de la boulangerie d'à côté et il a apporté une énergie dingue (parfois trop). Puis <strong>début 2025</strong>, <strong>Henry</strong>, un pote de Lucas — calme, fiable, le yin du yang. Enfin, Julien pouvait souffler.",
-    "p7": "Le burnout était réel. La question du dimanche était réelle. Le voyage raclette en Suisse, les chaos de décembre, les contrôles AFSCA qui font transpirer — tout est réel. Ce jeu, c'est le vrai parcours de Julien, condensé en 42 mois de montagnes russes.",
-    "p8": "Chaque événement de ce jeu est inspiré d'un truc qui s'est vraiment passé. Juré."
+    "p1": "En <strong>juillet 2022</strong>, <strong>Julien</strong> reprend une épicerie vrac à <strong>Woluwe-Saint-Pierre</strong>. <strong>Geneviève</strong>, l'ancienne proprio, raccroche. Lui débarque avec quasi rien : l'idée de faire une <strong>vraie fromagerie</strong>.",
+    "p2": "Sur le papier : 38 000 € de stock. En vrai : quinoa 2019, lentilles qui sentent le renfermé. L'épicerie sèche plonge (-23 %). Julien mise sur le fromage.",
+    "p3": "<strong>Septembre 2023</strong> : <strong>Poncho</strong>, berger australien, débarque. Star du quartier. Il force Julien à marcher — le meilleur anti-stress.",
+    "p4": "<strong>Novembre 2023</strong> : <strong>Madame Malfait</strong> vend le bâtiment. 380 000 €, 80 000 € d'apport avant <strong>juillet 2024</strong>. Huit mois. Le compte à rebours commence.",
+    "p5": "<strong>Juillet 2024</strong> : Julien signe. Le bâtiment est à lui. Plus de proprio au-dessus de sa tête.",
+    "p6": "<strong>Septembre 2024</strong> : <strong>Lucas</strong> arrive — jeune, passionné. Puis <strong>2025</strong>, <strong>Henry</strong>, un ami calme et fiable. Julien peut enfin souffler.",
+    "p7": "Burnout, dimanches, chaos de décembre, contrôles AFSCA : tout est réel. Ce jeu, c'est son parcours en 42 mois.",
+    "p8": "Chaque événement de ce jeu s'inspire de quelque chose qui s'est vraiment passé. Juré."
   },
   "glossary": {
     "title": "🧀 Lexique des fromages",
@@ -375,7 +378,7 @@
     "lesson_henry": "Henry a tout changé. Enfin quelqu'un sur qui compter. L'équilibre est revenu.",
     "lesson_poncho": "Poncho. La joie incarnée. Et les balades obligatoires étaient le meilleur anti-stress de votre vie.",
     "lesson_delegate": "Apprendre à lâcher prise a tout changé. La boutique tourne. Vous respirez.",
-    "lesson_no_delegate": "Tout faire soi-même, c'est la prison dorée. Les barreaux sont en Comté.",
+    "lesson_no_delegate": "Tout faire soi-même, c'est la prison dorée. Les barreaux sont en fromage.",
     "lesson_building": "Les clés du bâtiment. Plus jamais de proprio au-dessus de votre tête. La sécurité.",
     "lesson_empire": "Deux boutiques. Un nom. Une vision. Vous avez bâti un petit empire fromager.",
     "lesson_contentment": "Vous aviez de quoi agrandir. Vous avez choisi d'être heureux avec ce que vous aviez. C'est rare.",
@@ -464,70 +467,70 @@
     "cash_crisis": {
       "title": "Le mur",
       "description": "",
-      "dynamicDescription": "C'est fini, les sourires aux fournisseurs. Les 3 délais de grâce — cramés. Il manque {{amount}} € et Lalero ne décroche même plus. Interbio menace de couper les livraisons lundi. C'est maintenant ou jamais. Soit tu trouves l'argent ce soir, soit tu tournes la pancarte sur « fermé » pour la dernière fois.",
+      "dynamicDescription": "C'est fini, les sourires aux fournisseurs. Les 3 délais de grâce — cramés. Il manque {{amount}} € et Lalero ne décroche même plus. Interbio menace de couper les livraisons lundi. C'est maintenant ou jamais. Soit vous trouvez l'argent ce soir, soit vous tournez la pancarte sur « fermé » pour la dernière fois.",
       "choices": [
         {
           "text": "Foncer à la banque — prêt d'urgence",
-          "hint": "6 % par mois. Ça pique. Mais t'es vivant.",
-          "outcome": "Le banquier t'a regardé comme un cas social. Mais il a signé. 6 % d'intérêts par mois — autant dire qu'ils te saignent. Mais Lalero est payé. La boutique respire. Toi, un peu moins."
+          "hint": "6 % par mois. Ça pique. Mais vous êtes vivant.",
+          "outcome": "Le banquier vous a regardé comme un cas social. Mais il a signé. 6 % d'intérêts par mois — autant dire qu'ils vous saignent. Mais Lalero est payé. La boutique respire. Vous, un peu moins."
         },
         {
           "text": "Bazarder du matos — le frigo de secours, les étagères",
-          "hint": "Tu perds en capacité, mais zéro dette",
-          "outcome": "T'as vendu le frigo de secours sur 2ememain en 3 heures. Les étagères à un brocanteur de Schaerbeek pour une misère. T'as récupéré moins que la moitié de leur valeur. Mais t'as pas de dette. Et t'as encore une boutique."
+          "hint": "Vous perdez en capacité, mais zéro dette",
+          "outcome": "Frigo et étagères vendus en quelques heures. Moins de la moitié de la valeur. Zéro dette. Vous avez encore une boutique."
         },
         {
           "text": "Appeler les parents...",
           "hint": "Ils diront oui. C'est ça le pire.",
-          "outcome": "Maman a viré l'argent sans poser de questions. Papa a juste dit « fais attention à toi ». Pas d'intérêts. Pas de reproches. Juste ce silence au téléphone qui pesait une tonne. Tu leur as promis de rembourser vite. Tu sais que ça va prendre du temps."
+          "outcome": "Maman a viré l'argent. Papa : « Faites attention à vous. » Pas d'intérêts. Ce silence au téléphone. Vous avez promis de rembourser vite. Vous savez que ça prendra du temps."
         }
       ]
     },
     "sunday_opening": {
       "title": "Premier matin, première décision",
-      "description": "7 h du matin. T'as les clés dans la main. La boutique est à toi. Enfin... façon de parler.\n\nL'ancienne proprio fermait le dimanche, comme tout le monde. Mais tu vois bien : le dimanche matin à Woluwe, les gens se baladent, achètent du pain, flânent sur la place. C'est là qu'ils achèteraient du fromage.\n\nSauf que dimanche, c'est aussi le seul jour où tu peux souffler. Le lundi, la boutique est fermée — c'est le rythme belge. Alors : 6 jours sur 7, seul, dès le premier jour ?",
+      "description": "7 h. Les clés en main. La boutique est à vous — enfin, façon de parler.\n\nDimanche à Woluwe : les gens flânent, achètent du pain. Ils achèteraient du fromage. Mais dimanche, c'est aussi votre seul jour pour souffler. Ouvrir 6 jours sur 7 dès le premier jour ?",
       "choices": [
         {
           "text": "Ouvrir le dimanche — on dort quand on est mort",
           "hint": "Jusqu'à 20 % de CA en plus",
-          "outcome": "Premier dimanche : 8 clients avant 10 h. Des familles, des brunchs du quartier. T'as fait plus que le mercredi. T'es crevé le lundi, mais t'as le sourire. Six jours par semaine. Plus de grasse mat'. C'est parti."
+          "outcome": "Premier dimanche : 8 clients avant 10 h. Des familles, des brunchs du quartier. Vous avez fait plus que le mercredi. Vous êtes crevé le lundi, mais vous avez le sourire. Six jours par semaine. Plus de grasse matinée. C'est parti."
         },
         {
           "text": "Fermé le dimanche — faut garder un jour pour vivre",
-          "hint": "Ta santé mentale te remerciera",
-          "outcome": "Premier dimanche : t'es au parc. T'appelles ta mère. T'achètes des croissants chez le boulanger d'en face. Tu respires. Les autres bossent. Pas toi. C'est peut-être de l'argent perdu. Mais c'est peut-être ce qui te sauvera."
+          "hint": "Votre santé mentale vous remerciera",
+          "outcome": "Premier dimanche : parc, appel à votre mère, croissants chez le boulanger. Vous respirez. Peut-être de l'argent perdu. Peut-être ce qui vous sauvera."
         }
       ]
     },
     "stock_reality": {
       "title": "38 000 € de poussière",
-      "description": "T'as passé le week-end à tout compter. Chaque bocal, chaque sachet, chaque bac.\n\n38 000 € de stock sur le papier. Sur le papier.\n\nDu quinoa de 2019 — deux mille dix-neuf. Des lentilles bio qui sentent le grenier de grand-mère. Du cacao en poudre que même les enfants ne veulent pas. Des graines de chia périmées depuis le Covid. Le secteur de l'épicerie sèche est en chute libre : -23 % dans tout le pays.\n\nEn vrai ? Peut-être 10 000 € de vendable si t'es optimiste. Le reste, c'est du décor. Du très cher décor.",
+      "description": "Week-end à tout compter. Bocaux, sachets, bacs.\n\n38 000 € sur le papier. En vrai : quinoa 2019, lentilles qui sentent le renfermé, chia périmé. L'épicerie sèche plonge (-23 %). Peut-être 10 000 € de vendable. Le reste, du décor cher.",
       "choices": [
         {
           "text": "Liquidation totale — brocantes, soldes à -70 %, tout doit partir",
           "hint": "Des week-ends entiers à brader...",
-          "outcome": "T'as passé des dimanches en brocante à vendre du riz bio à des mamies. Bacs « tout à 1 € ». C'était long, c'était ingrat, mais petit à petit les étagères se vidaient. Et dans le vide, tu voyais enfin de la place. De la place pour ce que le quartier voulait vraiment."
+          "outcome": "Dimanches en brocante. Bacs « tout à 1 € ». Long, ingrat. Les étagères se vident. Dans le vide, de la place pour ce que le quartier voulait : du fromage."
         },
         {
           "text": "Trouver un \"gars\" qui rachète tout en bloc",
           "hint": "Un type avec une camionnette, pas de questions",
-          "outcome": "Un pote d'un pote est passé avec sa camionnette un mardi soir. Il a tout regardé, a soufflé, et t'a lâché 1 500 € cash pour l'ensemble. Stock valorisé 10 000 €. T'as serré les dents et tu l'as aidé à charger. Problème réglé. Leçon : pas vraiment apprise."
+          "outcome": "Un type avec une camionnette. 1 500 € cash pour tout. Stock valorisé 10 000 €. Vous avez serré les dents, aidé à charger. Problème réglé."
         },
         {
           "text": "Garder le stock — ça finira bien par se vendre",
           "hint": "... non ?",
-          "outcome": "Tu t'es dit que les clients reviendraient. Ils ne sont pas revenus. Les bacs prenaient la poussière. Les lentilles ont développé une odeur. Les gens entraient, reniflaient, ressortaient. Chaque mois, tu jetais du stock. Chaque poubelle, c'était de l'argent qui partait."
+          "outcome": "Vous avez attendu. Les clients ne sont pas revenus. Bacs en poussière, lentilles qui sentent. Chaque mois, du stock à la poubelle. L'argent partait."
         }
       ]
     },
     "shop_name": {
-      "title": "Comment tu t'appelles, toi ?",
-      "description": "La boutique s'appelle encore « Le Refil Store ». Pas vraiment toi.\n\nMais les clients, eux, ont déjà tranché. Madame Dubois dit « je vais chez Julien » au marché. Le facteur sonne en disant « colis pour Chez Julien ». Même Google commence à afficher le mauvais nom.\n\nTon pote Alix, lui, a une autre idée : « Alix Corner — ça fait concept store, c'est moderne, ça claque. » Il est sérieux. Tu crois.",
+      "title": "Comment vous appelez-vous ?",
+      "description": "La boutique s'appelle encore « Le Refil Store ». Pas vous.\n\nMadame Dubois dit déjà « chez Julien ». Le facteur aussi. Votre ami Alix propose « Alix Corner » — moderne, concept store. Vous le croyez.",
       "choices": [
         {
           "text": "« Chez Julien » — c'est déjà mon nom dans le quartier",
-          "hint": "Simple. Honnête. C'est toi.",
-          "outcome": "T'as peint « Chez Julien » sur la vitrine un dimanche soir. Le lundi, Madame Dubois est passée, a regardé, a souri. « Ben voilà. C'est comme ça qu'on disait déjà. » Le facteur a hoché la tête. C'était pas un rebranding. C'était juste la vérité."
+          "hint": "Simple. Honnête. C'est vous.",
+          "outcome": "Vous avez peint « Chez Julien » sur la vitrine un dimanche soir. Le lundi, Madame Dubois est passée, a regardé, a souri. « Ben voilà. C'est comme ça qu'on disait déjà. » Le facteur a hoché la tête. Ce n'était pas un rebranding. C'était juste la vérité."
         },
         {
           "text": "« Alix Corner » — moderne, ça pourrait attirer du monde",
@@ -537,177 +540,177 @@
         {
           "text": "Garder « Le Refil Store » — on change rien",
           "hint": "Un nom, c'est qu'un nom",
-          "outcome": "T'as gardé le nom. Honnêtement ? Les gens s'en fichent un peu. Ils viennent pour le fromage, pas pour l'enseigne. Mais dans le quartier, tout le monde dit quand même « Chez Julien »."
+          "outcome": "Vous avez gardé le nom. Honnêtement ? Les gens s'en fichent un peu. Ils viennent pour le fromage, pas pour l'enseigne. Mais dans le quartier, tout le monde dit quand même « Chez Julien »."
         }
       ]
     },
     "insurance_decision": {
       "title": "La question de l'assurance",
-      "description": "Votre comptable vous envoie le renouvellement annuel. « L'assurance commerce couvre le feu, le vol... mais la couverture complète avec dégâts des eaux, c'est 1 800 €/an en plus. La plupart des commerçants ne la prennent pas – c'est cher et les inondations sont rares ici. » Elle hausse les épaules. « À vous de voir. »",
+      "description": "Votre comptable : « Couverture complète avec dégâts des eaux, 1 800 €/an en plus. La plupart ne la prennent pas — les inondations sont rares. À vous de voir. »",
       "choices": [
         {
           "text": "Prendre la couverture complète (1 800 €/an)",
           "hint": "Cher mais tout est couvert",
-          "outcome": "Vous avez souscrit la formule complète. 150 €/mois, débités automatiquement. La sérénité a un prix."
+          "outcome": "Formule complète souscrite. 150 €/mois, débités automatiquement. La sérénité a un prix."
         },
         {
           "text": "Couverture de base uniquement",
           "hint": "Économiser, espérer que tout ira bien",
-          "outcome": "Vous avez pris la formule de base. Les inondations, ici ? Les 1 800 € restent sur votre compte."
+          "outcome": "Formule de base. Les inondations, à Woluwe ? Les 1 800 € restent sur votre compte."
         }
       ]
     },
     "first_cheese": {
       "title": "Et si c'était du fromage ?",
-      "description": "Madame Dubois est là, comme chaque mardi. Elle regarde tes bacs de lentilles, soupire, et lâche la phrase qui va tout changer :\n\n« Julien, ce qu'il nous faudrait ici, c'est du bon fromage. Du vrai. Y'a pas un seul endroit dans le quartier pour acheter un comté correct. »\n\nElle est pas la première à le dire. Mais aujourd'hui, ça résonne différemment. Tu repenses aux chiffres : les marges du fromage écrasent celles du vrac. La demande est là. La concurrence ? Zéro dans un rayon de 2 km.\n\nMadame Dubois te regarde avec cet air de mamie qui sait qu'elle a raison.",
+      "description": "Madame Dubois, comme chaque mardi. Elle regarde vos lentilles, soupire : « Ce qu'il nous faudrait ici, c'est du bon fromage. Du vrai. Y en a pas dans le quartier. »\n\nLes marges du fromage écrasent celles du vrac. La demande est là. Zéro concurrence à 2 km. Elle a cet air de mamie qui sait qu'elle a raison.",
       "choices": [
         {
           "text": "Commander UNE meule — la Tomme du Larzac, pour tester",
           "hint": "Petit pas. Gros potentiel.",
-          "outcome": "T'as appelé Lalero le soir même. Une Tomme du Larzac, crémeuse, douce, parfaite pour commencer. T'as posé la meule sur le comptoir le mercredi matin. Jeudi, elle était à moitié. Vendredi, finie. Samedi, trois clients ont demandé : « Vous en aurez d'autres ? »\n\nMadame Dubois est passée. Elle a souri. « Je vous l'avais dit. »"
+          "outcome": "Tomme du Larzac le soir même. Sur le comptoir mercredi. Vendredi, finie. « Vous en aurez d'autres ? » Madame Dubois a souri : « Je vous l'avais dit. »"
         },
         {
           "text": "Viser gros — investir dans un vrai comptoir fromage",
           "hint": "50 000 € financés. Ça fait peur. Mais c'est un signal.",
-          "outcome": "T'as pris rendez-vous pour un comptoir réfrigéré. 50 000 €, financés sur 5 ans. Le jour de la livraison, t'avais les mains qui tremblaient. C'est beau. C'est cher. Les mensualités vont piquer. Mais quand les clients sont entrés et ont vu ça... « Ah mais c'est devenu une vraie fromagerie ici ! » C'est exactement ce que tu voulais entendre."
+          "outcome": "Comptoir réfrigéré. 50 000 € sur 5 ans. Le jour J, les mains tremblaient. Les clients : « C'est une vraie fromagerie ici ! » Exactement ce que vous vouliez."
         },
         {
           "text": "Rester sur le vrac — c'est ce qu'on a repris",
           "hint": "Changer, c'est risqué...",
-          "outcome": "T'as hoché la tête poliment à Madame Dubois et t'as continué avec le vrac. Le quartier voulait du fromage. T'as pas bougé. Ils sont allés au Carrefour. Tu le sais parce que Madame Dubois te l'a dit. Sans méchanceté. Juste avec un peu de déception."
+          "outcome": "Vous avez continué avec le vrac. Le quartier voulait du fromage. Ils sont allés au Carrefour. Madame Dubois vous l'a dit. Un peu de déception."
         }
       ]
     },
     "first_christmas": {
       "title": "Premier Noël (panique)",
-      "description": "Décembre. Ton premier décembre comme commerçant.\n\nTu regardes les vitrines autour de toi. La boulangère a des paniers cadeaux impeccables. Le caviste a décoré son comptoir comme un marché alsacien. La fromagerie de Stockel affiche « plateaux de fêtes — commandez maintenant ».\n\nEt toi ? T'as du fromage. C'est déjà pas mal. Mais t'as aucune idée de combien commander, quoi mettre dans un panier cadeau, à quel prix. Tu te sens comme un étudiant qui a pas révisé pour l'examen.\n\nLes clients passent. Certains achètent. La plupart regardent et repartent. Le syndrome de l'imposteur te tape sur l'épaule : « Hé, t'es sûr de ce que tu fais ? »",
+      "description": "Votre premier décembre. La boulangère a des paniers impeccables. Le caviste a décoré. Stockel affiche « plateaux de fêtes ».\n\nVous, vous avez du fromage. Pas d'idée des quantités, des paniers, des prix. Les clients passent. Certains repartent. « Vous êtes sûr de ce que vous faites ? »",
       "choices": [
         {
           "text": "Rester simple — bon fromage, honnêteté, c'est tout",
-          "hint": "T'apprends. C'est ton premier. Respire.",
-          "outcome": "T'as pas fait de paniers Instagram. T'as pas mis de guirlandes. T'as juste proposé du bon fromage avec un sourire honnête. Et tu sais quoi ? Les habitués ont amené leurs amis. « Viens, je te montre mon fromager. » Mon fromager. C'est la première fois qu'on t'appelle comme ça. Ça fait un truc."
+          "hint": "Vous apprenez. C'est votre premier. Respirez.",
+          "outcome": "Pas de paniers Instagram, pas de guirlandes. Juste du bon fromage. Les habitués ont amené leurs amis. « Mon fromager. » Première fois qu'on vous appelle comme ça."
         },
         {
           "text": "En faire des caisses — paniers, déco, horaires étendus",
           "hint": "Fake it till you make it",
-          "outcome": "T'es resté jusqu'à minuit pour emballer des paniers. T'as copié ce que faisaient les autres, sans trop comprendre. Certains se sont vendus. D'autres ont fini au frigo. T'as fait du chiffre, mais en rangeant le soir du 24, tu te sentais... vide. Comme si c'était le Noël de quelqu'un d'autre."
+          "outcome": "Minuit à emballer des paniers. Vous avez copié les autres. Du chiffre, mais le 24 au soir, en rangeant, vous vous sentiez vide. Le Noël de quelqu'un d'autre."
         },
         {
           "text": "Aller demander conseil à la boulangère",
-          "hint": "Avaler ta fierté. Ça coûte rien.",
-          "outcome": "Marie, la boulangère d'à côté, t'a regardé avec un sourire maternel. « C'est ton premier, hein ? Allez, viens, je te montre. » Elle t'a expliqué les commandes, les paniers, les quantités. « L'an prochain, tu sauras. » T'as plus appris en une heure avec elle qu'en six mois tout seul."
+          "hint": "Avaler votre fierté. Ça ne coûte rien.",
+          "outcome": "Marie la boulangère : « C'est votre premier ? Venez, je vous montre. » Commandes, paniers, quantités. Une heure avec elle = plus qu'en six mois seul."
         }
       ]
     },
     "christmas_market": {
       "title": "Place Dumont, -3°C",
-      "description": "La commune te propose un stand au marché de Noël, place Dumont. Trois week-ends de décembre. Lever à 6 h, montage dans le noir, doigts gelés dès 8 h.\n\nMais imagine : la raclette qui coule devant les passants, le vin chaud qui fume, l'odeur de fromage fondu dans l'air glacé. Les gamins qui tirent leurs parents par la manche. « Maman, je veux de la raclette ! »\n\nLe problème : t'es déjà débordé à la boutique. Décembre, c'est le rush. Trois week-ends dehors dans le froid, c'est trois week-ends où t'es pas derrière ton comptoir.",
+      "description": "La commune propose un stand au marché de Noël, place Dumont. Trois week-ends. Lever 6 h, doigts gelés.\n\nRaclette qui coule, vin chaud, file d'attente. Mais vous êtes déjà débordé. Trois week-ends dehors = trois week-ends pas au comptoir.",
       "choices": [
         {
           "text": "Prendre le stand — on va faire de la raclette dans le froid !",
           "hint": "Raclette + vin chaud + froid = file d'attente",
-          "outcome": "Trois week-ends. Réveil 5 h 30. Les doigts tellement gelés que tu sentais plus la spatule. Mais la queue devant ton stand... 50 kg de raclette, 30 bouteilles de vin chaud. Des gens qui te connaissaient pas sont venus, ont goûté, ont dit : « Mais vous avez une boutique ? Elle est où ? » Place Dumont, dans le froid, t'as trouvé de nouveaux clients. Et un rhume. Mais surtout des clients."
+          "outcome": "Trois week-ends. Réveil 5 h 30, doigts gelés. La queue devant le stand. 50 kg de raclette, vin chaud. « Vous avez une boutique ? Où ? » Nouveaux clients. Et un rhume. Surtout des clients."
         },
         {
           "text": "Rester à la boutique — décembre c'est déjà la folie",
-          "hint": "T'es déjà au taquet. Faut savoir dire non.",
-          "outcome": "T'es resté au chaud. Les commandes de Noël s'empilaient de toute façon. T'aurais pas pu gérer les deux. Parfois, le bon choix, c'est celui qu'on fait pas."
+          "hint": "Vous êtes déjà au maximum. Il faut savoir dire non.",
+          "outcome": "Vous êtes resté au chaud. Les commandes de Noël s'empilaient de toute façon. Vous n'auriez pas pu gérer les deux. Parfois, le bon choix, c'est celui qu'on ne fait pas."
         }
       ]
     },
     "building_offer": {
       "title": "L'appel de Madame Malfait",
-      "description": "Le téléphone sonne. Numéro de la propriétaire. T'hésites une seconde avant de décrocher.\n\n« Julien ? C'est Madame Malfait. Voilà, je vais être directe. Je vends le bâtiment. 380 000 € tout compris. Mais il me faut 80 000 € d'apport. Avant juillet 2024. »\n\nSilence. Tu fais le calcul dans ta tête. Huit mois. 80 000 €. T'as... pas ça. Pas du tout.\n\nMais ce bâtiment, c'est ta boutique. Tes murs. Ton avenir. Si quelqu'un d'autre achète, tu deviens locataire d'un inconnu. Si tu achètes... tu deviens propriétaire de ta vie.\n\nLe sol tremble un peu sous tes pieds.",
+      "description": "Le téléphone. Madame Malfait. « Je vends le bâtiment. 380 000 €. Il me faut 80 000 € d'apport. Avant juillet 2024. »\n\nHuit mois. 80 000 €. Vous n'avez pas ça. Mais c'est votre boutique, vos murs. Si un autre achète, vous restez locataire. Si vous achetez, vous devenez propriétaire. Le sol tremble.",
       "choices": [
         {
           "text": "« Oui. Je le fais. On trouvera l'argent. »",
           "hint": "8 mois. 80 000 €. Le pari ultime.",
-          "outcome": "T'as dit oui. Le mot est sorti avant même que ton cerveau ait fini de calculer. En raccrochant, t'avais les mains qui tremblaient. 80 000 € en huit mois. T'as aucune idée de comment. Mais le compte à rebours a commencé. Et bizarrement, t'as jamais été aussi motivé."
+          "outcome": "Vous avez dit oui. Le mot est sorti avant même que votre cerveau ait fini de calculer. En raccrochant, vous aviez les mains qui tremblaient. 80 000 € en huit mois. Vous n'avez aucune idée de comment. Mais le compte à rebours a commencé. Et bizarrement, vous n'avez jamais été aussi motivé."
         },
         {
           "text": "« Non merci. C'est trop pour moi. »",
           "hint": "Rester locataire. Garder les pieds sur terre.",
-          "outcome": "T'as raccroché poliment. C'était la décision raisonnable. Le bâtiment partira à quelqu'un d'autre. Tu resteras locataire. C'est pas grave. C'est pas grave du tout. Tu te le répètes en fermant la boutique ce soir-là."
+          "outcome": "Vous avez raccroché poliment. C'était la décision raisonnable. Le bâtiment partira à quelqu'un d'autre. Vous resterez locataire. Ce n'est pas grave. Ce n'est pas grave du tout. Vous vous le répétez en fermant la boutique ce soir-là."
         },
         {
           "text": "« J'ai pas les moyens, Madame Malfait. Vraiment pas. »",
           "hint": "La vérité. Ça fait mal mais c'est honnête.",
-          "outcome": "T'as été honnête. Elle a compris. Le bâtiment est parti à un investisseur immobilier de Bruxelles. Ton nouveau proprio, tu l'as jamais vu. Mais ses mails pour annoncer l'augmentation du loyer, eux, t'as bien fini par les voir."
+          "outcome": "Vous avez été honnête. Elle a compris. Le bâtiment est parti à un investisseur immobilier de Bruxelles. Votre nouveau proprio, vous ne l'avez jamais vu. Mais ses mails pour annoncer l'augmentation du loyer, eux, vous avez bien fini par les voir."
         }
       ]
     },
     "meet_lucas": {
       "title": "Lucas débarque",
-      "description": "Lucas bosse à la boulangerie d'à côté. Vingt-deux ans, cheveux en bataille, toujours un sourire en coin. Depuis des semaines, il passe te voir entre deux fournées.\n\n« Eh Julien, t'as pas besoin d'un coup de main ? Moi le fromage, j'adore ça. Genre VRAIMENT. J'ai goûté ton Saint-Nectaire l'autre jour, c'était une tuerie. »\n\nIl est un peu bordélique. Il arrive parfois en retard. Il parle trop. Mais quand il est là, les clients sourient. Les mamies l'adorent. Les enfants le trouvent drôle. Y'a un truc chez ce gamin.",
+      "description": "Lucas, 22 ans, boulangerie d'à côté. Il passe vous voir entre deux fournées. « Vous n'avez pas besoin d'un coup de main ? Le fromage, j'adore. Votre Saint-Nectaire, c'était exceptionnel. »\n\nUn peu désordonné, parfois en retard. Mais les clients sourient. Les mamies l'adorent. Un je-ne-sais-quoi.",
       "choices": [
         {
-          "text": "L'embaucher — t'as besoin d'aide, et il a le truc",
-          "hint": "Premier employé. Tu respires enfin.",
-          "outcome": "Lucas a signé son contrat avec un stylo qu'il a emprunté et jamais rendu. Dès le premier jour, il distribuait des échantillons de raclette aux passants comme des tracts. Les clients l'ont adopté. Il est chaotique, il range rien, il raconte sa vie à tout le monde — mais la boutique vit différemment avec lui. Et toi, pour la première fois, tu peux aller aux toilettes sans fermer le magasin."
+          "text": "L'embaucher — vous avez besoin d'aide, et il a la flamme",
+          "hint": "Premier employé. Vous respirez enfin.",
+          "outcome": "Lucas a signé avec un stylo emprunté, jamais rendu. Dès le premier jour, échantillons de raclette aux passants. Les clients l'ont adopté. Chaotique, mais la boutique vit. Vous pouvez enfin aller aux toilettes sans fermer."
         },
         {
           "text": "Pas encore — « reviens me voir dans quelques mois »",
-          "hint": "T'as pas le budget. Pas encore.",
-          "outcome": "T'as dit « peut-être plus tard ». Lucas a hoché la tête, un peu déçu. Il repasse de temps en temps. Tu gères seul. C'est dur, mais c'est ton rythme."
+          "hint": "Vous n'avez pas le budget. Pas encore.",
+          "outcome": "Vous avez dit « peut-être plus tard ». Lucas a hoché la tête, un peu déçu. Il repasse de temps en temps. Vous gérez seul. C'est dur, mais c'est votre rythme."
         },
         {
           "text": "Non merci, je continue seul",
-          "hint": "Un employé, c'est des charges. T'as pas les moyens.",
-          "outcome": "T'as continué seul. Chaque heure derrière le comptoir, c'est une heure où tu fais pas les comptes, les commandes, le ménage. T'es partout et nulle part. Le soir, t'es tellement crevé que t'oublies pourquoi t'as commencé."
+          "hint": "Un employé, c'est des charges. Vous n'avez pas les moyens.",
+          "outcome": "Vous avez continué seul. Chaque heure derrière le comptoir, c'est une heure où vous ne faites pas les comptes, les commandes, le ménage. Vous êtes partout et nulle part. Le soir, vous êtes tellement crevé que vous oubliez pourquoi vous avez commencé."
         }
       ]
     },
     "adopt_dog": {
       "title": "Les yeux de Poncho",
-      "description": "Une amie t'envoie une photo sur WhatsApp. Un berger australien, pelage merle, yeux bleus comme des billes. « Il cherche un foyer. Il est adorable. Les enfants l'adorent. »\n\nTu regardes la photo. Puis tu regardes la boutique. Tu l'imagines derrière le comptoir, couché sur son coussin, les gamins qui le caressent en attendant leur tour. Les vieux du quartier qui passent « juste pour dire bonjour au chien ». Les balades obligatoires le matin qui te forceraient à voir le ciel avant d'ouvrir.\n\nMais un chien, c'est aussi des contraintes. Du temps. De l'argent. Et t'en manques déjà des deux.",
+      "description": "Une amie envoie une photo. Berger australien, yeux bleus. « Il cherche un foyer. »\n\nVous l'imaginez au comptoir. Les enfants qui le caressent. Les balades le matin qui vous forceraient à voir le ciel. Mais un chien, c'est du temps et de l'argent. Vous en manquez déjà.",
       "choices": [
         {
           "text": "Adopter Poncho — ces yeux, impossible de dire non",
-          "hint": "Mascotte officielle. Et tes balades quotidiennes.",
-          "outcome": "Poncho est arrivé un mardi matin. Ces yeux. Mon Dieu, ces yeux. Le premier client qui est entré a fondu. Le deuxième s'est assis par terre pour le caresser. Le troisième a acheté 200 g de comté « pour fêter ça ». Les enfants du quartier passent après l'école juste pour lui. Et toi, chaque matin, t'es obligé de marcher 30 minutes avant d'ouvrir. C'est le meilleur moment de ta journée."
+          "hint": "Mascotte officielle. Et vos balades quotidiennes.",
+          "outcome": "Poncho, un mardi matin. Ces yeux. Le premier client a fondu. Les enfants passent après l'école pour lui. Vous marchez 30 minutes chaque matin avant d'ouvrir. Meilleur moment de la journée."
         },
         {
-          "text": "Pas maintenant — t'as déjà assez sur les bras",
+          "text": "Pas maintenant — vous avez déjà assez sur les bras",
           "hint": "Un chien, c'est 15 ans d'engagement",
-          "outcome": "T'as dit non. C'était raisonnable. La boutique te prend déjà tout. Mais parfois, quand tu fermes seul le soir et que l'appart est vide, tu repenses à ces yeux bleus."
+          "outcome": "Vous avez dit non. C'était raisonnable. La boutique vous prend déjà tout. Mais parfois, quand vous fermez seul le soir et que l'appart est vide, vous repensez à ces yeux bleus."
         }
       ]
     },
     "raclette_season": {
       "title": "LA saison. LA raclette.",
-      "description": "Premier coup de froid. Et comme par magie, tout Woluwe se réveille avec la même idée : raclette.\n\nLes clients défilent : « Vous avez de la raclette ? », « C'est quoi votre meilleure raclette ? », « Vous louez des appareils ? ». Dix fois par jour. Vingt fois le samedi.\n\nC'est LE moment de l'année. Si tu charges en stock — 200 kg, plus des machines à louer — tu peux faire un mois de dingue. Mais c'est un gros investissement. Si l'hiver est doux ou que les gens commandent moins que prévu, tu te retrouves avec une montagne de fromage sur les bras.",
+      "description": "Premier coup de froid. Tout Woluwe pense raclette. « Vous en avez ? Vous louez des appareils ? » Dix fois par jour.\n\nSi vous chargez à fond — 200 kg, machines — vous pouvez faire un mois exceptionnel. Ou vous retrouver avec une montagne de fromage si l'hiver est doux.",
       "choices": [
         {
           "text": "ALL-IN RACLETTE — 200 kg et des machines à louer",
           "hint": "Le mois qui peut sauver l'année",
-          "outcome": "200 kg de raclette. Cinq machines à louer. T'as transformé la boutique en temple de la raclette. Et le quartier a répondu. Les gens faisaient la queue le samedi. « Gardez-moi 2 kg pour dimanche ! » Tout parti avant fin janvier. Les marges étaient belles. T'as souri en faisant les comptes. Pour la première fois depuis longtemps, les chiffres souriaient aussi."
+          "outcome": "200 kg, cinq machines. Temple de la raclette. La queue le samedi. Tout parti avant fin janvier. Les marges sourient. Vous aussi."
         },
         {
           "text": "Stock normal — on reste prudent",
           "hint": "Pas de folie. On vend ce qu'on a.",
-          "outcome": "T'as commandé comme d'habitude. Pas de montagne de raclette, pas de machines. T'as vendu ce que t'avais, tranquille, sans stress. Pas de jackpot, mais pas de nuits blanches non plus. Parfois, la prudence, c'est aussi une stratégie."
+          "outcome": "Vous avez commandé comme d'habitude. Pas de montagne de raclette, pas de machines. Vous avez vendu ce que vous aviez, tranquille, sans stress. Pas de jackpot, mais pas de nuits blanches non plus. Parfois, la prudence, c'est aussi une stratégie."
         }
       ]
     },
     "birthday_forgot": {
       "title": "Maman...",
-      "description": "22 h passées. Vous êtes encore à la boutique, à ranger les derniers Comté. Le téléphone vibre. Une photo dans le groupe famille. Le gâteau. Les bougies. Maman qui sourit, un peu fatiguée, entourée de tout le monde.\n\nSauf vous.\n\nLa légende dit : « Super journée ! Tu nous as manqué ❤️ »\n\nL'anniversaire de votre mère. Vous avez oublié. Pas juste le cadeau – l'anniversaire entier. Pas un message. Pas un appel. Rien.",
+      "description": "22 h. Vous rangez encore. Le téléphone vibre : une photo. Le gâteau, les bougies, maman entourée de tout le monde. Sauf vous. « Vous nous avez manqué ❤️ » L'anniversaire de votre mère. Vous avez oublié. Tout.",
       "choices": [
         {
           "text": "Foncer chez elle maintenant",
           "hint": "Tant pis s'il est tard",
-          "outcome": "Elle a ouvert en peignoir. « Ben, te voilà toi. » Pas de reproche. Juste ce sourire un peu triste qui vous achève plus que n'importe quelle engueulade. Vous avez bu un thé ensemble. Bafouillé des excuses. Elle a dit « je sais que t'es occupé ». Vous auriez préféré qu'elle crie."
+          "outcome": "Elle ouvre en peignoir. « Vous voilà. » Pas de reproche. Un thé, des excuses bafouillées. « Je sais que vous êtes occupé. » Vous auriez préféré qu'elle crie."
         },
         {
           "text": "Commander un bouquet et écrire un long message",
           "hint": "Demain matin, première heure",
-          "outcome": "Les fleurs sont arrivées. Belles. Chères. Le mot faisait trois paragraphes. Maman a appelé pour remercier. La conversation a duré quatre minutes. Polie. Douce. Avec ce petit silence au milieu qui voulait tout dire."
+          "outcome": "Fleurs, mot en trois paragraphes. Maman a remercié. Quatre minutes au téléphone. Poli. Un silence au milieu qui disait tout."
         }
       ]
     },
     "christmas_day": {
       "title": "25 décembre",
-      "description": "Noël. La boutique est fermée aujourd'hui et demain. Enfin.\n\nMais quand vous passez devant en allant chez vos parents, vous voyez le bazar à travers la vitrine. Du stock partout, les commandes du 27 à moitié prêtes, le frigo de Lalero qui fait encore ce bruit. « Juste une heure ce matin, et après je suis tranquille... »\n\nVotre famille vous attend à 13 h. Le rôti est déjà au four.",
+      "description": "Noël. Boutique fermée. En passant devant, vous voyez le bazar à travers la vitrine : commandes du 27 en attente. « Juste une heure... » Votre famille attend à 13 h. Le rôti est au four.",
       "choices": [
         {
           "text": "Aller direct en famille – la boutique attendra",
@@ -717,7 +720,7 @@
         {
           "text": "Passer « une petite heure » à la boutique d'abord",
           "hint": "Juste ranger un peu, promis",
-          "outcome": "Une heure est devenue six. Évidemment. Vous êtes arrivé à 19 h 30, le dessert fini depuis longtemps. « Ah, te voilà enfin ! » a dit votre mère. Elle souriait mais ses yeux disaient autre chose. La boutique était nickel pour le 27. Le prix, c'était les regards autour de la table."
+          "outcome": "Une heure est devenue six. Évidemment. Vous êtes arrivé à 19 h 30, le dessert fini depuis longtemps. « Ah, vous voilà enfin ! » a dit votre mère. Elle souriait mais ses yeux disaient autre chose. La boutique était nickel pour le 27. Le prix, c'était les regards autour de la table."
         },
         {
           "text": "Rester bosser toute la journée",
@@ -728,7 +731,7 @@
     },
     "family_dinner": {
       "title": "La chaise vide",
-      "description": "Dimanche. Le groupe famille s'agite : « Rôti chez maman à midi, qui vient ? » Ça fait quoi... trois mois ? Quatre ? Que vous n'avez pas été à un dîner du dimanche. À chaque fois c'est la même excuse : la boutique, les commandes, la fatigue.\n\nVotre nièce a demandé à votre mère pourquoi tonton ne venait plus.",
+      "description": "Dimanche. « Rôti chez maman à midi, qui vient ? » Trois mois, quatre, que vous n'êtes pas venu. Toujours la même excuse : la boutique. Votre nièce a demandé pourquoi tonton ne vient plus.",
       "choices": [
         {
           "text": "Y aller – fermer plus tôt pour une fois",
@@ -744,12 +747,12 @@
     },
     "the_invitation": {
       "title": "Le mariage de Marc",
-      "description": "L'enveloppe est sur le comptoir depuis une semaine. Mariage de Marc et Sophie. Samedi 14 h. Marc. Votre pote de la fac, celui qui vous a aidé à déménager trois fois, qui était là quand votre ex est partie, qui vous a prêté 2 000 € sans poser de questions.\n\nLe samedi. Votre meilleur jour. 2 500 € de chiffre en moyenne. Les clients du samedi qui ne vous trouvent pas vont chez le concurrent de la rue d'en face. Et ils ne reviennent pas toujours.",
+      "description": "Mariage de Marc et Sophie. Samedi 14 h. Marc : ami de la fac, il vous a aidé à déménager, prêté 2 000 € sans un mot.\n\nLe samedi, c'est votre meilleur jour. 2 500 € en moyenne. Fermer = des clients qui iront chez le concurrent.",
       "choices": [
         {
           "text": "Fermer et y aller – Marc compte plus",
           "hint": "Il ferait pareil pour moi",
-          "outcome": "Vous avez dansé comme un idiot au mariage de Marc. Vous avez pleuré pendant son discours (mais niez-le). La boutique est restée dans le noir. Certains habitués ont découvert le concurrent. Certains ne sont jamais revenus. Mais quand Marc vous a serré dans ses bras – « Merci d'être là, frangin » – vous saviez que c'était le bon choix. Le fromage, ça se rattrape. Les mariages, non."
+          "outcome": "Vous avez dansé comme un idiot au mariage de Marc. Vous avez pleuré pendant son discours (mais niez-le). La boutique est restée dans le noir. Certains habitués ont découvert le concurrent. Certains ne sont jamais revenus. Mais quand Marc vous a serré dans ses bras – « Merci d'être là » – vous saviez que c'était le bon choix. Le fromage, ça se rattrape. Les mariages, non."
         },
         {
           "text": "Laisser l'équipe gérer le samedi",
@@ -759,44 +762,44 @@
         {
           "text": "Envoyer un beau cadeau et s'excuser",
           "hint": "La boutique a besoin de moi ce jour-là",
-          "outcome": "Le cadeau était généreux. La carte était sincère. Marc a dit « je comprends, t'inquiète ». Vous avez bossé un samedi normal. Le fromage s'est vendu. Le soir, vous avez vu les photos sur Instagram. Tout le monde souriait. Vous avez fermé l'appli et vous êtes servi un verre. Seul."
+          "outcome": "Le cadeau était généreux. La carte était sincère. Marc a dit « je comprends, ne vous inquiétez pas ». Vous avez bossé un samedi normal. Le fromage s'est vendu. Le soir, vous avez vu les photos sur Instagram. Tout le monde souriait. Vous avez fermé l'appli et vous vous êtes servi un verre. Seul."
         }
       ]
     },
     "hospital_call": {
       "title": "L'appel",
-      "description": "Le téléphone sonne. Maman. Sa voix tremble.\n\n« Papa est tombé. Il est à l'hôpital à Liège. C'est... ils disent que c'est pas grave, mais il a peur. Il demande après toi. »\n\n18 décembre. Votre semaine la plus dingue de l'année. La boutique déborde de gens qui achètent du fromage pour Noël. Les plateaux Coprosain sont commandés, le Comté de 24 mois part comme des petits pains, et la livraison de From'Un arrive demain.\n\nMais c'est votre père. Et il demande après vous.",
+      "description": "Maman. Sa voix tremble. « Papa est tombé. À l'hôpital à Liège. Pas grave, disent-ils, mais il a peur. Il demande après vous. »\n\n18 décembre. Votre semaine la plus intense. La boutique déborde. Mais c'est votre père.",
       "choices": [
         {
           "text": "Tout fermer et foncer à Liège",
           "hint": "C'est papa",
-          "outcome": "Vous avez roulé jusqu'à Liège dans la nuit. La boutique est restée fermée trois jours. En plein rush de Noël. Les clients sont allés chez le concurrent, chez Delhaize, partout sauf chez vous. Décembre a été un carnage financier.\n\nMais quand votre père a ouvert les yeux et qu'il a vu votre tête, il a serré votre main. « Tu es venu. » Deux mots. C'est tout ce qui comptait."
+          "outcome": "Vous avez roulé jusqu'à Liège. Boutique fermée trois jours en plein rush. Décembre, carnage financier. Mais votre père a ouvert les yeux, serré votre main : « Vous êtes venu. » C'est tout ce qui comptait."
         },
         {
           "text": "Y aller chaque soir après la fermeture",
           "hint": "Je peux faire les deux, je suis costaud",
-          "outcome": "Boutique de 6 h à 18 h. Deux heures de route. Liège. Rester avec papa jusqu'à minuit. Deux heures de retour. Quatre heures de sommeil. Recommencer.\n\nPendant une semaine.\n\nVous avez tenu. Le chiffre de Noël était bon. Votre père allait mieux. Votre corps, lui, ne vous a jamais pardonné cette semaine-là."
+          "outcome": "6 h–18 h boutique. Deux heures Liège. Minuit avec papa. Retour. Quatre heures de sommeil. Une semaine comme ça. Vous avez tenu. Papa va mieux. Votre corps ne vous a pas pardonné."
         },
         {
           "text": "Rester à la boutique, appeler chaque jour",
           "hint": "La boutique ne survivra pas sans moi cette semaine",
-          "outcome": "Deux appels par jour. Des fleurs livrées à l'hôpital. La voix de maman au téléphone, polie mais distante. « Oui oui, il va mieux. Concentre-toi sur ton travail. »\n\nVotre père s'est rétabli. Il n'en a jamais reparlé. Votre mère non plus. C'est peut-être ça le pire."
+          "outcome": "Deux appels par jour. Fleurs à l'hôpital. Maman : « Il va mieux. Concentrez-vous sur votre travail. » Votre père s'est rétabli. Il n'en a jamais reparlé. Personne. C'est peut-être ça le pire."
         }
       ]
     },
     "old_friend": {
       "title": "Thomas",
-      "description": "Un message sur WhatsApp. Thomas. Vous n'avez même pas son nouveau numéro – il a changé depuis Berlin.\n\n« Julien ! Je suis de passage à Bruxelles ce soir. Juste ce soir. Un verre ? Un resto ? Comme au bon vieux temps ? Tu me manques, vieux. »\n\nThomas. Votre meilleur pote de la fac. Trois ans sans se voir. La vie a fait son truc.\n\nC'est vendredi soir. Livraison Lalero demain à 6 h du mat'. Vous vous connaissez – si vous sortez ce soir, demain matin va être l'enfer.",
+      "description": "WhatsApp. Thomas. « Je suis à Bruxelles ce soir. Juste ce soir. Un verre ? Vous me manquez. » Votre meilleur ami de la fac. Trois ans sans se voir.\n\nVendredi soir. Livraison Lalero demain 6 h. Si vous sortez, demain sera l'enfer.",
       "choices": [
         {
           "text": "Sortir avec Thomas – on verra demain",
-          "hint": "Il me manque, merde",
+          "hint": "Il me manque",
           "outcome": "Vous êtes restés jusqu'à 2 h dans ce bar de Saint-Gilles. Ri jusqu'à en avoir mal aux côtes. Parlé de tout – Berlin, le fromage, vos vies qui ont divergé. Le réveil à 5 h 30 a été une petite mort. Vous avez enchaîné le samedi comme un zombie, avec un mal de crâne et un sourire con. Ça valait chaque seconde."
         },
         {
           "text": "L'inviter à la boutique en fin de journée",
           "hint": "Il verra ce que j'ai construit",
-          "outcome": "Thomas est passé à 18 h. Vous lui avez fait la visite – les frigos, les caves, l'affinage. Vous lui avez fait goûter le Comté 24 mois. Il a ouvert grand les yeux. « Putain, t'as vraiment monté un truc. » Ce n'était pas une vraie retrouvaille, pas comme avant. Mais c'était honnête."
+          "outcome": "Thomas est passé à 18 h. Vous lui avez fait la visite – les frigos, les caves, l'affinage. Vous lui avez fait goûter le Beaufort d'été. Il a ouvert grand les yeux. « Vous avez vraiment monté quelque chose. » Ce n'était pas une vraie retrouvaille, pas comme avant. Mais c'était honnête."
         },
         {
           "text": "Décliner – trop de boulot demain",
@@ -807,23 +810,23 @@
     },
     "second_shop_offer": {
       "title": "L'appel de Marie",
-      "description": "Le téléphone sonne pendant que vous rangez le frigo.\n\n« Julien ? C'est Marie, de la rue au Bois. Écoute... je prends ma retraite. 40 ans de fromage, ça suffit. Ma boutique, ma clientèle, mes fournisseurs, tout le bazar – j'ai pensé à toi en premier. 60 000 € et c'est à toi. »\n\nUne deuxième boutique. Deux adresses. Le double de chiffre. Le double de tout – le stress, les commandes, les emmerdements. Vous n'avez jamais acheté votre propre local... mais là, on parle d'un empire.",
+      "description": "Marie, rue au Bois. « Je prends ma retraite. 40 ans de fromage. Ma boutique, ma clientèle — 60 000 €, c'est à vous. J'ai pensé à vous en premier. »\n\nDeuxième boutique. Deux adresses. Le double de tout : chiffre, stress, tracas. Un empire ?",
       "choices": [
         {
           "text": "Signer – on construit un empire",
           "hint": "60 000 €, deux boutiques, devenir une vraie marque",
-          "outcome": "Vous avez signé chez le notaire un mardi après-midi. « Chez Julien » existe maintenant en deux exemplaires. Votre comptable vous a regardé par-dessus ses lunettes. « Vous êtes sûr ? » Non. Pas du tout. Mais le vertige fait partie du truc, non ?"
+          "outcome": "Vous avez signé chez le notaire un mardi après-midi. « Chez Julien » existe maintenant en deux exemplaires. Votre comptable vous a regardé par-dessus ses lunettes. « Vous êtes sûr ? » Non. Pas du tout. Mais le vertige fait partie de l'aventure, non ?"
         },
         {
           "text": "Décliner – une boutique me suffit",
           "hint": "L'argent est là, mais la paix aussi",
-          "outcome": "« Marie, je suis touché. Vraiment. Mais j'ai construit un truc ici. Une boutique. Bien faite. À taille humaine. Et pour la première fois, je crois que ça me suffit. » Silence au bout du fil. Puis : « Tu sais quoi, Julien ? C'est la meilleure réponse que t'aurais pu me donner. »"
+          "outcome": "« Marie, touché. Mais j'ai construit quelque chose ici. À taille humaine. Ça me suffit. » Silence. Puis : « C'est la meilleure réponse que vous auriez pu me donner. »"
         }
       ]
     },
     "charcuterie_question": {
       "title": "Le saucisson qui manque",
-      "description": "Madame Dubois vous regarde avec cet air de « mon petit, il manque un truc ». « Votre Comté est parfait, mais sans un bon saucisson à côté... c'est comme des frites sans mayo, quoi. » Elle n'a pas tort. Coprosain fait de la charcuterie belge incroyable — circuit court, artisanal. Et From'Un a des imports italiens à tomber par terre...",
+      "description": "Madame Dubois vous regarde avec cet air de « mon petit, il manque quelque chose ». « Votre fromage est parfait, mais sans un bon saucisson à côté... c'est comme des frites sans mayo, quoi. » Elle n'a pas tort. Coprosain fait de la charcuterie belge incroyable — circuit court, artisanal. Et From'Un a des imports italiens à tomber par terre...",
       "choices": [
         {
           "text": "Appeler Coprosain — on reste belge",
@@ -844,17 +847,17 @@
     },
     "wine_dilemma": {
       "title": "« Et avec ça, un p'tit vin ? »",
-      "description": "Trois fois par jour, minimum : « Quel vin avec ce fromage ? » Vous bafouez un truc sur les tanins, vous rougissez, et vous envoyez le client à la cave rue au Bois. Sauf que le client ne revient pas toujours. Et si vous aviez quelques bouteilles ici ? Fromage + vin dans le même panier, c'est magique.",
+      "description": "Trois fois par jour, minimum : « Quel vin avec ce fromage ? » Vous bredouillez quelque chose sur les tanins, vous rougissez, et vous envoyez le client à la cave rue au Bois. Sauf que le client ne revient pas toujours. Et si vous aviez quelques bouteilles ici ? Fromage + vin dans le même panier, c'est magique.",
       "choices": [
         {
           "text": "Une petite sélection maline — 15 bouteilles",
           "hint": "Risque faible, ça arrondit les ventes de fromage",
-          "outcome": "Quinze bouteilles, pas une de plus. Côtes du Rhône, un bourgogne qui claque, deux surprises nature. Les clients repartent avec fromage ET vin. Le panier moyen explose. Vous vous sentez un peu sommelier — c'est grisant."
+          "outcome": "Quinze bouteilles, pas une de plus. Côtes du Rhône, un bourgogne qui claque, deux surprises nature. Les clients repartent avec fromage ET vin. Le panier moyen explose. Vous vous sentez presque sommelier — c'est grisant."
         },
         {
           "text": "Un vrai rayon vin — on y va franco",
           "hint": "Gros investissement, nouveau métier, mais quel potentiel",
-          "outcome": "Formation vin le lundi, rendez-vous importateurs le mardi. Le rayon commence à rivaliser avec les cavistes du coin. Des gens viennent pour le vin et repartent avec du Comté. Vous ne savez plus si c'est une fromagerie ou un bar à vins. C'est les deux."
+          "outcome": "Formation vin le lundi, rendez-vous importateurs le mardi. Le rayon commence à rivaliser avec les cavistes du coin. Des gens viennent pour le vin et repartent avec du fromage. Vous ne savez plus si c'est une fromagerie ou un bar à vins. C'est les deux."
         },
         {
           "text": "Partenariat avec la cave d'à côté",
@@ -870,7 +873,7 @@
         {
           "text": "Le moche à 800 € — on a sa fierté, mais pas à ce prix",
           "hint": "Cash pour le bâtiment > esthétique",
-          "outcome": "Le frigo ronfle comme un vieux labrador. Les clients blaguent — « il a un nom votre compresseur ? » Mais le fromage est au frais, et vous avez 49 200 € de plus en banque. Le Comté se fiche d'être dans un frigo moche. Vous, un peu. Mais bon."
+          "outcome": "Le frigo ronfle comme un vieux labrador. Les clients blaguent — « il a un nom votre compresseur ? » Mais le fromage est au frais, et vous avez 49 200 € de plus en banque. Le fromage se fiche d'être dans un frigo moche. Vous, un peu. Mais bon."
         },
         {
           "text": "Le comptoir de rêve à 50 000 € — soyons fous",
@@ -881,17 +884,17 @@
     },
     "fine_food_choice": {
       "title": "Le moment de vérité",
-      "description": "Vous regardez la boutique un samedi soir, après la fermeture. Les bacs de vrac sont à moitié vides. Le comptoir à fromage déborde. Les gens ne viennent plus pour les lentilles corail — ils viennent pour le Comté, le Manchego, la burrata du vendredi.\n\nUn client a dit un truc qui reste en tête : « On dirait plus une épicerie fine maintenant, non ? »\n\nIl avait raison. La question, c'est : est-ce qu'on assume ?",
+      "description": "Vous regardez la boutique un samedi soir, après la fermeture. Les bacs de vrac sont à moitié vides. Le comptoir à fromage déborde. Les gens ne viennent plus pour les lentilles corail — ils viennent pour le fromage, le Manchego, la burrata du vendredi.\n\nUn client a dit une phrase qui reste en tête : « On dirait plus une épicerie fine maintenant, non ? »\n\nIl avait raison. La question, c'est : est-ce qu'on assume ?",
       "choices": [
         {
           "text": "On assume — épicerie fine, c'est nous maintenant",
           "hint": "Qualité plutôt que quantité. L'identité d'abord.",
-          "outcome": "Le lendemain, vous avez changé l'ardoise. Plus « épicerie bio » — « fromagerie & épicerie fine ». Pierre a hoché la tête. « C'est ce que t'es devenu, gamin. » Les marges s'améliorent. Les clients savent pourquoi ils viennent. L'identité est claire, enfin."
+          "outcome": "Le lendemain, vous avez changé l'ardoise. Plus « épicerie bio » — « fromagerie & épicerie fine ». Pierre a hoché la tête. « C'est ce que vous êtes devenu. » Les marges s'améliorent. Les clients savent pourquoi ils viennent. L'identité est claire, enfin."
         },
         {
           "text": "Garder le mélange — ne brusquons personne",
           "hint": "On garde les deux pieds. Pas de révolution.",
-          "outcome": "Le vrac reste, le fromage aussi. Un pied dans chaque monde. Les anciens clients sont rassurés, les nouveaux un peu confus. C'est confortable. Peut-être trop."
+          "outcome": "Le vrac reste, le fromage aussi. Un pied dans chaque monde. Les anciens clients sont rassurés, les nouveaux restent perplexes. C'est confortable. Peut-être trop."
         }
       ]
     },
@@ -904,7 +907,7 @@
         {
           "text": "Signer — c'est le moment de ma vie",
           "hint": "Lâcher 80 000 € d'un coup. Le vertige. Mais c'est CHEZ VOUS.",
-          "outcome": "La main tremblait sur le stylo. Madame Malfait a souri. « Allez-y, Julien. » Vous avez signé. Le bâtiment — VOTRE bâtiment — n'appartient plus à quelqu'un d'autre. Plus jamais un propriétaire pour vous augmenter le loyer. Plus jamais la peur d'être viré de chez vous. Les murs de cette boutique sont les vôtres. Lucia a pleuré. Vous aussi."
+          "outcome": "La main tremblait sur le stylo. Madame Malfait a souri. « Allez-y, Julien. » Vous avez signé. C'est à vous. Le bâtiment — VOTRE bâtiment — n'appartient plus à quelqu'un d'autre. Plus jamais un propriétaire pour vous augmenter le loyer. Plus jamais la peur d'être viré de chez vous. Les murs de cette boutique sont les vôtres. Lucia a pleuré. Vous aussi."
         },
         {
           "text": "Renoncer — garder mes économies",
@@ -975,8 +978,8 @@
       ]
     },
     "relationship_tension": {
-      "title": "« J'ai l'impression de te perdre »",
-      "description": "Ce soir, votre conjoint vous attend dans la cuisine. Pas de dîner préparé. Pas de sourire.\n\n« Il faut qu'on parle. »\n\nVous savez ce qui vient. Les horaires. Les absences. Les dîners annulés. Les weekends où vous n'êtes jamais là.\n\n« J'ai l'impression de te perdre. Tu pars à 6 h, tu rentres à 22 h, tu sens le fromage, et quand t'es là, ta tête est encore à la boutique. On est où, nous, dans tout ça ? »",
+      "title": "« J'ai l'impression de vous perdre »",
+      "description": "Ce soir, votre conjoint vous attend dans la cuisine. Pas de dîner préparé. Pas de sourire.\n\n« Il faut qu'on parle. »\n\nVous savez ce qui vient. Les horaires. Les absences. Les dîners annulés. Les weekends où vous n'êtes jamais là.\n\n« J'ai l'impression de vous perdre. Vous partez à 6 h, vous rentrez à 22 h, vous sentez le fromage, et quand vous êtes là, votre tête est encore à la boutique. On est où, nous, dans tout ça ? »",
       "choices": [
         {
           "text": "Promettre de changer",
@@ -997,7 +1000,7 @@
     },
     "sleep_problems": {
       "title": "3 h du mat'",
-      "description": "Les yeux ouverts. Plafond. 3 h 07.\n\nLa tête tourne. La commande de jeudi – est-ce que j'ai bien commandé 12 Comté et pas 12 Beaufort ? Le frigo du fond fait un bruit bizarre depuis mardi. Le client de lundi, celui qui a gueulé pour le Roquefort, est-ce qu'il va laisser un avis Google ? Et merde, la facture Interbio, je l'ai payée ou pas ?\n\nVous ne vous rendormez pas avant 5 h 30. Le réveil sonne à 6 h.",
+      "description": "Les yeux ouverts. Plafond. 3 h 07.\n\nLa tête tourne. La commande de jeudi – est-ce que j'ai bien commandé 12 meules et pas 12 Beaufort ? Le frigo du fond fait un bruit bizarre depuis mardi. Le client de lundi, celui qui a gueulé pour le Roquefort, est-ce qu'il va laisser un avis Google ? La facture Interbio, je l'ai payée ou pas ?\n\nVous ne vous rendormez pas avant 5 h 30. Le réveil sonne à 6 h.",
       "choices": [
         {
           "text": "Serrer les dents – ça va passer",
@@ -1043,13 +1046,13 @@
       "choices": [
         {
           "text": "Banco — 2 000 €/mois c'est pas rien",
-          "hint": "500 €/semaine garantis, mais t'es coincé chaque jeudi",
-          "outcome": "Chaque jeudi, 6 h du mat', vous êtes là à trancher le Comté, aligner la coppa, disposer les figues. C'est du taf. Mais le virement tombe chaque mois, pile à l'heure. 2 000 € garantis. Votre comptable a souri pour la première fois."
+          "hint": "500 €/semaine garantis, mais vous êtes coincé chaque jeudi",
+          "outcome": "Chaque jeudi, 6 h du mat', vous êtes là à trancher le fromage, aligner la coppa, disposer les figues. C'est du taf. Mais le virement tombe chaque mois, pile à l'heure. 2 000 € garantis. Votre comptable a souri pour la première fois."
         },
         {
           "text": "Négocier — une semaine sur deux, meilleur prix",
           "hint": "Moins d'engagement, meilleures marges par plateau",
-          "outcome": "Vous avez tenu bon. « Toutes les deux semaines, mais des plateaux d'exception. » Ils ont accepté. Moins régulier, moins épuisant, et les marges sont meilleures. L'art de dire « oui, mais »."
+          "outcome": "Tenu bon. « Toutes les deux semaines, mais des plateaux d'exception. » Ils ont accepté. Moins régulier, moins épuisant, et les marges sont meilleures. L'art de dire « oui, mais »."
         },
         {
           "text": "Décliner — la boutique d'abord",
@@ -1076,33 +1079,33 @@
     },
     "corporate_client": {
       "title": "L'apéro des architectes",
-      "description": "Un cabinet d'architecture de Woluwe débarque avec une proposition. « On fait un apéro chaque vendredi pour l'équipe. On en a marre du Carrefour. Trois fromages, un peu de coppa, et les cookies de Gâteau sur la Cerise ? Huit plateaux par mois. » Commande régulière, bonnes marges — mais ça veut dire préparer 8 plateaux chaque jeudi soir en plus de tout le reste.",
+      "description": "Un cabinet d'architecture de Woluwe vous contacte avec une proposition. « On fait un apéro chaque vendredi pour l'équipe. On en a marre du Carrefour. Trois fromages, un peu de coppa, et les cookies de Gâteau sur la Cerise ? Huit plateaux par mois. » Commande régulière, bonnes marges — mais ça veut dire préparer 8 plateaux chaque jeudi soir en plus de tout le reste.",
       "choices": [
         {
           "text": "On prend — 1 500 €/mois récurrent, c'est oui",
           "hint": "Revenus prévisibles, le comptable va sourire",
-          "outcome": "Chaque jeudi soir, c'est le rituel : Comté 8 mois tranché fin, Manchego DOP, coppa de Coprosain, saucisson d'Ardenne. Huit plateaux alignés sur le comptoir comme des œuvres d'art. Les architectes sont ravis, le virement tombe. Lalero a dit : « Tu fais des plateaux maintenant ? » Oui. Et ça rapporte."
+          "outcome": "Chaque jeudi soir, c'est le rituel : fromage tranché fin, Manchego DOP, coppa de Coprosain, saucisson d'Ardenne. Huit plateaux alignés sur le comptoir comme des œuvres d'art. Les architectes sont ravis, le virement tombe. Lalero a dit : « Vous faites des plateaux maintenant ? » Oui. Et ça rapporte."
         },
         {
           "text": "Décliner — le jeudi c'est déjà la folie",
           "hint": "Livraison Interbio + plateaux = burnout garanti",
-          "outcome": "Vous avez décliné poliment. Le jeudi c'est déjà la livraison Interbio, le rangement, la mise en place du vendredi. Rajouter 8 plateaux là-dessus, c'est la goutte d'eau. Parfois dire non, c'est se sauver la vie."
+          "outcome": "Décliné, poli. Le jeudi c'est déjà la livraison Interbio, le rangement, la mise en place du vendredi. Rajouter 8 plateaux là-dessus, c'est la goutte d'eau. Parfois dire non, c'est se sauver la vie."
         }
       ]
     },
     "wine_pairing": {
       "title": "Soirées vin-fromage",
-      "description": "Un sommelier passionné débarque un mardi avec une idée. « Julien, on fait des soirées vin-fromage chez toi. Un jeudi par mois. Je ramène le Montepulciano-Merlot, tu sors le Comté affiné 18 mois. Le Tenuta Ulisse avec le Manchego. On partage les bénéfs. »\n\nIl a les yeux qui brillent. Et vous, vous imaginez déjà la boutique pleine un soir, avec des rires et du bon vin...",
+      "description": "Un sommelier passionné passe un mardi avec une idée. « Julien, on fait des soirées vin-fromage chez vous. Un jeudi par mois. Je ramène le Montepulciano-Merlot, vous sortez le fromage affiné. Le Tenuta Ulisse avec le Manchego. On partage les bénéfs. »\n\nIl a les yeux qui brillent. Et vous, vous imaginez déjà la boutique pleine un soir, avec des rires et du bon vin...",
       "choices": [
         {
-          "text": "On lance les soirées — ça va être dingue",
+          "text": "On lance les soirées — ça va être fou",
           "hint": "Revenus + réputation + ambiance de folie",
-          "outcome": "Première soirée : vingt personnes serrées entre les fromages. Le sommelier raconte les vignes, vous coupez le Comté. Le Montepulciano-Merlot avec le 18 mois, c'est une révélation. Les gens repartent avec des sacs pleins. Le bouche-à-oreille fait le reste. Des gens qui n'avaient jamais mis les pieds ici deviennent des habitués."
+          "outcome": "Première soirée : vingt personnes serrées entre les fromages. Le sommelier raconte les vignes, vous coupez le fromage. Le Montepulciano-Merlot avec le 18 mois, c'est une révélation. Les gens repartent avec des sacs pleins. La rumeur circule de table en table. Des gens qui n'avaient jamais mis les pieds ici deviennent des habitués."
         },
         {
           "text": "Pas maintenant — trop à gérer",
           "hint": "Restons simples, on verra plus tard",
-          "outcome": "« C'est une super idée, mais là j'ai la tête sous l'eau. » Le sommelier a compris. « Quand tu veux, Julien. » Peut-être un jour, quand ce sera plus calme. Si ça l'est un jour."
+          "outcome": "« C'est une super idée, mais là j'ai la tête sous l'eau. » Le sommelier a compris. « Quand vous voulez, Julien. » Peut-être un jour, quand ce sera plus calme. Si ça l'est un jour."
         }
       ]
     },
@@ -1113,7 +1116,7 @@
         {
           "text": "HUIT variétés — on envoie du lourd",
           "hint": "Ça peut être ÉNORME. Ou un frigo plein en mars.",
-          "outcome": "Vous avez passé la commande le cœur battant. Huit raclettes alignées au comptoir : classique, fumée, poivre, herbes de Provence, truffe, ail des ours, piment d'Espelette, chèvre. L'étal est spectaculaire. Les clients s'arrêtent, goûtent, repartent les bras chargés. Un gamin a dit : « Maman, c'est le paradis. » Vous étiez d'accord."
+          "outcome": "Vous avez passé la commande le cœur battant. Huit raclettes alignées au comptoir : classique, fumée, poivre, herbes de Provence, truffe, ail des ours, piment d'Espelette, chèvre. L'étal est spectaculaire. Les clients s'arrêtent, goûtent, repartent les bras chargés. Un enfant a dit : « Maman, c'est le paradis. » Vous étiez d'accord."
         },
         {
           "text": "Trois classiques — testons le terrain",
@@ -1121,7 +1124,7 @@
           "outcome": "Une suisse, une française, une fumée. Trois valeurs sûres. Les clients sont contents, le stock tourne bien. Pas de risque, pas de folie. C'est sage. Peut-être trop sage."
         },
         {
-          "text": "La raclette c'est pas notre truc",
+          "text": "La raclette c'est pas notre spécialité",
           "hint": "Les supermarchés font déjà la raclette à fond",
           "outcome": "Vous avez laissé la raclette aux grandes surfaces. Chaque client qui demande repart bredouille. « Ah bon, vous en avez pas ? » Leur déception vous pince un peu. Mais bon, chacun son créneau."
         }
@@ -1177,23 +1180,23 @@
     },
     "birthday_party": {
       "title": "Anniversaire chez Julien",
-      "description": "Lucia vous regarde avec ce sourire qui veut dire « j'ai une idée et tu ne pourras pas dire non ». « Et si on fêtait ton anniversaire à la boutique ? On invite tout le monde. Les clients, les fournisseurs, Pierre, Madame Dubois, Lalero... Tout le monde. On fait ça en grand. »\n\nVous imaginez le chaos. Les fromages sur le comptoir, le vin qui coule, Lalero qui raconte des histoires impossibles, Madame Dubois qui danse. Ce serait magnifique. Et épuisant. Ou alors... un dîner tranquille, juste vous deux.",
+      "description": "Lucia vous regarde avec ce sourire qui veut dire « j'ai une idée et vous ne pourrez pas dire non ». « Et si on fêtait votre anniversaire à la boutique ? On invite tout le monde. Les clients, les fournisseurs, Pierre, Madame Dubois, Lalero... Tout le monde. On fait ça en grand. »\n\nVous imaginez le chaos. Les fromages sur le comptoir, le vin qui coule, Lalero qui raconte des histoires impossibles, Madame Dubois qui danse. Ce serait magnifique. Et épuisant. Ou alors... un dîner tranquille, juste vous deux.",
       "choices": [
         {
           "text": "La grande fête — tout le monde à la boutique !",
           "hint": "Ça va coûter cher et c'est le bordel garanti",
-          "outcome": "La boutique débordait. Pierre est arrivé avec un magnum. Madame Dubois a apporté une tarte. Lalero a installé des enceintes — d'où il a sorti ça, mystère. Un gâteau en forme de meule de Comté, commandé en secret par Lucia. Bar ouvert, rires, des clients qui se découvrent entre eux. À minuit, vous étiez assis sur le comptoir, un verre à la main, à regarder ces gens qui étaient devenus votre famille. Épuisant. Parfait."
+          "outcome": "La boutique débordait. Pierre est arrivé avec un magnum. Madame Dubois a apporté une tarte. Lalero a installé des enceintes — d'où il a sorti ça, mystère. Un gâteau en forme de meule de fromage, commandé en secret par Lucia. Bar ouvert, rires, des clients qui se découvrent entre eux. À minuit, vous étiez assis sur le comptoir, un verre à la main, à regarder ces gens qui étaient devenus votre famille. Épuisant. Parfait."
         },
         {
           "text": "Dîner tranquille avec Lucia — just us",
           "hint": "Un bon resto, un bon vin, et la paix",
-          "outcome": "Un petit restaurant à Ixelles. Une bougie. Le bon vin. Lucia qui dit : « Je suis fière de toi, tu sais. » Pas besoin de grande fête. Les gens qui comptent savent déjà."
+          "outcome": "Un petit restaurant à Ixelles. Une bougie. Le bon vin. Lucia qui dit : « Je suis fière de vous, vous savez. » Pas besoin de grande fête. Les gens qui comptent savent déjà."
         }
       ]
     },
     "regular_appreciation": {
       "title": "Merci, Julien",
-      "description": "Un samedi matin, Madame Dubois entre avec trois autres habitués. Ils ont un paquet. Papier kraft, nœud fait main. « Ça fait presque trois ans que tu nous nourris, Julien. On voulait te dire merci. Vraiment. »\n\nVous ouvrez. Une planche à fromage en bois de noyer. Gravée à la main : « Chez Julien — Woluwe-Saint-Pierre ».\n\nVous ne pleurez pas. Enfin, presque pas.",
+      "description": "Un samedi matin, Madame Dubois entre avec trois autres habitués. Ils ont un paquet. Papier kraft, nœud fait main. « Ça fait presque trois ans que vous nous nourrissez, Julien. On voulait vous dire merci. Vraiment. »\n\nVous ouvrez. Une planche à fromage en bois de noyer. Gravée à la main : « Chez Julien — Woluwe-Saint-Pierre ».\n\nVous ne pleurez pas. Enfin, presque pas.",
       "choices": [
         {
           "text": "L'exposer derrière le comptoir — pour que tout le monde voie",
@@ -1209,12 +1212,12 @@
     },
     "competitor_closes": {
       "title": "Avenue Louise ferme boutique",
-      "description": "La nouvelle tombe un mardi matin : la fromagerie de l'avenue Louise met la clé sous la porte. Loyer de dingue, pas assez de personnalité. Vous les connaissiez — ils avaient du bon fromage, mais zéro âme. Leurs clients vont chercher un nouveau port d'attache. Et devinez qui est juste assez loin pour ne pas être un concurrent direct, mais juste assez bon pour être une alternative ?",
+      "description": "La nouvelle tombe un mardi matin : la fromagerie de l'avenue Louise met la clé sous la porte. Loyer disproportionné, pas assez de personnalité. Vous les connaissiez — ils avaient du bon fromage, mais zéro âme. Leurs clients vont chercher un nouveau port d'attache. Et devinez qui est juste assez loin pour ne pas être un concurrent direct, mais juste assez bon pour être une alternative ?",
       "choices": [
         {
           "text": "Appeler leurs fournisseurs direct",
           "hint": "Le business, c'est pas du sentiment",
-          "outcome": "Trois coups de fil. Vous avez récupéré deux fournisseurs que vous lorgnez depuis un an — dont un affineur de Comté à tomber. Leur malheur, votre chance. C'est moche à dire. Mais c'est vrai."
+          "outcome": "Trois coups de fil. Vous avez récupéré deux fournisseurs que vous lorgnez depuis un an — dont un affineur de Beaufort à tomber. Leur malheur, votre chance. C'est moche à dire. Mais c'est vrai."
         },
         {
           "text": "Laisser venir — ils vous trouveront",
@@ -1225,17 +1228,17 @@
     },
     "apprentice_request": {
       "title": "L'apprenti qui débarque",
-      "description": "Un e-mail arrive d'un étudiant en hôtellerie : « Monsieur, je souhaiterais effectuer un stage dans votre établissement car je suis passionné par l'art du fromage. » Monsieur. Il vous appelle Monsieur. Vous avez 30 ans et du Comté sous les ongles. Mais quand même — quelqu'un veut apprendre de VOUS. C'est flatteur, non ?",
+      "description": "Un e-mail arrive d'un étudiant en hôtellerie : « Monsieur, je souhaiterais effectuer un stage dans votre établissement car je suis passionné par l'art du fromage. » Monsieur. Il vous appelle Monsieur. Vous avez 30 ans et du fromage sous les ongles. Mais quand même — quelqu'un veut apprendre de VOUS. C'est flatteur, non ?",
       "choices": [
         {
           "text": "Le prendre un mois — transmettre le savoir",
           "hint": "Des bras en plus + on est flatté, avouons",
-          "outcome": "Il s'appelait Maxime. Maladroit au début — il a confondu Comté et Beaufort devant Madame Hermans, elle a failli s'évanouir. Mais au bout de trois semaines, il tenait le comptoir seul. Il a écrit sur vous dans son mémoire. Chapitre 3 : « Le fromager qui m'a tout appris. »"
+          "outcome": "Il s'appelait Maxime. Maladroit au début — il a confondu Morbier et Beaufort devant Madame Hermans, elle a failli s'évanouir. Mais au bout de trois semaines, il tenait le comptoir seul. Il a écrit sur vous dans son mémoire. Chapitre 3 : « Le fromager qui m'a tout appris. »"
         },
         {
           "text": "Décliner poliment — pas le temps",
           "hint": "Encadrer quelqu'un, c'est un vrai boulot",
-          "outcome": "Vous avez répondu « Peut-être l'an prochain quand ce sera plus calme. » Spoiler : ça n'a jamais été plus calme. Ça ne le sera jamais."
+          "outcome": "Répondu « Peut-être l'an prochain, quand ce sera plus calme. » Spoiler : ça n'a jamais été plus calme. Ça ne le sera jamais."
         }
       ]
     },
@@ -1249,7 +1252,7 @@
           "outcome": "Elle a posté un carrousel de 10 photos. Légende : « Mon nouveau coup de cœur à Woluwe. Ce fromager est un POÈTE. » Vos abonnés ont triplé en une nuit. Des gens sont venus de Saint-Gilles juste pour « le fromage de la fille d'Insta »."
         },
         {
-          "text": "Rester discret — pas mon truc, les réseaux",
+          "text": "Rester discret — pas mon fort, les réseaux",
           "hint": "La pub, c'est surfait",
           "outcome": "Elle était un peu déçue mais a compris. Elle a pris quelques clichés quand même, vous a tagué. Petite vague. Pas un tsunami. Vous vous en êtes remis."
         }
@@ -1257,17 +1260,17 @@
     },
     "reflection_moment": {
       "title": "Le mardi calme",
-      "description": "Mardi après-midi. 15h30. Pas un chat. Poncho dort sur sa chaise. Le frigo ronronne. Vous êtes là, debout derrière le comptoir, et vous regardez autour de vous. Les photos au mur. Le Comté 18 mois dans la vitrine. L'enseigne « Chez Julien » que vous avez peinte vous-même. Vous vous souvenez du premier jour — les mains qui tremblaient, les bacs de quinoa, le silence terrifiant. Et maintenant... ça. Ce truc que vous avez construit.",
+      "description": "Mardi après-midi. 15h30. Pas un chat. Poncho dort sur sa chaise. Le frigo ronronne. Vous êtes là, debout derrière le comptoir, et vous regardez autour de vous. Les photos au mur. Le Beaufort dans la vitrine. L'enseigne « Chez Julien » que vous avez peinte vous-même. Vous vous souvenez du premier jour — les mains qui tremblaient, les bacs de quinoa, le silence terrifiant. Et maintenant... ça. Ce que vous avez bâti.",
       "choices": [
         {
-          "text": "S'asseoir, manger un bout de Comté, et sourire",
+          "text": "S'asseoir, manger un bout de fromage, et sourire",
           "hint": "Vous avez le droit d'être fier, une fois",
-          "outcome": "Vous vous êtes assis sur le tabouret derrière le comptoir. Un morceau de Comté 18 mois. Un verre de vin en cachette. Tout n'était pas parfait — les fins de mois, le stress, les nuits blanches. Mais là, dans ce silence de mardi, vous avez senti que ça valait le coup. Tout."
+          "outcome": "Vous vous êtes assis sur le tabouret derrière le comptoir. Un morceau de St Marcellin. Un verre de vin en cachette. Tout n'était pas parfait — les fins de mois, le stress, les nuits blanches. Mais là, dans ce silence de mardi, vous avez senti que ça valait le coup. Tout."
         },
         {
           "text": "Sortir le carnet — et si on voyait plus grand ?",
           "hint": "Le calme est dangereux : ça fait réfléchir",
-          "outcome": "Vous avez sorti un carnet. Des idées en vrac : ateliers ? Livre ? Deuxième boutique ? Le silence de mardi n'était pas un vide — c'était un tremplin. L'avenir était là, à portée de stylo."
+          "outcome": "Carnet sorti. Idées en vrac : ateliers ? Livre ? Deuxième boutique ? Le silence de mardi n'était pas un vide — c'était un tremplin. L'avenir était là, à portée de stylo."
         }
       ]
     },
@@ -1283,7 +1286,7 @@
         {
           "text": "Rester dans l'ombre — pas mon style",
           "hint": "Les vrais savent déjà",
-          "outcome": "Vous avez poliment décliné. Le journaliste était surpris — tout le monde veut être dans le journal. Vous, non. L'anonymat a ses vertus. Les habitués sont restés. C'est eux qui comptent."
+          "outcome": "Décliné, poli. Le journaliste était surpris — tout le monde veut sa photo dans le journal. Vous, non. L'anonymat a ses vertus. Les habitués sont restés. C'est eux qui comptent."
         }
       ]
     },
@@ -1294,28 +1297,28 @@
         {
           "text": "Ouvrir jusqu'à 19h30 — pour les gens qui bossent",
           "hint": "Vos soirées vont en prendre un coup",
-          "outcome": "Les premiers soirs, c'était calme. Puis le bouche-à-oreille a fait le reste. Les actifs ont débarqué entre 18h et 19h — costume-cravate, « un Comté vite fait pour ce soir ». Les ventes du soir ont grimpé. Vos soirées sur le canapé avec Lucia, elles, ont disparu."
+          "outcome": "Les premiers soirs, c'était calme. Puis les clients ont parlé, les collègues ont suivi. Les actifs ont débarqué entre 18h et 19h — costume-cravate, « un morceau vite fait pour ce soir ». Les ventes du soir ont grimpé. Vos soirées sur le canapé avec Lucia, elles, ont disparu."
         },
         {
           "text": "18h c'est 18h — rideau",
           "hint": "Vos soirées sont sacrées",
-          "outcome": "Vous avez tenu bon. 18h, terminé. M. Peeters a râlé. Puis il a pris l'habitude de venir le samedi matin. Vos soirées sont restées à vous. Certaines choses n'ont pas de prix."
+          "outcome": "Tenu bon. 18h, terminé. M. Peeters a râlé. Puis il a pris l'habitude de venir le samedi matin. Vos soirées sont restées à vous. Certaines choses n'ont pas de prix."
         }
       ]
     },
     "talk_to_customers": {
       "title": "Le pouvoir de la tchatche",
-      "description": "Vous avez remarqué un truc : les meilleurs jours de vente, c'est quand vous parlez. Pas de la météo — du fromage, du vrai. Madame Hermans vous raconte son Noël en Savoie et vous lui sortez un Beaufort d'été qui la fait fondre. M. Peeters dit « un truc pour l'apéro » et vous lui faites découvrir un Manchego DOP qui change sa vie. Ils ne viennent pas juste pour le fromage. Ils viennent pour VOUS.",
+      "description": "Vous avez remarqué une chose : les meilleurs jours de vente, c'est quand vous parlez. Pas de la météo — du fromage, du vrai. Madame Hermans vous raconte son Noël en Savoie et vous lui sortez un Beaufort d'été qui la fait fondre. M. Peeters dit « un morceau pour l'apéro » et vous lui faites découvrir un Manchego DOP qui change sa vie. Ils ne viennent pas juste pour le fromage. Ils viennent pour VOUS.",
       "choices": [
         {
           "text": "Prendre le temps — chaque client mérite une conversation",
           "hint": "La queue s'allonge. Tant pis.",
-          "outcome": "Vous avez ralenti. Noms, prénoms, goûts, histoires de famille. Madame Hermans est devenue « Catherine ». M. Peeters a amené sa femme, puis ses voisins, puis tout l'immeuble. La file d'attente s'allonge. Personne ne se plaint. On papote dans la queue."
+          "outcome": "Ralenti. Noms, prénoms, goûts, histoires de famille. Madame Hermans est devenue « Catherine ». M. Peeters a amené sa femme, puis ses voisins, puis tout l'immeuble. La file d'attente s'allonge. Personne ne se plaint. On papote dans la queue."
         },
         {
           "text": "Rester efficace — bonjour, au revoir, merci",
           "hint": "Plus de clients servis à l'heure",
-          "outcome": "Rapide. Pro. Impeccable. Mais quelque chose manquait. Le lien. Ce truc invisible qui fait qu'on revient dans UNE boutique plutôt qu'une autre. Vous étiez un commerce. Pas encore un lieu."
+          "outcome": "Rapide. Pro. Impeccable. Mais quelque chose manquait. Le lien. Ce lien invisible qui fait qu'on revient dans UNE boutique plutôt qu'une autre. Vous étiez un commerce. Pas encore un lieu."
         }
       ]
     },
@@ -1326,7 +1329,7 @@
         {
           "text": "Tout donner — c'est VOTRE mois",
           "hint": "Le chiffre de l'année se joue maintenant",
-          "outcome": "Vous avez survécu à décembre. De justesse. 40 meules écoulées, 200 bouteilles vendues, des plateaux à n'en plus compter. Le chiffre était dingue. Votre corps... moins. Le 26, vous vous êtes endormi à 19h avec Poncho sur les pieds. Quatorze heures de sommeil."
+          "outcome": "Décembre survécu. De justesse. 40 meules écoulées, 200 bouteilles vendues, des plateaux à n'en plus compter. Le chiffre était énorme. Votre corps... moins. Le 26, vous vous êtes endormi à 19h avec Poncho sur les pieds. Quatorze heures de sommeil."
         },
         {
           "text": "Poser des limites — on arrête les plateaux le 20",
@@ -1352,7 +1355,7 @@
         {
           "text": "Fermer une semaine — de vraies vacances",
           "hint": "Lucia en rêve aussi",
-          "outcome": "Vous avez affiché « Fermé — en vacances ! » et pris la route avec Lucia et Poncho. La côte belge. Les pieds dans le sable. Pas de frigo qui ronronne, pas de commande du jeudi. Première vraie coupure depuis des mois. Le fromage peut attendre."
+          "outcome": "Pancarte « Fermé — vacances ! » et route avec Lucia et Poncho. La côte belge. Les pieds dans le sable. Pas de frigo qui ronronne, pas de commande du jeudi. Première vraie coupure depuis des mois. Le fromage peut attendre."
         }
       ]
     },
@@ -1384,7 +1387,7 @@
         {
           "text": "Ouvrir quand même — les courageux méritent du fromage",
           "hint": "On est un commerce de quartier, non ?",
-          "outcome": "Cinq clients sont venus. Cinq. Mais ils s'en souviendront. « Vous étiez ouvert ! Par ce temps ! » Madame Hermans a traversé la neige pour un Comté. Vous lui avez offert un café. Ces moments-là, c'est ça, le commerce de quartier."
+          "outcome": "Cinq clients sont venus. Cinq. Mais ils s'en souviendront. « Vous étiez ouvert ! Par ce temps ! » Madame Hermans a traversé la neige pour un St Marcellin. Vous lui avez offert un café. Ces moments-là, c'est ça, le commerce de quartier."
         },
         {
           "text": "Afficher « Fermé — profitez de la neige ! »",
@@ -1400,7 +1403,7 @@
         {
           "text": "Opération rentrée — dégustations et promos",
           "hint": "Recréer le lien après l'été",
-          "outcome": "Samedi matin, dégustation gratuite sur le trottoir. Les gamins goûtent du Comté pour la première fois. Les parents redécouvrent la boutique. Les ventes de septembre ont rattrapé le creux d'août. L'énergie est revenue."
+          "outcome": "Samedi matin, dégustation gratuite sur le trottoir. Les enfants goûtent du fromage pour la première fois. Les parents redécouvrent la boutique. Les ventes de septembre ont rattrapé le creux d'août. L'énergie est revenue."
         },
         {
           "text": "Rester sobre — la qualité parle d'elle-même",
@@ -1416,7 +1419,7 @@
         {
           "text": "Augmenter les prix — transparence totale",
           "hint": "Les clients comprendront. Enfin, la plupart.",
-          "outcome": "Vous avez augmenté de 8%. Un petit mot sur le comptoir : « Nos producteurs aussi doivent vivre. » La plupart des clients ont hoché la tête. M. Peeters a grommelé. Puis il a quand même pris son Comté."
+          "outcome": "+8 % sur l'ardoise. Un mot sur le comptoir : « Nos producteurs aussi doivent vivre. » La plupart des clients ont hoché la tête. M. Peeters a grommelé. Puis il a quand même pris son fromage."
         },
         {
           "text": "Absorber la hausse — protéger la relation",
@@ -1426,13 +1429,13 @@
         {
           "text": "Appeler Lalero — négocier en direct",
           "hint": "Vous êtes un bon client, non ?",
-          "outcome": "Vous avez appelé Lalero. Vingt minutes au téléphone. « Pour vous, Julien, on fait 8% au lieu de 15%. Mais c'est parce qu'on vous aime bien. » Les relations, c'est du capital. Vous venez de l'encaisser."
+          "outcome": "Vingt minutes au téléphone avec Lalero. « Pour vous, Julien, on fait 8 % au lieu de 15 %. Mais c'est parce qu'on vous aime bien. » Les relations, c'est du capital. Vous venez de l'encaisser."
         }
       ]
     },
     "delivery_disaster": {
       "title": "La livraison fantôme",
-      "description": "Jeudi, 7h du matin. Vous attendez Interbio. La camionnette devrait être là depuis une heure. Vous appelez. « Problème logistique, on ne peut pas livrer aujourd'hui. » Aujourd'hui. JEUDI. Le jour qui fournit votre week-end. Samedi est votre plus gros jour et il n'y a presque plus de fromage en vitrine. Le Comté est à zéro, plus de raclette, trois morceaux de Manchego tristes. C'est la catastrophe.",
+      "description": "Jeudi, 7h du matin. Vous attendez Interbio. La camionnette devrait être là depuis une heure. Vous appelez. « Problème logistique, on ne peut pas livrer aujourd'hui. » Aujourd'hui. JEUDI. Le jour qui fournit votre week-end. Samedi est votre plus gros jour et il n'y a presque plus de fromage en vitrine. La vitrine est à zéro, plus de raclette, trois morceaux de Manchego tristes. C'est la catastrophe.",
       "choices": [
         {
           "text": "Commander en urgence chez un autre fournisseur",
@@ -1442,7 +1445,7 @@
         {
           "text": "Afficher les ruptures et faire avec",
           "hint": "Pas de fromage, pas de fromage",
-          "outcome": "Vous avez écrit « Rupture temporaire » sur la moitié des étiquettes. Les clients ont compris — enfin, la plupart. Certains sont allés voir ailleurs. Le week-end a été maigre. Mais vous n'avez pas perdu votre calme. Enfin, presque."
+          "outcome": "Étiquettes « Rupture temporaire » sur la moitié des fromages. Les clients ont compris — enfin, la plupart. Certains sont allés voir ailleurs. Le week-end a été maigre. Mais vous n'avez pas perdu votre calme. Enfin, presque."
         }
       ]
     },
@@ -1469,23 +1472,23 @@
         {
           "text": "Renforcer ce qui vous rend unique",
           "hint": "Votre relation client, ils ne peuvent pas la copier",
-          "outcome": "Vous avez mis le paquet sur ce qu'ils ne peuvent pas copier : votre relation avec les clients, votre expertise, vos histoires de producteurs. Vos habitués sont restés. « On vient pour vous, Julien, pas juste pour le fromage. » Ça fait du bien à entendre."
+          "outcome": "Mise sur ce qu'ils ne peuvent pas copier : votre relation avec les clients, votre expertise, vos histoires de producteurs. Vos habitués sont restés. « On vient pour vous, Julien, pas juste pour le fromage. » Ça fait du bien à entendre."
         },
         {
           "text": "Baisser les prix — guerre des prix",
           "hint": "Risqué et épuisant",
-          "outcome": "Vous avez baissé de 10%. Les marges ont souffert. Quelques clients indécis sont restés. Mais la course au moins cher, c'est une course que personne ne gagne."
+          "outcome": "−10 % sur l'ardoise. Les marges ont souffert. Quelques clients indécis sont restés. Mais la course au moins cher, c'est une course que personne ne gagne."
         },
         {
           "text": "Les ignorer — tête baissée, on bosse",
           "hint": "L'inquiétude ne vend pas de fromage",
-          "outcome": "Vous avez essayé de ne pas y penser. Les jours calmes, vous vous demandiez s'ils étaient pleins. Les jours chargés, vous oubliiez qu'ils existaient. Au final, Woluwe avait de la place pour deux. Peut-être."
+          "outcome": "Tentative de ne pas y penser. Les jours calmes, vous vous demandiez s'ils étaient pleins. Les jours chargés, vous oubliiez qu'ils existaient. Au final, Woluwe avait de la place pour deux. Peut-être."
         }
       ]
     },
     "fridge_breakdown": {
       "title": "Le frigo rend l'âme",
-      "description": "Un bruit. Puis plus rien. Le compresseur vient de mourir. Le silence est assourdissant. Vous regardez le thermomètre monter : 6°C... 10°C... 14°C... 18°C. Dans la vitrine, 3 000 € de fromage qui se réchauffent doucement. Le Brie commence à couler. Le Comté transpire. Vous avez peut-être deux heures avant la catastrophe.",
+      "description": "Un bruit. Puis plus rien. Le compresseur vient de mourir. Le silence est assourdissant. Vous regardez le thermomètre monter : 6°C... 10°C... 14°C... 18°C. Dans la vitrine, 3 000 € de fromage qui se réchauffent doucement. Le Brie commence à couler. Le fromage transpire. Vous avez peut-être deux heures avant la catastrophe.",
       "choices": [
         {
           "text": "Dépanneur en urgence — MAINTENANT",
@@ -1495,18 +1498,18 @@
         {
           "text": "Tout déplacer dans le frigo du sous-sol",
           "hint": "Bricolage de survie",
-          "outcome": "Vous avez couru comme un dingue — le Comté dans les bras, le Beaufort sous l'épaule, Poncho qui vous suit en croyant que c'est un jeu. Le frigo du sous-sol est petit : vous avez sauvé les trois quarts. Le reste... paix à son âme. Réparation le lendemain."
+          "outcome": "Vous avez couru à toute vitesse — le fromage dans les bras, le Beaufort sous l'épaule, Poncho qui vous suit en croyant que c'est un jeu. Le frigo du sous-sol est petit : vous avez sauvé les trois quarts. Le reste... paix à son âme. Réparation le lendemain."
         }
       ]
     },
     "producer_visit_lalero": {
       "title": "Lalero vous invite chez le producteur",
-      "description": "Patrick de chez Lalero appelle : « Julien, on organise une journée chez un de nos producteurs. Traite du matin, caves d'affinage, déjeuner à la ferme. Tu viens ? » Voir les vaches, toucher les meules, comprendre POURQUOI ce Comté coûte ce prix-là. Mais c'est une journée entière loin de la boutique.",
+      "description": "Patrick de chez Lalero appelle : « Julien, on organise une journée chez un de nos producteurs. Traite du matin, caves d'affinage, déjeuner à la ferme. Vous venez ? » Voir les vaches, toucher les meules, comprendre POURQUOI ce fromage coûte ce prix-là. Mais c'est une journée entière loin de la boutique.",
       "choices": [
         {
           "text": "J'y vais — je veux voir les caves",
           "hint": "La relation + le savoir = inestimable",
-          "outcome": "Les caves étaient à couper le souffle. Des milliers de meules alignées dans la pénombre. L'odeur de cave humide, de lait, de temps qui passe. Vous avez goûté un Comté 24 mois directement à la meule. Vous êtes revenu transformé. Maintenant quand vous parlez de ce Comté, c'est pas du blabla — vous l'avez VU naître."
+          "outcome": "Les caves étaient à couper le souffle. Des milliers de meules alignées dans la pénombre. L'odeur de cave humide, de lait, de temps qui passe. Vous avez goûté un 24 mois directement à la meule. Vous êtes revenu transformé. Maintenant quand vous parlez de ce fromage, c'est pas du blabla — vous l'avez VU naître."
         },
         {
           "text": "Décliner — impossible de quitter la boutique",
@@ -1516,7 +1519,7 @@
         {
           "text": "Envoyer Lucas à ma place",
           "hint": "Il y va, la boutique reste ouverte",
-          "outcome": "Lucas est revenu surexcité, plein de photos et d'histoires. « Julien, tu DOIS y aller la prochaine fois ! Les meules sont ÉNORMES ! » Pas tout à fait comme y aller soi-même. Mais au moins la boutique est restée ouverte."
+          "outcome": "Lucas est revenu surexcité, plein de photos et d'histoires. « Julien, vous DEVEZ y aller la prochaine fois ! Les meules sont ÉNORMES ! » Pas tout à fait comme y aller soi-même. Mais au moins la boutique est restée ouverte."
         }
       ]
     },
@@ -1527,7 +1530,7 @@
         {
           "text": "S'inscrire — devenir un VRAI fromager",
           "hint": "Cher, mais c'est votre crédibilité",
-          "outcome": "Trois jours intenses. Vous avez appris la différence entre les flores d'affinage, les terroirs laitiers, la science derrière le goût. Vous êtes revenu et la façon dont vous parlez du fromage a changé. Les clients l'ont senti. « Vous êtes devenu un expert ! » Non. Juste un peu moins ignorant."
+          "outcome": "Trois jours intenses. Vous avez appris la différence entre les flores d'affinage, les terroirs laitiers, la science derrière le goût. Vous êtes revenu et la façon dont vous parlez du fromage a changé. Les clients l'ont senti. « Vous êtes devenu un expert ! » Non. Juste moins ignorant."
         },
         {
           "text": "Passer — j'apprends sur le terrain",
@@ -1538,7 +1541,7 @@
     },
     "bulk_supplier_deal": {
       "title": "L'offre « volume » de Lalero",
-      "description": "Patrick de chez Lalero pose son café : « Julien, j'ai un deal pour toi. Contrat annuel, tu t'engages sur des volumes minimum, et je te fais -12% sur toute la ligne. Comté, Beaufort, raclette — tout. » C'est tentant. -12%, c'est des milliers d'euros par an. Mais un engagement, c'est aussi moins de flexibilité. Et si l'été est mauvais ? Et si vous commandez trop ?",
+      "description": "Patrick de chez Lalero pose son café : « Julien, j'ai un deal pour vous. Contrat annuel, vous vous engagez sur des volumes minimum, et je vous fais -12% sur toute la ligne. Fromage, Beaufort, raclette — tout. » C'est tentant. -12%, c'est des milliers d'euros par an. Mais un engagement, c'est aussi moins de flexibilité. Et si l'été est mauvais ? Et si vous commandez trop ?",
       "choices": [
         {
           "text": "Signer le contrat — -12% c'est énorme",
@@ -1575,7 +1578,7 @@
     },
     "friend_needs_help": {
       "title": "L'appel de minuit",
-      "description": "Votre téléphone sonne tard. Un vieil ami. Sa voix tremble. Rupture, problèmes d'argent, tout en même temps. « Je sais que t'es débordé, Julien. Mais j'ai besoin de... je sais pas. Juste d'un pote. » Il a besoin de vous. De votre temps, d'un prêt, ou juste d'une oreille. Mais vous êtes épuisé. La boutique prend tout.",
+      "description": "Votre téléphone sonne tard. Un vieil ami. Sa voix tremble. Rupture, problèmes d'argent, tout en même temps. « Je sais que vous êtes débordé, Julien. Mais j'ai besoin de... je sais pas. Juste d'un ami. » Il a besoin de vous. De votre temps, d'un prêt, ou juste d'une oreille. Mais vous êtes épuisé. La boutique prend tout.",
       "choices": [
         {
           "text": "Être là — c'est un ami",
@@ -1637,7 +1640,7 @@
       "choices": [
         {
           "text": "Lui préparer un petit paquet d'au revoir",
-          "hint": "Un dernier Comté, pour la route",
+          "hint": "Un dernier morceau, pour la route",
           "outcome": "Vous avez emballé un morceau de Comté 18 mois, un St Marcellin, un bout de Manchego — ses préférés. Un mot : « Merci d'avoir cru en nous depuis le début. » Elle avait les larmes aux yeux. « Je vous enverrai mes amis de passage à Bruxelles. » Elle l'a fait."
         },
         {
@@ -1670,7 +1673,7 @@
     },
     "signature_cheese": {
       "title": "C'est quoi, VOTRE fromage ?",
-      "description": "M. Peeters vous pose la question un samedi : « Julien, si vous deviez ne garder qu'un seul fromage dans cette boutique, ce serait lequel ? » Vous n'y avez jamais pensé. La Tomme Larzac — c'est par elle que tout a commencé. Le Comté 18 mois — c'est le pilier. Le St Marcellin — c'est votre péché mignon. Chaque fromager a SON fromage. Celui qu'il met dans les mains de chaque nouveau client.",
+      "description": "M. Peeters vous pose la question un samedi : « Julien, si vous deviez ne garder qu'un seul fromage dans cette boutique, ce serait lequel ? » Vous n'y avez jamais pensé. La Tomme Larzac — c'est par elle que tout a commencé. Le Beaufort — c'est le pilier. Le St Marcellin — c'est votre péché mignon. Chaque fromager a SON fromage. Celui qu'il met dans les mains de chaque nouveau client.",
       "choices": [
         {
           "text": "Choisir un fromage signature et l'assumer",
@@ -1685,8 +1688,8 @@
       ]
     },
     "shop_philosophy": {
-      "title": "« C'est quoi, votre truc ? »",
-      "description": "Une cliente s'appuie sur le comptoir et vous regarde droit dans les yeux. « Je suis curieuse. Pourquoi ici et pas chez un autre fromager ? C'est quoi votre truc ? » Bonne question. Vous n'avez jamais vraiment mis des mots dessus. C'est juste... vous. Le fromage. Les gens. Ce coin de Woluwe. Mais comment on dit ça sans avoir l'air prétentieux ?",
+      "title": "« C'est quoi, votre signature ? »",
+      "description": "Une cliente s'appuie sur le comptoir et vous regarde droit dans les yeux. « Je suis curieuse. Pourquoi ici et pas chez un autre fromager ? C'est quoi votre plus ? » Bonne question. Vous n'avez jamais vraiment mis des mots dessus. C'est juste... vous. Le fromage. Les gens. Ce coin de Woluwe. Mais comment on dit ça sans avoir l'air prétentieux ?",
       "choices": [
         {
           "text": "« La qualité et la relation — point barre »",
@@ -1696,7 +1699,7 @@
         {
           "text": "« Le quartier — on est d'ici, pour ici »",
           "hint": "Local, ancré, authentique",
-          "outcome": "Vous avez parlé des producteurs, du quartier, de Madame Dubois qui vous a dit de vendre du fromage. Du lien entre les gens et la nourriture. Elle est repartie avec un Beaufort et un sourire. Et vous, avec une identité un peu plus claire."
+          "outcome": "Vous avez parlé des producteurs, du quartier, de Madame Dubois qui vous a dit de vendre du fromage. Du lien entre les gens et la nourriture. Elle est repartie avec un Beaufort et un sourire. Et vous, avec une identité plus claire."
         },
         {
           "text": "« Le lien — ici, on connaît votre nom et vos goûts »",
@@ -1723,12 +1726,12 @@
     },
     "neighborhood_collab": {
       "title": "Le trio du quartier",
-      "description": "Marie de la boulangerie et Thomas de la cave à vins débarquent un mardi midi. « On a une idée. Un panier découverte : ton fromage, notre pain, leur vin. Les trois commerces ensemble. On mutualise les clients. » L'idée est bonne. Comté + pain au levain + Côtes du Rhône = le combo parfait. Mais coordonner trois commerces, c'est du boulot en plus.",
+      "description": "Marie de la boulangerie et Thomas de la cave à vins arrivent un mardi midi. « On a une idée. Un panier découverte : votre fromage, notre pain, leur vin. Les trois commerces ensemble. On mutualise les clients. » L'idée est bonne. Fromage + pain au levain + Côtes du Rhône = le combo parfait. Mais coordonner trois commerces, c'est du boulot en plus.",
       "choices": [
         {
           "text": "Participer — le trio du quartier, j'adore",
           "hint": "Visibilité x3",
-          "outcome": "Le premier panier est parti en deux jours. Comté 12 mois, pain au levain de Marie, Côtes du Rhône de chez Thomas. Les clients de la boulangerie vous ont découvert. Les vôtres ont découvert la cave. Le quartier en a parlé. « Vous avez vu le panier de Woluwe ? »"
+          "outcome": "Le premier panier est parti en deux jours. Beaufort, pain au levain de Marie, Côtes du Rhône de chez Thomas. Les clients de la boulangerie vous ont découvert. Les vôtres ont découvert la cave. Le quartier en a parlé. « Vous avez vu le panier de Woluwe ? »"
         },
         {
           "text": "Passer — trop de coordination",
@@ -1739,7 +1742,7 @@
     },
     "cookbook_idea": {
       "title": "« Vous devriez écrire un livre ! »",
-      "description": "Madame Hermans lâche ça entre deux morceaux de Comté : « Julien, sérieusement. Avec toutes vos histoires, vos accords, vos anecdotes de producteurs — vous devriez écrire un livre. » Lucia aussi en parle le soir. « Tes recettes, tes voyages, l'histoire de la boutique... » Un livre. Vous. Le mec qui avait du quinoa périmé il y a deux ans.",
+      "description": "Madame Hermans lâche ça entre deux morceaux de fromage : « Julien, sérieusement. Avec toutes vos histoires, vos accords, vos anecdotes de producteurs — vous devriez écrire un livre. » Lucia aussi en parle le soir. « Vos recettes, vos voyages, l'histoire de la boutique... » Un livre. Vous. Celui qui avait du quinoa périmé il y a deux ans.",
       "choices": [
         {
           "text": "Commencer à noter des idées — pourquoi pas ?",
@@ -1765,7 +1768,7 @@
         {
           "text": "Garder la spontanéité — la surprise est meilleure",
           "hint": "Pas besoin de tout planifier",
-          "outcome": "Vous préférez que les clients découvrent. « Tenez, goûtez ça — c'est nouveau cette semaine. » La surprise dans les yeux, c'est ça votre truc. Pas de planning. De l'instinct."
+          "outcome": "Vous préférez que les clients découvrent. « Tenez, goûtez ça — c'est nouveau cette semaine. » La surprise dans les yeux, c'est ça votre marque de fabrique. Pas de planning. De l'instinct."
         },
         {
           "text": "Lancer « L'École du Fromage » — ateliers mensuels",
@@ -1776,7 +1779,7 @@
     },
     "lucas_growth": {
       "title": "Lucas a grandi",
-      "description": "Vous le regardez au comptoir. Lucas — le gamin bordélique de la boulangerie d'à côté — est en train d'expliquer à une cliente la différence entre un Comté 12 et 18 mois. Et il a raison. Pas mot pour mot ce que vous diriez, mais l'idée est là. Il gère la caisse seul. Il range (à sa façon). Il commence même à avoir SES habitués. Il vous regarde : « Julien, je pourrais gérer les commandes du jeudi ? »",
+      "description": "Vous le regardez au comptoir. Lucas — le jeune un peu désordonné de la boulangerie d'à côté — est en train d'expliquer à une cliente la différence entre un Comté 12 et 18 mois. Et il a raison. Pas mot pour mot ce que vous diriez, mais l'idée est là. Il gère la caisse seul. Il range (à sa façon). Il commence même à avoir SES habitués. Il vous regarde : « Julien, je pourrais gérer les commandes du jeudi ? »",
       "choices": [
         {
           "text": "Lui donner les commandes du jeudi",
@@ -1797,7 +1800,7 @@
         {
           "text": "Tout raconter — du sac à dos au comptoir",
           "hint": "Les gens aiment les vraies histoires",
-          "outcome": "Vous avez raconté. L'Amérique Centrale. Le coup de fil de Geneviève. Le quinoa périmé. La Tomme Larzac qui a tout changé. Il est resté vingt minutes, bouche bée. « C'est dingue. » Il est reparti avec un Comté ET une histoire. Il est revenu. Avec des amis."
+          "outcome": "Vous avez raconté. L'Amérique Centrale. Le coup de fil de Geneviève. Le quinoa périmé. La Tomme Larzac qui a tout changé. Il est resté vingt minutes, bouche bée. « C'est incroyable. » Il est reparti avec du fromage ET une histoire. Il est revenu. Avec des amis."
         },
         {
           "text": "Rester discret — le fromage parle mieux que moi",
@@ -1808,7 +1811,7 @@
     },
     "expansion_dream": {
       "title": "Et si... deux boutiques ?",
-      "description": "Vous regardez les chiffres un dimanche soir. La trésorerie est bonne. Les ventes montent. L'équipe tourne. Et cette idée qui revient, comme un fromage qui affine lentement : une deuxième boutique. « Chez Julien — Uccle » ou « Chez Julien — Ixelles ». L'empire du fromage. Lucia vous regarde : « Tu as ce regard. Celui qui veut dire que tu vas faire un truc fou. »",
+      "description": "Vous regardez les chiffres un dimanche soir. La trésorerie est bonne. Les ventes montent. L'équipe tourne. Et cette idée qui revient, comme un fromage qui affine lentement : une deuxième boutique. « Chez Julien — Uccle » ou « Chez Julien — Ixelles ». L'empire du fromage. Lucia vous regarde : « Vous avez ce regard. Celui qui veut dire que vous allez faire un coup de folie. »",
       "choices": [
         {
           "text": "Étudier le projet — regarder les annonces",
@@ -1845,7 +1848,7 @@
         {
           "text": "Donner les invendus — ça partirait de toute façon",
           "hint": "Zéro perte, 100% utile",
-          "outcome": "Vous avez préparé un carton : des fins de Comté, un Brie qui mûrissait trop vite, des yaourts proches de la date. La bénévole avait les larmes aux yeux. Le samedi suivant, elle est revenue : « Les gens ont adoré. Ils n'avaient jamais goûté du vrai fromage. » Le quartier vous voit bien."
+          "outcome": "Vous avez préparé un carton : des fins de meules, un Brie qui mûrissait trop vite, des yaourts proches de la date. La bénévole avait les larmes aux yeux. Le samedi suivant, elle est revenue : « Les gens ont adoré. Ils n'avaient jamais goûté du vrai fromage. » Le quartier vous voit bien."
         },
         {
           "text": "Faire un don en argent — plus utile pour eux",
@@ -1882,7 +1885,7 @@
         {
           "text": "Le commander spécialement — défi accepté",
           "hint": "Service personnalisé, fidélité garantie",
-          "outcome": "Un coup de fil à Lalero. « Patrick, tu me trouves un Stilton ? Un vrai ? » Trois jours plus tard, le fromage était là. Le client est revenu le chercher, les yeux brillants. « Vous l'avez trouvé ! » Il en a parlé à tout le quartier anglophone. Vous êtes devenu « the cheese guy who finds anything »."
+          "outcome": "Un coup de fil à Lalero. « Patrick, vous me trouvez un Stilton ? Un vrai ? » Trois jours plus tard, le fromage était là. Le client est revenu le chercher, les yeux brillants. « Vous l'avez trouvé ! » Il en a parlé à tout le quartier anglophone. Vous êtes devenu « the cheese guy who finds anything »."
         },
         {
           "text": "L'orienter vers une autre boutique",
@@ -1892,8 +1895,8 @@
       ]
     },
     "lucas_brings_henry": {
-      "title": "« J'ai un pote pour toi »",
-      "description": "Lucas débarque un matin avec son sourire de conspirateur. « Julien. J'ai un pote. Henry. Il est calme, il est fiable, il connaît le fromage, et il cherche un truc. » Le contraire de Lucas en tout point — et c'est peut-être exactement ce qu'il vous faut. Le yin du yang. Le Comté du Roquefort.",
+      "title": "« J'ai quelqu'un pour vous »",
+      "description": "Lucas débarque un matin avec son sourire de conspirateur. « Julien. J'ai quelqu'un. Henry. Il est calme, il est fiable, il connaît le fromage, et il cherche un poste. » Le contraire de Lucas en tout point — et c'est peut-être exactement ce qu'il vous faut. Le yin du yang. Le Comté du Roquefort.",
       "choices": [
         {
           "text": "Rencontrer Henry — pourquoi pas ?",
@@ -1903,7 +1906,7 @@
         {
           "text": "Pas maintenant — l'équipe actuelle suffit",
           "hint": "Un employé en plus, c'est un salaire en plus",
-          "outcome": "Vous avez dit « peut-être plus tard ». Lucas a haussé les épaules. « Comme tu veux. » Vous continuez à deux. C'est serré, mais ça tient. Pour l'instant."
+          "outcome": "Vous avez dit « peut-être plus tard ». Lucas a haussé les épaules. « Comme vous voulez. » Vous continuez à deux. C'est serré, mais ça tient. Pour l'instant."
         }
       ]
     },
@@ -1961,7 +1964,7 @@
         {
           "text": "Surprendre Lucia — fermer tôt un mercredi",
           "hint": "Elle mérite de vous voir heureux en dehors de la boutique",
-          "outcome": "Vous avez fermé à 15h et surpris Lucia. Un long déjeuner près du canal. Une balade main dans la main. Une vraie conversation. Elle a dit : « Ça faisait longtemps que je ne t'avais pas vu aussi léger. » Le fromage peut attendre un après-midi."
+          "outcome": "Vous avez fermé à 15h et surpris Lucia. Un long déjeuner près du canal. Une balade main dans la main. Une vraie conversation. Elle a dit : « Ça faisait longtemps que je ne vous avais pas vu aussi léger. » Le fromage peut attendre un après-midi."
         },
         {
           "text": "Juste profiter — ne rien faire de spécial",
@@ -1972,7 +1975,7 @@
     },
     "dog_in_shop": {
       "title": "Poncho, la star malgré lui",
-      "description": "Les gamins du quartier ne viennent plus acheter du fromage. Ils viennent voir Poncho. Il est installé sur SA chaise, à l'entrée, et il accueille chaque client avec un regard de berger australien qui dit « je t'aime, tu as du fromage ? ». Les parents suivent. Les ventes suivent. Mais hier, Poncho a renversé un plateau de Comté avec sa queue. 50 € par terre. Il vous a regardé avec ses yeux innocents.",
+      "description": "Les enfants du quartier ne viennent plus acheter du fromage. Ils viennent voir Poncho. Il est installé sur SA chaise, à l'entrée, et il accueille chaque client avec un regard de berger australien qui dit « je t'aime, vous avez du fromage ? ». Les parents suivent. Les ventes suivent. Mais hier, Poncho a renversé un plateau de fromage avec sa queue. 50 € par terre. Il vous a regardé avec ses yeux innocents.",
       "choices": [
         {
           "text": "Le garder — il fait partie de la marque",
@@ -2004,7 +2007,7 @@
     },
     "poncho_anniversary": {
       "title": "Un an avec Poncho",
-      "description": "Il y a un an, ces yeux bleus vous regardaient depuis le refuge. Petites pattes, grandes oreilles, énergie de fou. Aujourd'hui, Poncho est le vrai patron de Chez Julien. Sa chaise à l'entrée. Sa place sous le comptoir. Ses fans — oui, des FANS — qui viennent juste pour lui. Les gamins du quartier crient son nom en passant. Lucia dit qu'il est plus connu que vous. Elle a probablement raison.",
+      "description": "Il y a un an, ces yeux bleus vous regardaient depuis le refuge. Petites pattes, grandes oreilles, énergie de fou. Aujourd'hui, Poncho est le vrai patron de Chez Julien. Sa chaise à l'entrée. Sa place sous le comptoir. Ses fans — oui, des FANS — qui viennent juste pour lui. Les enfants du quartier crient son nom en passant. Lucia dit qu'il est plus connu que vous. Elle a probablement raison.",
       "choices": [
         {
           "text": "Lui donner une tranche entière de Beaufort",
@@ -2138,7 +2141,7 @@
         {
           "text": "Pas cette fois — mais bientôt, promis",
           "hint": "La promesse classique de l'entrepreneur",
-          "outcome": "Lucia a rangé la brochure sans un mot. Pas en colère. Juste... fatiguée. « Bientôt, je te promets. » Elle a souri tristement. Vous avez travaillé. La boutique a tourné. La promesse est restée dans le tiroir."
+          "outcome": "Lucia a rangé la brochure sans un mot. Pas en colère. Juste... fatiguée. « Bientôt, je vous promets. » Elle a souri tristement. Vous avez travaillé. La boutique a tourné. La promesse est restée dans le tiroir."
         }
       ]
     },
@@ -2165,7 +2168,7 @@
         {
           "text": "Mettre en place de vrais process — fiches et plannings",
           "hint": "Un week-end de boulot pour des mois de tranquillité",
-          "outcome": "Un dimanche, vous avez tout écrit. Fiche par fromage. Planning de commandes par fournisseur. Check-list d'ouverture et de fermeture. Lucas a râlé (« C'est lourd, ton truc »). Henry a adoré. Les oublis ont chuté de 80%. La boutique tourne mieux. Et votre tête est enfin libre."
+          "outcome": "Un dimanche, vous avez tout écrit. Fiche par fromage. Planning de commandes par fournisseur. Check-list d'ouverture et de fermeture. Lucas a râlé (« C'est lourd, votre système »). Henry a adoré. Les oublis ont chuté de 80%. La boutique tourne mieux. Et votre tête est enfin libre."
         },
         {
           "text": "Continuer à l'instinct — ça fait partie du charme",
@@ -2175,18 +2178,18 @@
         {
           "text": "Reporter — trop de travail en ce moment",
           "hint": "L'ennemi du bien, c'est l'urgent",
-          "outcome": "Vous avez rangé l'idée dans le tiroir des « un jour ». Le mois suivant, Henry a commandé du Comté 18 mois au lieu du 12 mois. Le client n'a pas râlé — mais vous, vous y avez repensé."
+          "outcome": "Vous avez rangé l'idée dans le tiroir des « un jour ». Le mois suivant, Henry a commandé du 18 mois au lieu du 12 mois. Le client n'a pas râlé — mais vous, vous y avez repensé."
         }
       ]
     },
     "visibility_push": {
       "title": "Faire parler de soi",
-      "description": "Lucia regarde votre compte Instagram. 340 abonnés. « Julien, la boulangerie d'à côté en a 3 000. Tu postes une photo par mois. Et c'est flou. » Elle n'a pas tort. Vous pourriez faire un vrai push : réseaux, flyers dans les boîtes aux lettres, partenariats. Ou continuer à compter sur le bouche-à-oreille. Qui marche. Mais lentement.",
+      "description": "Lucia regarde votre compte Instagram. 340 abonnés. « Julien, la boulangerie d'à côté en a 3 000. Vous postez une photo par mois. Et c'est flou. » Elle n'a pas tort. Vous pourriez faire un vrai push : réseaux, flyers dans les boîtes aux lettres, partenariats. Ou continuer à compter sur le bouche-à-oreille. Qui marche. Mais lentement.",
       "choices": [
         {
           "text": "Lancer une vraie campagne — réseaux + flyers",
           "hint": "Ça coûte du temps et de l'argent",
-          "outcome": "Lucia a pris les choses en main. Photos de fromages en lumière naturelle, stories de Poncho, vidéo de vous qui coupez un Comté. Les followers ont grimpé. Des clients sont venus de communes voisines. « On vous a vus sur Insta ! » La notoriété, ça se construit."
+          "outcome": "Lucia a pris les choses en main. Photos de fromages en lumière naturelle, stories de Poncho, vidéo de vous qui coupez une meule. Les followers ont grimpé. Des clients sont venus de communes voisines. « On vous a vus sur Insta ! » La notoriété, ça se construit."
         },
         {
           "text": "Rester sur le bouche-à-oreille — c'est gratuit et sincère",
@@ -2202,7 +2205,7 @@
     },
     "personal_recharge": {
       "title": "La batterie est à plat",
-      "description": "Vous vous regardez dans le miroir le matin. Les cernes. La fatigue dans les yeux. Lucia dit : « Tu as l'air d'un zombie, chéri. » Poncho vous regarde avec pitié — et quand un CHIEN vous regarde avec pitié, c'est que c'est grave. L'équipe peut tenir un week-end. Vous pourriez dormir, marcher, ne rien faire. Ou continuer à pousser.",
+      "description": "Vous vous regardez dans le miroir le matin. Les cernes. La fatigue dans les yeux. Lucia dit : « Vous avez l'air d'un zombie, chéri. » Poncho vous regarde avec pitié — et quand un CHIEN vous regarde avec pitié, c'est que c'est grave. L'équipe peut tenir un week-end. Vous pourriez dormir, marcher, ne rien faire. Ou continuer à pousser.",
       "choices": [
         {
           "text": "Prendre un week-end off — vraiment off",
@@ -2223,7 +2226,7 @@
     },
     "pricing_strategy": {
       "title": "Le juste prix",
-      "description": "Pierre vous pose la question lors de votre café mensuel : « Julien, tes prix sont trop bas. Tu te sous-estimes. Un bon Comté 18 mois, ça vaut son prix. » Vous regardez vos étiquettes. Il a peut-être raison. Vos marges sont serrées. Mais monter les prix dans un quartier familial comme Woluwe... certains clients comptent chaque euro.",
+      "description": "Pierre vous pose la question lors de votre café mensuel : « Julien, vos prix sont trop bas. Vous vous sous-estimez. Un bon fromage affiné, ça vaut son prix. » Vous regardez vos étiquettes. Il a peut-être raison. Vos marges sont serrées. Mais monter les prix dans un quartier familial comme Woluwe... certains clients comptent chaque euro.",
       "choices": [
         {
           "text": "Monter les prix de 8% — le fromage le vaut",
@@ -2233,12 +2236,12 @@
         {
           "text": "Garder les prix — l'accessibilité, c'est notre identité",
           "hint": "Le volume compense",
-          "outcome": "Vous avez tenu les prix. Le Comté reste accessible. Les familles du quartier vous remercient. Le volume compense la marge. Et la fidélité, ça n'a pas de prix."
+          "outcome": "Vous avez tenu les prix. Le fromage reste accessible. Les familles du quartier vous remercient. Le volume compense la marge. Et la fidélité, ça n'a pas de prix."
         },
         {
           "text": "Deux gammes — quotidien ET premium",
           "hint": "Quelque chose pour tout le monde",
-          "outcome": "Vous avez créé deux gammes. Le Comté 8 mois à prix doux pour le gratin du mardi. Le Comté 24 mois à prix premium pour l'apéro du samedi. Tout le monde y trouve son compte. Même Pierre a approuvé."
+          "outcome": "Vous avez créé deux gammes. Le fromage du quotidien à prix doux pour le gratin du mardi. Les pièces d'exception à prix premium pour l'apéro du samedi. Tout le monde y trouve son compte. Même Pierre a approuvé."
         }
       ]
     },
@@ -2291,7 +2294,7 @@
         {
           "text": "S'inscrire — on n'est jamais trop formé",
           "hint": "800 € pour comprendre ses propres chiffres",
-          "outcome": "Deux jours intenses. Vous avez compris des trucs sur vos marges que vous ignoriez. Le formateur a regardé vos chiffres : « Vous savez que votre Comté 18 mois est votre produit le plus rentable ? » Vous ne saviez pas. Maintenant, oui."
+          "outcome": "Deux jours intenses. Vous avez compris des choses sur vos marges que vous ignoriez. Le formateur a regardé vos chiffres : « Vous savez que votre fromage affiné est votre produit le plus rentable ? » Vous ne saviez pas. Maintenant, oui."
         },
         {
           "text": "Passer — le terrain est ma meilleure école",
@@ -2333,7 +2336,7 @@
         {
           "text": "Accepter — 2 000 € c'est 2 000 €",
           "hint": "Gros chiffre, grosse nuit",
-          "outcome": "Jeudi soir, 22h, vous êtes encore à la boutique. 20 plateaux alignés. Comté, Manchego, charcuterie Coprosain, raisins, noix. Livraison à 11h pile. Ils ont adoré. Le chèque est tombé la semaine suivante. Votre dos s'en souvient aussi."
+          "outcome": "Jeudi soir, 22h, vous êtes encore à la boutique. 20 plateaux alignés. Fromage, Manchego, charcuterie Coprosain, raisins, noix. Livraison à 11h pile. Ils ont adoré. Le chèque est tombé la semaine suivante. Votre dos s'en souvient aussi."
         },
         {
           "text": "Décliner — trop gros pour nous",
@@ -2354,7 +2357,7 @@
         {
           "text": "Organiser la soirée — c'est ça, le métier",
           "hint": "Bonne marge + bouche-à-oreille",
-          "outcome": "Jeudi soir, 19h30. Huit personnes autour du comptoir. Comté 24 mois, St Marcellin coulant, Roquefort, Parmigiano 36 mois, chèvre frais. Vous avez raconté l'histoire de chaque fromage. Ils ont bu vos paroles (et le vin). Deux d'entre eux sont devenus des habitués. Le bouche-à-oreille a fait le reste."
+          "outcome": "Jeudi soir, 19h30. Huit personnes autour du comptoir. Beaufort 24 mois, St Marcellin coulant, Roquefort, Parmigiano 36 mois, chèvre frais. Vous avez raconté l'histoire de chaque fromage. Ils ont bu vos paroles (et le vin). Deux d'entre eux sont devenus des habitués. Le bouche-à-oreille a relayé."
         },
         {
           "text": "Décliner — le soir, c'est pour Lucia",
@@ -2370,12 +2373,12 @@
     },
     "bulk_order": {
       "title": "Le restaurateur de Saint-Gilles",
-      "description": "Un chef de Saint-Gilles appelle : « J'ouvre un bistrot. Je cherche un fournisseur fromage. Dix kilos de Comté par semaine, du Brie, du chèvre. Livré le mardi. Vous pouvez ? » Dix kilos par semaine. C'est régulier, c'est un bon chiffre. Mais les restos veulent des prix de gros — vos marges vont se comprimer. Et la livraison, c'est vous.",
+      "description": "Un chef de Saint-Gilles appelle : « J'ouvre un bistrot. Je cherche un fournisseur fromage. Dix kilos de fromage par semaine, du Brie, du chèvre. Livré le mardi. Vous pouvez ? » Dix kilos par semaine. C'est régulier, c'est un bon chiffre. Mais les restos veulent des prix de gros — vos marges vont se comprimer. Et la livraison, c'est vous.",
       "choices": [
         {
           "text": "Accepter — un client régulier, c'est de l'or",
           "hint": "Chiffre récurrent, marges serrées",
-          "outcome": "Chaque mardi, vous livrez à Saint-Gilles. Dix kilos de Comté, Brie, chèvre. Les marges sont plus basses qu'en boutique, mais le volume compense. Et le chef vous cite sur sa carte : « Fromages — Chez Julien, Woluwe. » Pub gratuite."
+          "outcome": "Chaque mardi, vous livrez à Saint-Gilles. Dix kilos de fromage, Brie, chèvre. Les marges sont plus basses qu'en boutique, mais le volume compense. Et le chef vous cite sur sa carte : « Fromages — Chez Julien, Woluwe. » Pub gratuite."
         },
         {
           "text": "Refuser — on est une boutique, pas un grossiste",
@@ -2400,7 +2403,7 @@
         },
         {
           "text": "Rester en boutique — une seule adresse",
-          "hint": "Faire bien un truc plutôt que deux trucs moyennement",
+          "hint": "Mieux faire une chose que deux à moitié",
           "outcome": "Vous avez décliné. Une boutique, c'est assez. L'énergie dépensée au marché, c'est de l'énergie en moins au comptoir. Les clients du marché viendront peut-être un jour. Ou pas. Et c'est ok."
         },
         {
@@ -2486,12 +2489,12 @@
     },
     "anniversary": {
       "title": "Un an déjà !",
-      "description": "Chez Julien a survécu un an ! On fête ça avec du Comté et des bulles.",
+      "description": "Chez Julien a survécu un an ! On fête ça avec du fromage et des bulles.",
       "date": "Juillet 2023"
     },
     "wine_evening": {
       "title": "Le coin vin",
-      "description": "Chaque bouteille avec son histoire. Montepulciano-Merlot + Comté = la magie.",
+      "description": "Chaque bouteille avec son histoire. Montepulciano-Merlot + fromage = la magie.",
       "date": "2024"
     },
     "cheese_wall": {
@@ -2546,7 +2549,7 @@
     },
     "christmas_gifts": {
       "title": "Les coffrets",
-      "description": "Faits main, avec amour et du Comté 18 mois dedans. La touche Chez Julien.",
+      "description": "Faits main, avec amour et du St Marcellin dedans. La touche Chez Julien.",
       "date": "Décembre 2022"
     },
     "shop_party": {

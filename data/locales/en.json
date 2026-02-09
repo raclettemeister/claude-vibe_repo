@@ -1,8 +1,8 @@
 {
   "langCode": "en",
   "ui": {
-    "title": "🧀 Chez Julien",
-    "subtitle": "A Brussels Cheese Shop Story",
+    "title": "🧀 Shop Simulator V1.0",
+    "subtitle": "A family business story.",
     "trophyCollection": "🏆 Trophy Collection",
     "achievementCount": "/17",
     "tabPlay": "🎮 Play",
@@ -49,6 +49,7 @@
     "platinumTrophyDesc": "True Fromager - 100% Complete!"
   },
   "cutscene": {
+    "openingTitle": "Once upon a time",
     "scene1_location": "Corn Island, Nicaragua — June 2022",
     "scene1_text1": "I'd been backpacking through Central America for months.",
     "scene1_text2": "But something was pulling me home. I wanted to create something that mattered.",
@@ -58,9 +59,11 @@
     "scene3_text2": "\"I've put a lot of effort and love into it, but it's time to move on.\"",
     "scene3_text3": "\"People need more fresh produce around here. I'd be happy to know a young, motivated person is giving it new life.\"",
     "scene4_text1": "The deal cost me everything. All my savings. Help from my family. A loan to repay in a year.",
-    "scene4_text2": "€0 in my bank account. €10,000 in reserves to survive the first month.",
+    "scene4_text2": "€0 in my bank account. €10,000 in reserves to survive the first few months.",
     "scene4_text3": "A big bet. No way back.",
-    "scene4_text4": "Only forward.",
+    "scene4_text_cinematic": "Shakespeare said the world is a stage. For the next three years, mine is 26 Parvis Saint-Alix.",
+    "scene4_text4": "In this game, I invite you to play the lead role in this story. Me, Julien Thibaut.",
+    "scene5_readyChallenge": "Are you ready to take on the challenge?",
     "clickToBegin": "Click to begin your story",
     "incomingCall": "Incoming WhatsApp call...",
     "whatsappLabel": "WhatsApp Message",
