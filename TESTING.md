@@ -6,57 +6,89 @@
 - **Fast:** You don’t have to play to July 2024 by hand to check the building-deadline fix.
 - **Repeatable:** Every run checks the same thing; safe to re-run after changes.
 
-## E2E tests (Playwright)
+---
 
-E2E tests load `index.html` in a headless browser, set language and game state, and assert on the DOM (e.g. which choices are shown at the building deadline).
+## Testing options (reliable and at scale)
+
+| Approach | Tool | What it does | When to use |
+|----------|------|--------------|-------------|
+| **E2E via test API** | Playwright + `?test=1` | Loads game, starts it, calls `__testPlayUntil(...)` so the game advances itself in-page. No DOM timing or click races. | **Primary:** Reliable, fast, scalable. Run on every change. |
+| **E2E building choices** | Playwright + `__testJumpToBuildingDeadline` | Jumps to building deadline with a given bank, returns choice labels. | Assert correct FR/EN options when you can / can’t afford. |
+| **E2E real clicks** | Playwright | Clicks buttons, waits for modals/polaroids. | Optional; full UI path when you need it (slower, more flaky). |
+| **Node simulation** | `playstyle-balance-test.js`, `balance_test_suite.py` | Runs game logic (balance, finances) without browser. | Balance and design checks; no DOM. |
+| **Manual in browser** | Cursor browser MCP or any browser | You (or an agent) play with `?automation=1` to skip intro. | Exploratory / one-off playthroughs. |
+
+The **test API** (`__testPlayUntil`) is what makes “play like a player” reliable at scale: the game drives itself inside the page, and Playwright only loads the page, starts the game, waits for the first event, then calls one function and asserts on the result.
+
+---
+
+## E2E tests (Playwright)
 
 ### Setup (once)
 
 ```bash
 npm install
-npx playwright install chromium   # install browser for Playwright
+npx playwright install chromium
 ```
 
 ### Run
 
 ```bash
-npm test
+npm test                    # all E2E tests
+npm run test:headed         # same, visible browser
+npm run test:full           # playthrough via test API only (reliable full-game flow)
+npm run test:building       # building-deadline choice assertions only
 ```
 
-Or with a visible browser:
+Port: server and tests use **3333** by default. If you get “Address already in use”:
 
 ```bash
-npm run test:headed
+PLAYWRIGHT_PORT=3940 npm test
 ```
+
+### Test hooks (URL `?test=1`)
+
+Only available when the page is loaded with `?test=1` (not in production).
+
+- **`window.__testJumpToBuildingDeadline(bank [, extended])`**  
+  Sets state to building deadline month, sets `gameState.bank` to `bank`, runs `selectNextEvent()`, and returns the **choice button labels**.  
+  Used to assert correct options (Sign vs extend/let go) in FR/EN.
+
+- **`window.__testPlayUntil(targetEventId, strategy, maxMonths)`**  
+  Plays from the **current** event until:
+  - the event id matches `targetEventId` (or any id in `targetEventId` if it’s an array), or
+  - `gameState.monthsPlayed >= maxMonths`, or
+  - game over.  
+
+  **Strategy:** `'first'` = always first choice, `'random'` = random choice, `'family'` = prefer family-friendly keywords.  
+  Returns `{ reached, eventId, monthsPlayed, state }`.  
+  Call after `startGame()` and once the first event is visible (e.g. after waiting for `currentEvent` in E2E).
+
+Use **`test=1&automation=1`** in E2E when you want to skip intro and start the game programmatically.
 
 ### What is tested
 
-- **Building deadline when you can’t afford (FR):** Bank = 75 000 €, French locale. Asserts that the “Sign – I have €80k” option is **not** shown, and that options like “Demander un mois de plus” / “Laisser filer” **are** shown.
-- **Building deadline when you can afford (FR):** Bank = 82 000 €. Asserts that the Sign option **is** shown.
+- **Building deadline choices (FR):** Via `__testJumpToBuildingDeadline(75000)` / `82000`. Asserts Sign option is hidden when short, shown when enough.
+- **Playthrough to building:** Via `__testPlayUntil(['building_deadline','building_deadline_extended'], 'first', 35)`. Asserts the run reaches the building event in a real browser using real game code.
+- **Discoverer-style run:** Same API with strategy `'family'`; asserts state and months.
 
-### Test hook
-
-When the URL contains `?test=1`, the game exposes:
-
-- `window.__testJumpToBuildingDeadline(bank)`  
-  Sets state to July 2024 (building deadline), sets `gameState.bank` to `bank`, shows the game screen, runs `selectNextEvent()`, and returns the **choice button labels** (as shown in the DOM).  
-  Used by the E2E test to assert correct options. Not available in production (no `?test=1`).
+---
 
 ## Other tests
 
-- **Balance / design:** `tests/balance_test_suite.py` (Python) checks balance assumptions from `BALANCE_REFERENCE.md`; it does **not** run the game’s JavaScript.
+- **Balance / design:** `tests/balance_test_suite.py` checks balance assumptions from `BALANCE_REFERENCE.md`; it does **not** run the game’s JavaScript.
+- **Playstyle simulation:** `tests/playstyle-balance-test.js` simulates Insider / Discoverer / Family-first over 42 months in Node (no browser).
+
+---
 
 ## If you change building-deadline logic or locales
 
-After changing:
-
-- The logic that picks choices when `canAfford` / `!canAfford`, or  
-- The French (or English) strings for building_deadline,
-
-run:
+After changing the logic that picks choices when `canAfford` / `!canAfford`, or the French (or English) strings for building_deadline:
 
 ```bash
 npm test
+# or
+npm run test:building
 ```
 
-If the E2E test passes, the building-deadline behavior in the browser matches what the test expects (no “Sign” when short, Sign when you have enough).
+If the E2E tests pass, the building-deadline behavior in the browser matches what the tests expect.
