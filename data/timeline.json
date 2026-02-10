@@ -40,5 +40,6 @@
   "39": { "event": "back_to_school" },
   "40": { "event": "raclette_kingdom" },
   "41": { "event": "lucas_brings_henry" },
-  "42": { "event": "christmas_day" }
+  "42": { "event": "christmas_day" },
+  "43": { "event": "birthday_party" }
 }
