@@ -106,14 +106,7 @@ So: get 16 of the 18 persistent trophies across any number of runs → next time
 
 ## 6. Album entries without a proper photo (icon only)
 
-These **4** album entries currently have **no photo asset** (they show the icon only). Add an `image` key and a corresponding entry in `photoImages` when you have pictures:
-
-| Photo id | Title (EN) | Note |
-|----------|------------|------|
-| `second_shop` | Second Shop | Empire Builder achievement |
-| `sunday_rest` | Sunday Rest | Sunday Protector achievement |
-| `raclette_kingdom` | Raclette Kingdom | Raclette Master achievement |
-| `burnout_recovery` | The Recovery / La remontée | Comeback after a burnout (you crashed, you came back stronger) |
+All album entries that are linked to achievements now have real photos in `extracted_photos/`: `second_shop`, `sunday_rest`, `raclette_kingdom`, and `burnout_recovery` (La remontée).
 
 **“La remontée”** = the burnout recovery moment: after you had a burnout, you came back. Different, but stronger. The FR/EN descriptions now spell this out (“Après un burnout : …” / “After a burnout: …”).
 
@@ -123,5 +116,5 @@ These **4** album entries currently have **no photo asset** (they show the icon 
 
 - **20** achievements on end screen; **19** persistent trophies (Family First not saved).
 - **Platinum** = 17/19 persistent trophies (OBTAINABLE_TROPHY_COUNT); no special event, just title-screen display.
-- **Album** = 27 photos; every achievement unlocks one photo; 4 entries still use icon only (see §6).
+- **Album** = 27 photos; every achievement unlocks one photo; all achievement-linked entries have real photos (see §6).
 - **All achievements are achievable** in the current version; Empire and Enough are set by existing events.
