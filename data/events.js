@@ -114,26 +114,25 @@ flags: { insuranceDecisionMade: true, hasComprehensiveInsurance: false }
                 ]
             },
 
-            // === FLOOD EVENT (50% chance in summer if insurance decision was made) ===
+            // === FLOOD EVENT (triggers a few months after Lucas is hired; replaces "calm before... nothing" filler) ===
             {
                 id: 'summer_flood',
 
                 description: () => {
                     gameState.floodActive = true; // Show rain/flood in pixel art
                     const insured = gameState.hasComprehensiveInsurance;
-                    return `August. Freak summer storm. You arrive at the shop to find water pouring in through the basement. The cheese fridge is fine—it's elevated—but the basement storage is devastated. Boxes of slow-moving bulk products, seasonal decorations, old equipment. All ruined.\n\n${insured ? 'You immediately call your insurance company.' : 'You stare at the damage. No flood insurance.'}`;
+                    return `A freak storm. You arrive at the shop to find water pouring in through the basement. The cheese fridge is fine—it's elevated—but the basement storage is devastated. Boxes of slow-moving bulk products, seasonal decorations, old equipment. All ruined.\n\n${insured ? 'You immediately call your insurance company.' : 'You stare at the damage. No flood insurance.'}`;
                 },
                 type: 'crisis',
-                monthRange: [13, 37], // Can happen in any summer after first year
+                monthRange: [28, 33], // A few months after Lucas (hired around month 26–28)
                 condition: () => {
-                    // Only trigger in summer months (June-August: months 12, 13, 24, 25, 36, 37 relative to July start)
-                    const monthOfYear = gameState.month; // 1-12
-                    const isSummer = monthOfYear >= 6 && monthOfYear <= 8;
-                    // 50% chance, only once, only if insurance decision was made
-                    return isSummer &&
+                    // Trigger once, 2–5 months after Lucas was hired; insurance decision must have been made
+                    const lucasMonths = gameState.lucasMonthsWorked || 0;
+                    return gameState.hasLucas &&
+                           lucasMonths >= 2 &&
+                           lucasMonths <= 5 &&
                            gameState.insuranceDecisionMade &&
-                           !gameState.floodHappened &&
-                           Math.random() < 0.5;
+                           !gameState.floodHappened;
                 },
                 unique: true,
                 priority: 95,
