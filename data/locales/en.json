@@ -4,7 +4,7 @@
     "title": "🧀 Shop Simulator V1.0",
     "subtitle": "A family business story.",
     "trophyCollection": "🏆 Trophy Collection",
-    "achievementCount": "/17",
+    "achievementCount": "/18",
     "tabPlay": "🎮 Play",
     "tabStory": "📖 Who is Julien?",
     "tabGlossary": "🧀 Cheese Glossary",
@@ -199,7 +199,10 @@
     "bankLoanPayment": "Loan Payment",
     "bankInsurance": "Insurance",
     "bankInsuranceComprehensive": "€150 (Comprehensive)",
-    "bankNetProfit": "Net Profit"
+    "bankNetProfit": "Net Profit",
+    "policyLiving": "Living",
+    "policyLivingParents": "With parents",
+    "policyLivingChezSoi": "On your own (chez soi)"
   },
   "story": {
     "title": "📖 The Real Story Behind the Game",
@@ -396,6 +399,7 @@
     "ach_dog": "Dog Parent",
     "ach_team": "Team Builder",
     "ach_balance": "Work-Life Balance",
+    "ach_generous": "Maximum Effort",
     "ach_delegation": "Delegation Master",
     "ach_sunday": "Sunday Protector",
     "ach_producer": "Producer Friend",

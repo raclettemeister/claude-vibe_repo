@@ -4,7 +4,7 @@
     "title": "🧀 Shop Simulator V1.0",
     "subtitle": "L'aventure d'une épicerie familiale.",
     "trophyCollection": "🏆 Trophées",
-    "achievementCount": "/17",
+    "achievementCount": "/18",
     "tabPlay": "🎮 Jouer",
     "tabStory": "📖 Qui est Julien ?",
     "tabGlossary": "🧀 Lexique des fromages",
@@ -199,7 +199,10 @@
     "bankLoanPayment": "Remboursement prêt",
     "bankInsurance": "Assurance",
     "bankInsuranceComprehensive": "150 € (tous risques)",
-    "bankNetProfit": "Bénéfice net"
+    "bankNetProfit": "Bénéfice net",
+    "policyLiving": "Logement",
+    "policyLivingParents": "Chez les parents",
+    "policyLivingChezSoi": "Chez soi (ton propre logement)"
   },
   "story": {
     "title": "📖 La vraie histoire derrière le jeu",
@@ -396,6 +399,7 @@
     "ach_dog": "Parent de chien",
     "ach_team": "Équipe",
     "ach_balance": "Équilibre vie pro / perso",
+    "ach_generous": "Maximum Effort",
     "ach_delegation": "Maître de la délégation",
     "ach_sunday": "Protecteur du dimanche",
     "ach_producer": "Ami des producteurs",

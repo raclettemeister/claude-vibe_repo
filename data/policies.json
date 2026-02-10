@@ -7,10 +7,46 @@
       "descKey": "policies.salary_level_desc",
       "default": "reinvest",
       "options": [
-        { "id": "reinvest", "nameKey": "policies.salary_reinvest", "effects": { "bank": 0, "stress": 2, "energy": -1, "family": 0 } },
-        { "id": "low", "nameKey": "policies.salary_low", "effects": { "bank": -1200, "stress": -2, "energy": 2, "family": 2 } },
-        { "id": "medium", "nameKey": "policies.salary_medium", "effects": { "bank": -2800, "stress": -4, "energy": 3, "family": 4 } },
-        { "id": "high", "nameKey": "policies.salary_high", "effects": { "bank": -3800, "stress": -6, "energy": 4, "family": 6 } }
+        {
+          "id": "reinvest",
+          "nameKey": "policies.salary_reinvest",
+          "effects": {
+            "bank": 0,
+            "stress": 2,
+            "energy": -1,
+            "family": 0
+          }
+        },
+        {
+          "id": "low",
+          "nameKey": "policies.salary_low",
+          "effects": {
+            "bank": -1200,
+            "stress": -2,
+            "energy": 2,
+            "family": 2
+          }
+        },
+        {
+          "id": "medium",
+          "nameKey": "policies.salary_medium",
+          "effects": {
+            "bank": -2800,
+            "stress": -4,
+            "energy": 3,
+            "family": 4
+          }
+        },
+        {
+          "id": "high",
+          "nameKey": "policies.salary_high",
+          "effects": {
+            "bank": -3800,
+            "stress": -6,
+            "energy": 4,
+            "family": 6
+          }
+        }
       ],
       "note": "Only applies after buying the building (salaryStarted). Before that, 'reinvest' is forced."
     },
@@ -20,8 +56,26 @@
       "descKey": "policies.work_hours_desc",
       "default": "standard",
       "options": [
-        { "id": "standard", "nameKey": "policies.hours_standard", "effects": { "bank": 0, "stress": 0, "energy": 0, "family": 0 } },
-        { "id": "extended", "nameKey": "policies.hours_extended", "effects": { "bank": 800, "stress": 5, "energy": -4, "family": -3 } }
+        {
+          "id": "standard",
+          "nameKey": "policies.hours_standard",
+          "effects": {
+            "bank": 0,
+            "stress": 0,
+            "energy": 0,
+            "family": 0
+          }
+        },
+        {
+          "id": "extended",
+          "nameKey": "policies.hours_extended",
+          "effects": {
+            "bank": 800,
+            "stress": 5,
+            "energy": -4,
+            "family": -3
+          }
+        }
       ]
     },
     {
@@ -30,10 +84,71 @@
       "descKey": "policies.quality_focus_desc",
       "default": "balanced",
       "options": [
-        { "id": "budget", "nameKey": "policies.quality_budget", "effects": { "marginPercent": 2, "reputation": -2 }, "effectsMeters": { "stress": 1, "energy": 0, "family": 0 } },
-        { "id": "balanced", "nameKey": "policies.quality_balanced", "effects": { "marginPercent": 0, "reputation": 0 }, "effectsMeters": { "stress": 0, "energy": 0, "family": 0 } },
-        { "id": "premium", "nameKey": "policies.quality_premium", "effects": { "marginPercent": -1, "reputation": 3 }, "effectsMeters": { "stress": -2, "energy": 1, "family": 2 } }
+        {
+          "id": "budget",
+          "nameKey": "policies.quality_budget",
+          "effects": {
+            "marginPercent": 2,
+            "reputation": -2
+          },
+          "effectsMeters": {
+            "stress": 1,
+            "energy": 0,
+            "family": 0
+          }
+        },
+        {
+          "id": "balanced",
+          "nameKey": "policies.quality_balanced",
+          "effects": {
+            "marginPercent": 0,
+            "reputation": 0
+          },
+          "effectsMeters": {
+            "stress": 0,
+            "energy": 0,
+            "family": 0
+          }
+        },
+        {
+          "id": "premium",
+          "nameKey": "policies.quality_premium",
+          "effects": {
+            "marginPercent": -1,
+            "reputation": 3
+          },
+          "effectsMeters": {
+            "stress": -2,
+            "energy": 1,
+            "family": 2
+          }
+        }
       ]
+    },
+    {
+      "id": "living_situation",
+      "nameKey": "policies.living_situation",
+      "descKey": "policies.living_situation_desc",
+      "default": "parents",
+      "options": [
+        {
+          "id": "parents",
+          "nameKey": "policies.living_parents",
+          "effects": {
+            "bank": 0,
+            "family": -1
+          }
+        },
+        {
+          "id": "chez_soi",
+          "nameKey": "policies.living_chez_soi",
+          "effects": {
+            "bank": -1400,
+            "family": 3
+          }
+        }
+      ],
+      "note": "Only after building. Chez soi = your own place; needed for Work-Life Balance."
     }
   ]
 }

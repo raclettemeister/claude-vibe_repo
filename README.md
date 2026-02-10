@@ -9,7 +9,7 @@ A narrative business simulation game based on the true story of a cheese shop in
 
 You are Julien. It's July 2022. You've just taken over a small bulk grocery store in Uccle, Brussels. The previous owner left you with modest savings, loyal customers, and a decision to make: stay the course, or pivot to something new?
 
-This game covers 42 months of running a small business—the real decisions, the burnouts, the relationships, and the dream of owning your own building.
+This game covers 43 months of running a small business—the real decisions, the burnouts, the relationships, and the dream of owning your own building.
 
 ## Features
 
@@ -44,6 +44,7 @@ See [TESTING.md](TESTING.md) for why and what is tested.
 
 ## Version History
 
+- **v4** — **Maximum Effort** — 43 months (party month in Jan 2026). Policy: Living (chez soi vs parents); Work-Life Balance requires "chez soi" for (months after building − 1). New achievement: Maximum Effort (complete with High Salary). Salary and living costs from policies; extra end-game expenses. Version badge and README updated.
 - **v4.3** — **Copy & i18n** — Intro title "Il était une fois" / "Once upon a time". Cutscene: "rôle principal" / "Julien Thibaut", "Es-tu prêt à relever le défi ?" (FR/EN). Menu subtitle: "A family business story" (EN) / "L'aventure d'une épicerie familiale" (FR). Shakespeare attribution in EN. Version badge and README updated.
 - **v4.1** — **Bug Crush** — Fixed all reported bugs: mobile charts rendering, tooltip clipping on mobile/desktop, pixel art scene clipping and repositioning, Henry hire timing, cutscene French translation (WhatsApp message + all scenes), phone UI sizing on mobile, polaroid photo popup layout, and full browser/mobile testing pass.
 - **v4.0** — **Cinematic Edition** — Complete intro cutscene rework (Stardew Valley-style pixel art scenes: tropical island, Brussels cityscape, shop meeting with Geneviève). Click-to-advance beat system. Multiple Julien sprites (Hawaiian shirt for island, T-shirt + backpack for Brussels, T-shirt for shop). Real audio files for all scenes (ocean waves, city ambiance, phone ring, shop music, epic ending). File-based game music system with 4 tracks (start, countdown to shop, after buying, happy). iPhone WhatsApp UI for phone message scene. "Click to begin" overlay for audio unlock.
