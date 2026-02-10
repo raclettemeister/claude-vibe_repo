@@ -554,7 +554,7 @@ effects: { stress: 10 },
                 id: 'birthday_party',
 
                 type: 'personal',
-                monthRange: [28, 42],
+                monthRange: [28, 43],
                 condition: () => gameState.monthsPlayed >= 28,
                 unique: true,
                 priority: 70,
