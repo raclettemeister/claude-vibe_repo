@@ -46,7 +46,12 @@
     "checkYourAlbum": "Check your album",
     "platinumTrophy": "Platinum Trophy",
     "platinumTrophyUnlocked": "PLATINUM TROPHY",
-    "platinumTrophyDesc": "True Fromager - 100% Complete!"
+    "platinumTrophyDesc": "True Cheese Master - 100% Complete!",
+    "easterEggTitle": "You found the secret egg!",
+    "easterEggMessage": "Thank you for playing my game. It's been a childhood dream of mine to make my own video game, and you being here means the world to me.",
+    "easterEggSignature": "- Julien",
+    "easterEggClose": "❤ Thank you!",
+    "musicPlayPause": "Play/Pause Music"
   },
   "cutscene": {
     "openingTitle": "Once upon a time",
@@ -172,7 +177,7 @@
     "trackHorizons": "New Horizons",
     "trackDifficult": "Difficult Choices",
     "trackSuccess": "Success!",
-    "trackNoel": "Noël à Bruxelles",
+    "trackNoel": "Christmas in Brussels",
     "effectBank": "💰 Bank",
     "effectSales": "💰 Sales",
     "effectSavings": "💰 Savings",
@@ -2464,7 +2469,7 @@
     },
     "anniversary": {
       "title": "One Year!",
-      "description": "Chez Julien a 1 an! Promotions et dégustations!",
+      "description": "Chez Julien is one! Promotions and tastings!",
       "date": "July 2023"
     },
     "wine_evening": {
@@ -2528,7 +2533,7 @@
       "date": "December 2022"
     },
     "shop_party": {
-      "title": "La Fête!",
+      "title": "The Party!",
       "description": "When the shop becomes a party. Good vibes only.",
       "date": ""
     },

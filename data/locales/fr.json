@@ -46,7 +46,12 @@
     "checkYourAlbum": "Voir votre album",
     "platinumTrophy": "Trophée platine",
     "platinumTrophyUnlocked": "TROPHÉE PLATINE",
-    "platinumTrophyDesc": "Vrai fromager — 100 % accompli !"
+    "platinumTrophyDesc": "Vrai fromager — 100 % accompli !",
+    "easterEggTitle": "Tu as trouvé l'œuf secret !",
+    "easterEggMessage": "Merci d'avoir joué à mon jeu. Faire mon propre jeu vidéo était un rêve d'enfance, et que tu sois là compte énormément pour moi.",
+    "easterEggSignature": "- Julien",
+    "easterEggClose": "❤ Merci !",
+    "musicPlayPause": "Lecture / Pause"
   },
   "cutscene": {
     "openingTitle": "Il était une fois",
