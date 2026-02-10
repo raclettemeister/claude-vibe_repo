@@ -4,7 +4,7 @@
     "title": "🧀 Shop Simulator V2.0",
     "subtitle": "A family business story.",
     "trophyCollection": "🏆 Trophy Collection",
-    "achievementCount": "/18",
+    "achievementCount": "/19",
     "tabPlay": "🎮 Play",
     "tabStory": "📖 Who is Julien?",
     "tabGlossary": "🧀 Cheese Glossary",
@@ -2510,9 +2510,19 @@
       "description": "You own the building. No more rent.",
       "date": "July 2024"
     },
+    "second_shop": {
+      "title": "Second Shop",
+      "description": "Two shops, one vision. You built an empire.",
+      "date": ""
+    },
+    "sunday_rest": {
+      "title": "Sunday Rest",
+      "description": "You never opened on Sundays. Your energy and family thanked you.",
+      "date": ""
+    },
     "burnout_recovery": {
       "title": "The Recovery",
-      "description": "You crashed. You came back. Stronger.",
+      "description": "After a burnout: you crashed, you came back. Different, but stronger.",
       "date": ""
     },
     "lucas_joins": {

@@ -4,7 +4,7 @@
     "title": "🧀 Shop Simulator V2.0",
     "subtitle": "L'aventure d'une épicerie familiale.",
     "trophyCollection": "🏆 Trophées",
-    "achievementCount": "/18",
+    "achievementCount": "/19",
     "tabPlay": "🎮 Jouer",
     "tabStory": "📖 Qui est Julien ?",
     "tabGlossary": "🧀 Lexique des fromages",
@@ -2539,9 +2539,19 @@
       "description": "Propriétaire. Les murs sont à moi. Plus jamais vulnérable.",
       "date": "Juillet 2024"
     },
+    "second_shop": {
+      "title": "Deuxième boutique",
+      "description": "Deux adresses, une vision. Tu as bâti un petit empire.",
+      "date": ""
+    },
+    "sunday_rest": {
+      "title": "Dimanche sacré",
+      "description": "Tu n'as jamais ouvert le dimanche. Ton énergie et ta famille t'ont remercié.",
+      "date": ""
+    },
     "burnout_recovery": {
       "title": "La remontée",
-      "description": "On a craqué. On est revenu. Différent, mais plus fort.",
+      "description": "Après un burnout : on a craqué, on est revenu. Différent, mais plus fort.",
       "date": ""
     },
     "lucas_joins": {
