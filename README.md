@@ -44,6 +44,7 @@ See [TESTING.md](TESTING.md) for why and what is tested.
 
 ## Version History
 
+- **cheat code** — **Cheat codes** — Small “cheat codes” link (top-left on title and in-game). Enter a code when prompted; no hints. Codes: **unlock all** (all album photos + trophies), **god mode** (invincible: no burnout/health game over), **bazooka** (Rambo bandana + RPG in both hands in pixel art). Platinum trophy requires 20/20 pictures.
 - **v4.1** — **FR/EN fixes** — Translation pass (credits, achievements, wrong-language strings). Main menu title: Shop Simulator V2.0. Version badge and README updated.
 - **v4** — **Maximum Effort** — 43 months (party month in Jan 2026). Policy: Living (chez soi vs parents); Work-Life Balance requires "chez soi" for (months after building − 1). New achievement: Maximum Effort (complete with High Salary). Salary and living costs from policies; extra end-game expenses. Version badge and README updated.
 - **v4.3** — **Copy & i18n** — Intro title "Il était une fois" / "Once upon a time". Cutscene: "rôle principal" / "Julien Thibaut", "Es-tu prêt à relever le défi ?" (FR/EN). Menu subtitle: "A family business story" (EN) / "L'aventure d'une épicerie familiale" (FR). Shakespeare attribution in EN. Version badge and README updated.

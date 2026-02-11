@@ -4,7 +4,7 @@
     "title": "🧀 Shop Simulator V2.0",
     "subtitle": "L'aventure d'une épicerie familiale.",
     "trophyCollection": "🏆 Trophées",
-    "achievementCount": "/19",
+    "achievementCount": "/20",
     "tabPlay": "🎮 Jouer",
     "tabStory": "📖 Qui est Julien ?",
     "tabGlossary": "🧀 Lexique des fromages",
@@ -51,7 +51,9 @@
     "easterEggMessage": "Merci d'avoir joué à mon jeu. Faire mon propre jeu vidéo était un rêve d'enfance, et que tu sois là compte énormément pour moi.",
     "easterEggSignature": "- Julien",
     "easterEggClose": "❤ Merci !",
-    "musicPlayPause": "Lecture / Pause"
+    "musicPlayPause": "Lecture / Pause",
+    "blogButtonTitleScreen": "Moi aussi j'ai été bloqué",
+    "reportBug": "Signaler un bug"
   },
   "cutscene": {
     "openingTitle": "Il était une fois",
@@ -80,6 +82,7 @@
     "phase_growing": "📈 En croissance",
     "phase_established": "🏆 Installé",
     "pill_openSundays": "📅 Ouvert le dimanche",
+    "pill_openSundays_tooltip": "Ouvert le dimanche : +stress chaque mois (pas de jour de repos)",
     "pill_employee": "👥 {{count}} employé",
     "pill_employees": "👥 {{count}} employés",
     "pill_buildingOwner": "🏠 Propriétaire du local",
@@ -158,6 +161,7 @@
     "burnoutTitle": "BURNOUT",
     "burnoutTitleNum": "BURNOUT n°{{num}}",
     "burnoutDesc1": "Votre corps a lâché. Vous ne pouvez pas vous lever. Physiquement. Le stress vous a rattrapé.\n\nUne semaine fermée. {{salesLost}} perdus. Votre énergie max est plafonnée à {{cap}} %. C'est le prix.",
+    "burnoutDesc1Sunday": "Votre corps a dit stop. Vous ne pouvez plus vous lever. Physiquement.\n\nMarcher six jours par semaine, c'était trop. Vous en payez le prix. Pas de jour de repos, mois après mois — le stress s'est accumulé jusqu'à ce que votre corps lâche. Une semaine fermée. {{salesLost}} perdus. Le dimanche est fermé maintenant ; votre corps ne vous laissera plus travailler comme ça.\n\nVotre énergie max est plafonnée à {{cap}} %. C'est le tribut.",
     "burnoutDesc2": "Rebelote. Le deuxième crash fait encore plus mal. Votre corps se souvient du premier, et il est furieux.\n\nEncore une semaine fermée. {{salesLost}} perdus. L'énergie max descend à {{cap}} %.\n\nLe médecin vous fixe : « Julien, vous ne pouvez pas continuer comme ça. »",
     "burnoutDesc3": "Burnout n°{{num}}. À ce stade, votre corps ne tourne plus. {{salesLost}} perdus cette fois.\n\nÉnergie max : {{cap}} %.\n\n{{question}}",
     "burnoutQuestionLow": "Vous tenez sur les nerfs. Est-ce que cette boutique vaut votre santé ?",
@@ -191,6 +195,8 @@
     "effectReputation": "⭐ Réputation",
     "effectLoanTaken": "🏦 Prêt contracté",
     "effectBankNow": "💰 Solde actuel",
+    "effectSundayStress": "📅 Ouvert le dimanche",
+    "effectSundayStressLine": "+{{amount}} stress ce mois-ci",
     "bankMonthlyStatement": "💰 Relevé mensuel",
     "bankRevenue": "Chiffre d'affaires",
     "bankCheeseSales": "Ventes fromage",
@@ -356,6 +362,9 @@
     "playAgain": "Rejouer",
     "creditsTitle": "Crédits",
     "creditsThanksMom": "❤️ Un grand merci à maman — pour tout.",
+    "blogPopupMessage": "Le jeu t'a plu ? J'ai un blog aussi, viens voir.",
+    "blogPopupCta": "Voir le blog",
+    "blogPopupDismiss": "Plus tard",
     "title_completed_success": "Le rêve, en vrai",
     "title_completed_survival": "Toujours debout",
     "subtitle_completed_success": "{{shopName}} a tenu. Et bien plus que ça.",
@@ -375,6 +384,7 @@
     "story_completed_success_4_henry": "Henry et Lucas tiennent la boutique pendant que vous n'êtes pas là. Vous avez enfin réussi à lâcher prise. C'est peut-être la plus belle victoire.",
     "story_completed_success_5_cheese": "Le virage fromage, ce n'était pas qu'un choix business — c'était écouter Madame Dubois, le quartier, votre instinct. Et vous aviez raison.",
     "story_completed_success_5_niche": "Vous avez trouvé votre place. Woluwe a trouvé sa boutique.",
+    "story_completed_comfort": "Tu t'es payé correctement et tu as eu ton propre chez-toi. Ça a coûté en banque, mais tu as bien vécu.",
     "story_completed_survival_1": "La boutique survit. C'est pas le conte de fées, mais la porte est ouverte et le fromage est bon. C'est quelque chose.",
     "story_completed_survival_2_lowFamily": "Le prix a été élevé. Certaines relations n'ont pas survécu au voyage. Ça fait mal.",
     "story_completed_survival_2_okFamily": "Vous avez réussi à garder vos proches. C'est pas rien.",
@@ -413,6 +423,7 @@
     "lesson_birthday": "Cette fête... tout le monde était là. Clients, fournisseurs, famille. Chaque galère en valait la peine.",
     "lesson_reputation": "Le bouche-à-oreille. L'arme la plus puissante d'un petit commerce. Et gratuite.",
     "lesson_full_menu": "Fromage, charcuterie, vin, épicerie fine — diversifier a créé plusieurs filets de sécurité.",
+    "lesson_comfort": "Tu as investi dans ton bien-être — un vrai salaire et un appart à toi. La banque était plus basse, mais tu as eu une vie.",
     "achievementsTitle": "🏆 Récompenses",
     "ach_homeowner": "Propriétaire",
     "ach_empire": "Bâtisseur d'empire",
@@ -424,6 +435,7 @@
     "ach_team": "Équipe",
     "ach_balance": "Équilibre vie pro / perso",
     "ach_generous": "Maximum Effort",
+    "ach_comfort": "Bien vivre",
     "ach_delegation": "Maître de la délégation",
     "ach_sunday": "Protecteur du dimanche",
     "ach_producer": "Ami des producteurs",
@@ -521,7 +533,7 @@
         {
           "text": "Ouvrir le dimanche — on dort quand on est mort",
           "hint": "Jusqu'à 20 % de CA en plus",
-          "outcome": "Premier dimanche : 8 clients avant 10 h. Des familles, des brunchs du quartier. Vous avez fait plus que le mercredi. Vous êtes crevé le lundi, mais vous avez le sourire. Six jours par semaine. Plus de grasse matinée. C'est parti."
+          "outcome": "Premier dimanche : 8 clients avant 10 h. Des familles, des brunchs du quartier. Vous avez fait plus que le mercredi. Vous êtes crevé le lundi, mais vous avez le sourire. Six jours par semaine. Plus de grasse matinée. Attention : sans jour de repos, votre stress montera chaque mois — la facture s'accumule."
         },
         {
           "text": "Fermé le dimanche — faut garder un jour pour vivre",
@@ -2613,6 +2625,11 @@
     "parmigiano_dream": {
       "title": "Le rêve italien",
       "description": "Émilie-Romagne. Les meules de Parmigiano dans les caves. Le paradis du fromage existe, et il est là.",
+      "date": ""
+    },
+    "living_well": {
+      "title": "Bien vivre",
+      "description": "Tu t'es payé correctement et tu as eu ton appart. Ça a coûté en banque, mais tu as vécu.",
       "date": ""
     }
   }

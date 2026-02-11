@@ -2686,15 +2686,28 @@
         // === ARMS (depends on gesture state) ===
         const isWaving = isHappy && gestureFrame === 1;
         const isPanicGesture = isPanicking && gestureFrame < 2;
+        const hasBazooka = gameState.cheatBazooka;
         
-        // Left arm (holds umbrella when raining)
+        // Left arm (holds umbrella when raining, or RPG with right hand when bazooka)
         const isRaining = gameState.month === 9 || gameState.month === 2;
-        if (isRaining) {
+        if (hasBazooka) {
+            // Both arms holding RPG: left hand forward on tube, right hand at shoulder
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(x + 2 + ox, y + 2, 4, 6);
+            ctx.fillRect(x + 4 + ox, y + 6, 5, 4);
+            ctx.fillStyle = skin;
+            ctx.fillRect(x + 6 + ox, y + 8, 4, 5);
+            // Right arm - back toward shoulder
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(x + 14 + ox, y + 2, 4, 8);
+            ctx.fillRect(x + 16 + ox, y + 8, 4, 4);
+            ctx.fillStyle = skin;
+            ctx.fillRect(x + 16 + ox, y + 10, 4, 5);
+        } else if (isRaining) {
             // Arm raised up holding umbrella handle
             ctx.fillStyle = '#FFFFFF';
             ctx.fillRect(x + ox, y + 2, 4, 3);
             ctx.fillRect(x + 1 + ox, y - 4, 3, 7);
-            // Hand gripping handle
             ctx.fillStyle = skin;
             ctx.fillRect(x + ox, y - 8, 4, 5);
         } else {
@@ -2704,7 +2717,6 @@
             ctx.fillRect(x + ox, y + 6, 1, 3);
             ctx.fillStyle = skin;
             if (isPanicGesture) {
-                // Hand on head
                 ctx.fillRect(x + 2 + ox, y - 10, 3, 3);
             } else if (isBurnout) {
                 ctx.fillRect(x - 1 + ox, y + 12, 4, 5);
@@ -2713,35 +2725,59 @@
             }
         }
         
-        // Right arm (changes when waving)
-        if (isWaving) {
-            // Waving arm - raised position
-            ctx.fillStyle = '#FFFFFF';
-            ctx.fillRect(x + 16 + ox, y + 2, 4, 4);
-            ctx.fillRect(x + 18 + ox, y - 2, 3, 5);
-            ctx.fillStyle = skin;
-            ctx.fillRect(x + 18 + ox, y - 6, 4, 5);
-        } else {
-            // Normal right arm
-            ctx.fillStyle = '#FFFFFF';
-            ctx.fillRect(x + 16 + ox, y + 2, 4, 7);
-            ctx.fillStyle = '#E8E8E8';
-            ctx.fillRect(x + 19 + ox, y + 6, 1, 3);
-            ctx.fillStyle = skin;
-            if (isPanicGesture) {
-                ctx.fillRect(x + 15 + ox, y - 10, 3, 3);
-            } else if (isBurnout) {
-                ctx.fillRect(x + 17 + ox, y + 12, 4, 5);
+        // Right arm (or already drawn when hasBazooka)
+        if (!hasBazooka) {
+            if (isWaving) {
+                ctx.fillStyle = '#FFFFFF';
+                ctx.fillRect(x + 16 + ox, y + 2, 4, 4);
+                ctx.fillRect(x + 18 + ox, y - 2, 3, 5);
+                ctx.fillStyle = skin;
+                ctx.fillRect(x + 18 + ox, y - 6, 4, 5);
             } else {
-                ctx.fillRect(x + 16 + ox, y + 9, 4, 5);
+                ctx.fillStyle = '#FFFFFF';
+                ctx.fillRect(x + 16 + ox, y + 2, 4, 7);
+                ctx.fillStyle = '#E8E8E8';
+                ctx.fillRect(x + 19 + ox, y + 6, 1, 3);
+                ctx.fillStyle = skin;
+                if (isPanicGesture) {
+                    ctx.fillRect(x + 15 + ox, y - 10, 3, 3);
+                } else if (isBurnout) {
+                    ctx.fillRect(x + 17 + ox, y + 12, 4, 5);
+                } else {
+                    ctx.fillRect(x + 16 + ox, y + 9, 4, 5);
+                }
             }
+        }
+        
+        // === RPG / BAZOOKA (cheat) - classic war game style, held in both hands ===
+        if (hasBazooka) {
+            // Tube (olive drab) - runs from left hand to right shoulder, angled slightly down-right
+            ctx.fillStyle = '#4A5D34';
+            ctx.fillRect(x + 8 + ox, y + 10, 28, 4);
+            ctx.fillStyle = '#5A6D44';
+            ctx.fillRect(x + 8 + ox, y + 11, 28, 2);
+            // Conical warhead (nose cone) - front left
+            ctx.fillStyle = '#3D4A2E';
+            ctx.fillRect(x + 4 + ox, y + 10, 5, 4);
+            ctx.fillRect(x + 2 + ox, y + 11, 2, 2);
+            // Rear: shoulder rest / back blast shield (wider)
+            ctx.fillStyle = '#3A4530';
+            ctx.fillRect(x + 34 + ox, y + 9, 6, 6);
+            ctx.fillStyle = '#2A3525';
+            ctx.fillRect(x + 36 + ox, y + 10, 4, 4);
+            // Fins (classic RPG style) - small at rear
+            ctx.fillStyle = '#3D4A2E';
+            ctx.fillRect(x + 34 + ox, y + 8, 2, 2);
+            ctx.fillRect(x + 38 + ox, y + 8, 2, 2);
+            ctx.fillRect(x + 34 + ox, y + 14, 2, 2);
+            ctx.fillRect(x + 38 + ox, y + 14, 2, 2);
         }
         
         // === HEAD (slightly shorter) ===
         ctx.fillStyle = skin;
         ctx.fillRect(x + 6 + ox, y - 10, 8, 9);
         
-        // === CURLY DARK BROWN HAIR ===
+        // === CURLY DARK BROWN HAIR (or under bandana when bazooka) ===
         ctx.fillStyle = '#3A2A1A';
         // Top hair - curly volume
         ctx.fillRect(x + 6 + ox, y - 12, 8, 3);
@@ -2753,9 +2789,20 @@
         ctx.fillRect(x + 8 + ox, y - 11, 2, 1);
         ctx.fillRect(x + 10 + ox, y - 10, 2, 1);
         
-        // === CHRISTMAS HAT (December only) ===
+        // === RAMBO BANDANA (cheat) ===
+        if (hasBazooka) {
+            ctx.fillStyle = '#B22222';
+            ctx.fillRect(x + 4 + ox, y - 12, 12, 3);
+            ctx.fillStyle = '#CC3333';
+            ctx.fillRect(x + 5 + ox, y - 11, 10, 2);
+            // Knot/tail at back (one side)
+            ctx.fillStyle = '#8B0000';
+            ctx.fillRect(x + 13 + ox, y - 11, 2, 3);
+        }
+        
+        // === CHRISTMAS HAT (December only, not when bandana) ===
         const month = gameState.month || 1;
-        if (month === 12) {
+        if (month === 12 && !hasBazooka) {
             // Red hat
             ctx.fillStyle = '#DC143C';
             ctx.fillRect(x + 5 + ox, y - 14, 10, 4);

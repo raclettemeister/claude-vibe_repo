@@ -4,7 +4,7 @@
     "title": "🧀 Shop Simulator V2.0",
     "subtitle": "A family business story.",
     "trophyCollection": "🏆 Trophy Collection",
-    "achievementCount": "/19",
+    "achievementCount": "/20",
     "tabPlay": "🎮 Play",
     "tabStory": "📖 Who is Julien?",
     "tabGlossary": "🧀 Cheese Glossary",
@@ -51,7 +51,9 @@
     "easterEggMessage": "Thank you for playing my game. It's been a childhood dream of mine to make my own video game, and you being here means the world to me.",
     "easterEggSignature": "- Julien",
     "easterEggClose": "❤ Thank you!",
-    "musicPlayPause": "Play/Pause Music"
+    "musicPlayPause": "Play/Pause Music",
+    "blogButtonTitleScreen": "I got blocked too",
+    "reportBug": "Report a bug"
   },
   "cutscene": {
     "openingTitle": "Once upon a time",
@@ -80,6 +82,7 @@
     "phase_growing": "📈 Growing",
     "phase_established": "🏆 Established",
     "pill_openSundays": "📅 Open Sundays",
+    "pill_openSundays_tooltip": "Open Sundays: +stress every month (no rest day)",
     "pill_employee": "👥 {{count}} Employee",
     "pill_employees": "👥 {{count}} Employees",
     "pill_buildingOwner": "🏠 Building Owner",
@@ -158,6 +161,7 @@
     "burnoutTitle": "BURNOUT",
     "burnoutTitleNum": "BURNOUT #{{num}}",
     "burnoutDesc1": "Your body has finally said \"enough.\" You wake up and literally cannot get out of bed. Not metaphorically. Physically cannot. The stress has caught up with you.\n\nYou're forced to close the shop for a week. {{salesLost}} in lost sales. Sunday is now closed - your body won't let you work 7 days anymore.\n\nYour maximum energy is now permanently capped at {{cap}}%. This is the toll.",
+    "burnoutDesc1Sunday": "Your body has finally said \"enough.\" You wake up and literally cannot get out of bed. Not metaphorically. Physically cannot.\n\nWalking six days a week was too much. You paid the price. No rest day, month after month — the stress piled up until your body said stop. You're forced to close the shop for a week. {{salesLost}} in lost sales. Sunday is now closed; your body won't let you work like that anymore.\n\nYour maximum energy is now permanently capped at {{cap}}%. This is the toll.",
     "burnoutDesc2": "It happened again. The second crash hits harder. Your body remembers the first time, and it's angrier now.\n\nAnother week closed. {{salesLost}} gone. Your energy capacity drops further - max {{cap}}% now.\n\nYour doctor looks at you with concern. \"You can't keep doing this.\"",
     "burnoutDesc3": "Burnout #{{num}}. At this point, your body barely functions at full capacity anymore. {{salesLost}} lost this time.\n\nMax energy now: {{cap}}%.\n\n{{question}}",
     "burnoutQuestionLow": "You're running on fumes. Is this shop worth your health?",
@@ -191,6 +195,8 @@
     "effectReputation": "⭐ Reputation",
     "effectLoanTaken": "🏦 Loan Taken",
     "effectBankNow": "💰 Bank now",
+    "effectSundayStress": "📅 Open Sundays",
+    "effectSundayStressLine": "+{{amount}} stress this month",
     "bankMonthlyStatement": "💰 Monthly Statement",
     "bankRevenue": "Revenue",
     "bankCheeseSales": "Cheese Sales",
@@ -356,6 +362,9 @@
     "playAgain": "Play Again",
     "creditsTitle": "Credits",
     "creditsThanksMom": "❤️ Big thanks to mom — for everything.",
+    "blogPopupMessage": "Did you like this game? I got a blog too, you should check it out.",
+    "blogPopupCta": "Check it out",
+    "blogPopupDismiss": "Maybe later",
     "title_completed_success": "The Dream Realized",
     "title_completed_survival": "Survival",
     "subtitle_completed_success": "{{shopName}} made it.",
@@ -375,6 +384,7 @@
     "story_completed_success_4_henry": "Henry and Lucas run the shop when you're not there. You finally learned to let go.",
     "story_completed_success_5_cheese": "The pivot to cheese wasn't just a business decision—it was listening to what the neighborhood actually needed.",
     "story_completed_success_5_niche": "You found your niche. The neighborhood found their shop.",
+    "story_completed_comfort": "You paid yourself properly and had a place of your own. It cost you in the bank, but you lived well.",
     "story_completed_survival_1": "The shop survives. It's not the success story you imagined, but the doors stay open.",
     "story_completed_survival_2_lowFamily": "The cost was high. Some relationships didn't survive the journey.",
     "story_completed_survival_2_okFamily": "You managed to keep family close.",
@@ -413,6 +423,7 @@
     "lesson_birthday": "That birthday party—everyone saw what you'd built. Worth every moment of chaos.",
     "lesson_reputation": "Your reputation became your greatest asset. Word of mouth is powerful.",
     "lesson_full_menu": "Diversifying products created multiple revenue streams.",
+    "lesson_comfort": "You invested in your own wellbeing—salary and a place of your own. The bank was lower, but you had a life.",
     "achievementsTitle": "🏆 Achievements",
     "ach_homeowner": "Homeowner",
     "ach_empire": "Empire Builder",
@@ -424,6 +435,7 @@
     "ach_team": "Team Builder",
     "ach_balance": "Work-Life Balance",
     "ach_generous": "Maximum Effort",
+    "ach_comfort": "Living Well",
     "ach_delegation": "Delegation Master",
     "ach_sunday": "Sunday Protector",
     "ach_producer": "Producer Friend",
@@ -521,7 +533,7 @@
         {
           "text": "Open on Sundays",
           "hint": "Could be up to 20% more revenue - substantial extra",
-          "outcome": "Sundays are busy. Not the busiest, but good. You now work 6 days a week. Only Mondays off."
+          "outcome": "Sundays are busy. Not the busiest, but good. You now work 6 days a week. Only Mondays off. Be aware: with no rest day, your stress will rise every month — that cost adds up."
         },
         {
           "text": "Stay closed on Sundays",
@@ -2584,6 +2596,11 @@
     "parmigiano_dream": {
       "title": "The Dream Trip",
       "description": "Emilia-Romagna. The Parmigiano caves. A cheese lover's paradise.",
+      "date": ""
+    },
+    "living_well": {
+      "title": "Living Well",
+      "description": "You paid yourself properly and had a place of your own. It cost you in the bank, but you lived.",
       "date": ""
     }
   }
