@@ -10,13 +10,13 @@ module.exports = defineConfig({
   workers: 1,
   reporter: 'list',
   use: {
-    baseURL: 'http://localhost:3333',
+    baseURL: process.env.PLAYWRIGHT_PORT ? `http://localhost:${process.env.PLAYWRIGHT_PORT}` : 'http://localhost:3333',
     trace: 'on-first-retry',
   },
   projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
   webServer: {
-    command: 'python3 -m http.server 3333',
-    url: 'http://localhost:3333',
+    command: `python3 -m http.server ${process.env.PLAYWRIGHT_PORT || 3333}`,
+    url: process.env.PLAYWRIGHT_PORT ? `http://localhost:${process.env.PLAYWRIGHT_PORT}` : 'http://localhost:3333',
     reuseExistingServer: !process.env.CI,
     timeout: 10000,
   },

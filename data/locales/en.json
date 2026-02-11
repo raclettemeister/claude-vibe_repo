@@ -4,7 +4,7 @@
     "title": "🧀 Shop Simulator V2.0",
     "subtitle": "A family business story.",
     "trophyCollection": "🏆 Trophy Collection",
-    "achievementCount": "/18",
+    "achievementCount": "/19",
     "tabPlay": "🎮 Play",
     "tabStory": "📖 Who is Julien?",
     "tabGlossary": "🧀 Cheese Glossary",
@@ -143,6 +143,7 @@
     "tabLog": "Log",
     "tabBank": "Bank",
     "tabChart": "Chart",
+    "tabPolicies": "Policies",
     "julienYou": "Julien (You)",
     "roleOwnerDoingEverything": "Owner, doing everything",
     "roleOwnerManager": "Owner & Manager",
@@ -152,6 +153,8 @@
     "buildingNeeded": "€{{amount}} needed",
     "buildingReady": "✅ Ready!",
     "buildingMonthsUntil": "{{count}} months until July 2024 deadline",
+    "buildingCountdownHint": "Save €80,000 for the down payment by July 2024.",
+    "onboardingHint": "Check the Stats tab to see how your choices affect you.",
     "burnoutTitle": "BURNOUT",
     "burnoutTitleNum": "BURNOUT #{{num}}",
     "burnoutDesc1": "Your body has finally said \"enough.\" You wake up and literally cannot get out of bed. Not metaphorically. Physically cannot. The stress has caught up with you.\n\nYou're forced to close the shop for a week. {{salesLost}} in lost sales. Sunday is now closed - your body won't let you work 7 days anymore.\n\nYour maximum energy is now permanently capped at {{cap}}%. This is the toll.",
@@ -205,6 +208,19 @@
     "bankInsurance": "Insurance",
     "bankInsuranceComprehensive": "€150 (Comprehensive)",
     "bankNetProfit": "Net Profit",
+    "policiesIntro": "Adjust your choices. Changes apply next month.",
+    "policySalary": "Salary (after building)",
+    "policyWorkHours": "Work hours",
+    "policyQuality": "Quality focus",
+    "policyReinvest": "Reinvest all",
+    "policySalaryLow": "Low",
+    "policySalaryMed": "Medium",
+    "policySalaryHigh": "High",
+    "policyHoursStandard": "Standard",
+    "policyHoursExtended": "Extended (+sales, +stress)",
+    "policyQualityBudget": "Budget",
+    "policyQualityBalanced": "Balanced",
+    "policyQualityPremium": "Premium",
     "policyLiving": "Living",
     "policyLivingParents": "With parents",
     "policyLivingChezSoi": "On your own (chez soi)"
@@ -1060,7 +1076,7 @@
           "outcome": "Your parents helped with cleanup. Your brother scraped together €5,000. But the damage is €18,000. You still lost €13,000. Family saved you from bankruptcy, but the resentment lingers. You owe them everything now."
         }
       ],
-      "description": "August. Freak summer storm. You arrive at the shop to find water pouring in through the basement. The cheese fridge is fine—it's elevated—but the basement storage is devastated. Boxes of slow-moving bulk products, seasonal decorations, old equipment. All ruined."
+      "description": "A freak storm. You arrive at the shop to find water pouring in through the basement. The cheese fridge is fine—it's elevated—but the basement storage is devastated. Boxes of slow-moving bulk products, seasonal decorations, old equipment. All ruined."
     },
     "corporate_opportunity": {
       "title": "The Corporate Inquiry",
@@ -2510,9 +2526,19 @@
       "description": "You own the building. No more rent.",
       "date": "July 2024"
     },
+    "second_shop": {
+      "title": "Second Shop",
+      "description": "Two shops, one vision. You built an empire.",
+      "date": ""
+    },
+    "sunday_rest": {
+      "title": "Sunday Rest",
+      "description": "You never opened on Sundays. Your energy and family thanked you.",
+      "date": ""
+    },
     "burnout_recovery": {
       "title": "The Recovery",
-      "description": "You crashed. You came back. Stronger.",
+      "description": "After a burnout: you crashed, you came back. Different, but stronger.",
       "date": ""
     },
     "lucas_joins": {

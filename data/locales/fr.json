@@ -4,7 +4,7 @@
     "title": "🧀 Shop Simulator V2.0",
     "subtitle": "L'aventure d'une épicerie familiale.",
     "trophyCollection": "🏆 Trophées",
-    "achievementCount": "/18",
+    "achievementCount": "/19",
     "tabPlay": "🎮 Jouer",
     "tabStory": "📖 Qui est Julien ?",
     "tabGlossary": "🧀 Lexique des fromages",
@@ -143,6 +143,7 @@
     "tabLog": "Journal",
     "tabBank": "Banque",
     "tabChart": "Graphique",
+    "tabPolicies": "Options",
     "julienYou": "Julien (Vous)",
     "roleOwnerDoingEverything": "Propriétaire, fait tout",
     "roleOwnerManager": "Propriétaire et gérant",
@@ -152,6 +153,8 @@
     "buildingNeeded": "{{amount}} € manquants",
     "buildingReady": "✅ Prêt !",
     "buildingMonthsUntil": "{{count}} mois avant échéance juillet 2024",
+    "buildingCountdownHint": "Épargnez 80 000 € pour l’acompte avant juillet 2024.",
+    "onboardingHint": "Consultez l’onglet Stats pour voir l’impact de vos choix.",
     "burnoutTitle": "BURNOUT",
     "burnoutTitleNum": "BURNOUT n°{{num}}",
     "burnoutDesc1": "Votre corps a lâché. Vous ne pouvez pas vous lever. Physiquement. Le stress vous a rattrapé.\n\nUne semaine fermée. {{salesLost}} perdus. Votre énergie max est plafonnée à {{cap}} %. C'est le prix.",
@@ -205,6 +208,19 @@
     "bankInsurance": "Assurance",
     "bankInsuranceComprehensive": "150 € (tous risques)",
     "bankNetProfit": "Bénéfice net",
+    "policiesIntro": "Modifiez vos choix. Les changements s’appliquent le mois suivant.",
+    "policySalary": "Salaire (après achat du local)",
+    "policyWorkHours": "Horaires",
+    "policyQuality": "Qualité",
+    "policyReinvest": "Tout réinvestir",
+    "policySalaryLow": "Faible",
+    "policySalaryMed": "Moyen",
+    "policySalaryHigh": "Élevé",
+    "policyHoursStandard": "Standard",
+    "policyHoursExtended": "Étendus (+ventes, +stress)",
+    "policyQualityBudget": "Budget",
+    "policyQualityBalanced": "Équilibré",
+    "policyQualityPremium": "Premium",
     "policyLiving": "Logement",
     "policyLivingParents": "Chez les parents",
     "policyLivingChezSoi": "Chez soi (ton propre logement)"
@@ -1033,7 +1049,7 @@
     },
     "summer_flood": {
       "title": "L'inondation",
-      "description": "Août. Orage d'été de malade. Le genre qui transforme les rues en rivières en vingt minutes.\n\nVous arrivez à la boutique le cœur battant. L'eau entre par le sous-sol. Le frigo principal va bien – il est surélevé, Dieu merci. Mais le sous-sol... Les cartons de stock, les décos de Noël, le vieux matériel, les réserves de Coprosain... Tout baigne. Littéralement.\n\nVous êtes debout dans 10 cm d'eau, et vous sentez votre estomac se retourner.",
+      "description": "Un orage de malade. Le genre qui transforme les rues en rivières en vingt minutes.\n\nVous arrivez à la boutique le cœur battant. L'eau entre par le sous-sol. Le frigo principal va bien – il est surélevé, Dieu merci. Mais le sous-sol... Les cartons de stock, les décos de Noël, le vieux matériel, les réserves de Coprosain... Tout baigne. Littéralement.\n\nVous êtes debout dans 10 cm d'eau, et vous sentez votre estomac se retourner.",
       "choices": [
         {
           "text": "Déclarer à l'assurance",
@@ -2539,9 +2555,19 @@
       "description": "Propriétaire. Les murs sont à moi. Plus jamais vulnérable.",
       "date": "Juillet 2024"
     },
+    "second_shop": {
+      "title": "Deuxième boutique",
+      "description": "Deux adresses, une vision. Tu as bâti un petit empire.",
+      "date": ""
+    },
+    "sunday_rest": {
+      "title": "Dimanche sacré",
+      "description": "Tu n'as jamais ouvert le dimanche. Ton énergie et ta famille t'ont remercié.",
+      "date": ""
+    },
     "burnout_recovery": {
       "title": "La remontée",
-      "description": "On a craqué. On est revenu. Différent, mais plus fort.",
+      "description": "Après un burnout : on a craqué, on est revenu. Différent, mais plus fort.",
       "date": ""
     },
     "lucas_joins": {
