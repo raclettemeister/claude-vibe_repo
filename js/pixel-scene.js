@@ -343,6 +343,7 @@
         const isSummer = month >= 6 && month <= 8;
         const isAutumn = month >= 9 && month <= 11;
         const isSpring = month >= 3 && month <= 5;
+        const isRainy = month === 2 || month === 9; // February light rain, September heavy rain → clouds, no sun
 
         // === SKY WITH DAY/NIGHT CYCLE ===
         const skyGrad = ctx.createLinearGradient(0, 0, 0, 100);
@@ -455,8 +456,8 @@
             ctx.beginPath();
             ctx.arc(sunMoonX, sunMoonY, 14, 0, Math.PI * 2);
             ctx.fill();
-        } else { // AFTERNOON - Normal sun
-            if (!isWinter) {
+        } else { // AFTERNOON - Sun or clouds (clouds in winter and on rainy days)
+            if (!isWinter && !isRainy) {
                 const sunGrad = ctx.createRadialGradient(sunMoonX, sunMoonY, 0, sunMoonX, sunMoonY, 25);
                 sunGrad.addColorStop(0, '#FFFFCC');
                 sunGrad.addColorStop(0.5, '#FFD700');
@@ -470,6 +471,7 @@
                 ctx.arc(sunMoonX, sunMoonY, 12, 0, Math.PI * 2);
                 ctx.fill();
             } else {
+                // Clouds only (no sun) for winter and rainy days (Feb, Sep)
                 drawCloud(ctx, 30, 20, 1);
                 drawCloud(ctx, 120, 35, 0.8);
                 drawCloud(ctx, 220, 15, 1.2);
