@@ -2057,6 +2057,8 @@
         }
         
         // === SMALL BIRD (Spring) - On rooftops ===
+        // Easter egg: nest + eggs appear at 24 months (one "season" earlier than pigeon/squirrel stage 2 at 36)
+        const springBirdHasNest = monthsPlayed >= 24;
         if (isSpring) {
             // y=56 so feet are right on roof edge (roof is at y=61)
             // Primary bird on main shop roof
@@ -2068,7 +2070,7 @@
                 drawSmallBird(ctx, 192, 56, time, true, true);
                 
                 // Kissing animation every 10 seconds when they have a nest
-                if (birdStage >= 2 && (time % 10000) < 500) {
+                if (springBirdHasNest && (time % 10000) < 500) {
                     // Little heart above them
                     ctx.fillStyle = '#FF6B6B';
                     ctx.fillRect(183, 50, 2, 2);
@@ -2077,8 +2079,8 @@
                     ctx.fillRect(185, 54, 1, 1);
                 }
             }
-            // Nest right on roof edge if stage 2 (with eggs in spring!)
-            if (birdStage >= 2) {
+            // Nest right on roof edge (with eggs in spring!) — at 24 months so Easter egg is reachable
+            if (springBirdHasNest) {
                 drawBirdNest(ctx, 207, 58, time, true);
             }
         }

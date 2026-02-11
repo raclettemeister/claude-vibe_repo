@@ -151,7 +151,7 @@
     "roleOwnerDoingEverything": "Owner, doing everything",
     "roleOwnerManager": "Owner & Manager",
     "roleLucas": "Chaotic but beloved",
-    "roleHenry": "The reliable workhorse",
+    "roleHenry": "The rock",
     "buildingDeadlineTitle": "Building Purchase Deadline",
     "buildingNeeded": "€{{amount}} needed",
     "buildingReady": "✅ Ready!",
@@ -2479,8 +2479,8 @@
       "date": "September 2023"
     },
     "henry_joins": {
-      "title": "Henry - The Calm One",
-      "description": "Finally, someone who knows what they're doing",
+      "title": "Henry, the rock",
+      "description": "Finally, stability. Lucas's yin to his yang. The family behind the shop! No going back. We move forward, together.",
       "date": "Early 2025"
     },
     "christmas_chaos": {

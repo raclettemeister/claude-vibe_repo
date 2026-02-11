@@ -151,7 +151,7 @@
     "roleOwnerDoingEverything": "Propriétaire, fait tout",
     "roleOwnerManager": "Propriétaire et gérant",
     "roleLucas": "Énergique, adoré des clients",
-    "roleHenry": "Le pilier fiable",
+    "roleHenry": "Le roc",
     "buildingDeadlineTitle": "Échéance achat du local",
     "buildingNeeded": "{{amount}} € manquants",
     "buildingReady": "✅ Prêt !",
@@ -2508,8 +2508,8 @@
       "date": "Septembre 2023"
     },
     "henry_joins": {
-      "title": "Henry, le calme",
-      "description": "Enfin quelqu'un de fiable. Le yin du yang de Lucas.",
+      "title": "Henry, le roc",
+      "description": "Enfin la stabilité. Le yin du yang de Lucas. La famille derrière le magasin ! Pas de marche arrière. On avance, ensemble.",
       "date": "Début 2025"
     },
     "christmas_chaos": {

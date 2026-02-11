@@ -126,11 +126,10 @@ flags: { insuranceDecisionMade: true, hasComprehensiveInsurance: false }
                 type: 'crisis',
                 monthRange: [28, 33], // A few months after Lucas (hired around month 26–28)
                 condition: () => {
-                    // Trigger once, 2–5 months after Lucas was hired; insurance decision must have been made
+                    // Trigger once, at least 2 months after Lucas; insurance decision must have been made
                     const lucasMonths = gameState.lucasMonthsWorked || 0;
                     return gameState.hasLucas &&
                            lucasMonths >= 2 &&
-                           lucasMonths <= 5 &&
                            gameState.insuranceDecisionMade &&
                            !gameState.floodHappened;
                 },
@@ -875,15 +874,18 @@ conditionalEffects: () => ({ reputation: -2, bank: -500 })
                 id: 'health_inspection',
 
                 type: 'crisis',
-                monthRange: [5, 40],
+                monthRange: [5, 24],
                 unique: true,
+                condition: () => !gameState.healthInspectionDone,
                 choices: [
                     {
 effects: { stress: 5 },
+flags: { healthInspectionDone: true },
 conditionalEffects: () => ({ reputation: 5 })
                     },
                     {
 effects: { stress: 15, energy: -10 },
+flags: { healthInspectionDone: true },
 conditionalEffects: () => ({ reputation: -3 })
                     }
                 ]
@@ -2391,7 +2393,7 @@ conditionalEffects: () => ({ bank: 800, family: 8 })
 
                 type: 'routine',
                 monthRange: [1, 42],
-                recurring: true,  // Can repeat as fallback when no other events available
+                unique: true,  // One-time only: "Le calme avant... rien"
                 choices: [
                     {
 effects: { energy: 15, stress: -10 },
