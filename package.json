@@ -6,7 +6,8 @@
     "test": "playwright test",
     "test:headed": "playwright test --headed",
     "test:full": "playwright test tests/e2e/playthrough-via-test-api.spec.js",
-    "test:building": "playwright test tests/e2e/building-deadline.spec.js"
+    "test:building": "playwright test tests/e2e/building-deadline.spec.js",
+    "test:check": "PLAYWRIGHT_PORT=3960 playwright test"
   },
   "devDependencies": {
     "@playwright/test": "^1.49.0",

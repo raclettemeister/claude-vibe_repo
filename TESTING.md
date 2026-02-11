@@ -1,5 +1,29 @@
 # Testing Chez Julien
 
+## Pre-release / video phase (run smooth the first time)
+
+When the game is done and you’re in **intense testing** (e.g. video implemented, test & fix):
+
+1. **One command** – avoids port conflicts, runs the full E2E suite:
+   ```bash
+   npm run test:check
+   ```
+   Uses port **3960** so it doesn’t clash with 3333 or an existing dev server. All 7 Playwright tests run (~2–3 min).
+
+2. **Track in Linear** – Project **Video phase – Release testing** with issues:
+   - **CHE-70** E2E full suite – all 7 tests green
+   - **CHE-71** Building deadline choices (FR/EN)
+   - **CHE-72** Playthrough to building (test API)
+   - **CHE-73** Playthrough to building (real clicks)
+   - **CHE-74** Discoverer playthrough
+   - **CHE-75** Manual smoke test
+
+   Run `npm run test:check`, fix any failure, re-run until green, then close the relevant issues.
+
+3. **If port is in use** – use another: `PLAYWRIGHT_PORT=3940 npm test` (or `npm run test:check` which already uses 3960).
+
+---
+
 ## Why automated tests?
 
 - **No hallucinations:** The test runs the real game in a real browser. If it passes, the behavior is verified by execution, not by description.
