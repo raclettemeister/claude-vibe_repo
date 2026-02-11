@@ -3,7 +3,8 @@
 A narrative business simulation game based on the true story of a cheese shop in Brussels.
 
 ## Play Now
-**[Play the game](https://raclettemeister.github.io/chez-julien-simulatorV3/)**
+**[Play the game](https://julien.care/game)** — hosted on [julien.care](https://julien.care) (website and blog).  
+*Version 3.0*
 
 ## About
 

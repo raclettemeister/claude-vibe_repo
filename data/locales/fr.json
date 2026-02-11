@@ -1,7 +1,7 @@
 {
   "langCode": "fr",
   "ui": {
-    "title": "🧀 Shop Simulator V2.0",
+    "title": "Shop Simulator V3.0",
     "subtitle": "L'aventure d'une épicerie familiale.",
     "trophyCollection": "🏆 Trophées",
     "achievementCount": "/20",
@@ -52,7 +52,7 @@
     "easterEggSignature": "- Julien",
     "easterEggClose": "❤ Merci !",
     "musicPlayPause": "Lecture / Pause",
-    "blogButtonTitleScreen": "Moi aussi j'ai été bloqué",
+    "blogButtonTitleScreen": "j'ai un blog aussi !",
     "reportBug": "Signaler un bug"
   },
   "cutscene": {
@@ -150,7 +150,7 @@
     "julienYou": "Julien (Vous)",
     "roleOwnerDoingEverything": "Propriétaire, fait tout",
     "roleOwnerManager": "Propriétaire et gérant",
-    "roleLucas": "Chaotique mais adoré",
+    "roleLucas": "Énergique, adoré des clients",
     "roleHenry": "Le pilier fiable",
     "buildingDeadlineTitle": "Échéance achat du local",
     "buildingNeeded": "{{amount}} € manquants",
@@ -161,7 +161,7 @@
     "burnoutTitle": "BURNOUT",
     "burnoutTitleNum": "BURNOUT n°{{num}}",
     "burnoutDesc1": "Votre corps a lâché. Vous ne pouvez pas vous lever. Physiquement. Le stress vous a rattrapé.\n\nUne semaine fermée. {{salesLost}} perdus. Votre énergie max est plafonnée à {{cap}} %. C'est le prix.",
-    "burnoutDesc1Sunday": "Votre corps a dit stop. Vous ne pouvez plus vous lever. Physiquement.\n\nMarcher six jours par semaine, c'était trop. Vous en payez le prix. Pas de jour de repos, mois après mois — le stress s'est accumulé jusqu'à ce que votre corps lâche. Une semaine fermée. {{salesLost}} perdus. Le dimanche est fermé maintenant ; votre corps ne vous laissera plus travailler comme ça.\n\nVotre énergie max est plafonnée à {{cap}} %. C'est le tribut.",
+    "burnoutDesc1Sunday": "Votre corps a dit stop. Vous ne pouvez plus vous lever. Physiquement.\n\nOuvrir le magasin six jours par semaine, c'était trop. Vous en payez le prix. Seul aux commandes, l'installation, la fermeture, le nettoyage, les livraisons, les commandes… — le stress s'est accumulé jusqu'à ce que votre corps lâche. Résultat : une semaine fermée. {{salesLost}} perdus. On change les horaires, le magasin est fermé le dimanche maintenant.\n\nVotre corps ne vous laissera plus travailler comme ça.\n\nVotre énergie max est plafonnée à {{cap}} %. C'est le tribut.",
     "burnoutDesc2": "Rebelote. Le deuxième crash fait encore plus mal. Votre corps se souvient du premier, et il est furieux.\n\nEncore une semaine fermée. {{salesLost}} perdus. L'énergie max descend à {{cap}} %.\n\nLe médecin vous fixe : « Julien, vous ne pouvez pas continuer comme ça. »",
     "burnoutDesc3": "Burnout n°{{num}}. À ce stade, votre corps ne tourne plus. {{salesLost}} perdus cette fois.\n\nÉnergie max : {{cap}} %.\n\n{{question}}",
     "burnoutQuestionLow": "Vous tenez sur les nerfs. Est-ce que cette boutique vaut votre santé ?",
@@ -528,7 +528,7 @@
     },
     "sunday_opening": {
       "title": "Premier matin, première décision",
-      "description": "7 h. Les clés en main. La boutique est à vous — enfin, façon de parler.\n\nDimanche à Woluwe : les gens flânent, achètent du pain. Ils achèteraient du fromage. Mais dimanche, c'est aussi votre seul jour pour souffler. Ouvrir 6 jours sur 7 dès le premier jour ?",
+      "description": "Tous les dimanches sur le parvis, 4 autres commerces sont ouverts. C'est une belle opportunité. Mais le dimanche, c'est aussi un jour pour souffler. Ouvrir 6 jours sur 7 dès le début ?\n\nAprès, je suis jeune et plein d'énergie.",
       "choices": [
         {
           "text": "Ouvrir le dimanche — on dort quand on est mort",
@@ -543,13 +543,13 @@
       ]
     },
     "stock_reality": {
-      "title": "38 000 € de poussière",
-      "description": "Week-end à tout compter. Bocaux, sachets, bacs.\n\n38 000 € sur le papier. En vrai : quinoa 2019, lentilles qui sentent le renfermé, chia périmé. L'épicerie sèche plonge (-23 %). Peut-être 10 000 € de vendable. Le reste, du décor cher.",
+      "title": "Inventaire",
+      "description": "Inventaire et week-end à tout compter. Bocaux, sachets, bacs, nourriture en vrac. 38 000 € sur le papier. En vrai : quinoa 2019, lentilles qui sentent le renfermé, chia périmé. Peut-être 10 000 € de vendable. Le vrac en Belgique plonge (-23 %).",
       "choices": [
         {
           "text": "Liquidation totale — brocantes, soldes à -70 %, tout doit partir",
           "hint": "Des week-ends entiers à brader...",
-          "outcome": "Dimanches en brocante. Bacs « tout à 1 € ». Long, ingrat. Les étagères se vident. Dans le vide, de la place pour ce que le quartier voulait : du fromage."
+          "outcome": "Dimanches en brocante. Bacs « tout à 1 € ». Long, ingrat. Les étagères se vident. Dans le vide, de la place pour ce que le quartier voulait."
         },
         {
           "text": "Trouver un \"gars\" qui rachète tout en bloc",
@@ -565,7 +565,7 @@
     },
     "shop_name": {
       "title": "Comment vous appelez-vous ?",
-      "description": "La boutique s'appelle encore « Le Refil Store ». Pas vous.\n\nMadame Dubois dit déjà « chez Julien ». Le facteur aussi. Votre ami Alix propose « Alix Corner » — moderne, concept store. Vous le croyez.",
+      "description": "La boutique s'appelle encore « Le Refil Store ». Pas vous. Madame Dubois dit déjà « chez Julien ». Le facteur aussi. Le parvis s'appelle Ste-Alix, pourquoi pas ?",
       "choices": [
         {
           "text": "« Chez Julien » — c'est déjà mon nom dans le quartier",
@@ -574,7 +574,7 @@
         },
         {
           "text": "« Alix Corner » — moderne, ça pourrait attirer du monde",
-          "hint": "Alix sera content. Les habitués... moins sûr.",
+          "hint": "Alix sera content, c'est moderne, ça plaira aux passants. Les habitués... moins sûr.",
           "outcome": "L'enseigne est belle, pro, Instagram-friendly. Alix est aux anges. Madame Dubois, elle, demande « c'est qui Alix ? Il travaille ici ? ». Les nouveaux clients aiment le look. Les anciens cherchent Julien. C'est un peu bizarre pendant quelques semaines."
         },
         {
@@ -586,7 +586,7 @@
     },
     "insurance_decision": {
       "title": "La question de l'assurance",
-      "description": "Votre comptable : « Couverture complète avec dégâts des eaux, 1 800 €/an en plus. La plupart ne la prennent pas — les inondations sont rares. À vous de voir. »",
+      "description": "Votre courtier : « Couverture complète incendie, vitrine vandalisée, matériel informatique, dégâts des eaux, 1 800 €/an en plus. La plupart ne la prennent pas — mais ça vous sauve en cas de pépin. À vous de voir. »",
       "choices": [
         {
           "text": "Prendre la couverture complète (1 800 €/an)",
@@ -602,12 +602,12 @@
     },
     "first_cheese": {
       "title": "Et si c'était du fromage ?",
-      "description": "Madame Dubois, comme chaque mardi. Elle regarde vos lentilles, soupire : « Ce qu'il nous faudrait ici, c'est du bon fromage. Du vrai. Y en a pas dans le quartier. »\n\nLes marges du fromage écrasent celles du vrac. La demande est là. Zéro concurrence à 2 km. Elle a cet air de mamie qui sait qu'elle a raison.",
+      "description": "Madame Dubois, comme chaque mardi. Elle regarde vos lentilles, soupire : « Ce qu'il nous faudrait ici, c'est du bon fromage. Du vrai. Y en a pas dans le quartier. » La demande est là. Zéro concurrence à 2 km. Elle a cet air de mamie qui sait qu'elle a raison.",
       "choices": [
         {
           "text": "Commander UNE meule — la Tomme du Larzac, pour tester",
           "hint": "Petit pas. Gros potentiel.",
-          "outcome": "Tomme du Larzac le soir même. Sur le comptoir mercredi. Vendredi, finie. « Vous en aurez d'autres ? » Madame Dubois a souri : « Je vous l'avais dit. »"
+          "outcome": "Tomme du Larzac commandée le soir même. Sur le comptoir mercredi. Vendredi, tout est parti. « Vous en aurez d'autres ? » Madame Dubois a souri : « Je vous l'avais dit. »"
         },
         {
           "text": "Viser gros — investir dans un vrai comptoir fromage",
@@ -681,12 +681,12 @@
     },
     "meet_lucas": {
       "title": "Lucas débarque",
-      "description": "Lucas, 22 ans, boulangerie d'à côté. Il passe vous voir entre deux fournées. « Vous n'avez pas besoin d'un coup de main ? Le fromage, j'adore. Votre Saint-Nectaire, c'était exceptionnel. »\n\nUn peu désordonné, parfois en retard. Mais les clients sourient. Les mamies l'adorent. Un je-ne-sais-quoi.",
+      "description": "Lucas, 24 ans, voisin d'à côté. Il passe vous voir entre deux fournées. « Vous n'avez pas besoin d'un coup de main ? Le fromage, j'adore. Votre Saint-Nectaire, c'était exceptionnel. »\n\nFlexible, pas toujours à l'heure. Mais les clients sourient. Les mamies l'adorent. Un je-ne-sais-quoi.",
       "choices": [
         {
           "text": "L'embaucher — vous avez besoin d'aide, et il a la flamme",
           "hint": "Premier employé. Vous respirez enfin.",
-          "outcome": "Lucas a signé avec un stylo emprunté, jamais rendu. Dès le premier jour, échantillons de raclette aux passants. Les clients l'ont adopté. Chaotique, mais la boutique vit. Vous pouvez enfin aller aux toilettes sans fermer."
+          "outcome": "Lucas a signé avec un stylo emprunté, jamais rendu. Dès le premier jour, échantillons de raclette aux passants. Les clients l'ont adopté. Plein d'énergie, et la boutique vit. Vous pouvez enfin aller aux toilettes sans fermer."
         },
         {
           "text": "Pas encore — « reviens me voir dans quelques mois »",
@@ -1151,12 +1151,12 @@
     },
     "first_raclette_season": {
       "title": "Octobre et la folie raclette",
-      "description": "Octobre. Le premier frisson dans l'air. Et comme par magie, le mot apparaît sur toutes les lèvres : « Raclette. » Trois clients ce matin. Cinq hier. « Vous avez de la raclette ? » Vous avez quelques meules classiques, mais votre cerveau s'emballe. Et si on faisait les choses en grand ? Fumée, poivrée, aux herbes de Provence, truffée... huit variétés. HUIT. Le rayon raclette de vos rêves.",
+      "description": "Octobre. Le premier frisson dans l'air. Et comme par magie, le mot apparaît sur toutes les lèvres : « Raclette. » Trois clients ce matin. Cinq hier. « Vous avez de la raclette ? » Vous avez quelques meules classiques, mais votre cerveau s'emballe. Et si on faisait les choses en grand ? Fumée, poivrée, aux herbes, truffée... huit variétés. HUIT. Le rayon raclette de vos rêves.",
       "choices": [
         {
           "text": "HUIT variétés — on envoie du lourd",
           "hint": "Ça peut être ÉNORME. Ou un frigo plein en mars.",
-          "outcome": "Vous avez passé la commande le cœur battant. Huit raclettes alignées au comptoir : classique, fumée, poivre, herbes de Provence, truffe, ail des ours, piment d'Espelette, chèvre. L'étal est spectaculaire. Les clients s'arrêtent, goûtent, repartent les bras chargés. Un enfant a dit : « Maman, c'est le paradis. » Vous étiez d'accord."
+          "outcome": "Vous avez passé la commande le cœur battant. Huit raclettes alignées au comptoir : classique, fumée, poivre, herbes, truffe, ail des ours, piment, chèvre. L'étal est spectaculaire. Les clients s'arrêtent, goûtent, repartent les bras chargés. Un enfant a dit : « Maman, c'est le paradis. » Vous étiez d'accord."
         },
         {
           "text": "Trois classiques — testons le terrain",
@@ -1220,7 +1220,7 @@
     },
     "birthday_party": {
       "title": "Anniversaire chez Julien",
-      "description": "Lucia vous regarde avec ce sourire qui veut dire « j'ai une idée et vous ne pourrez pas dire non ». « Et si on fêtait votre anniversaire à la boutique ? On invite tout le monde. Les clients, les fournisseurs, Pierre, Madame Dubois, Lalero... Tout le monde. On fait ça en grand. »\n\nVous imaginez le chaos. Les fromages sur le comptoir, le vin qui coule, Lalero qui raconte des histoires impossibles, Madame Dubois qui danse. Ce serait magnifique. Et épuisant. Ou alors... un dîner tranquille, juste vous deux.",
+      "description": "Lucia vous regarde avec ce sourire qui veut dire « j'ai une idée et tu ne pourras pas dire non ». « Et si on fêtait ton anniversaire à la boutique ? On invite tout le monde. Les clients, les fournisseurs, Pierre, Madame Dubois, Lalero... Tout le monde. On fait ça en grand. »\n\nVous imaginez le chaos. Les fromages sur le comptoir, le vin qui coule, Lalero qui raconte des histoires impossibles, Madame Dubois qui danse. Ce serait magnifique. Et épuisant. Ou alors... un dîner tranquille, juste vous deux.",
       "choices": [
         {
           "text": "La grande fête — tout le monde à la boutique !",
@@ -1364,7 +1364,7 @@
     },
     "christmas_rush": {
       "title": "Décembre vous tombe dessus",
-      "description": "C'est parti. Le tsunami. La queue dépasse la porte. Des gens que vous n'avez jamais vus veulent des plateaux pour 15 « pour demain ». Lucas court partout. Henry reste zen (comment il fait ?). Vous n'avez pas déjeuné depuis... quel jour on est déjà ? Le comptoir se vide aussi vite que vous le remplissez. 40 meules de raclette à écouler. 200 bouteilles à vendre. Et encore deux semaines à tenir.",
+      "description": "C'est parti. Le tsunami. La queue dépasse la porte. Des gens que vous n'avez jamais vus veulent des plateaux pour 15 « pour demain ». Lucas court partout. Vous n'avez pas déjeuné depuis... quel jour on est déjà ? Le comptoir se vide aussi vite que vous le remplissez. 40 meules de raclette à écouler. 200 bouteilles à vendre. Et encore deux semaines à tenir.",
       "choices": [
         {
           "text": "Tout donner — c'est VOTRE mois",
@@ -1607,7 +1607,7 @@
         {
           "text": "Organiser la formation — un samedi entier",
           "hint": "Un jour de fermeture, mais l'investissement vaut le coup",
-          "outcome": "Samedi, 9h. Dix fromages sur la table. Dégustation à l'aveugle. Lucas a confondu le Roquefort et le Bleu d'Auvergne (personne n'est parfait). Henry a retenu TOUS les terroirs. À la fin de la journée, ils pouvaient conseiller seuls. Votre charge s'est allégée. La boutique a gagné en autonomie."
+          "outcome": "Samedi, 9h. Dix fromages sur la table. Dégustation à l'aveugle. Lucas a encore un peu à apprendre sur les bleus — Henry a retenu tous les terroirs. À la fin de la journée, ils pouvaient conseiller seuls. Votre charge s'est allégée. La boutique a gagné en autonomie."
         },
         {
           "text": "Continuer sur le tas — ils apprennent en vous regardant",
@@ -1819,7 +1819,7 @@
     },
     "lucas_growth": {
       "title": "Lucas a grandi",
-      "description": "Vous le regardez au comptoir. Lucas — le jeune un peu désordonné de la boulangerie d'à côté — est en train d'expliquer à une cliente la différence entre un Comté 12 et 18 mois. Et il a raison. Pas mot pour mot ce que vous diriez, mais l'idée est là. Il gère la caisse seul. Il range (à sa façon). Il commence même à avoir SES habitués. Il vous regarde : « Julien, je pourrais gérer les commandes du jeudi ? »",
+      "description": "Vous le regardez au comptoir. Lucas — le jeune de la boulangerie d'à côté — est en train d'expliquer à une cliente la différence entre un Comté 12 et 18 mois. Et il a raison. Pas mot pour mot ce que vous diriez, mais l'idée est là. Il gère la caisse seul. Il range (à sa façon). Il commence même à avoir SES habitués. Il vous regarde : « Julien, je pourrais gérer les commandes du jeudi ? »",
       "choices": [
         {
           "text": "Lui donner les commandes du jeudi",
@@ -1936,7 +1936,7 @@
     },
     "lucas_brings_henry": {
       "title": "« J'ai quelqu'un pour vous »",
-      "description": "Lucas débarque un matin avec son sourire de conspirateur. « Julien. J'ai quelqu'un. Henry. Il est calme, il est fiable, il connaît le fromage, et il cherche un poste. » Le contraire de Lucas en tout point — et c'est peut-être exactement ce qu'il vous faut. Le yin du yang. Le Comté du Roquefort.",
+      "description": "Lucas débarque un matin avec son sourire de conspirateur. « Julien. J'ai quelqu'un. Henry. Il est calme, il est fiable, il connaît le fromage, et il cherche un poste. » Un profil très différent — et c'est peut-être le complément qu'il vous faut. Le yin et le yang : Lucas l'ouragan, Henry le roc. Le Comté du Roquefort.",
       "choices": [
         {
           "text": "Rencontrer Henry — pourquoi pas ?",
@@ -2113,7 +2113,7 @@
     },
     "fancy_sign": {
       "title": "L'enseigne qui fait envie",
-      "description": "Un créateur local — recommandé par Marie de la boulangerie — vous propose une enseigne sur mesure. Bois, lettres peintes à la main, éclairage le soir. « Chez Julien » en beau, en grand, en visible depuis l'autre côté de la rue. Le devis : 2 500 €. Votre enseigne actuelle, c'est un autocollant et une pancarte en carton que Lucia a fait un dimanche.",
+      "description": "Un de vos meilleurs amis se lance en tant que professionnel — il vous propose une enseigne sur mesure. Bois, lettres peintes à la main, éclairage le soir. « Chez Julien » en beau, en grand, en visible depuis l'autre côté de la rue. Le devis : 2 500 €. Votre enseigne actuelle, c'est un autocollant et une pancarte en carton que Lucia a fait un dimanche.",
       "choices": [
         {
           "text": "Investir dans la belle enseigne",
@@ -2203,12 +2203,12 @@
     },
     "systems_project": {
       "title": "Le grand ménage d'organisation",
-      "description": "Henry vous dit un matin : « Julien, on a commandé le Beaufort deux fois cette semaine. Et on a oublié le Manchego. » C'est la troisième fois ce mois. Tout est dans votre tête — les commandes, les rotations, les dates. Mais votre tête commence à fuir. Vous pourriez écrire de vrais process : fiches produits, planning des commandes, check-lists. Du boulot maintenant, du gain après.",
+      "description": "Votre aide vous dit un matin : « Julien, on a commandé le Beaufort deux fois cette semaine. Et on a oublié le Manchego. » C'est la troisième fois ce mois. Tout est dans votre tête — les commandes, les rotations, les dates. Mais votre tête commence à fuir. Vous pourriez écrire de vrais process : fiches produits, planning des commandes, check-lists. Du boulot maintenant, du gain après.",
       "choices": [
         {
           "text": "Mettre en place de vrais process — fiches et plannings",
           "hint": "Un week-end de boulot pour des mois de tranquillité",
-          "outcome": "Un dimanche, vous avez tout écrit. Fiche par fromage. Planning de commandes par fournisseur. Check-list d'ouverture et de fermeture. Lucas a râlé (« C'est lourd, votre système »). Henry a adoré. Les oublis ont chuté de 80%. La boutique tourne mieux. Et votre tête est enfin libre."
+          "outcome": "Un dimanche, vous avez tout écrit. Fiche par fromage. Planning de commandes par fournisseur. Check-list d'ouverture et de fermeture. Les oublis ont chuté de 80%. La boutique tourne mieux. Et votre tête est enfin libre."
         },
         {
           "text": "Continuer à l'instinct — ça fait partie du charme",
@@ -2476,7 +2476,7 @@
     },
     "quiet_month": {
       "title": "Le calme avant... rien",
-      "description": "Un mois normal. Pas de crise, pas de surprise, pas de coup de fil qui fait paniquer. Les clients viennent, le fromage se vend, le frigo tourne. Poncho dort sur sa chaise. C'est presque suspect, ce calme. Vous vous demandez si vous devriez provoquer quelque chose ou simplement... profiter.",
+      "description": "Un mois normal. Pas de crise, pas de surprise, pas de coup de fil qui fait paniquer. Les clients viennent, le fromage se vend, le frigo tourne. Poncho dort sur sa chaise. C'est presque suspect, ce calme. Vous vous demandez : en profiter pour prendre de l'avance, ou simplement... respirer ?",
       "choices": [
         {
           "text": "Profiter du calme — la routine a du bon",
@@ -2484,9 +2484,9 @@
           "outcome": "Vous avez avancé. Doucement. Tranquillement. Rien d'exceptionnel. La boutique tourne. Vous dormez bien. Lucia sourit. Parfois, les mois les plus importants sont ceux où il ne se passe rien."
         },
         {
-          "text": "Provoquer quelque chose — le calme rend nerveux",
-          "hint": "L'entrepreneur en vous ne tient pas en place",
-          "outcome": "Vous avez lancé une dégustation surprise le samedi. Affiché une promo « fromage du mois ». Le mois s'est animé. Pas un record, mais du mouvement. Vous avez besoin de bouger. C'est comme ça."
+          "text": "En profiter pour prendre de l'avance",
+          "hint": "Commandes à jour, rangement, idées pour la suite — le calme, c'est le moment de faire ce qu'on repousse d'habitude.",
+          "outcome": "Vous avez mis à jour les commandes. Rangé le cellier. Noté deux trois idées pour le trimestre. Rien de spectaculaire — mais quand le rush reviendra, vous serez prêt. Prendre de l'avance, c'est aussi une façon de souffler."
         }
       ]
     }
@@ -2584,7 +2584,7 @@
     },
     "lucas_joins": {
       "title": "Lucas !",
-      "description": "Mon premier employé. Bordélique, adoré des clients, et il fait goûter la raclette à tout le monde.",
+      "description": "Mon premier employé. Flexible, adoré des clients, et il fait goûter la raclette à tout le monde.",
       "date": "2023"
     },
     "busy_shop": {
