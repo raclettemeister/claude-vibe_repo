@@ -58,7 +58,9 @@
     "bugPlaceholder": "What happened?",
     "bugSend": "Send",
     "bugThanks": "Thanks!",
-    "bugError": "Couldn't send. Try again?"
+    "bugError": "Couldn't send. Try again?",
+    "bugLabel": "Bug",
+    "bugWalkthrough": "Thanks for playing! This game is in beta. If you spot a bug, tap here to report it."
   },
   "cutscene": {
     "openingTitle": "Once upon a time",

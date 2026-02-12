@@ -58,7 +58,9 @@
     "bugPlaceholder": "Que s'est-il passé ?",
     "bugSend": "Envoyer",
     "bugThanks": "Merci !",
-    "bugError": "Impossible d'envoyer. Réessayer ?"
+    "bugError": "Impossible d'envoyer. Réessayer ?",
+    "bugLabel": "Bug",
+    "bugWalkthrough": "Merci de jouer ! Le jeu est en bêta. Si tu repères un bug, tape ici pour le signaler."
   },
   "cutscene": {
     "openingTitle": "Il était une fois",
