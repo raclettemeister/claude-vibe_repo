@@ -574,8 +574,8 @@
         },
         {
           "text": "« Alix Corner » — moderne, ça pourrait attirer du monde",
-          "hint": "Alix sera content, c'est moderne, ça plaira aux passants. Les habitués... moins sûr.",
-          "outcome": "L'enseigne est belle, pro, Instagram-friendly. Alix est aux anges. Madame Dubois, elle, demande « c'est qui Alix ? Il travaille ici ? ». Les nouveaux clients aiment le look. Les anciens cherchent Julien. C'est un peu bizarre pendant quelques semaines."
+          "hint": "Ça pourrait attirer les passants. Moderne, tendance. Les habitués... moins sûr.",
+          "outcome": "L'enseigne est belle, pro, Instagram-friendly. Ça attire les passants. Madame Dubois demande « c'est qui Alix ? Il travaille ici ? ». Les nouveaux clients aiment le look. Les anciens cherchent Julien. C'est un peu bizarre pendant quelques semaines."
         },
         {
           "text": "Garder « Le Refil Store » — on change rien",
@@ -2135,6 +2135,11 @@
           "text": "Y aller — rien ne remplace le terrain",
           "hint": "Le savoir de première main",
           "outcome": "Les chèvres étaient magnifiques. Le fromage frais, directement du moule, était une révélation. Vous avez compris pourquoi il coûtait ce prix-là. Le producteur vous a donné des exclusivités. Maintenant quand vous vendez ce chèvre, vous racontez les biques, la prairie, le matin. C'est une autre vente."
+        },
+        {
+          "text": "Décliner — priorité à la récup'",
+          "hint": "Une journée pour souffler et reprendre pied",
+          "outcome": "Vous avez décliné. Ce jour-là vous avez dormi un peu, rangé le stock, pas touché aux mails. Le soir vous vous sentiez à nouveau humain. Le producteur a compris. Certains jours la boutique a besoin de vous ; certains jours vous avez besoin de ne pas être indispensable."
         },
         {
           "text": "Décliner — la boutique ne peut pas se passer de moi",

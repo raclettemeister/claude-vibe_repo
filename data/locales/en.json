@@ -161,7 +161,7 @@
     "burnoutTitle": "BURNOUT",
     "burnoutTitleNum": "BURNOUT #{{num}}",
     "burnoutDesc1": "Your body has finally said \"enough.\" You wake up and literally cannot get out of bed. Not metaphorically. Physically cannot. The stress has caught up with you.\n\nYou're forced to close the shop for a week. {{salesLost}} in lost sales. Sunday is now closed - your body won't let you work 7 days anymore.\n\nYour maximum energy is now permanently capped at {{cap}}%. This is the toll.",
-    "burnoutDesc1Sunday": "Your body has finally said \"enough.\" You wake up and literally cannot get out of bed. Not metaphorically. Physically cannot.\n\nWalking six days a week was too much. You paid the price. No rest day, month after month — the stress piled up until your body said stop. You're forced to close the shop for a week. {{salesLost}} in lost sales. Sunday is now closed; your body won't let you work like that anymore.\n\nYour maximum energy is now permanently capped at {{cap}}%. This is the toll.",
+    "burnoutDesc1Sunday": "Your body has finally said \"enough.\" You wake up and literally cannot get out of bed. Not metaphorically. Physically cannot.\n\nWorking six days a week was too much. You paid the price. No rest day, month after month — the stress piled up until your body said stop. You're forced to close the shop for a week. {{salesLost}} in lost sales. Sunday is now closed; your body won't let you work like that anymore.\n\nYour maximum energy is now permanently capped at {{cap}}%. This is the toll.",
     "burnoutDesc2": "It happened again. The second crash hits harder. Your body remembers the first time, and it's angrier now.\n\nAnother week closed. {{salesLost}} gone. Your energy capacity drops further - max {{cap}}% now.\n\nYour doctor looks at you with concern. \"You can't keep doing this.\"",
     "burnoutDesc3": "Burnout #{{num}}. At this point, your body barely functions at full capacity anymore. {{salesLost}} lost this time.\n\nMax energy now: {{cap}}%.\n\n{{question}}",
     "burnoutQuestionLow": "You're running on fumes. Is this shop worth your health?",
@@ -631,7 +631,7 @@
         },
         {
           "text": "\"Alix Corner\" - modern and trendy",
-          "hint": "Alix will be happy, it's modern, passers-by will like it. Regulars... less sure.",
+          "hint": "Could appeal to passersby. Modern and trendy. Regulars... less sure.",
           "outcome": "The new sign looks professional. Some regulars are confused. \"Who's Alix?\" New customers seem to like it though."
         },
         {
@@ -758,18 +758,18 @@
       ]
     },
     "adopt_dog": {
-      "title": "The Dog Question",
-      "description": "Your partner has been hinting for months. A friend's Australian Shepherd just had puppies—gorgeous, smart, absolutely full of energy. \"It would be good for us,\" they say. \"You need something that isn't the shop.\" An Aussie is a lot of dog. Walks, training, stimulation. But those eyes...",
+      "title": "Poncho's eyes",
+      "description": "A friend sends you a photo. Australian Shepherd, blue eyes. \"He's looking for a home.\"\n\nYou picture him at the counter. Kids stopping by to pet him. Morning walks that would force you to actually look at the sky. But a dog means time and money. You're already short on both.",
       "choices": [
         {
-          "text": "Adopt the Australian Shepherd puppy",
-          "hint": "Vet bills, food, gear, time away from shop",
-          "outcome": "You named him Poncho. He's a whirlwind of fur and love. Vet visits, premium food, endless toys. And the walks take time you could be at the shop. But those eyes when he looks at you. Worth every euro."
+          "text": "Adopt Poncho — those eyes, impossible to say no",
+          "hint": "Official mascot. And your daily walks.",
+          "outcome": "Poncho, one Tuesday morning. Those eyes. The first customer melted. Kids drop in after school just for him. You walk thirty minutes every morning before opening. Best part of the day."
         },
         {
-          "text": "Not now, too much already",
-          "hint": "Reasonable but sad",
-          "outcome": "You said no. \"Maybe next year.\" Your partner's face fell. The shop consumed another piece of your life."
+          "text": "Not now — you've already got enough on your plate",
+          "hint": "A dog is a fifteen-year commitment",
+          "outcome": "You said no. It was the sensible call. The shop already takes everything. But sometimes, when you lock up alone and the flat is empty, you think about those blue eyes again."
         }
       ]
     },
@@ -2106,6 +2106,11 @@
           "text": "Go visit the producer",
           "hint": "Close shop for a day, but gain knowledge and stories",
           "outcome": "You drove to Wallonia. Met the cheesemaker. Heard the story. Customers love hearing about \"your producer in Wallonia.\""
+        },
+        {
+          "text": "Refuse — focus on recovery instead",
+          "hint": "Use the day to rest and catch up",
+          "outcome": "You declined. That day you slept in, sorted the stock, and didn't touch the emails. By evening you felt human again. The producer understood. Some days the shop needs you; some days you need to not be needed."
         },
         {
           "text": "Can't leave the shop",

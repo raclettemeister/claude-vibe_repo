@@ -1853,21 +1853,24 @@ conditionalEffects: () => ({ autonomy: 5 })
                 unique: true,
                 choices: [
                     {
-effects: { energy: -10, family: 5 },
-conditionalEffects: () => ({
+                        effects: { energy: -10, family: 5 },
+                        conditionalEffects: () => ({
                             reputation: 4,
                             producerVisits: gameState.producerVisits + 1,
                             salesBoost: 800
                         })
                     },
                     {
-effects: { stress: 5 },
-
+                        effects: { energy: 15, stress: -8 },
+                        condition: () => true
+                    },
+                    {
+                        effects: { stress: 5 },
                         condition: () => gameState.autonomy < 20 && !gameState.hasLucas
                     },
                     {
-effects: { bank: -100 },
-conditionalEffects: () => ({ reputation: 5, autonomy: 5 }),
+                        effects: { bank: -100 },
+                        conditionalEffects: () => ({ reputation: 5, autonomy: 5 }),
                         condition: () => gameState.hasLucas
                     }
                 ]
