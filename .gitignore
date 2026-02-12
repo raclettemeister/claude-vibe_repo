@@ -6,6 +6,7 @@ node_modules/
 test-results/
 playwright-report/
 playwright/.cache/
+tests/e2e/artifacts/
 
 # OS files
 .DS_Store

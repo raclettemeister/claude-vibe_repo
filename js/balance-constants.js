@@ -34,8 +34,8 @@ export const BASE_MONTHLY_SALES = 19000;
 /** Monthly rent (before building purchase) */
 export const MONTHLY_RENT = 1900;
 
-/** Building loan payment (after purchase) */
-export const BUILDING_LOAN_PAYMENT = 2500;
+/** Building loan payment (after purchase) — tuned so end state ~€50k (BALANCE_REFERENCE) */
+export const BUILDING_LOAN_PAYMENT = 3000;
 
 /** Monthly utilities */
 export const MONTHLY_UTILITIES = 400;
@@ -78,26 +78,26 @@ export const OWNER_SALARY_GROWTH_PER_MONTH = 60;
 /** Maximum owner salary growth */
 export const OWNER_SALARY_MAX_GROWTH = 1000; // Total: 2800 + 1000 = 3800
 
-/** Car cost (starts 6 months after building) */
-export const CAR_MONTHLY_COST = 450;
+/** Car cost (starts 6 months after building) — payment, insurance, fuel, maintenance (BALANCE_REFERENCE) */
+export const CAR_MONTHLY_COST = 600;
 
-/** Apartment cost (starts 12 months after building) */
-export const APARTMENT_MONTHLY_COST = 1400;
+/** Apartment cost when living_situation === 'chez_soi' (BALANCE_REFERENCE: rent + utilities Brussels) */
+export const APARTMENT_MONTHLY_COST = 2050;
 
 /** Lifestyle creep per month (after building) */
-export const LIFESTYLE_CREEP_PER_MONTH = 60;
+export const LIFESTYLE_CREEP_PER_MONTH = 120;
 
-/** Maximum lifestyle creep */
-export const LIFESTYLE_CREEP_MAX = 1000;
+/** Maximum lifestyle creep — tuned so end ~€50k */
+export const LIFESTYLE_CREEP_MAX = 3000;
 
 /** Business reinvestment base */
-export const REINVESTMENT_BASE = 200;
+export const REINVESTMENT_BASE = 250;
 
 /** Business reinvestment growth per month */
-export const REINVESTMENT_GROWTH_PER_MONTH = 30;
+export const REINVESTMENT_GROWTH_PER_MONTH = 45;
 
 /** Maximum reinvestment growth */
-export const REINVESTMENT_MAX_GROWTH = 500;
+export const REINVESTMENT_MAX_GROWTH = 850;
 
 /** Social obligations cost (after 6 months post-building) */
 export const SOCIAL_OBLIGATIONS_COST = 300;

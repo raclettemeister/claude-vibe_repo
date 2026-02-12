@@ -86,7 +86,11 @@ Only available when the page is loaded with `?test=1` (not in production).
 
   **Strategy:** `'first'` = always first choice, `'random'` = random choice, `'family'` = prefer family-friendly keywords.  
   Returns `{ reached, eventId, monthsPlayed, state }`.  
+  `state.triggeredEventLog` is `[{ id, month }, ...]` — which events actually fired (for balance/reference).  
   Call after `startGame()` and once the first event is visible (e.g. after waiting for `currentEvent` in E2E).
+
+- **Events triggered in a run**  
+  `npx playwright test events-triggered-in-run` runs one or two playthroughs and writes **which event ids fired and in which month** to `tests/e2e/artifacts/triggered-events-last-run.json` and `triggered-events-to-building.json`. Use for rebalancing (many events exist but only a subset trigger per run).
 
 Use **`test=1&automation=1`** in E2E when you want to skip intro and start the game programmatically.
 

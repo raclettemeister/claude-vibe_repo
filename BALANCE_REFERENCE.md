@@ -33,6 +33,8 @@ The game is about **sacrifice vs. lifestyle**.
 ### The Problem to Fix
 Currently the game ends at ~€100,000. This is WRONG.
 
+**Applied (Feb 2026):** Post-building expenses were raised so end state trends to ~€50k: building loan €3,000/mo, car €600/mo, apartment €2,050/mo (when “chez soi”), lifestyle creep and reinvestment caps increased. See “Stat Trade-offs” and balance reports.
+
 After buying the building, expenses should increase dramatically:
 - Building loan payments
 - Higher rent/insurance
@@ -93,6 +95,11 @@ Some events add up to **+20 stress**. This means:
 - Opening Sundays adds stress EVERY month
 - Burnout is **guaranteed** between month 6-10 if Sundays open
 - This is intentional — teaches player it's unsustainable
+
+### Rebalance: stress buffer + event stress (Feb 2026)
+- **Stress buffer after burnout:** Each burnout raises the next crash threshold by 5%. First crash at 80%, second at 85%, third at 90%. So it's harder to chain burnouts; target feel: first burnout ~month 8, second during the race to the building.
+- **Event stress trimmed:** Highest event stress gains were reduced (e.g. 40→28, 35→25, 30→22, 25→20 on the heaviest choices) so the curve matches the new fixed event set.
+- **Which events actually trigger:** Run `npx playwright test events-triggered-in-run` to record event id + month for a full playthrough. Output: `tests/e2e/artifacts/triggered-events-last-run.json`. Use this to balance against the events that really fire, not the full event list.
 
 ---
 
@@ -275,3 +282,19 @@ If events feel random, the deterministic system isn't working.
 ---
 
 *"The story is sacrifice, then reward. Make the sacrifice feel real. Make the reward feel earned."*
+
+---
+
+## Applied balance changes (Feb 2026)
+
+To align the game with the intended balance above, the following were set in code:
+
+| Item | Value | Purpose |
+|------|--------|--------|
+| Building loan (post-purchase) | €3,000/mo | Strong drain so savings drop toward ~€50k by month 42 |
+| Car (6 mo after building) | €600/mo | BALANCE_REFERENCE: payment, insurance, fuel, maintenance |
+| Apartment (“chez soi”) | €2,050/mo | BALANCE_REFERENCE: rent + utilities Brussels |
+| Lifestyle creep (post-building) | min(€3,000, months×€120) | Higher cap so lifestyle eats into savings |
+| Reinvestment (post-building) | €250 + min(€850, months×€45) | Business upkeep so end state ~€50k |
+
+Pre-building economy (rent €1,900, survival salary €1,200, building €80k at M25) and stress/burnout (80/85/90% buffer, trimmed event stress) were already tuned; no change. Re-run balance tests and playthroughs after any further tuning.
