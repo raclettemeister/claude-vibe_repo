@@ -53,7 +53,12 @@
     "easterEggClose": "❤ Thank you!",
     "musicPlayPause": "Play/Pause Music",
     "blogButtonTitleScreen": "I have a blog too!",
-    "reportBug": "Report a bug"
+    "reportBug": "Report a bug",
+    "bugAddNote": "Want to add a note?",
+    "bugPlaceholder": "What happened?",
+    "bugSend": "Send",
+    "bugThanks": "Thanks!",
+    "bugError": "Couldn't send. Try again?"
   },
   "cutscene": {
     "openingTitle": "Once upon a time",

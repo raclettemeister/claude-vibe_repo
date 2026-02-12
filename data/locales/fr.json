@@ -53,7 +53,12 @@
     "easterEggClose": "❤ Merci !",
     "musicPlayPause": "Lecture / Pause",
     "blogButtonTitleScreen": "j'ai un blog aussi !",
-    "reportBug": "Signaler un bug"
+    "reportBug": "Signaler un bug",
+    "bugAddNote": "Ajouter une note ?",
+    "bugPlaceholder": "Que s'est-il passé ?",
+    "bugSend": "Envoyer",
+    "bugThanks": "Merci !",
+    "bugError": "Impossible d'envoyer. Réessayer ?"
   },
   "cutscene": {
     "openingTitle": "Il était une fois",

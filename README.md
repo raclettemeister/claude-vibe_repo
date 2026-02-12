@@ -4,7 +4,7 @@ A narrative business simulation game based on the true story of a cheese shop in
 
 ## Play Now
 **[Play the game](https://julien.care/game)** — hosted on [julien.care](https://julien.care) (website and blog).  
-*Version 3.0*
+*Version 4.4*
 
 ## About
 
@@ -45,6 +45,7 @@ See [TESTING.md](TESTING.md) for why and what is tested.
 
 ## Version History
 
+- **v4.4** — **Bug Report** — Minimal bug report button (fixed bottom-left). Click → instant POST with game state, optional note overlay, 30s cooldown. Replaced old bug links.
 - **cheat code** — **Cheat codes** — Small “cheat codes” link (top-left on title and in-game). Enter a code when prompted; no hints. Codes: **unlock all** (all album photos + trophies), **god mode** (invincible: no burnout/health game over), **bazooka** (Rambo bandana + RPG in both hands in pixel art). Platinum trophy requires 20/20 pictures.
 - **v4.1** — **FR/EN fixes** — Translation pass (credits, achievements, wrong-language strings). Main menu title: Shop Simulator V2.0. Version badge and README updated.
 - **v4** — **Maximum Effort** — 43 months (party month in Jan 2026). Policy: Living (chez soi vs parents); Work-Life Balance requires "chez soi" for (months after building − 1). New achievement: Maximum Effort (complete with High Salary). Salary and living costs from policies; extra end-game expenses. Version badge and README updated.
