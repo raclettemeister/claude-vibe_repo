@@ -4,7 +4,7 @@ A narrative business simulation game based on the true story of a cheese shop in
 
 ## Play Now
 **[Play the game](https://julien.care/game)** — hosted on [julien.care](https://julien.care) (website and blog).  
-*Version 5.0 beta*
+*Version 5.1 family*
 
 ## About
 
@@ -45,6 +45,7 @@ See [TESTING.md](TESTING.md) for why and what is tested.
 
 ## Version History
 
+- **v5.1 family** — **Family** — (Version badge and README.)
 - **v5.0 beta** — **Balance & version** — Pre-building survival salary raised (€1,200 → €1,600) for ~€10K less by building deadline; no event changes. In-game version badge and README set to V5.0 beta.
 - **v4.4** — **Bug Report** — Minimal bug report button (fixed bottom-left). Click → instant POST with game state, optional note overlay, 30s cooldown. Replaced old bug links.
 - **cheat code** — **Cheat codes** — Small “cheat codes” link (top-left on title and in-game). Enter a code when prompted; no hints. Codes: **unlock all** (all album photos + trophies), **god mode** (invincible: no burnout/health game over), **bazooka** (Rambo bandana + RPG in both hands in pixel art). Platinum trophy requires 20/20 pictures.
