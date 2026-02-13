@@ -1,0 +1,185 @@
+{
+  "runAt": "2026-02-12T12:49:12.970Z",
+  "monthsPlayed": 24,
+  "reached": true,
+  "eventCount": 25,
+  "events": [
+    {
+      "id": "sunday_opening",
+      "month": 0
+    },
+    {
+      "id": "stock_reality",
+      "month": 1
+    },
+    {
+      "id": "first_cheese",
+      "month": 2
+    },
+    {
+      "id": "insurance_decision",
+      "month": 3
+    },
+    {
+      "id": "shop_name",
+      "month": 4
+    },
+    {
+      "id": "first_christmas",
+      "month": 5
+    },
+    {
+      "id": "cheap_fridge",
+      "month": 6
+    },
+    {
+      "id": "difficult_customer",
+      "month": 7
+    },
+    {
+      "id": "health_inspection",
+      "month": 8
+    },
+    {
+      "id": "delivery_disaster",
+      "month": 9
+    },
+    {
+      "id": "producer_opportunity",
+      "month": 10
+    },
+    {
+      "id": "wine_dilemma",
+      "month": 11
+    },
+    {
+      "id": "systems_project",
+      "month": 12
+    },
+    {
+      "id": "quiet_month",
+      "month": 13
+    },
+    {
+      "id": "adopt_dog",
+      "month": 14
+    },
+    {
+      "id": "first_raclette_season",
+      "month": 15
+    },
+    {
+      "id": "building_offer",
+      "month": 16
+    },
+    {
+      "id": "christmas_market",
+      "month": 17
+    },
+    {
+      "id": "snow_day",
+      "month": 18
+    },
+    {
+      "id": "the_invitation",
+      "month": 19
+    },
+    {
+      "id": "charcuterie_question",
+      "month": 20
+    },
+    {
+      "id": "poncho_cheese_emergency",
+      "month": 21
+    },
+    {
+      "id": "building_countdown",
+      "month": 22
+    },
+    {
+      "id": "bad_review",
+      "month": 23
+    },
+    {
+      "id": "building_deadline",
+      "month": 24
+    }
+  ],
+  "byId": {
+    "sunday_opening": [
+      0
+    ],
+    "stock_reality": [
+      1
+    ],
+    "first_cheese": [
+      2
+    ],
+    "insurance_decision": [
+      3
+    ],
+    "shop_name": [
+      4
+    ],
+    "first_christmas": [
+      5
+    ],
+    "cheap_fridge": [
+      6
+    ],
+    "difficult_customer": [
+      7
+    ],
+    "health_inspection": [
+      8
+    ],
+    "delivery_disaster": [
+      9
+    ],
+    "producer_opportunity": [
+      10
+    ],
+    "wine_dilemma": [
+      11
+    ],
+    "systems_project": [
+      12
+    ],
+    "quiet_month": [
+      13
+    ],
+    "adopt_dog": [
+      14
+    ],
+    "first_raclette_season": [
+      15
+    ],
+    "building_offer": [
+      16
+    ],
+    "christmas_market": [
+      17
+    ],
+    "snow_day": [
+      18
+    ],
+    "the_invitation": [
+      19
+    ],
+    "charcuterie_question": [
+      20
+    ],
+    "poncho_cheese_emergency": [
+      21
+    ],
+    "building_countdown": [
+      22
+    ],
+    "bad_review": [
+      23
+    ],
+    "building_deadline": [
+      24
+    ]
+  }
+}
