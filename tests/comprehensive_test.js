@@ -635,7 +635,7 @@ function simulateRun(difficulty, strategy) {
 
         // Costs
         let margin = Math.min(45, 30 + cheeseTypes * 0.10 + Math.max(0, (reputation - 50) * 0.08));
-        let costs = 1900 + 400 + 200 + 1200; // rent + utils + insurance + survival salary
+        let costs = 1900 + 400 + 200 + 1600; // rent + utils + insurance + survival salary (v2.5: 1600)
         if (hasLucas) costs += 1400;
         if (hasHenry) costs += 1800;
         if (ownsBuilding) { costs -= 1900; costs += 2500; }

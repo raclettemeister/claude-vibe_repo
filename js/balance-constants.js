@@ -7,7 +7,7 @@
  * When updating game balance, update index.html directly
  * and then sync the values here for documentation.
  * 
- * Last synced: Feb 8, 2026
+ * Last synced: Feb 13, 2026
  * 
  * Centralized balance values referenced in BALANCE_REFERENCE.md
  */
@@ -42,6 +42,9 @@ export const MONTHLY_UTILITIES = 400;
 
 /** Base insurance/accounting */
 export const BASE_INSURANCE_ACCOUNTING = 200;
+
+/** Survival salary (pre-building): minimal draw for rent & food; +400 ≈ −10K by building (v2.5) */
+export const SURVIVAL_SALARY = 1600;
 
 /** Comprehensive insurance (if chosen) */
 export const COMPREHENSIVE_INSURANCE_MONTHLY = 150;

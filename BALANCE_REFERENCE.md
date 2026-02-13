@@ -1,6 +1,6 @@
 # Chez Julien — Balance Reference
 
-> **Last Updated:** February 2, 2026
+> **Last Updated:** February 13, 2026
 > **Source:** Direct conversation with Julien
 > **Purpose:** Actual numbers for game balance — what GAME_DESIGN.md was missing
 
@@ -33,7 +33,7 @@ The game is about **sacrifice vs. lifestyle**.
 ### The Problem to Fix
 Currently the game ends at ~€100,000. This is WRONG.
 
-**Applied (Feb 2026):** Post-building expenses were raised so end state trends to ~€50k: building loan €3,000/mo, car €600/mo, apartment €2,050/mo (when “chez soi”), lifestyle creep and reinvestment caps increased. See “Stat Trade-offs” and balance reports.
+**Applied (Feb 2026):** Post-building expenses were raised so end state trends to ~€50k. **Feb 13:** Pre-building survival salary raised €1,200 → €1,600 (+€400/mo) so ~€10K less by building deadline without touching events.: building loan €3,000/mo, car €600/mo, apartment €2,050/mo (when “chez soi”), lifestyle creep and reinvestment caps increased. See “Stat Trade-offs” and balance reports.
 
 After buying the building, expenses should increase dramatically:
 - Building loan payments

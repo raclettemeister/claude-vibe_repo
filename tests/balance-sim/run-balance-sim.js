@@ -178,7 +178,7 @@ function applyMonthlyFinance(state) {
     if (state.hasHenry) fixedCosts += 1800;
     if (state.ownsBuilding) fixedCosts = fixedCosts - 1900 + 3000;
   } else {
-    fixedCosts += 1200;
+    fixedCosts += 1600; // Survival salary (synced: ~10K less by building)
     if (state.hasLucas) fixedCosts += 1400;
     if (state.hasHenry) fixedCosts += 1800;
     if (state.ownsBuilding) { fixedCosts = fixedCosts - 1900 + 3000; }

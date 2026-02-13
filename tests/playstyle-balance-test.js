@@ -101,7 +101,7 @@ function calculateMonthlyFinancials(state) {
         fixedCosts += 200 + Math.min(500, msb * 30); // Reinvestment
         if (msb >= 6) fixedCosts += 300; // Social obligations
     } else {
-        fixedCosts += 1200; // Survival salary
+        fixedCosts += 1600; // Survival salary (synced: ~10K less by building)
     }
 
     if (state.hasLucas) fixedCosts += 1400;

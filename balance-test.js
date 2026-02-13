@@ -28,7 +28,7 @@ function estimateNetProfit(month, cheeseTypes, reputation, autonomy, openSunday)
   baseSales *= 0.98; // avg random variance
   const margin = 30 + Math.min(10, cheeseTypes * 0.10);
   const cogs = baseSales * (1 - margin / 100);
-  const fixedCosts = 1900 + 400 + 200 + 1200; // rent, utils, insurance, survival salary
+  const fixedCosts = 1900 + 400 + 200 + 1600; // rent, utils, insurance, survival salary (v2.5: 1600)
   let net = baseSales - cogs - fixedCosts;
   if (net > 0) net *= 0.80; // 20% tax
   return Math.round(net);
