@@ -1,0 +1,108 @@
+{
+  "playstyles": {
+    "aggressive": {
+      "achievedBuilding": false,
+      "burnoutCount": 3,
+      "gameOver": true,
+      "gameOverReason": "burnout",
+      "finalBank": 64486,
+      "finalStress": 30,
+      "monthsPlayed": 25,
+      "bankAtMonth25": 61486
+    },
+    "family": {
+      "achievedBuilding": false,
+      "burnoutCount": 0,
+      "gameOver": false,
+      "gameOverReason": null,
+      "finalBank": 70298,
+      "finalStress": 3,
+      "monthsPlayed": 43,
+      "bankAtMonth25": 39103
+    },
+    "reasonable": {
+      "achievedBuilding": false,
+      "burnoutCount": 2,
+      "gameOver": false,
+      "gameOverReason": null,
+      "finalBank": 115536,
+      "finalStress": 0,
+      "monthsPlayed": 43,
+      "bankAtMonth25": 54779
+    },
+    "money_first": {
+      "achievedBuilding": false,
+      "burnoutCount": 2,
+      "gameOver": false,
+      "gameOverReason": null,
+      "finalBank": 137881,
+      "finalStress": 87,
+      "monthsPlayed": 43,
+      "bankAtMonth25": 68572
+    },
+    "health_first": {
+      "achievedBuilding": false,
+      "burnoutCount": 2,
+      "gameOver": false,
+      "gameOverReason": null,
+      "finalBank": 130932,
+      "finalStress": 0,
+      "monthsPlayed": 43,
+      "bankAtMonth25": 63665
+    },
+    "neutral": {
+      "achievedBuilding": false,
+      "burnoutCount": 2,
+      "gameOver": false,
+      "gameOverReason": null,
+      "finalBank": 129180,
+      "finalStress": 0,
+      "monthsPlayed": 43,
+      "bankAtMonth25": 62810
+    }
+  },
+  "summary": [
+    {
+      "playstyle": "aggressive",
+      "building": "NO",
+      "burnouts": 3,
+      "gameOver": "burnout",
+      "finalBank": "€64,486"
+    },
+    {
+      "playstyle": "family",
+      "building": "NO",
+      "burnouts": 0,
+      "gameOver": "-",
+      "finalBank": "€70,298"
+    },
+    {
+      "playstyle": "reasonable",
+      "building": "NO",
+      "burnouts": 2,
+      "gameOver": "-",
+      "finalBank": "€115,536"
+    },
+    {
+      "playstyle": "money_first",
+      "building": "NO",
+      "burnouts": 2,
+      "gameOver": "-",
+      "finalBank": "€137,881"
+    },
+    {
+      "playstyle": "health_first",
+      "building": "NO",
+      "burnouts": 2,
+      "gameOver": "-",
+      "finalBank": "€130,932"
+    },
+    {
+      "playstyle": "neutral",
+      "building": "NO",
+      "burnouts": 2,
+      "gameOver": "-",
+      "finalBank": "€129,180"
+    }
+  ]
+}

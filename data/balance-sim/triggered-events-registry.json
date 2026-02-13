@@ -1,0 +1,165 @@
+{
+  "_comment": "Events from timeline + playstyle/effects for balance sim. Choice order matches data/events.js.",
+  "_playstyles": ["aggressive", "family", "reasonable", "money_first", "health_first", "neutral"],
+  "sunday_opening": {
+    "choices": [
+      { "stress": 10, "energy": -5, "playstyle": "aggressive", "label": "Open Sundays", "flags": { "openSunday": true } },
+      { "stress": -5, "family": 5, "energy": 5, "playstyle": "family", "label": "Close Sundays", "flags": { "openSunday": false } }
+    ]
+  },
+  "stock_reality": {
+    "choices": [
+      { "stress": 12, "energy": -15, "playstyle": "aggressive", "label": "Liquidate total" },
+      { "bank": 1500, "stress": 5, "energy": -5, "playstyle": "money_first", "label": "Shady guy" },
+      { "stress": 14, "bank": -1000, "playstyle": "reasonable", "label": "Discount" }
+    ]
+  },
+  "first_cheese": {
+    "choices": [
+      { "bank": -300, "energy": -10, "cheeseTypes": 1, "playstyle": "reasonable", "label": "One meule" },
+      { "bank": -5000, "stress": 10, "energy": -10, "cheeseTypes": 15, "playstyle": "aggressive", "label": "Big order", "flags": { "monthlyPayment": 800 } },
+      { "stress": 10, "playstyle": "neutral", "label": "Decline" }
+    ]
+  },
+  "insurance_decision": {
+    "choices": [
+      { "bank": -1800, "stress": -5, "playstyle": "health_first", "label": "Comprehensive", "flags": { "hasComprehensiveInsurance": true, "monthlyInsurance": 150 } },
+      { "stress": 5, "playstyle": "money_first", "label": "Basic" }
+    ]
+  },
+  "shop_name": {
+    "choices": [
+      { "stress": -5, "playstyle": "family", "label": "Chez Julien" },
+      { "bank": -200, "playstyle": "neutral", "label": "Alix Corner" },
+      { "playstyle": "neutral", "label": "Keep default" }
+    ]
+  },
+  "first_christmas": {
+    "choices": [
+      { "stress": 5, "bank": 1500, "playstyle": "reasonable", "label": "Moderate" },
+      { "stress": 14, "energy": -15, "bank": 3000, "playstyle": "aggressive", "label": "Go big" },
+      { "stress": -5, "bank": 2000, "playstyle": "family", "label": "Simple" }
+    ]
+  },
+  "cheap_fridge": {
+    "choices": [
+      { "bank": -800, "stress": 5, "cheeseTypes": 9, "playstyle": "reasonable", "label": "Cheap fridge" },
+      { "bank": -2000, "stress": 14, "cheeseTypes": 20, "playstyle": "aggressive", "label": "Pro counter", "flags": { "monthlyPayment": 800 } }
+    ]
+  },
+  "difficult_customer": {
+    "choices": [
+      { "stress": 10, "bank": -25, "playstyle": "aggressive", "label": "Refund" },
+      { "stress": 12, "energy": -5, "reputation": -3, "playstyle": "reasonable", "label": "Argue" },
+      { "stress": 5, "reputation": 2, "playstyle": "family", "label": "De-escalate" }
+    ]
+  },
+  "health_inspection": {
+    "choices": [
+      { "stress": 5, "reputation": 5, "playstyle": "health_first", "label": "Comply" },
+      { "stress": 12, "energy": -10, "reputation": -3, "playstyle": "money_first", "label": "Cut corners" }
+    ]
+  },
+  "delivery_disaster": {
+    "choices": [
+      { "stress": 14, "energy": -15, "bank": -200, "playstyle": "aggressive", "label": "Absorb loss" },
+      { "stress": 12, "energy": -5, "bank": -500, "reputation": -2, "playstyle": "reasonable", "label": "Negotiate" }
+    ]
+  },
+  "producer_opportunity": {
+    "choices": [
+      { "energy": -10, "family": 5, "reputation": 4, "cheeseTypes": 8, "playstyle": "reasonable", "label": "Visit" },
+      { "stress": 5, "playstyle": "family", "label": "Skip" }
+    ]
+  },
+  "wine_dilemma": {
+    "choices": [
+      { "bank": -2000, "stress": 5, "reputation": 5, "playstyle": "reasonable", "label": "Moderate", "flags": { "hasWineSelection": true } },
+      { "bank": -8000, "stress": 14, "energy": -15, "reputation": 6, "playstyle": "aggressive", "label": "Full selection", "flags": { "hasWineSelection": true } },
+      { "stress": -5, "playstyle": "family", "label": "No wine" }
+    ]
+  },
+  "systems_project": {
+    "choices": [
+      { "energy": -20, "stress": 10, "autonomy": 20, "reputation": 5, "playstyle": "aggressive", "label": "Full system" },
+      { "stress": 5, "autonomy": 5, "playstyle": "reasonable", "label": "Basic" }
+    ]
+  },
+  "quiet_month": {
+    "choices": [
+      { "energy": 15, "stress": -10, "playstyle": "health_first", "label": "Rest" },
+      { "energy": -5, "stress": 5, "reputation": 3, "autonomy": 5, "playstyle": "aggressive", "label": "Push" }
+    ]
+  },
+  "adopt_dog": {
+    "choices": [
+      { "bank": -1800, "energy": -25, "stress": 15, "family": 30, "playstyle": "family", "label": "Adopt", "flags": { "hasDog": true } },
+      { "family": -10, "stress": 5, "playstyle": "money_first", "label": "Don't" }
+    ]
+  },
+  "building_offer": {
+    "choices": [
+      { "stress": 14, "energy": -10, "playstyle": "aggressive", "label": "Consider" },
+      { "stress": 14, "playstyle": "reasonable", "label": "Extend deadline" },
+      { "stress": 12, "family": 5, "playstyle": "family", "label": "Let go" }
+    ]
+  },
+  "christmas_market": {
+    "choices": [
+      { "energy": -20, "stress": 15, "bank": 3000, "reputation": 5, "playstyle": "aggressive", "label": "Participate" },
+      { "stress": -5, "playstyle": "family", "label": "Skip" }
+    ]
+  },
+  "snow_day": {
+    "choices": [
+      { "stress": 10, "energy": -10, "reputation": 3, "playstyle": "aggressive", "label": "Open" },
+      { "stress": -5, "playstyle": "family", "label": "Close" }
+    ]
+  },
+  "the_invitation": {
+    "choices": [
+      { "bank": -1500, "stress": 10, "family": 15, "playstyle": "family", "label": "Go" },
+      { "stress": -5, "family": -10, "playstyle": "money_first", "label": "Decline" }
+    ]
+  },
+  "charcuterie_question": {
+    "choices": [
+      { "bank": -1500, "stress": 10, "reputation": 3, "playstyle": "reasonable", "label": "Add charcuterie", "flags": { "hasCharcuterie": true } },
+      { "bank": -3000, "stress": 15, "reputation": 5, "playstyle": "aggressive", "label": "Premium", "flags": { "hasCharcuterie": true } },
+      { "stress": -5, "playstyle": "family", "label": "No" }
+    ]
+  },
+  "poncho_cheese_emergency": {
+    "choices": [
+      { "bank": -2500, "stress": 16, "energy": -20, "family": 15, "playstyle": "family", "label": "Surgery" },
+      { "stress": 14, "energy": -30, "bank": -4000, "family": -10, "playstyle": "money_first", "label": "Cheaper option" }
+    ]
+  },
+  "building_countdown": {
+    "choices": [
+      { "stress": 12, "reputation": -3, "bank": 2000, "playstyle": "aggressive", "label": "Sacrifice rep" },
+      { "stress": 10, "bank": 1000, "playstyle": "reasonable", "label": "Moderate" }
+    ]
+  },
+  "bad_review": {
+    "choices": [
+      { "stress": -5, "reputation": 5, "playstyle": "reasonable", "label": "Respond well" },
+      { "stress": 10, "playstyle": "aggressive", "label": "Ignore" }
+    ]
+  },
+  "building_deadline": {
+    "_note": "State-dependent: if bank >= 80000 use choices 0–1, else 2–3.",
+    "choices": [
+      { "bank": -80000, "stress": -20, "energy": 20, "playstyle": "money_first", "label": "Sign (can afford)" },
+      { "stress": 5, "playstyle": "family", "label": "Let go (can afford)" },
+      { "stress": 20, "bank": 3000, "playstyle": "aggressive", "label": "Extend (cannot afford)" },
+      { "stress": 25, "family": -10, "playstyle": "reasonable", "label": "Let go (cannot afford)" }
+    ]
+  },
+  "building_deadline_extended": {
+    "choices": [
+      { "bank": -85000, "stress": -20, "energy": 20, "playstyle": "money_first", "label": "Sign" },
+      { "stress": 5, "playstyle": "family", "label": "Let go" }
+    ]
+  }
+}
