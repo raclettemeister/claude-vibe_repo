@@ -52,7 +52,7 @@ flags: { openSunday: false }
                 priority: 95,  // Second priority - after Sunday decision
                 choices: [
                     {
-effects: { stress: 15, energy: -15 },
+effects: { stress: 12, energy: -15 },
 flags: { liquidatedStock: true, fleaMarketDone: true },
 conditionalEffects: () => ({ reputation: 5, autonomy: 5 })
                     },
@@ -61,7 +61,7 @@ effects: { bank: 1500, stress: 5, energy: -5 },
 flags: { shadyGuyContacted: true, liquidatedStock: true }
                     },
                     {
-effects: { stress: 20, bank: -1000 },
+effects: { stress: 14, bank: -1000 },
 conditionalEffects: () => ({ reputation: -10, monthlyPenalty: 500 })
                     }
                 ]
@@ -141,7 +141,7 @@ flags: { insuranceDecisionMade: true, hasComprehensiveInsurance: false }
                     if (gameState.hasComprehensiveInsurance) {
                         return [
                             {
-effects: { stress: 15, energy: -20 },
+effects: { stress: 12, energy: -20 },
 flags: { floodHappened: true, floodActive: false },
 conditionalEffects: () => ({ bank: 6500, reputation: 3 }) // Insurance payout (halved v2.3)
                             }
@@ -149,12 +149,12 @@ conditionalEffects: () => ({ bank: 6500, reputation: 3 }) // Insurance payout (h
                     } else {
                         return [
                             {
-effects: { stress: 28, energy: -35, family: -15 },
+effects: { stress: 14, energy: -35, family: -15 },
 flags: { floodHappened: true, floodActive: false },
 conditionalEffects: () => ({ bank: -18000, reputation: -5 })
                             },
                             {
-effects: { stress: 25, energy: -30, family: -25 },
+effects: { stress: 18, energy: -30, family: -25 },
 flags: { floodHappened: true, floodActive: false },
 conditionalEffects: () => ({ bank: -13000, reputation: -3 })
                             }
@@ -231,7 +231,7 @@ flags: { hasWineSelection: true },
 conditionalEffects: () => ({ reputation: 5 })
                     },
                     {
-effects: { bank: -8000, stress: 20, energy: -15 },
+effects: { bank: -8000, stress: 14, energy: -15 },
 flags: { hasWineSelection: true, hasWineEvents: true },
 conditionalEffects: () => ({ reputation: 6, autonomy: -10 })
                     },
@@ -250,7 +250,7 @@ conditionalEffects: () => ({ autonomy: 8, reputation: 3 })
                 unique: true,
                 choices: [
                     {
-effects: { stress: 15, energy: -10 },
+effects: { stress: 12, energy: -10 },
 flags: { hasCorporateClient: true },
 conditionalEffects: () => ({ autonomy: -10, reputation: 5 })
                     },
@@ -278,7 +278,7 @@ effects: { bank: -800, stress: 5 },
 conditionalEffects: () => ({ cheeseTypes: gameState.cheeseTypes + 9, conceptPivotProgress: 20 })
                     },
                     {
-effects: { bank: -2000, stress: 20 },
+effects: { bank: -2000, stress: 14 },
 flags: { monthlyPayment: 800, hasProCounter: true },
 conditionalEffects: () => ({ cheeseTypes: gameState.cheeseTypes + 20, conceptPivotProgress: 35, reputation: 6 })
                     }
@@ -324,7 +324,7 @@ conditionalEffects: () => ({
                         })
                     },
                     {
-effects: { bank: -2000, stress: 20, energy: -15 },
+effects: { bank: -2000, stress: 14, energy: -15 },
 conditionalEffects: () => ({
                             bulkPercentage: Math.max(0, gameState.bulkPercentage - 40),
                             conceptPivotProgress: Math.min(100, gameState.conceptPivotProgress + 30),
@@ -348,7 +348,7 @@ effects: { stress: 5, bank: 1500 },
 flags: { firstChristmasDone: true }
                     },
                     {
-effects: { stress: 20, energy: -15, bank: 3000 },
+effects: { stress: 14, energy: -15, bank: 3000 },
 flags: { firstChristmasDone: true }
                     },
                     {
@@ -558,7 +558,7 @@ effects: { stress: 10 },
                 priority: 70,
                 choices: [
                     {
-effects: { bank: -4500, stress: 22, energy: -25 },
+effects: { bank: -4500, stress: 16, energy: -25 },
 flags: { hadBigBirthdayParty: true },
 conditionalEffects: () => ({ family: 35, reputation: 8 })
                     },
@@ -618,7 +618,7 @@ conditionalEffects: () => ({ reputation: 5 })
                 priority: 60,
                 choices: [
                     {
-effects: { stress: 15, energy: -10 },
+effects: { stress: 12, energy: -10 },
 conditionalEffects: () => ({ autonomy: 8, reputation: 6 })
                     },
                     {
@@ -731,7 +731,7 @@ effects: { stress: 10 },
                 unique: true,
                 choices: [
                     {
-effects: { stress: 20, energy: -25, bank: 5000 },
+effects: { stress: 14, energy: -25, bank: 5000 },
 
                     },
                     {
@@ -751,11 +751,11 @@ effects: { stress: 10, energy: -10, bank: 2000 },
                 priority: 85,
                 choices: [
                     {
-effects: { stress: 15, bank: -1500 },
+effects: { stress: 12, bank: -1500 },
 
                     },
                     {
-effects: { stress: 20, bank: -500 },
+effects: { stress: 14, bank: -500 },
 
                     },
                     {
@@ -775,7 +775,7 @@ effects: { stress: -15, energy: 20, family: 15, bank: -4500 },
                 priority: 80,
                 choices: [
                     {
-effects: { bank: -400, stress: 20, energy: -15 },
+effects: { bank: -400, stress: 14, energy: -15 },
 
                     },
                     {
@@ -798,7 +798,7 @@ effects: { bank: -800, stress: -5 },
                 priority: 85,
                 choices: [
                     {
-effects: { stress: 15, energy: -20 },
+effects: { stress: 12, energy: -20 },
 conditionalEffects: () => ({ reputation: 5, family: -5 })
                     },
                     {
@@ -818,7 +818,7 @@ effects: { stress: -10, family: 10, bank: -1800 },
                 priority: 85,
                 choices: [
                     {
-effects: { stress: 15, energy: -15, bank: 3000 },
+effects: { stress: 12, energy: -15, bank: 3000 },
 flags: { septemberRushExperienced: true }
                     },
                     {
@@ -846,7 +846,7 @@ effects: { stress: 5, bank: -1200 },
 conditionalEffects: () => ({ reputation: 4 })
                     },
                     {
-effects: { stress: 15 },
+effects: { stress: 12 },
 
                         condition: () => gameState.producerRelationships >= 5,
 conditionalEffects: () => ({ autonomy: 5 })
@@ -861,11 +861,11 @@ conditionalEffects: () => ({ autonomy: 5 })
                 unique: true,
                 choices: [
                     {
-effects: { stress: 20, energy: -15, bank: -200 },
+effects: { stress: 14, energy: -15, bank: -200 },
 
                     },
                     {
-effects: { stress: 15, energy: -5 },
+effects: { stress: 12, energy: -5 },
 conditionalEffects: () => ({ reputation: -2, bank: -500 })
                     }
                 ]
@@ -884,7 +884,7 @@ flags: { healthInspectionDone: true },
 conditionalEffects: () => ({ reputation: 5 })
                     },
                     {
-effects: { stress: 15, energy: -10 },
+effects: { stress: 12, energy: -10 },
 flags: { healthInspectionDone: true },
 conditionalEffects: () => ({ reputation: -3 })
                     }
@@ -899,7 +899,7 @@ conditionalEffects: () => ({ reputation: -3 })
                 unique: true,
                 choices: [
                     {
-effects: { stress: 15, energy: -10 },
+effects: { stress: 12, energy: -10 },
 conditionalEffects: () => ({ reputation: 4, cheeseTypes: gameState.cheeseTypes + 10 })
                     },
                     {
@@ -907,7 +907,7 @@ effects: { stress: 10 },
 conditionalEffects: () => ({ autonomy: 5 })
                     },
                     {
-effects: { stress: 20 },
+effects: { stress: 14 },
 conditionalEffects: () => ({ bank: -300 })
                     }
                 ]
@@ -921,11 +921,11 @@ conditionalEffects: () => ({ bank: -300 })
                 unique: true,
                 choices: [
                     {
-effects: { stress: 20, bank: -1200 },
+effects: { stress: 14, bank: -1200 },
 
                     },
                     {
-effects: { stress: 20, energy: -20 },
+effects: { stress: 14, energy: -20 },
 conditionalEffects: () => ({ bank: -600 })
                     }
                 ]
@@ -941,7 +941,7 @@ conditionalEffects: () => ({ bank: -600 })
                 unique: true,
                 choices: [
                     {
-effects: { bank: -2000, stress: 15, energy: -10 },
+effects: { bank: -2000, stress: 12, energy: -10 },
 flags: { producerVisits: (gameState.producerVisits || 0) + 1 },
 conditionalEffects: () => ({ cheeseExpertise: 15, reputation: 4, supplierDiscount: 3, producerRelationships: 10, cheeseTypes: gameState.cheeseTypes + 8 })
                     },
@@ -1026,7 +1026,7 @@ conditionalEffects: () => ({ autonomy: 5 })
                 unique: true,
                 choices: [
                     {
-effects: { stress: 15, energy: -20 },
+effects: { stress: 12, energy: -20 },
 
                     },
                     {
@@ -1114,7 +1114,7 @@ effects: { stress: 10, bank: -25 },
 
                     },
                     {
-effects: { stress: 15, energy: -5 },
+effects: { stress: 12, energy: -5 },
 conditionalEffects: () => ({ reputation: -3 })
                     },
                     {
@@ -1148,7 +1148,7 @@ effects: { stress: 5 },
                 unique: true,
                 choices: [
                     {
-effects: { stress: 20 },
+effects: { stress: 14 },
 conditionalEffects: () => ({ reputation: -5 })
                     },
                     {
@@ -1156,7 +1156,7 @@ effects: { stress: 10, bank: -200 },
 
                     },
                     {
-effects: { stress: 15 },
+effects: { stress: 12 },
 
                     }
                 ]
@@ -1261,7 +1261,7 @@ conditionalEffects: () => ({ autonomy: 10 })
                 priority: 65,
                 choices: [
                     {
-effects: { bank: -1500, stress: 15, energy: -10 },
+effects: { bank: -1500, stress: 12, energy: -10 },
 flags: { hasCookbook: true },
 conditionalEffects: () => ({ reputation: 10, family: 5, bank: 3000 })
                     },
@@ -1346,7 +1346,7 @@ effects: {},
                 priority: 90,
                 choices: [
                     {
-effects: { bank: -40000, stress: 22, energy: -20 },
+effects: { bank: -40000, stress: 16, energy: -20 },
 flags: { hasSecondShop: true },
 conditionalEffects: () => ({ reputation: 15, autonomy: -15, family: -10 })
                     },
@@ -1367,7 +1367,7 @@ conditionalEffects: () => ({ family: 15, autonomy: 10 })
                 priority: 75,
                 choices: [
                     {
-effects: { stress: 15, energy: -10 },
+effects: { stress: 12, energy: -10 },
 flags: { hasDocumentary: true },
 conditionalEffects: () => ({ reputation: 12, family: 10 })
                     },
@@ -1457,7 +1457,7 @@ flags: { burnoutCrashed: true, openSunday: false },
 conditionalEffects: () => ({ salesPenalty: 8000 })
                     },
                     {
-effects: { energy: -20, stress: 20, family: -25 },
+effects: { energy: -20, stress: 14, family: -25 },
 conditionalEffects: () => ({ reputation: -10, healthPenalty: true })
                     }
                 ]
@@ -1500,7 +1500,7 @@ effects: { stress: 10, energy: -10 },
 conditionalEffects: () => ({ employeeSearching: true })
                     },
                     {
-effects: { stress: 15, energy: -10, family: -10 },
+effects: { stress: 12, energy: -10, family: -10 },
 
                     }
                 ]
@@ -1545,7 +1545,7 @@ flags: { hasLucas: true, directHireEventSeen: true },
 conditionalEffects: () => ({ autonomy: 10 })
                     },
                     {
-effects: { stress: 15, energy: -15, family: -10 },
+effects: { stress: 12, energy: -15, family: -10 },
 flags: { directHireEventSeen: true }
                     }
                 ]
@@ -1650,12 +1650,12 @@ effects: { family: 5, energy: 5 },
                 condition: () => gameState.hasDog && !gameState.ponchoSurgery && gameState.cheeseTypes >= 20,
                 choices: [
                     {
-effects: { bank: -2500, stress: 22, energy: -20 },
+effects: { bank: -2500, stress: 16, energy: -20 },
 flags: { ponchoSurgery: true },
 conditionalEffects: () => ({ family: 15 })
                     },
                     {
-effects: { stress: 28, energy: -30 },
+effects: { stress: 14, energy: -30 },
 flags: { ponchoSurgery: true },
 conditionalEffects: () => ({ bank: -4000, family: -10 })
                     }
@@ -1688,16 +1688,16 @@ flags: { ponchoAnniversary: true }
                 unique: true,
                 choices: [
                     {
-effects: { stress: 20, energy: -10 },
+effects: { stress: 14, energy: -10 },
 flags: { buildingOfferReceived: true }
                     },
                     {
-effects: { stress: 20 },
+effects: { stress: 14 },
 flags: { buildingOfferReceived: true },
 conditionalEffects: () => ({ buildingDeadlineExtended: 2 })
                     },
                     {
-effects: { stress: 15, family: 5 },
+effects: { stress: 12, family: 5 },
 conditionalEffects: () => ({ futureRentIncrease: true })
                     }
                 ]
@@ -1713,7 +1713,7 @@ conditionalEffects: () => ({ futureRentIncrease: true })
                 cooldown: 2,
                 choices: [
                     {
-effects: { stress: 15, reputation: -3 },
+effects: { stress: 12, reputation: -3 },
 conditionalEffects: () => ({ savingsBoost: 2000 })
                     },
                     {
@@ -1751,7 +1751,7 @@ conditionalEffects: () => ({ reputation: 5, family: 10 })
                         choices.push({
 
                             hint: `Get one more month - €5,000 penalty due at purchase; your family chips in €3,000 to help`,
-effects: { stress: 20, bank: 3000 },
+effects: { stress: 14, bank: 3000 },
 flags: { buildingDelayPaid: true, buildingPenaltyOwed: true }
                         });
                     }
@@ -1926,7 +1926,7 @@ effects: { stress: 10, family: -15 },
                 condition: () => gameState.month === 12,
                 choices: [
                     {
-effects: { energy: -35, stress: 20 },
+effects: { energy: -35, stress: 14 },
 conditionalEffects: () => ({
                             salesBoost: 15000 + gameState.cheeseTypes * 50 + gameState.reputation * 50,
                             decemberBonus: true
@@ -1993,11 +1993,11 @@ flags: { skippedWedding: true }
                 priority: 150,
                 choices: [
                     {
-effects: { bank: -4000, stress: 20, reputation: -10 },
+effects: { bank: -4000, stress: 14, reputation: -10 },
 conditionalEffects: () => ({ family: 20 })
                     },
                     {
-effects: { stress: 25, energy: -30, family: 5 },
+effects: { stress: 18, energy: -30, family: 5 },
 
                     },
                     {
@@ -2237,7 +2237,7 @@ effects: { stress: 3 },
                 condition: () => gameState.cheeseTypes >= 25,
                 choices: [
                     {
-effects: { bank: -800, stress: 15, energy: -20 },
+effects: { bank: -800, stress: 12, energy: -20 },
 conditionalEffects: () => ({ reputation: 10, cheeseTypes: 8, autonomy: 5 })
                     },
                     {
@@ -2353,7 +2353,7 @@ effects: {},
                 condition: () => gameState.cheeseTypes >= 15,
                 choices: [
                     {
-effects: { stress: 15, energy: -12 },
+effects: { stress: 12, energy: -12 },
 conditionalEffects: () => ({ bank: 1500, reputation: 10, autonomy: -5 })
                     },
                     {

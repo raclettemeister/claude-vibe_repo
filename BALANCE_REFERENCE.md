@@ -97,9 +97,23 @@ Some events add up to **+20 stress**. This means:
 - This is intentional — teaches player it's unsustainable
 
 ### Rebalance: stress buffer + event stress (Feb 2026)
-- **Stress buffer after burnout:** Each burnout raises the next crash threshold by 5%. First crash at 80%, second at 85%, third at 90%. So it's harder to chain burnouts; target feel: first burnout ~month 8, second during the race to the building.
-- **Event stress trimmed:** Highest event stress gains were reduced (e.g. 40→28, 35→25, 30→22, 25→20 on the heaviest choices) so the curve matches the new fixed event set.
+- **Stress buffer after burnout:** Each burnout raises the next crash threshold by 5%. First crash at **82%**, second at 87%, third at 92%. Target: 3 burnouts only when you fail the building; successful run = 0–2 burnouts.
+- **Event stress trimmed:** Highest event stress gains reduced (28→20, 25→18, 22→16, 20→14, 15→12). Baseline monthly stress 3→2.
 - **Which events actually trigger:** Run `npx playwright test events-triggered-in-run` to record event id + month for a full playthrough. Output: `tests/e2e/artifacts/triggered-events-last-run.json`. Use this to balance against the events that really fire, not the full event list.
+
+### Stress balance levers (where to tune)
+
+| Lever | Location | Current | Effect |
+|-------|----------|---------|--------|
+| **Burnout threshold** | `index.html` → `stressCrashThreshold = 82 + burnoutCount * 5` | 82 / 87 / 92% | Higher = burnout triggers later (easier). Lower = burnout sooner (harder). |
+| **Baseline monthly stress** | `index.html` → `baseStressIncrease = 2` | 2 | Stress added every month just from running the shop. Raise to make stress climb faster. |
+| **Sunday stress** | `index.html` → `openSunday` block (+1 / +3 / +5 / +3 by period) | see code | Extra stress per month when opening Sundays. |
+| **Event choice stress** | `data/events.js` → `effects: { stress: N }` | Many 12–20 | Per-choice stress. Reduce high values (e.g. 14→12, 20→16) to make runs less punishing. |
+
+**To find the right balance:**  
+1. Run `npm run test:balance` (or `npx playwright test tests/e2e/balance-stress-runs.spec.js`). It runs 5 playthroughs to the building and writes `tests/e2e/artifacts/balance-stress-runs.json` with burnout count and building success per run.  
+2. Open the JSON: look at `summary.burnoutDistribution` and `summary.avgBurnoutsWhenReached`. Target: most runs that reach the building have 0–2 burnouts; 3 burnouts should be rare.  
+3. Tune the levers above (e.g. lower event stress further or raise threshold to 85%), re-run the test, compare. Repeat until it feels right.
 
 ---
 

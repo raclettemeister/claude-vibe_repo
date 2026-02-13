@@ -62,6 +62,7 @@ npm test                    # all E2E tests
 npm run test:headed         # same, visible browser
 npm run test:full           # playthrough via test API only (reliable full-game flow)
 npm run test:building       # building-deadline choice assertions only
+npm run test:balance        # 5 playthroughs to building → artifacts/balance-stress-runs.json (burnout/building stats)
 ```
 
 Port: server and tests use **3333** by default. If you get “Address already in use”:
