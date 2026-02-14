@@ -2891,6 +2891,12 @@
             ctx.fillRect(x + 9 + ox, y - 4, 2, 1);
         }
         
+        // === BEARD ===
+        ctx.fillStyle = '#3A2A1A';
+        ctx.fillRect(x + 7 + ox, y - 2, 6, 2);
+        ctx.fillStyle = '#4A3A2A';
+        ctx.fillRect(x + 8 + ox, y - 1, 4, 1);
+        
         // === SWEAT DROPS (panicking) ===
         if (isPanicking) {
             ctx.fillStyle = '#87CEEB';
