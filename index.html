@@ -2995,14 +2995,20 @@
             justify-content: space-between;
         }
         #bug-report-overlay .bug-send-link {
-            font-size: 0.85rem;
-            color: var(--primary-light);
+            font-size: 0.9rem;
+            color: #fff;
             cursor: pointer;
-            background: none;
+            background: var(--primary);
             border: none;
-            padding: 0;
+            padding: 0.45rem 1.2rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-family: inherit;
+            min-height: var(--touch-min);
+            transition: background 0.2s;
         }
-        #bug-report-overlay .bug-send-link:hover { text-decoration: underline; }
+        #bug-report-overlay .bug-send-link:hover,
+        #bug-report-overlay .bug-send-link:active { background: var(--primary-light); }
         #bug-report-overlay .bug-close-btn {
             width: 36px;
             height: 36px;
@@ -3867,49 +3873,48 @@
                 }, 1500);
             }
 
-            btn.addEventListener('click', async function() {
+            btn.addEventListener('click', function() {
                 if (btn.classList.contains('bug-disabled')) return;
 
-                const reportData = captureGameState();
-                btn.classList.add('bug-disabled');
+                // Instant visual confirmation — don't wait for API
+                btn.classList.add('bug-sent');
+                btn.querySelector('.bug-emoji').style.display = 'none';
+                btn.querySelector('.bug-check').style.display = 'inline';
 
-                try {
-                    const res = await fetch(BUG_REPORT_API, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Authorization': 'Bearer ' + SUPABASE_ANON_KEY
-                        },
-                        body: JSON.stringify({
-                            game_state: reportData.gameState,
-                            browser_info: JSON.stringify(reportData.browser),
-                            recent_errors: JSON.stringify(reportData.recentErrors),
-                            timestamp: reportData.timestamp
-                        })
-                    });
-                    const result = await res.json();
+                // Show overlay immediately so user can add a note
+                showOverlay();
+                setCooldown();
+
+                // Send report in background
+                var reportData = captureGameState();
+                fetch(BUG_REPORT_API, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + SUPABASE_ANON_KEY
+                    },
+                    body: JSON.stringify({
+                        game_state: reportData.gameState,
+                        browser_info: JSON.stringify(reportData.browser),
+                        recent_errors: JSON.stringify(reportData.recentErrors),
+                        timestamp: reportData.timestamp
+                    })
+                }).then(function(res) { return res.json(); })
+                  .then(function(result) {
                     if (result && result.id) {
                         window._lastBugReportId = result.id;
-                        btn.classList.remove('bug-disabled');
-                        btn.classList.add('bug-sent');
-                        btn.querySelector('.bug-emoji').style.display = 'none';
-                        btn.querySelector('.bug-check').style.display = 'inline';
-                        setTimeout(function() {
-                            btn.classList.remove('bug-sent');
-                            btn.querySelector('.bug-emoji').style.display = '';
-                            btn.querySelector('.bug-check').style.display = 'none';
-                        }, 800);
-                        setCooldown();
-                        showOverlay();
-                    } else {
-                        throw new Error('No id in response');
                     }
-                } catch (err) {
-                    btn.classList.remove('bug-disabled');
+                }).catch(function(err) {
                     errorNear.textContent = (window.currentLocale && window.currentLocale.ui && window.currentLocale.ui.bugError) || "Couldn't send. Try again?";
                     errorNear.style.display = 'block';
                     setTimeout(function() { errorNear.style.display = 'none'; }, 5000);
-                }
+                }).finally(function() {
+                    setTimeout(function() {
+                        btn.classList.remove('bug-sent');
+                        btn.querySelector('.bug-emoji').style.display = '';
+                        btn.querySelector('.bug-check').style.display = 'none';
+                    }, 800);
+                });
             });
 
             sendNote.addEventListener('click', function() {
