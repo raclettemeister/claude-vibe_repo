@@ -1275,6 +1275,7 @@
             transition: all 0.2s;
             font-family: inherit;
             font-size: 0.95rem;
+            touch-action: manipulation; /* Kill 300ms mobile tap delay */
         }
 
         .choice-btn:hover,
@@ -1699,6 +1700,7 @@
             cursor: pointer;
             font-family: inherit;
             transition: background 0.2s;
+            touch-action: manipulation;
         }
 
         .continue-btn:hover,
@@ -1923,22 +1925,42 @@
 
         /* Responsive */
         @media (max-width: 600px) {
-            #title-screen h1 { font-size: 2rem; }
-            #title-screen .subtitle { font-size: 0.95rem; }
-            .title-tab { font-size: 0.75rem; padding: 0.4rem 0.7rem; }
-            .title-tab-content { max-height: 220px; padding: 0.8rem; }
-            .difficulty-btn { padding: 0.5rem 1rem; font-size: 0.85rem; }
+            #title-screen h1 { font-size: 1.6rem; margin-bottom: 0.1rem; }
+            #title-screen .subtitle { font-size: 0.85rem; margin-bottom: 0.3rem; }
+            .title-tab { font-size: 0.72rem; padding: 0.35rem 0.6rem; }
+            /* No max-height on mobile — let content flow naturally */
+            .title-tab-content { max-height: none; padding: 0.6rem 0.8rem; overflow-y: visible; }
+            .difficulty-btn { padding: 0.4rem 0.8rem; font-size: 0.82rem; }
             .start-btn { padding: 0.8rem 2rem; font-size: 1rem; }
             .meters-section { grid-template-columns: 1fr 1fr; }
             .event-card h3 { font-size: 1.1rem; }
+            /* Compact trophies on mobile — single row, no big box */
+            .persistent-achievements { padding: 0.3rem 0.8rem; margin-bottom: 0.4rem; }
+            .persistent-achievements h4 { font-size: 0.8rem; margin-bottom: 0.2rem; }
+            .achievement-bar { height: 10px; }
+            .achievement-count { font-size: 0.85rem; }
+            .platinum-trophy { padding: 0.4rem 0.6rem; margin-top: 0.4rem; font-size: 0.8rem; }
+            .platinum-trophy h3 { font-size: 1rem; }
+            .platinum-trophy.locked { display: none; } /* Hide locked platinum on mobile — saves tons of space */
+            /* Compact DLC joke on mobile */
+            .dlc-joke-box { padding: 0.5rem 0.8rem; margin-top: 0.3rem; }
+            .dlc-joke-box .dlc-joke-desc { font-size: 0.8rem; }
+            /* Lang switcher compact */
+            .lang-switcher { margin-bottom: 0.3rem !important; }
+            /* Tighten vertical spacing throughout */
+            .title-tabs { gap: 0.3rem; margin-bottom: 0.4rem; }
+            .title-tab-content { margin-bottom: 0.4rem; }
+            .difficulty-select { gap: 0.5rem; margin-bottom: 0.5rem; }
+            #title-screen .intro-text { margin-bottom: 0.5rem; font-size: 0.9rem; }
         }
 
         @media (max-height: 700px) {
             #title-screen { padding: 0.5rem 1rem; }
-            #title-screen h1 { font-size: 2.2rem; margin-bottom: 0.2rem; }
-            #title-screen .subtitle { margin-bottom: 0.5rem; }
-            .title-tab-content { max-height: 200px; }
-            .persistent-achievements { margin: 0 auto 0.5rem auto; padding: 0.4rem 0.8rem; }
+            #title-screen h1 { font-size: 1.6rem; margin-bottom: 0.1rem; }
+            #title-screen .subtitle { margin-bottom: 0.3rem; }
+            .title-tab-content { max-height: none; overflow-y: visible; }
+            .persistent-achievements { margin: 0 auto 0.3rem auto; padding: 0.3rem 0.8rem; }
+            .platinum-trophy.locked { display: none; }
         }
 
         /* Pixel Art Scene */
@@ -3058,8 +3080,22 @@
             margin-top: 4px;
         }
     </style>
+    <!-- Hide translatable text until locale loads (prevents English flash on FR) -->
+    <style>
+        body.locale-pending [data-i18n] { visibility: hidden; }
+    </style>
 </head>
 <body>
+    <script>
+        // If non-EN language selected, hide i18n text until locale applies
+        (function() {
+            var lang = null;
+            try { lang = localStorage.getItem('chezjulien_lang'); } catch(e) {}
+            if (lang && lang !== 'en') {
+                document.body.classList.add('locale-pending');
+            }
+        })();
+    </script>
     <!-- Intro Cutscene (Stardew Valley style) -->
     <div id="intro-screen">
         <!-- Click-to-begin overlay: unlocks audio before intro starts -->
@@ -3342,8 +3378,8 @@
             <button class="start-btn" onclick="startGame()" data-i18n="ui.beginJourney">🧀 Begin Your Journey</button>
         </div>
         <a href="#" id="title-blog-link" class="blog-cta-btn" target="_blank" rel="noopener" data-i18n="ui.blogButtonTitleScreen">I have a blog too!</a>
-        <!-- Extra bottom padding so Start button is always reachable on small phones -->
-        <div style="min-height: calc(env(safe-area-inset-bottom, 0px) + 3rem); flex-shrink: 0;" aria-hidden="true"></div>
+        <!-- Extra bottom padding so everything is always reachable on small phones -->
+        <div style="min-height: calc(env(safe-area-inset-bottom, 0px) + 5rem); flex-shrink: 0;" aria-hidden="true"></div>
     </div>
 
     <!-- Game Screen - REDESIGNED COMPACT LAYOUT -->
@@ -3778,7 +3814,7 @@
         // ============================================
         // GAME VERSION - Update this when making changes!
         // ============================================
-        const GAME_VERSION = "V5.5 mobile scroll fix";
+        const GAME_VERSION = "V5.6 talkking";
         window.GAME_VERSION = GAME_VERSION;
 
         // Debug: ?unlockAll=1 in URL unlocks all trophies and album photos (to preview full album / platinum)
@@ -4039,7 +4075,7 @@
         }
 
         function applyLocaleToDOM(locale) {
-            if (!locale) return;
+            if (!locale) { document.body.classList.remove('locale-pending'); return; }
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
                 const val = getNested(locale, key);
@@ -4057,6 +4093,8 @@
             });
             if (locale.langCode) document.documentElement.lang = locale.langCode;
             applyLocaleTitleTabs(locale);
+            // Remove locale-pending flag — translated text is now visible
+            document.body.classList.remove('locale-pending');
         }
         function applyLocaleTitleTabs(locale) {
             if (!locale) return;
@@ -7637,9 +7675,9 @@ ${gameState.gameLog.join('\n')}
 
         function displayEvent(event) {
             console.log('[CJ] displayEvent()', event ? event.id : 'null');
-            // SESSION B: Preserve scroll position during DOM rebuilds
+            // Scroll to top for new events so user sees the full event text + choices
             var _scrollEl = document.getElementById('game-screen');
-            var _scrollY = _scrollEl ? _scrollEl.scrollTop : 0;
+            if (_scrollEl) _scrollEl.scrollTop = 0;
 
             // Log event for balance/testing (which events actually trigger in a run)
             if (event && event.id && event.special !== 'burnout' && Array.isArray(gameState.triggeredEventLog)) {
@@ -7699,11 +7737,6 @@ ${gameState.gameLog.join('\n')}
                 </button>
             `;
             }).join('');
-
-            // SESSION B: Restore scroll position after DOM rebuilds
-            if (_scrollEl && _scrollY) {
-                _scrollEl.scrollTop = _scrollY;
-            }
         }
 
         function makeChoice(choiceIndex) {
