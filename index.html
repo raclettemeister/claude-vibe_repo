@@ -2885,10 +2885,10 @@
         /* Bug walkthrough – callout with arrow */
         #bug-walkthrough {
             position: fixed;
-            bottom: 58px;
-            left: 16px;
+            bottom: calc(max(16px, env(safe-area-inset-bottom, 16px)) + var(--touch-min) + 12px);
+            left: max(16px, env(safe-area-inset-left, 16px));
             z-index: 9999;
-            max-width: 260px;
+            max-width: min(260px, calc(100vw - 32px));
             background: rgba(30,30,30,0.98);
             border-radius: 12px;
             box-shadow: 0 8px 24px rgba(0,0,0,0.4);
@@ -2943,8 +2943,8 @@
         /* Bug overlay – slides up from button */
         #bug-report-overlay {
             position: fixed;
-            bottom: 52px;
-            left: 16px;
+            bottom: calc(max(16px, env(safe-area-inset-bottom, 16px)) + var(--touch-min) + 8px);
+            left: max(16px, env(safe-area-inset-left, 16px));
             z-index: 9999;
             width: min(280px, calc(100vw - 32px));
             background: rgba(30,30,30,0.98);
@@ -3018,8 +3018,8 @@
         #bug-report-overlay .bug-thanks { font-size: 0.9rem; color: var(--success); }
         .bug-error-near {
             position: fixed;
-            bottom: 52px;
-            left: 16px;
+            bottom: calc(max(16px, env(safe-area-inset-bottom, 16px)) + var(--touch-min) + 8px);
+            left: max(16px, env(safe-area-inset-left, 16px));
             z-index: 9997;
             font-size: 0.8rem;
             color: var(--danger);
