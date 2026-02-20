@@ -3124,10 +3124,10 @@
 
         <!-- Tabs -->
         <div class="title-tabs">
-            <button class="title-tab active" onclick="showTitleTab('play')" data-i18n="ui.tabPlay">🎮 Play</button>
-            <button class="title-tab" onclick="showTitleTab('story')" data-i18n="ui.tabStory">📖 Who is Julien?</button>
-            <button class="title-tab" onclick="showTitleTab('glossary')" data-i18n="ui.tabGlossary">🧀 Cheese Glossary</button>
-            <button class="title-tab" onclick="showTitleTab('belgian')" data-i18n="ui.tabBelgian">🇧🇪 Belgian Terms</button>
+            <button class="title-tab active" data-tab="play" data-i18n="ui.tabPlay">🎮 Play</button>
+            <button class="title-tab" data-tab="story" data-i18n="ui.tabStory">📖 Who is Julien?</button>
+            <button class="title-tab" data-tab="glossary" data-i18n="ui.tabGlossary">🧀 Cheese Glossary</button>
+            <button class="title-tab" data-tab="belgian" data-i18n="ui.tabBelgian">🇧🇪 Belgian Terms</button>
         </div>
 
         <!-- Play Tab -->
@@ -3415,27 +3415,27 @@
 
                 <!-- Bottom Tabs for Extra Info -->
                 <div class="game-tabs">
-                    <button class="game-tab active" data-tab="stats" onclick="showGameTab('stats')">
+                    <button class="game-tab active" data-tab="stats">
                         <span class="tab-icon">📊</span>
                         <span data-i18n="game.tabStats">Stats</span>
                     </button>
-                    <button class="game-tab" data-tab="team" onclick="showGameTab('team')">
+                    <button class="game-tab" data-tab="team">
                         <span class="tab-icon">👥</span>
                         <span data-i18n="game.tabTeam">Team</span>
                     </button>
-                    <button class="game-tab" data-tab="history" onclick="showGameTab('history')">
+                    <button class="game-tab" data-tab="history">
                         <span class="tab-icon">📜</span>
                         <span data-i18n="game.tabLog">Log</span>
                     </button>
-                    <button class="game-tab" data-tab="bank" onclick="showGameTab('bank')">
+                    <button class="game-tab" data-tab="bank">
                         <span class="tab-icon">💰</span>
                         <span data-i18n="game.tabBank">Bank</span>
                     </button>
-                    <button class="game-tab" data-tab="chart" onclick="showGameTab('chart')">
+                    <button class="game-tab" data-tab="chart">
                         <span class="tab-icon">📈</span>
                         <span data-i18n="game.tabChart">Chart</span>
                     </button>
-                    <button class="game-tab" data-tab="policies" onclick="showGameTab('policies')">
+                    <button class="game-tab" data-tab="policies">
                         <span class="tab-icon">⚙️</span>
                         <span data-i18n="game.tabPolicies">Policies</span>
                     </button>
@@ -4792,54 +4792,68 @@
             }
         }
 
+        // ============================================
+        // TAB SWITCHING — unified, delegation-based
+        // ============================================
+        // Generic helper: switch tab within a tab-group
+        function _switchTab(tabSelector, contentSelector, tabId) {
+            const btn = document.querySelector(tabSelector + '[data-tab="' + tabId + '"]');
+            const panel = document.getElementById('tab-' + tabId);
+            if (!btn || !panel) {
+                console.warn('[Tabs] Missing button or panel for:', tabId);
+                return false;
+            }
+            document.querySelectorAll(tabSelector).forEach(function(t) { t.classList.remove('active'); });
+            document.querySelectorAll(contentSelector).forEach(function(c) { c.classList.remove('active'); });
+            btn.classList.add('active');
+            panel.classList.add('active');
+            return true;
+        }
+
         // Title screen tab switching
         function showTitleTab(tabId) {
-            document.querySelectorAll('.title-tab').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.title-tab-content').forEach(c => c.classList.remove('active'));
-
-            document.querySelector(`.title-tab[onclick*="${tabId}"]`).classList.add('active');
-            document.getElementById('tab-' + tabId).classList.add('active');
+            _switchTab('.title-tab', '.title-tab-content', tabId);
         }
 
         // Game screen tab switching (Stats, Team, History, Chart, Policies)
         function showGameTab(tabId) {
-            const tabs = document.querySelectorAll('.game-tab');
-            const contents = document.querySelectorAll('.game-tab-content');
-            if (!tabs.length || !contents.length) return;
-
-            const btn = document.querySelector('.game-tab[data-tab="' + tabId + '"]') || document.querySelector('.game-tab[onclick*="' + tabId + '"]');
-            const panel = document.getElementById('tab-' + tabId);
-            if (!btn || !panel) {
-                // Fallback: ensure at least stats is visible to avoid broken state
-                const fallbackId = 'stats';
-                const fallbackBtn = document.querySelector('.game-tab[data-tab="' + fallbackId + '"]') || document.querySelector('.game-tab[onclick*="' + fallbackId + '"]');
-                const fallbackPanel = document.getElementById('tab-' + fallbackId);
-                if (fallbackBtn && fallbackPanel) {
-                    tabId = fallbackId;
-                    document.querySelectorAll('.game-tab').forEach(t => t.classList.remove('active'));
-                    document.querySelectorAll('.game-tab-content').forEach(c => c.classList.remove('active'));
-                    fallbackBtn.classList.add('active');
-                    fallbackPanel.classList.add('active');
-                }
+            var ok = _switchTab('.game-tab', '.game-tab-content', tabId);
+            if (!ok) {
+                // Fallback: ensure at least stats is visible
+                _switchTab('.game-tab', '.game-tab-content', 'stats');
                 return;
             }
-
-            tabs.forEach(t => t.classList.remove('active'));
-            contents.forEach(c => c.classList.remove('active'));
-            btn.classList.add('active');
-            panel.classList.add('active');
-
-            // Update chart if showing chart tab (draw after layout; retry if container not sized yet)
+            // Update chart if showing chart tab
             if (tabId === 'chart') {
-                const drawWhenReady = () => {
-                    drawChart();
+                var drawWhenReady = function() {
+                    if (typeof drawChart === 'function') drawChart();
                     window.dispatchEvent(new Event('resize'));
                 };
                 setTimeout(drawWhenReady, 50);
                 setTimeout(drawWhenReady, 250);
             }
-            if (tabId === 'policies') updatePoliciesTab();
+            if (tabId === 'policies' && typeof updatePoliciesTab === 'function') updatePoliciesTab();
         }
+
+        // Expose to global scope (belt)
+        window.showGameTab = showGameTab;
+        window.showTitleTab = showTitleTab;
+
+        // Event delegation (suspenders) — works even if onclick attrs are missing
+        document.addEventListener('click', function(e) {
+            var gameTab = e.target.closest('.game-tab[data-tab]');
+            if (gameTab) {
+                e.preventDefault();
+                showGameTab(gameTab.getAttribute('data-tab'));
+                return;
+            }
+            var titleTab = e.target.closest('.title-tab[data-tab]');
+            if (titleTab) {
+                e.preventDefault();
+                showTitleTab(titleTab.getAttribute('data-tab'));
+                return;
+            }
+        });
 
         function updatePoliciesTab() {
             const root = document.getElementById('policies-content');
@@ -4880,6 +4894,7 @@
             if (!gameState.policies) gameState.policies = { salary_level: 'reinvest', work_hours: 'standard', quality_focus: 'balanced', living_situation: 'parents' };
             gameState.policies[id] = value;
         }
+        window.setPolicy = setPolicy;
 
         // Toggle expanded stats panel (show/hide bottom tabs)
         function toggleStatsPanel() {
