@@ -7310,6 +7310,11 @@ ${gameState.gameLog.join('\n')}
 
             // Update financial chart
             drawChart();
+
+            // SESSION B: Restore scroll position after all DOM rebuilds
+            if (_scrollEl && _scrollY) {
+                _scrollEl.scrollTop = _scrollY;
+            }
         }
 
         function updateWarnings() {
@@ -7379,11 +7384,6 @@ ${gameState.gameLog.join('\n')}
             warningArea.innerHTML = warnings.map(w =>
                 `<div class="warning-banner ${w.type}">${w.text}</div>`
             ).join('');
-
-            // SESSION B: Restore scroll position after DOM rebuilds
-            if (_scrollEl && _scrollY) {
-                _scrollEl.scrollTop = _scrollY;
-            }
         }
 
         function selectNextEvent() {
