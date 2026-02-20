@@ -252,11 +252,19 @@
             }
         }
 
+        html, body {
+            height: 100dvh;
+            height: 100vh; /* fallback for older browsers */
+            height: 100dvh;
+            overflow: hidden; /* Only inner containers (#title-screen, #game-screen) scroll */
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             font-family: 'Georgia', serif;
             background: var(--cream);
             color: var(--dark);
-            min-height: 100vh;
             overscroll-behavior: none; /* Prevent pull-to-refresh hijacking gameplay */
         }
 
@@ -266,12 +274,15 @@
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            min-height: 100vh;
+            height: 100vh;
+            height: 100dvh;
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             color: white;
             text-align: center;
-            padding: 1rem 1.5rem;
+            padding: 1rem 1.5rem 2rem 1.5rem;
             overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: contain; /* Prevent scroll chaining to body */
             box-sizing: border-box;
             scrollbar-gutter: stable;
         }
@@ -432,7 +443,9 @@
         #game-screen {
             display: none;
             height: 100vh;
+            height: 100dvh;
             overflow: hidden;
+            overscroll-behavior: contain;
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
         }
 
@@ -3329,6 +3342,8 @@
             <button class="start-btn" onclick="startGame()" data-i18n="ui.beginJourney">🧀 Begin Your Journey</button>
         </div>
         <a href="#" id="title-blog-link" class="blog-cta-btn" target="_blank" rel="noopener" data-i18n="ui.blogButtonTitleScreen">I have a blog too!</a>
+        <!-- Extra bottom padding so Start button is always reachable on small phones -->
+        <div style="min-height: calc(env(safe-area-inset-bottom, 0px) + 3rem); flex-shrink: 0;" aria-hidden="true"></div>
     </div>
 
     <!-- Game Screen - REDESIGNED COMPACT LAYOUT -->
@@ -3763,7 +3778,7 @@
         // ============================================
         // GAME VERSION - Update this when making changes!
         // ============================================
-        const GAME_VERSION = "V5.4 more fixes";
+        const GAME_VERSION = "V5.5 mobile scroll fix";
         window.GAME_VERSION = GAME_VERSION;
 
         // Debug: ?unlockAll=1 in URL unlocks all trophies and album photos (to preview full album / platinum)
