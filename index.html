@@ -3091,7 +3091,7 @@
     </style>
 
     <!-- Studio Splash Screen -->
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
         #studio-splash {
             position: fixed;
@@ -3193,8 +3193,41 @@
         })();
     </script>
 
-    <!-- Studio Splash: Julien.care -->
-    <div id="studio-splash">
+    <!-- Language + START: retro arcade style -->
+    <div id="lang-picker-screen" style="position:fixed;inset:0;z-index:100000;background:#000;display:flex;align-items:center;justify-content:center;flex-direction:column;font-family:'Press Start 2P',monospace;">
+        <!-- Retro blinking START -->
+        <div id="retro-start-text" style="color:#fff;font-size:clamp(1.2rem,4vw,1.8rem);letter-spacing:0.3em;margin-bottom:3rem;animation:retroBlink 1.2s step-end infinite;">
+            PRESS START
+        </div>
+        <!-- Language select -->
+        <div style="display:flex;gap:20px;justify-content:center;">
+            <button type="button" onclick="window._startWithLang('en')" aria-label="English"
+                style="font-family:'Press Start 2P',monospace;font-size:clamp(0.7rem,2vw,0.9rem);padding:0.8rem 1.8rem;min-height:48px;background:transparent;border:2px solid #fff;color:#fff;cursor:pointer;letter-spacing:0.15em;transition:all 0.15s;touch-action:manipulation;"
+                onmouseenter="this.style.background='#fff';this.style.color='#000'"
+                onmouseleave="this.style.background='transparent';this.style.color='#fff'">
+                ENGLISH
+            </button>
+            <button type="button" onclick="window._startWithLang('fr')" aria-label="Français"
+                style="font-family:'Press Start 2P',monospace;font-size:clamp(0.7rem,2vw,0.9rem);padding:0.8rem 1.8rem;min-height:48px;background:transparent;border:2px solid #fff;color:#fff;cursor:pointer;letter-spacing:0.15em;transition:all 0.15s;touch-action:manipulation;"
+                onmouseenter="this.style.background='#fff';this.style.color='#000'"
+                onmouseleave="this.style.background='transparent';this.style.color='#fff'">
+                FRANÇAIS
+            </button>
+        </div>
+        <!-- Retro footer -->
+        <div style="position:absolute;bottom:10%;color:rgba(255,255,255,0.15);font-size:8px;letter-spacing:0.2em;">
+            © 2025 JULIEN.CARE
+        </div>
+    </div>
+    <style>
+        @keyframes retroBlink {
+            0%, 70% { opacity: 1; }
+            71%, 100% { opacity: 0; }
+        }
+    </style>
+
+    <!-- Studio Splash: Julien.care (hidden until language chosen) -->
+    <div id="studio-splash" style="display:none;">
         <div class="splash-inner">
             <div class="splash-glow"></div>
             <div class="splash-name">Julien<span class="splash-dot">.</span><span class="splash-care">care</span></div>
@@ -3204,46 +3237,159 @@
     </div>
 
     <script>
-        // Studio splash → intro transition
+        // Full intro flow: Language picker → Splash (with chime + ocean) → Cutscene
+        // ALWAYS shows lang picker (even returning users) — guarantees user gesture for audio
         (function() {
-            var SPLASH_HOLD = 5000;   // ms to hold splash before fade
-            var SPLASH_FADE = 1200;   // ms for fade-out
+            var SPLASH_HOLD = 5500;
+            var SPLASH_FADE = 1500;
+            var langPicker = document.getElementById('lang-picker-screen');
             var splash = document.getElementById('studio-splash');
-            var intro = document.getElementById('intro-screen');
-            // Allow click/tap to skip splash after 2s
-            var canSkip = false;
-            setTimeout(function() { canSkip = true; }, 2000);
+
+            // Synthesize warm studio chime
+            function playSplashChime() {
+                try {
+                    var ctx = new (window.AudioContext || window.webkitAudioContext)();
+                    var master = ctx.createGain();
+                    master.gain.setValueAtTime(0.22, ctx.currentTime);
+                    master.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 3.5);
+                    master.connect(ctx.destination);
+                    var notes = [
+                        { freq: 329.63, vol: 0.4, dur: 3, delay: 0 },
+                        { freq: 493.88, vol: 0.1, dur: 2.8, delay: 0.02 },
+                        { freq: 659.25, vol: 0.12, dur: 2.5, delay: 0.05 },
+                        { freq: 1318.5, vol: 0.03, dur: 1.5, delay: 0.08 }
+                    ];
+                    notes.forEach(function(n) {
+                        var o = ctx.createOscillator();
+                        var g = ctx.createGain();
+                        o.type = 'sine';
+                        o.frequency.value = n.freq;
+                        g.gain.setValueAtTime(n.vol, ctx.currentTime);
+                        g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + n.dur);
+                        o.connect(g);
+                        g.connect(master);
+                        o.start(ctx.currentTime + n.delay);
+                        o.stop(ctx.currentTime + n.dur);
+                    });
+                } catch(e) {}
+            }
+
+            // Promise that resolves when the chosen locale is fully loaded
+            var localeReady = null;
+
             function dismissSplash() {
-                if (splash.classList.contains('fade-out')) return;
+                console.log('[FLOW] dismissSplash called');
+                if (splash.classList.contains('fade-out')) { console.log('[FLOW] dismissSplash: already fading, skip'); return; }
                 splash.classList.add('fade-out');
+
+                // Ensure locale is loaded BEFORE unlocking cutscene
+                var unlockCutscene = function() {
+                    console.log('[FLOW] unlockCutscene: showing intro-screen, setting _splashIntroUnlock=true');
+                    console.log('[FLOW] window.currentLocale lang:', window.currentLocale && window.currentLocale.langCode);
+                    var intro = document.getElementById('intro-screen');
+                    if (intro) {
+                        intro.style.display = 'flex';
+                        console.log('[FLOW] intro-screen display set to flex');
+                    } else {
+                        console.error('[FLOW] ERROR: intro-screen element not found!');
+                    }
+                    window._splashIntroUnlock = true;
+                };
+
+                if (localeReady) {
+                    console.log('[FLOW] dismissSplash: waiting for localeReady promise...');
+                    localeReady.then(function(locale) {
+                        console.log('[FLOW] localeReady resolved, locale:', locale ? locale.langCode || 'loaded' : 'NULL');
+                        unlockCutscene();
+                    }).catch(function(err) {
+                        console.error('[FLOW] localeReady REJECTED:', err);
+                        unlockCutscene();
+                    });
+                } else {
+                    console.log('[FLOW] dismissSplash: no localeReady, unlocking immediately');
+                    unlockCutscene();
+                }
+
                 setTimeout(function() {
                     splash.style.display = 'none';
-                    if (intro) intro.style.display = 'flex';
+                    console.log('[FLOW] splash hidden');
                 }, SPLASH_FADE);
             }
-            // Auto-dismiss after hold time
-            setTimeout(dismissSplash, SPLASH_HOLD);
-            // Click/tap to skip (after 2s minimum)
-            splash.addEventListener('click', function() {
-                if (canSkip) dismissSplash();
-            });
+
+            // Called when user clicks EN or FR
+            window._startWithLang = function(lang) {
+                console.log('[FLOW] _startWithLang called with:', lang);
+                var LANG_KEY = 'chezjulien_lang';
+                try { localStorage.setItem(LANG_KEY, lang); } catch(e) {}
+
+                // ALWAYS fetch the locale — ensures correct language is loaded
+                console.log('[FLOW] fetching locale: data/locales/' + lang + '.json');
+                localeReady = fetch('data/locales/' + lang + '.json')
+                    .then(function(r) {
+                        console.log('[FLOW] locale fetch response:', r.status, r.ok);
+                        return r.ok ? r.json() : null;
+                    })
+                    .then(function(locale) {
+                        if (locale) {
+                            console.log('[FLOW] locale loaded OK, langCode:', locale.langCode, 'keys:', Object.keys(locale).length);
+                            window.currentLocale = locale;
+                            if (typeof applyLocaleToDOM === 'function') {
+                                applyLocaleToDOM(locale);
+                                console.log('[FLOW] applyLocaleToDOM called');
+                            } else {
+                                console.warn('[FLOW] applyLocaleToDOM NOT a function yet');
+                            }
+                            document.body.classList.remove('locale-pending');
+                        } else {
+                            console.error('[FLOW] locale fetch returned null/empty');
+                        }
+                        return locale;
+                    })
+                    .catch(function(err) {
+                        console.error('[FLOW] Locale fetch FAILED:', err);
+                        document.body.classList.remove('locale-pending');
+                        return null;
+                    });
+
+                // 1. Hide lang picker
+                langPicker.style.transition = 'opacity 0.4s';
+                langPicker.style.opacity = '0';
+                setTimeout(function() { langPicker.style.display = 'none'; console.log('[FLOW] lang picker hidden'); }, 400);
+
+                // 2. Show splash + play chime
+                splash.style.display = 'flex';
+                console.log('[FLOW] splash shown');
+                playSplashChime();
+
+                // 3. Start ocean waves (CutsceneAudio defined later in script, so poll for it)
+                var oceanRetry = setInterval(function() {
+                    if (typeof CutsceneAudio !== 'undefined' && CutsceneAudio.init) {
+                        clearInterval(oceanRetry);
+                        CutsceneAudio.init();
+                        CutsceneAudio.currentScene = -1;
+                        CutsceneAudio.setScene(1);
+                        console.log('[FLOW] CutsceneAudio started (ocean waves)');
+                    }
+                }, 100);
+                setTimeout(function() { clearInterval(oceanRetry); }, 5000);
+
+                // 4. Auto-dismiss splash (locale must be ready before cutscene unlocks)
+                setTimeout(dismissSplash, SPLASH_HOLD);
+                console.log('[FLOW] splash auto-dismiss scheduled in', SPLASH_HOLD, 'ms');
+
+                // 5. Allow tap-to-skip after 2.5s
+                var canSkip = false;
+                setTimeout(function() { canSkip = true; }, 2500);
+                splash.addEventListener('click', function() {
+                    if (canSkip) { console.log('[FLOW] splash tap-to-skip triggered'); dismissSplash(); }
+                });
+            };
         })();
     </script>
 
     <!-- Intro Cutscene (Stardew Valley style) -->
     <div id="intro-screen" style="display:none;">
-        <!-- Click-to-begin overlay: unlocks audio before intro starts -->
-        <div id="intro-click-overlay" style="position:absolute;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:#000;cursor:pointer;">
-            <div style="text-align:center;color:#fff;font-family:'Press Start 2P',monospace;">
-                <div style="font-size:18px;margin-bottom:20px;letter-spacing:2px;" data-i18n="cutscene.openingTitle">Once upon a time</div>
-                <!-- Language picker before cutscene -->
-                <div id="intro-lang-picker" style="display:flex;gap:12px;justify-content:center;margin-bottom:24px;">
-                    <button type="button" class="lang-btn" onclick="event.stopPropagation();setLanguageAndBegin('en')" aria-label="English" style="font-size:1rem;padding:0.5rem 1.2rem;min-height:44px;font-family:'Press Start 2P',monospace;">EN</button>
-                    <button type="button" class="lang-btn" onclick="event.stopPropagation();setLanguageAndBegin('fr')" aria-label="Français" style="font-size:1rem;padding:0.5rem 1.2rem;min-height:44px;font-family:'Press Start 2P',monospace;">FR</button>
-                </div>
-                <div style="font-size:10px;opacity:0.7;animation:pulse 2s infinite;" data-i18n="cutscene.clickToBegin">Choose your language to begin</div>
-            </div>
-        </div>
+        <!-- Old click-overlay removed — splash flow handles audio unlock and language selection -->
         <span class="version-badge version-badge-intro" id="version-badge-intro" style="position:fixed;top:10px;right:10px;font-size:10px;color:rgba(255,255,255,0.7);z-index:10000;pointer-events:none;"></span>
         <canvas id="intro-canvas" width="320" height="180"></canvas>
         <div class="intro-location" id="intro-location"></div>
@@ -4189,18 +4335,13 @@
             location.reload();
         }
 
-        // Called from the intro overlay – sets language and starts cutscene
+        // Called from title-screen language switcher (in-game lang change)
         function setLanguageAndBegin(lang) {
             const current = localStorage.getItem(LANG_STORAGE_KEY) || DEFAULT_LANG;
             localStorage.setItem(LANG_STORAGE_KEY, lang);
             if (lang !== current) {
-                // Language changed → reload so locale applies everywhere
                 location.reload();
-                return;
             }
-            // Same language → just start the cutscene (simulate overlay click)
-            const overlay = document.getElementById('intro-click-overlay');
-            if (overlay) overlay.click();
         }
         window.setLanguageAndBegin = setLanguageAndBegin;
 
@@ -6088,6 +6229,7 @@
                 const beats = getIntroBeats();
                 const beat = beats[beatIdx];
                 const prevBeat = beatIdx > 0 ? beats[beatIdx - 1] : null;
+                console.log('[FLOW] setupBeat(' + beatIdx + ') scene:', beat && beat.scene, 'text:', beat && beat.text && beat.text.substring(0, 40), 'locale:', window.currentLocale && window.currentLocale.langCode);
 
                 // Clear overlays
                 setNarrative('', '');
@@ -6299,15 +6441,17 @@
                 introAnimationId = requestAnimationFrame(drawFrame);
             }
 
-            // Start first beat
+            // Start first beat (will re-sync when locale is ready via _resyncBeat0)
             setupBeat(0);
+            // Expose resync so the unlock handler can re-apply beat 0 with correct locale
+            window._resyncBeat0 = function() {
+                setupBeat(0);
+            };
             introAnimationId = requestAnimationFrame(drawFrame);
         }
 
         function skipIntro() {
             if (introComplete) return;
-            const overlay = document.getElementById('intro-click-overlay');
-            if (overlay) overlay.remove();
             introUnlocked = true;
             CutsceneAudio.destroy(); // Stop audio immediately when skipping
             if (introAnimationId) cancelAnimationFrame(introAnimationId);
@@ -6316,24 +6460,30 @@
         window.skipIntro = skipIntro;
 
         function endIntro() {
+            console.log('[FLOW] endIntro called, introComplete was:', introComplete);
             if (introComplete) return;
             introComplete = true;
-            // Don't destroy cutscene audio here — let epic music continue into title screen
 
             const introScreen = document.getElementById('intro-screen');
             introScreen.classList.add('fade-out');
+            console.log('[FLOW] intro-screen fading out...');
 
             setTimeout(() => {
                 introScreen.style.display = 'none';
-                if (photoImages.shop_front && !photoImages.shop_front.startsWith('PLACEHOLDER')) {
+                console.log('[FLOW] intro-screen hidden');
+                var hasPhoto = photoImages.shop_front && !photoImages.shop_front.startsWith('PLACEHOLDER');
+                console.log('[FLOW] shop_front photo?', hasPhoto ? 'YES → polaroid' : 'NO → title direct');
+                if (hasPhoto) {
                     showIntroPolaroid();
                 } else {
+                    console.log('[FLOW] adding .visible to title-screen');
                     document.getElementById('title-screen').classList.add('visible');
                 }
             }, 1000);
         }
 
         function showIntroPolaroid() {
+            console.log('[FLOW] showIntroPolaroid called');
             document.getElementById('polaroid-image').src = photoImages.shop_front;
             document.getElementById('polaroid-caption').textContent = getPhotoDescription('shop_front', "Chez Julien... chez moi, chez vous, chez mes potes!") || "Chez Julien... chez moi, chez vous, chez mes potes!";
             document.getElementById('polaroid-date').textContent = getPhotoDate('shop_front', "July 2022") || "July 2022";
@@ -6347,9 +6497,11 @@
                 overlay.classList.add('active');
 
                 const closeHandler = () => {
+                    console.log('[FLOW] polaroid closing → title screen in 400ms');
                     overlay.classList.remove('active');
                     overlay.removeEventListener('click', closeHandler);
                     setTimeout(() => {
+                        console.log('[FLOW] TITLE SCREEN VISIBLE');
                         document.getElementById('title-screen').classList.add('visible');
                     }, 400);
                 };
@@ -6377,17 +6529,20 @@
                 goToTitleForAutomation();
                 return;
             }
-            // Ensure intro screen is visible (in case CSS or order hid it)
+            // Don't force intro-screen visible here — splash flow controls when it appears
+            console.log('[FLOW] DOMContentLoaded fired');
             const introScreen = document.getElementById('intro-screen');
             if (introScreen) {
-                introScreen.style.display = 'flex';
                 introScreen.style.opacity = '1';
                 introScreen.classList.remove('fade-out');
+                console.log('[FLOW] intro-screen prepped (opacity=1, fade-out removed), display=', introScreen.style.display);
             }
             try {
+                console.log('[FLOW] calling runIntro()...');
                 runIntro();
+                console.log('[FLOW] runIntro() completed OK');
             } catch (err) {
-                console.error('[Intro] runIntro failed:', err);
+                console.error('[FLOW] runIntro FAILED:', err);
             }
         });
         if (document.readyState !== 'loading' && window.location.search.includes('automation=1')) {
@@ -6398,32 +6553,23 @@
             setTimeout(goToTitleForAutomation, 0);
         }
 
-        // Click-to-begin overlay: unlocks audio + starts the actual cutscene
-        document.addEventListener('DOMContentLoaded', () => {
-            const overlay = document.getElementById('intro-click-overlay');
-            if (!overlay) return;
-            function unlockAndBegin(e) {
-                if (introUnlocked) return;
-                introUnlocked = true;
-                // Init audio on this user gesture (browser requirement)
-                CutsceneAudio.init();
-                // Start ocean waves immediately
-                CutsceneAudio.currentScene = -1;
-                CutsceneAudio.setScene(1);
-                // Remove overlay with fade
-                overlay.style.transition = 'opacity 0.5s';
-                overlay.style.opacity = '0';
-                setTimeout(() => overlay.remove(), 600);
-            }
-            overlay.addEventListener('click', unlockAndBegin);
-            // Also allow any key to start
-            document.addEventListener('keydown', function startKey(e) {
-                if (!introUnlocked) {
-                    unlockAndBegin(e);
-                    document.removeEventListener('keydown', startKey);
+        // Cutscene unlock: triggered by splash dismissal
+        (function() {
+            console.log('[FLOW] cutscene unlock polling started');
+            var checkInterval = setInterval(function() {
+                if (window._splashIntroUnlock && !introUnlocked) {
+                    introUnlocked = true;
+                    clearInterval(checkInterval);
+                    console.log('[FLOW] introUnlocked = true! Locale:', window.currentLocale && window.currentLocale.langCode);
+                    if (typeof window._resyncBeat0 === 'function') {
+                        console.log('[FLOW] calling _resyncBeat0 to re-setup beat 0 with correct locale');
+                        window._resyncBeat0();
+                    } else {
+                        console.warn('[FLOW] _resyncBeat0 not available!');
+                    }
                 }
-            });
-        });
+            }, 100);
+        })();
 
         // Click/key = advance beat; ESC = skip entire cutscene
         document.addEventListener('keydown', (e) => {
@@ -6433,8 +6579,7 @@
         });
         document.getElementById('intro-screen')?.addEventListener('click', (e) => {
             if (introComplete || !introUnlocked) return;
-            // Don't advance if clicking the overlay or skip button
-            if (e.target.closest('#intro-click-overlay')) return;
+            // Don't advance if clicking the skip button
             if (e.target.closest('.intro-skip')) return;
             if (typeof window.advanceBeat === 'function') window.advanceBeat();
         });
