@@ -109,6 +109,7 @@
             max-width: 350px;
             height: 280px;
             max-height: 60vh;
+            max-height: 60dvh;
             overflow: hidden;
             background: #111;
             position: relative;
@@ -249,6 +250,7 @@
             }
             .polaroid-image-container {
                 max-height: 50vh;
+                max-height: 50dvh;
             }
         }
 
@@ -505,11 +507,14 @@
             background: rgba(255,255,255,0.15);
             border: 1px solid rgba(255,255,255,0.3);
             color: white;
-            padding: 0.25rem 0.5rem;
+            padding: 0.4rem 0.6rem;
             border-radius: 4px;
             cursor: pointer;
             font-size: 0.75rem;
             transition: all 0.2s;
+            min-height: var(--touch-min);
+            display: inline-flex;
+            align-items: center;
         }
 
         .restart-btn:hover,
@@ -969,7 +974,7 @@
                 left: 50%;
                 transform: translateX(-50%);
                 max-width: 90vw;
-                z-index: 1000;
+                z-index: 1100;
                 margin-top: 0;
             }
             .stat-mini .stat-tooltip::after {
@@ -1091,6 +1096,8 @@
                 max-height: none;
                 padding: 0.6rem;
             }
+
+            .volume-slider { display: none; }
         }
 
         /* Failsafe: short viewports (e.g. window to the side, half screen) – prioritize event + choices */
@@ -1185,6 +1192,7 @@
             .polaroid-image-container {
                 width: min(350px, 80vw);
                 height: min(280px, 60vh);
+                height: min(280px, 60dvh);
             }
 
             .polaroid-caption {
@@ -2154,6 +2162,7 @@
             transform: translate(-50%, -50%) scale(0.85);
             width: min(220px, 36vw);
             height: min(440px, 70vh);
+            height: min(440px, 70dvh);
             background: #1c1c1e;
             border-radius: 30px;
             border: 3px solid #3a3a3c;
@@ -2175,6 +2184,7 @@
             .intro-phone {
                 width: min(280px, 80vw);
                 height: min(520px, 82vh);
+                height: min(520px, 82dvh);
                 border-radius: 24px;
             }
             .wa-bubble {
@@ -2322,15 +2332,20 @@
             position: absolute;
             bottom: 0.8rem;
             right: 1.2rem;
-            color: rgba(255,255,255,0.25);
-            font-size: 0.65rem;
+            color: rgba(255,255,255,0.45);
+            font-size: 0.75rem;
             cursor: pointer;
             transition: color 0.3s;
             z-index: 20;
             letter-spacing: 1px;
             font-family: sans-serif;
+            min-height: var(--touch-min);
+            padding: 0.6rem 1rem;
+            display: flex;
+            align-items: center;
         }
-        .intro-skip:hover { color: rgba(255,255,255,0.5); }
+        .intro-skip:hover,
+        .intro-skip:active { color: rgba(255,255,255,0.7); }
 
         /* ═══ OUTRO CUTSCENE (CHE-20) ═══ */
         #outro-screen {
@@ -2381,10 +2396,14 @@
             position: absolute;
             bottom: 1rem;
             right: 1.5rem;
-            color: rgba(255,255,255,0.4);
-            font-size: 0.7rem;
+            color: rgba(255,255,255,0.45);
+            font-size: 0.75rem;
             pointer-events: none;
             z-index: 11;
+            min-height: var(--touch-min);
+            padding: 0.6rem 1rem;
+            display: flex;
+            align-items: center;
         }
 
         @keyframes fadeIn {
@@ -2970,8 +2989,8 @@
             position: absolute;
             top: 8px;
             right: 8px;
-            width: 36px;
-            height: 36px;
+            width: 44px;
+            height: 44px;
             padding: 0;
             border: none;
             background: rgba(255,255,255,0.1);
@@ -3052,8 +3071,8 @@
         #bug-report-overlay .bug-send-link:hover,
         #bug-report-overlay .bug-send-link:active { background: var(--primary-light); }
         #bug-report-overlay .bug-close-btn {
-            width: 36px;
-            height: 36px;
+            width: 44px;
+            height: 44px;
             padding: 0;
             border: none;
             background: rgba(255,255,255,0.1);
@@ -3425,7 +3444,7 @@
         <div class="intro-text-overlay">
             <p class="intro-narrative" id="intro-narrative"></p>
         </div>
-        <div class="intro-skip" onclick="skipIntro()">Press ESC to skip</div>
+        <div class="intro-skip" onclick="skipIntro()">Tap to skip</div>
     </div>
 
     <!-- Outro Cutscene (CHE-20) - plays when game ends -->
@@ -3434,7 +3453,7 @@
         <div class="outro-text-overlay">
             <p class="outro-narrative" id="outro-narrative"></p>
         </div>
-        <div class="outro-skip" id="outro-skip-hint" data-i18n="outro.skipHint">Press any key to skip</div>
+        <div class="outro-skip" id="outro-skip-hint" data-i18n="outro.skipHint">Tap to skip</div>
     </div>
 
     <!-- Title Screen -->
