@@ -7083,6 +7083,10 @@ ${gameState.gameLog.join('\n')}
         }
 
         function updateUI() {
+            // SESSION B: Preserve scroll position during DOM rebuilds (prevents jump-to-top on mobile)
+            var _scrollEl = document.getElementById('game-screen');
+            var _scrollY = _scrollEl ? _scrollEl.scrollTop : 0;
+
             // Month display
             const monthNames = getMonthNamesFull();
             document.getElementById('current-month').textContent = `${monthNames[gameState.month - 1]} ${gameState.year}`;
@@ -7361,6 +7365,11 @@ ${gameState.gameLog.join('\n')}
             warningArea.innerHTML = warnings.map(w =>
                 `<div class="warning-banner ${w.type}">${w.text}</div>`
             ).join('');
+
+            // SESSION B: Restore scroll position after DOM rebuilds
+            if (_scrollEl && _scrollY) {
+                _scrollEl.scrollTop = _scrollY;
+            }
         }
 
         function selectNextEvent() {
@@ -7599,6 +7608,10 @@ ${gameState.gameLog.join('\n')}
 
         function displayEvent(event) {
             console.log('[CJ] displayEvent()', event ? event.id : 'null');
+            // SESSION B: Preserve scroll position during DOM rebuilds
+            var _scrollEl = document.getElementById('game-screen');
+            var _scrollY = _scrollEl ? _scrollEl.scrollTop : 0;
+
             // Log event for balance/testing (which events actually trigger in a run)
             if (event && event.id && event.special !== 'burnout' && Array.isArray(gameState.triggeredEventLog)) {
                 gameState.triggeredEventLog.push({ id: event.id, month: gameState.monthsPlayed || 0 });
@@ -7657,6 +7670,11 @@ ${gameState.gameLog.join('\n')}
                 </button>
             `;
             }).join('');
+
+            // SESSION B: Restore scroll position after DOM rebuilds
+            if (_scrollEl && _scrollY) {
+                _scrollEl.scrollTop = _scrollY;
+            }
         }
 
         function makeChoice(choiceIndex) {
