@@ -29,6 +29,33 @@
         }
 
         /* =====================================================
+           SESSION B: GLOBAL FOCUS-VISIBLE FOR KEYBOARD A11Y
+           ===================================================== */
+        button:focus-visible,
+        .choice-btn:focus-visible,
+        .continue-btn:focus-visible,
+        .play-again-btn:focus-visible,
+        .start-btn:focus-visible,
+        .album-menu-btn:focus-visible,
+        .difficulty-btn:focus-visible,
+        .lang-btn:focus-visible,
+        .title-tab:focus-visible,
+        .game-tab:focus-visible,
+        .restart-btn:focus-visible,
+        .blog-cta-btn:focus-visible,
+        .dlc-preorder-btn:focus-visible {
+            outline: 2px solid var(--cheese);
+            outline-offset: 2px;
+        }
+
+        /* SESSION B: Prevent iOS zoom on input focus (font-size ≥ 16px) */
+        @media (max-width: 600px) {
+            input, textarea, select {
+                font-size: max(1rem, 16px);
+            }
+        }
+
+        /* =====================================================
            POLAROID PHOTO ANIMATION SYSTEM
            ===================================================== */
         .polaroid-overlay {
@@ -72,7 +99,8 @@
             transform: translateY(0) rotate(2deg);
         }
 
-        .polaroid-frame:hover {
+        .polaroid-frame:hover,
+        .polaroid-frame:active {
             transform: translateY(0) rotate(0deg) scale(1.02);
         }
 
@@ -287,7 +315,7 @@
             transition: all 0.3s;
         }
 
-        .difficulty-btn:hover, .difficulty-btn.selected {
+        .difficulty-btn:hover, .difficulty-btn:active, .difficulty-btn.selected {
             background: white;
             color: var(--primary);
         }
@@ -308,8 +336,10 @@
             cursor: pointer;
             border-radius: 6px;
             transition: all 0.2s;
+            min-height: var(--touch-min);
         }
-        .lang-btn:hover {
+        .lang-btn:hover,
+        .lang-btn:active {
             background: rgba(255,255,255,0.2);
         }
 
@@ -346,7 +376,8 @@
             font-family: inherit;
             font-weight: 600;
         }
-        .dlc-preorder-btn:hover { filter: brightness(1.1); }
+        .dlc-preorder-btn:hover,
+        .dlc-preorder-btn:active { filter: brightness(1.1); }
 
         .start-btn {
             padding: 1rem 2.5rem;
@@ -386,7 +417,8 @@
             margin-top: 0.5rem;
         }
 
-        .album-menu-btn:hover {
+        .album-menu-btn:hover,
+        .album-menu-btn:active {
             transform: translateY(-2px);
             box-shadow: 0 5px 20px rgba(0,0,0,0.3);
             background: var(--primary-light);
@@ -484,7 +516,8 @@
             text-decoration: none;
             transition: background 0.2s, border-color 0.2s;
         }
-        .blog-cta-btn:hover {
+        .blog-cta-btn:hover,
+        .blog-cta-btn:active {
             background: rgba(255,255,255,0.2);
             border-color: rgba(255,255,255,0.5);
             color: white;
@@ -496,7 +529,8 @@
             border-color: rgba(255,255,255,0.6);
             background: rgba(255,255,255,0.18);
         }
-        #title-screen .blog-cta-btn:hover {
+        #title-screen .blog-cta-btn:hover,
+        #title-screen .blog-cta-btn:active {
             color: #fff;
             background: rgba(255,255,255,0.3);
             border-color: rgba(255,255,255,0.8);
@@ -564,7 +598,9 @@
             border-bottom-color: rgba(0,0,0,0.9);
         }
 
-        .stat-mini:hover .stat-tooltip {
+        .stat-mini:hover .stat-tooltip,
+        .stat-mini:active .stat-tooltip,
+        .stat-mini.tooltip-open .stat-tooltip {
             display: block;
         }
 
@@ -930,7 +966,7 @@
             .game-header h2 { font-size: 0.95rem; }
             .month-display { font-size: 0.8rem; padding: 0.2rem 0.4rem; }
             .phase-badge { font-size: 0.65rem; }
-            .restart-btn { padding: 0.5rem 0.75rem; font-size: 0.75rem; min-height: var(--touch-min); }
+            .restart-btn { padding: 0.5rem 0.75rem; font-size: 0.85rem; min-height: var(--touch-min); }
 
             .stats-bar { 
                 gap: 0.35rem; 
@@ -997,7 +1033,7 @@
             .game-tab {
                 padding: 0.5rem 0.5rem;
                 min-height: var(--touch-min);
-                font-size: 0.75rem;
+                font-size: 0.8rem;
                 flex: 1 1 auto;
                 min-width: calc(50% - 0.15rem);
             }
@@ -1605,7 +1641,8 @@
             box-shadow: 0 4px 12px rgba(212, 160, 23, 0.4);
         }
 
-        .easter-egg-close-btn:hover {
+        .easter-egg-close-btn:hover,
+        .easter-egg-close-btn:active {
             transform: translateY(-2px);
             box-shadow: 0 6px 16px rgba(212, 160, 23, 0.5);
         }
@@ -1807,7 +1844,8 @@
             font-family: inherit;
         }
 
-        .play-again-btn:hover {
+        .play-again-btn:hover,
+        .play-again-btn:active {
             transform: translateY(-2px);
         }
 
@@ -2341,7 +2379,7 @@
             transition: all 0.2s;
         }
 
-        .title-tab:hover, .title-tab.active {
+        .title-tab:hover, .title-tab:active, .title-tab.active {
             background: rgba(255,255,255,0.25);
             border-color: white;
         }
@@ -2485,7 +2523,8 @@
             transition: transform 0.2s;
         }
 
-        .photo-card:hover {
+        .photo-card:hover,
+        .photo-card:active {
             transform: scale(1.02);
         }
 
@@ -2524,7 +2563,8 @@
             transition: transform 0.3s;
         }
 
-        .photo-card.has-image:hover .photo-real img {
+        .photo-card.has-image:hover .photo-real img,
+        .photo-card.has-image:active .photo-real img {
             transform: scale(1.05);
         }
 
@@ -2800,11 +2840,11 @@
         /* Bug report button – bottom-left, minimal */
         #bug-report-btn {
             position: fixed;
-            bottom: 16px;
-            left: 16px;
+            bottom: max(16px, env(safe-area-inset-bottom, 16px));
+            left: max(16px, env(safe-area-inset-left, 16px));
             z-index: 9998;
-            min-width: 32px;
-            height: 32px;
+            min-width: var(--touch-min);
+            height: var(--touch-min);
             padding: 0 10px;
             gap: 6px;
             border: none;
@@ -2820,7 +2860,8 @@
             transition: opacity 0.2s, transform 0.2s, background 0.2s;
         }
         #bug-report-btn .bug-label { font-size: 0.85em; }
-        #bug-report-btn:hover:not(.bug-disabled) {
+        #bug-report-btn:hover:not(.bug-disabled),
+        #bug-report-btn:active:not(.bug-disabled) {
             background: rgba(0,0,0,0.5);
             transform: scale(1.1);
         }
@@ -2882,8 +2923,8 @@
             position: absolute;
             top: 8px;
             right: 8px;
-            width: 24px;
-            height: 24px;
+            width: 36px;
+            height: 36px;
             padding: 0;
             border: none;
             background: rgba(255,255,255,0.1);
@@ -2892,8 +2933,12 @@
             font-size: 14px;
             cursor: pointer;
             line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        #bug-walkthrough .bug-walkthrough-close:hover { background: rgba(255,255,255,0.15); color: #fff; }
+        #bug-walkthrough .bug-walkthrough-close:hover,
+        #bug-walkthrough .bug-walkthrough-close:active { background: rgba(255,255,255,0.15); color: #fff; }
 
         /* Bug overlay – slides up from button */
         #bug-report-overlay {
@@ -2925,9 +2970,9 @@
             width: 100%;
             min-height: 54px;
             max-height: 80px;
-            padding: 8px 10px;
+            padding: 12px 14px;
             font-family: inherit;
-            font-size: 0.85rem;
+            font-size: 1rem; /* 16px prevents iOS auto-zoom on focus */
             border: 1px solid rgba(255,255,255,0.2);
             border-radius: 8px;
             background: rgba(255,255,255,0.08);
@@ -2954,8 +2999,8 @@
         }
         #bug-report-overlay .bug-send-link:hover { text-decoration: underline; }
         #bug-report-overlay .bug-close-btn {
-            width: 24px;
-            height: 24px;
+            width: 36px;
+            height: 36px;
             padding: 0;
             border: none;
             background: rgba(255,255,255,0.1);
@@ -2964,8 +3009,12 @@
             font-size: 14px;
             cursor: pointer;
             line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        #bug-report-overlay .bug-close-btn:hover { background: rgba(255,255,255,0.15); color: #fff; }
+        #bug-report-overlay .bug-close-btn:hover,
+        #bug-report-overlay .bug-close-btn:active { background: rgba(255,255,255,0.15); color: #fff; }
         #bug-report-overlay .bug-thanks { font-size: 0.9rem; color: var(--success); }
         .bug-error-near {
             position: fixed;
@@ -9059,6 +9108,31 @@ ${gameState.gameLog.join('\n')}
         window.toggleMusic = toggleMusic;
         window.setVolume = setVolume;
         window.MusicSystem = MusicSystem;
+        // ============================================
+        // SESSION B: Touch-friendly stat tooltips
+        // ============================================
+        (function initTouchTooltips() {
+            document.addEventListener('click', function(e) {
+                const stat = e.target.closest('.stat-mini');
+                // Close any open tooltips first
+                document.querySelectorAll('.stat-mini.tooltip-open').forEach(function(el) {
+                    if (el !== stat) el.classList.remove('tooltip-open');
+                });
+                if (stat) {
+                    stat.classList.toggle('tooltip-open');
+                    e.stopPropagation();
+                }
+            });
+            // Close tooltips on outside tap
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.stat-mini')) {
+                    document.querySelectorAll('.stat-mini.tooltip-open').forEach(function(el) {
+                        el.classList.remove('tooltip-open');
+                    });
+                }
+            });
+        })();
+
         console.log('[CJ] script end', { selectNextEvent: typeof window.selectNextEvent, startGame: typeof window.startGame });
     </script>
 </body>
