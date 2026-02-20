@@ -922,6 +922,7 @@
                 flex-direction: column;
                 height: auto;
                 min-height: 0; /* Allow scroll container to measure content correctly */
+                overflow: visible; /* Override base overflow:hidden — #game-screen handles scrolling */
             }
 
             .shop-panel {
@@ -957,6 +958,7 @@
                 min-width: 0;
                 flex: none;
                 order: 2; /* Event panel after pixel art on mobile */
+                overflow: visible; /* Override base overflow:hidden — let content flow for scroll */
             }
 
             /* Mobile tooltip fixes */
