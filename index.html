@@ -826,6 +826,11 @@
             display: block;
         }
 
+        /* Collapsed state for toggleStatsPanel — avoids inline style conflicts */
+        .game-tabs.tabs-hidden {
+            display: none !important;
+        }
+
         /* Tab Content Styling */
         .tab-stats-grid {
             display: grid;
@@ -3752,7 +3757,7 @@
         // ============================================
         // GAME VERSION - Update this when making changes!
         // ============================================
-        const GAME_VERSION = "V5.3 mobile friendly";
+        const GAME_VERSION = "V5.4 more fixes";
         window.GAME_VERSION = GAME_VERSION;
 
         // Debug: ?unlockAll=1 in URL unlocks all trophies and album photos (to preview full album / platinum)
@@ -4804,7 +4809,11 @@
                 return false;
             }
             document.querySelectorAll(tabSelector).forEach(function(t) { t.classList.remove('active'); });
-            document.querySelectorAll(contentSelector).forEach(function(c) { c.classList.remove('active'); });
+            // Clear stale inline display:none left by toggleStatsPanel collapse
+            document.querySelectorAll(contentSelector).forEach(function(c) {
+                c.classList.remove('active');
+                c.style.display = '';
+            });
             btn.classList.add('active');
             panel.classList.add('active');
             return true;
@@ -4897,20 +4906,20 @@
         window.setPolicy = setPolicy;
 
         // Toggle expanded stats panel (show/hide bottom tabs)
+        // Uses a CSS class instead of inline style.display so it never
+        // conflicts with .active display rules in showGameTab().
         function toggleStatsPanel() {
             const tabSection = document.querySelector('.game-tabs');
             const tabContents = document.querySelectorAll('.game-tab-content');
 
-            if (tabSection.style.display === 'none') {
-                tabSection.style.display = 'flex';
-                tabContents.forEach(c => {
-                    if (c.classList.contains('active')) {
-                        c.style.display = 'block';
-                    }
-                });
+            if (tabSection.classList.contains('tabs-hidden')) {
+                // Re-open: remove hiding class, clear any stale inline display
+                tabSection.classList.remove('tabs-hidden');
+                tabContents.forEach(function(c) { c.style.display = ''; });
             } else {
-                tabSection.style.display = 'none';
-                tabContents.forEach(c => c.style.display = 'none');
+                // Collapse: add hiding class
+                tabSection.classList.add('tabs-hidden');
+                tabContents.forEach(function(c) { c.style.display = 'none'; });
             }
         }
 
