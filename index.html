@@ -1711,10 +1711,15 @@
         /* End Screen */
         #end-screen {
             display: none;
-            min-height: 100vh;
+            height: 100vh;
+            height: 100dvh;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: contain;
             padding: 2rem;
             padding-bottom: 5rem; /* Space so fixed music bar doesn't cover achievements */
             background: var(--cream);
+            box-sizing: border-box;
         }
 
         .end-content {
@@ -3084,6 +3089,97 @@
     <style>
         body.locale-pending [data-i18n] { visibility: hidden; }
     </style>
+
+    <!-- Studio Splash Screen -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+        #studio-splash {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        #studio-splash.fade-out {
+            animation: splashFadeOut 1.2s ease-in forwards;
+        }
+        @keyframes splashFadeOut {
+            0%   { opacity: 1; }
+            100% { opacity: 0; pointer-events: none; }
+        }
+        .splash-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .splash-glow {
+            position: absolute;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(212, 170, 90, 0.12) 0%, transparent 70%);
+            opacity: 0;
+            animation: splashGlow 3s ease-in-out 1.2s forwards;
+            pointer-events: none;
+        }
+        @keyframes splashGlow {
+            0%   { opacity: 0; transform: scale(0.8); }
+            40%  { opacity: 1; transform: scale(1); }
+            70%  { opacity: 0.6; transform: scale(1.05); }
+            100% { opacity: 0; transform: scale(1.1); }
+        }
+        .splash-name {
+            font-size: clamp(2rem, 6vw, 3.6rem);
+            font-weight: 300;
+            color: #fff;
+            letter-spacing: 0.15em;
+            opacity: 0;
+            animation: splashFadeIn 2s ease-out 0.6s forwards;
+            z-index: 1;
+            user-select: none;
+        }
+        .splash-name .splash-dot {
+            color: #d4aa5a;
+            font-weight: 600;
+        }
+        .splash-name .splash-care {
+            font-weight: 400;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.85);
+        }
+        .splash-line {
+            width: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 170, 90, 0.5), transparent);
+            margin: 1.2rem 0 1rem 0;
+            animation: splashLineExpand 1.4s ease-in-out 1.8s forwards;
+            z-index: 1;
+        }
+        @keyframes splashLineExpand {
+            0%   { width: 0; opacity: 0; }
+            100% { width: min(200px, 40vw); opacity: 1; }
+        }
+        .splash-tagline {
+            font-size: clamp(0.85rem, 2vw, 1.15rem);
+            font-weight: 300;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: splashFadeIn 1.8s ease-out 2.6s forwards;
+            z-index: 1;
+            user-select: none;
+        }
+        @keyframes splashFadeIn {
+            0%   { opacity: 0; transform: translateY(6px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
     <script>
@@ -3096,8 +3192,46 @@
             }
         })();
     </script>
+
+    <!-- Studio Splash: Julien.care -->
+    <div id="studio-splash">
+        <div class="splash-inner">
+            <div class="splash-glow"></div>
+            <div class="splash-name">Julien<span class="splash-dot">.</span><span class="splash-care">care</span></div>
+            <div class="splash-line"></div>
+            <div class="splash-tagline">Stay Creative</div>
+        </div>
+    </div>
+
+    <script>
+        // Studio splash → intro transition
+        (function() {
+            var SPLASH_HOLD = 5000;   // ms to hold splash before fade
+            var SPLASH_FADE = 1200;   // ms for fade-out
+            var splash = document.getElementById('studio-splash');
+            var intro = document.getElementById('intro-screen');
+            // Allow click/tap to skip splash after 2s
+            var canSkip = false;
+            setTimeout(function() { canSkip = true; }, 2000);
+            function dismissSplash() {
+                if (splash.classList.contains('fade-out')) return;
+                splash.classList.add('fade-out');
+                setTimeout(function() {
+                    splash.style.display = 'none';
+                    if (intro) intro.style.display = 'flex';
+                }, SPLASH_FADE);
+            }
+            // Auto-dismiss after hold time
+            setTimeout(dismissSplash, SPLASH_HOLD);
+            // Click/tap to skip (after 2s minimum)
+            splash.addEventListener('click', function() {
+                if (canSkip) dismissSplash();
+            });
+        })();
+    </script>
+
     <!-- Intro Cutscene (Stardew Valley style) -->
-    <div id="intro-screen">
+    <div id="intro-screen" style="display:none;">
         <!-- Click-to-begin overlay: unlocks audio before intro starts -->
         <div id="intro-click-overlay" style="position:absolute;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:#000;cursor:pointer;">
             <div style="text-align:center;color:#fff;font-family:'Press Start 2P',monospace;">
@@ -3814,7 +3948,7 @@
         // ============================================
         // GAME VERSION - Update this when making changes!
         // ============================================
-        const GAME_VERSION = "V5.6 talkking";
+        const GAME_VERSION = "V6.0 splash";
         window.GAME_VERSION = GAME_VERSION;
 
         // Debug: ?unlockAll=1 in URL unlocks all trophies and album photos (to preview full album / platinum)
