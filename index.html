@@ -982,6 +982,45 @@
             }
         }
 
+        /* Tablet: compact side-by-side layout (like desktop but tighter) */
+        @media (min-width: 601px) and (max-width: 900px) {
+            .game-main-container {
+                flex-direction: row;
+                height: auto;
+                min-height: 0;
+                overflow: visible;
+            }
+            .shop-panel {
+                width: 35%;
+                min-width: 200px;
+                max-width: 280px;
+                flex: 0 0 auto;
+                order: unset;
+                padding: 0.3rem;
+                gap: 0.3rem;
+            }
+            .shop-canvas-wrapper {
+                max-height: 160px;
+            }
+            #shop-art {
+                max-height: 160px;
+                width: auto;
+                margin: 0 auto;
+                display: block;
+            }
+            .event-panel {
+                flex: 1;
+                min-width: 0;
+                order: unset;
+            }
+            .event-card {
+                margin: 0.5rem;
+                padding: 0.85rem;
+            }
+            .game-tabs { padding: 0.3rem; gap: 0.25rem; }
+            .game-tab { padding: 0.45rem 0.5rem; font-size: 0.8rem; }
+        }
+
         @media (max-width: 600px) {
             .game-header {
                 padding: 0.4rem 0.6rem;
@@ -1224,41 +1263,44 @@
             }
         }
 
-        /* Landscape hint: show only in portrait on small screens */
+        /* Landscape hint: show on landscape phones to suggest portrait */
         .landscape-hint {
             display: none;
             position: fixed;
-            bottom: 0;
+            top: 0;
             left: 0;
             right: 0;
-            background: rgba(0,0,0,0.85);
+            bottom: 0;
+            background: rgba(0,0,0,0.92);
             color: #f4a460;
-            padding: 0.6rem 1rem;
+            padding: 2rem;
             text-align: center;
-            font-size: 0.9rem;
-            z-index: 500;
-            flex-wrap: wrap;
+            font-size: 1.1rem;
+            z-index: 10000;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
+            gap: 1rem;
         }
         .landscape-hint.dismissed { display: none !important; }
-        @media (max-width: 600px) and (orientation: portrait) {
+        .landscape-hint-icon { font-size: 3rem; }
+        @media (orientation: landscape) and (max-height: 500px) {
             .landscape-hint { display: flex; }
         }
-        @media (min-width: 601px), (orientation: landscape) {
+        @media (orientation: portrait), (min-height: 501px) {
             .landscape-hint { display: none !important; }
         }
         .landscape-hint-dismiss {
             background: rgba(255,255,255,0.2);
             border: 1px solid rgba(255,255,255,0.4);
             color: white;
-            padding: 0.4rem 0.8rem;
-            border-radius: 4px;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
             cursor: pointer;
             min-height: var(--touch-min);
-            font-size: 0.8rem;
+            font-size: 0.9rem;
         }
+        .landscape-hint-dismiss:active { background: rgba(255,255,255,0.3); }
 
         /* Keep old meter styling for tooltips but hide meters */
         .meter-card {
@@ -3454,6 +3496,13 @@
             <p class="outro-narrative" id="outro-narrative"></p>
         </div>
         <div class="outro-skip" id="outro-skip-hint" data-i18n="outro.skipHint">Tap to skip</div>
+    </div>
+
+    <!-- Landscape rotation hint -->
+    <div class="landscape-hint" id="landscape-hint">
+        <div class="landscape-hint-icon">📱</div>
+        <p>Rotate your phone to portrait for the best experience</p>
+        <button class="landscape-hint-dismiss" onclick="document.getElementById('landscape-hint').classList.add('dismissed')">Got it</button>
     </div>
 
     <!-- Title Screen -->
@@ -6172,7 +6221,11 @@
                 canvas.style.height = Math.ceil(BASE_H * scale) + 'px';
             }
             resizeCanvas();
-            window.addEventListener('resize', resizeCanvas);
+            let _introResizeRAF;
+            window.addEventListener('resize', () => {
+                cancelAnimationFrame(_introResizeRAF);
+                _introResizeRAF = requestAnimationFrame(resizeCanvas);
+            });
             ctx.imageSmoothingEnabled = false;
 
             introStartTime = performance.now();
@@ -9110,7 +9163,7 @@ ${gameState.gameLog.join('\n')}
 
             const width = rect.width;
             const height = rect.height;
-            const padding = { top: 20, right: 15, bottom: 25, left: 50 };
+            const padding = { top: 20, right: 15, bottom: 25, left: window.innerWidth < 600 ? 35 : 50 };
             const chartWidth = width - padding.left - padding.right;
             const chartHeight = height - padding.top - padding.bottom;
 
@@ -9270,11 +9323,14 @@ ${gameState.gameLog.join('\n')}
             ctx.fillText('Month ' + gameState.monthsPlayed, width / 2, height - 5);
         }
 
-        // Initialize chart on window resize
+        let _chartResizeRAF;
         window.addEventListener('resize', () => {
-            if (document.getElementById('game-screen').style.display !== 'none') {
-                drawChart();
-            }
+            cancelAnimationFrame(_chartResizeRAF);
+            _chartResizeRAF = requestAnimationFrame(() => {
+                if (document.getElementById('game-screen').style.display !== 'none') {
+                    drawChart();
+                }
+            });
         });
 
         // Expose functions for testing
