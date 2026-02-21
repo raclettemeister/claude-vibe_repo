@@ -255,8 +255,7 @@
         }
 
         html, body {
-            height: 100dvh;
-            height: 100vh; /* fallback for older browsers */
+            height: 100vh;
             height: 100dvh;
             overflow: hidden; /* Only inner containers (#title-screen, #game-screen) scroll */
             margin: 0;
@@ -283,8 +282,7 @@
             text-align: center;
             padding: 1rem 1.5rem 2rem 1.5rem;
             overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-            overscroll-behavior: contain; /* Prevent scroll chaining to body */
+            overscroll-behavior: contain;
             box-sizing: border-box;
             scrollbar-gutter: stable;
         }
@@ -739,7 +737,6 @@
             border-radius: 12px;
             overflow-y: auto;
             overflow-x: hidden;
-            -webkit-overflow-scrolling: touch;
             padding: 1rem;
             box-shadow: 0 2px 15px rgba(0,0,0,0.08);
             display: flex;
@@ -787,7 +784,6 @@
             min-height: 2.5em;
             overflow-y: auto;
             overflow-x: hidden;
-            -webkit-overflow-scrolling: touch;
         }
 
         .choices {
@@ -916,8 +912,7 @@
                 height: 100dvh; /* Dynamic viewport on mobile: avoids address-bar clipping */
                 overflow-y: auto;
                 overflow-x: hidden;
-                -webkit-overflow-scrolling: touch;
-                overscroll-behavior-y: contain; /* Prevent pull-to-refresh during gameplay */
+                overscroll-behavior-y: contain;
                 touch-action: manipulation; /* Kill 300ms tap delay & double-tap zoom */
                 padding-bottom: 6rem; /* Space so bottom content scrolls into view above music bar */
                 box-sizing: border-box;
@@ -1766,10 +1761,9 @@
             height: 100vh;
             height: 100dvh;
             overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
             overscroll-behavior: contain;
             padding: 2rem;
-            padding-bottom: 5rem; /* Space so fixed music bar doesn't cover achievements */
+            padding-bottom: 5rem;
             background: var(--cream);
             box-sizing: border-box;
         }
@@ -2618,7 +2612,7 @@
 
         .photo-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr));
             gap: 1.5rem;
             max-width: 1200px;
             margin: 0 auto;
@@ -3341,75 +3335,50 @@
             var localeReady = null;
 
             function dismissSplash() {
-                console.log('[FLOW] dismissSplash called');
-                if (splash.classList.contains('fade-out')) { console.log('[FLOW] dismissSplash: already fading, skip'); return; }
+                if (splash.classList.contains('fade-out')) { return; }
                 splash.classList.add('fade-out');
 
                 // Ensure locale is loaded BEFORE unlocking cutscene
                 var unlockCutscene = function() {
-                    console.log('[FLOW] unlockCutscene: showing intro-screen, setting _splashIntroUnlock=true');
-                    console.log('[FLOW] window.currentLocale lang:', window.currentLocale && window.currentLocale.langCode);
                     var intro = document.getElementById('intro-screen');
-                    if (intro) {
-                        intro.style.display = 'flex';
-                        console.log('[FLOW] intro-screen display set to flex');
-                    } else {
-                        console.error('[FLOW] ERROR: intro-screen element not found!');
-                    }
+                    if (intro) intro.style.display = 'flex';
                     window._splashIntroUnlock = true;
                 };
 
                 if (localeReady) {
-                    console.log('[FLOW] dismissSplash: waiting for localeReady promise...');
                     localeReady.then(function(locale) {
-                        console.log('[FLOW] localeReady resolved, locale:', locale ? locale.langCode || 'loaded' : 'NULL');
                         unlockCutscene();
-                    }).catch(function(err) {
-                        console.error('[FLOW] localeReady REJECTED:', err);
+                    }).catch(function() {
                         unlockCutscene();
                     });
                 } else {
-                    console.log('[FLOW] dismissSplash: no localeReady, unlocking immediately');
                     unlockCutscene();
                 }
 
                 setTimeout(function() {
                     splash.style.display = 'none';
-                    console.log('[FLOW] splash hidden');
                 }, SPLASH_FADE);
             }
 
             // Called when user clicks EN or FR
             window._startWithLang = function(lang) {
-                console.log('[FLOW] _startWithLang called with:', lang);
                 var LANG_KEY = 'chezjulien_lang';
                 try { localStorage.setItem(LANG_KEY, lang); } catch(e) {}
 
                 // ALWAYS fetch the locale — ensures correct language is loaded
-                console.log('[FLOW] fetching locale: data/locales/' + lang + '.json');
                 localeReady = fetch('data/locales/' + lang + '.json')
                     .then(function(r) {
-                        console.log('[FLOW] locale fetch response:', r.status, r.ok);
                         return r.ok ? r.json() : null;
                     })
                     .then(function(locale) {
                         if (locale) {
-                            console.log('[FLOW] locale loaded OK, langCode:', locale.langCode, 'keys:', Object.keys(locale).length);
                             window.currentLocale = locale;
-                            if (typeof applyLocaleToDOM === 'function') {
-                                applyLocaleToDOM(locale);
-                                console.log('[FLOW] applyLocaleToDOM called');
-                            } else {
-                                console.warn('[FLOW] applyLocaleToDOM NOT a function yet');
-                            }
+                            if (typeof applyLocaleToDOM === 'function') applyLocaleToDOM(locale);
                             document.body.classList.remove('locale-pending');
-                        } else {
-                            console.error('[FLOW] locale fetch returned null/empty');
                         }
                         return locale;
                     })
-                    .catch(function(err) {
-                        console.error('[FLOW] Locale fetch FAILED:', err);
+                    .catch(function() {
                         document.body.classList.remove('locale-pending');
                         return null;
                     });
@@ -3417,11 +3386,10 @@
                 // 1. Hide lang picker
                 langPicker.style.transition = 'opacity 0.4s';
                 langPicker.style.opacity = '0';
-                setTimeout(function() { langPicker.style.display = 'none'; console.log('[FLOW] lang picker hidden'); }, 400);
+                setTimeout(function() { langPicker.style.display = 'none'; }, 400);
 
                 // 2. Show splash + play chime
                 splash.style.display = 'flex';
-                console.log('[FLOW] splash shown');
                 playSplashChime();
 
                 // 3. Start ocean waves (CutsceneAudio defined later in script, so poll for it)
@@ -3431,20 +3399,18 @@
                         CutsceneAudio.init();
                         CutsceneAudio.currentScene = -1;
                         CutsceneAudio.setScene(1);
-                        console.log('[FLOW] CutsceneAudio started (ocean waves)');
                     }
                 }, 100);
                 setTimeout(function() { clearInterval(oceanRetry); }, 5000);
 
                 // 4. Auto-dismiss splash (locale must be ready before cutscene unlocks)
                 setTimeout(dismissSplash, SPLASH_HOLD);
-                console.log('[FLOW] splash auto-dismiss scheduled in', SPLASH_HOLD, 'ms');
 
                 // 5. Allow tap-to-skip after 2.5s
                 var canSkip = false;
                 setTimeout(function() { canSkip = true; }, 2500);
                 splash.addEventListener('click', function() {
-                    if (canSkip) { console.log('[FLOW] splash tap-to-skip triggered'); dismissSplash(); }
+                    if (canSkip) { dismissSplash(); }
                 });
             };
         })();
@@ -5349,7 +5315,6 @@
     <script src="js/event-validator.js"></script>
     <script src="js/pixel-scene.js"></script>
     <script>
-        console.log('[CJ] Game script block started');
         // ============================================
         // GAME FUNCTIONS
         // ============================================
@@ -6303,7 +6268,6 @@
                 const beats = getIntroBeats();
                 const beat = beats[beatIdx];
                 const prevBeat = beatIdx > 0 ? beats[beatIdx - 1] : null;
-                console.log('[FLOW] setupBeat(' + beatIdx + ') scene:', beat && beat.scene, 'text:', beat && beat.text && beat.text.substring(0, 40), 'locale:', window.currentLocale && window.currentLocale.langCode);
 
                 // Clear overlays
                 setNarrative('', '');
@@ -6534,30 +6498,24 @@
         window.skipIntro = skipIntro;
 
         function endIntro() {
-            console.log('[FLOW] endIntro called, introComplete was:', introComplete);
             if (introComplete) return;
             introComplete = true;
 
             const introScreen = document.getElementById('intro-screen');
             introScreen.classList.add('fade-out');
-            console.log('[FLOW] intro-screen fading out...');
 
             setTimeout(() => {
                 introScreen.style.display = 'none';
-                console.log('[FLOW] intro-screen hidden');
                 var hasPhoto = photoImages.shop_front && !photoImages.shop_front.startsWith('PLACEHOLDER');
-                console.log('[FLOW] shop_front photo?', hasPhoto ? 'YES → polaroid' : 'NO → title direct');
                 if (hasPhoto) {
                     showIntroPolaroid();
                 } else {
-                    console.log('[FLOW] adding .visible to title-screen');
                     document.getElementById('title-screen').classList.add('visible');
                 }
             }, 1000);
         }
 
         function showIntroPolaroid() {
-            console.log('[FLOW] showIntroPolaroid called');
             document.getElementById('polaroid-image').src = photoImages.shop_front;
             document.getElementById('polaroid-caption').textContent = getPhotoDescription('shop_front', "Chez Julien... chez moi, chez vous, chez mes potes!") || "Chez Julien... chez moi, chez vous, chez mes potes!";
             document.getElementById('polaroid-date').textContent = getPhotoDate('shop_front', "July 2022") || "July 2022";
@@ -6571,11 +6529,9 @@
                 overlay.classList.add('active');
 
                 const closeHandler = () => {
-                    console.log('[FLOW] polaroid closing → title screen in 400ms');
                     overlay.classList.remove('active');
                     overlay.removeEventListener('click', closeHandler);
                     setTimeout(() => {
-                        console.log('[FLOW] TITLE SCREEN VISIBLE');
                         document.getElementById('title-screen').classList.add('visible');
                     }, 400);
                 };
@@ -6604,20 +6560,14 @@
                 return;
             }
             // Don't force intro-screen visible here — splash flow controls when it appears
-            console.log('[FLOW] DOMContentLoaded fired');
             const introScreen = document.getElementById('intro-screen');
             if (introScreen) {
                 introScreen.style.opacity = '1';
                 introScreen.classList.remove('fade-out');
-                console.log('[FLOW] intro-screen prepped (opacity=1, fade-out removed), display=', introScreen.style.display);
             }
             try {
-                console.log('[FLOW] calling runIntro()...');
                 runIntro();
-                console.log('[FLOW] runIntro() completed OK');
-            } catch (err) {
-                console.error('[FLOW] runIntro FAILED:', err);
-            }
+            } catch (e) {}
         });
         if (document.readyState !== 'loading' && window.location.search.includes('automation=1')) {
             goToTitleForAutomation();
@@ -6629,18 +6579,11 @@
 
         // Cutscene unlock: triggered by splash dismissal
         (function() {
-            console.log('[FLOW] cutscene unlock polling started');
             var checkInterval = setInterval(function() {
                 if (window._splashIntroUnlock && !introUnlocked) {
                     introUnlocked = true;
                     clearInterval(checkInterval);
-                    console.log('[FLOW] introUnlocked = true! Locale:', window.currentLocale && window.currentLocale.langCode);
-                    if (typeof window._resyncBeat0 === 'function') {
-                        console.log('[FLOW] calling _resyncBeat0 to re-setup beat 0 with correct locale');
-                        window._resyncBeat0();
-                    } else {
-                        console.warn('[FLOW] _resyncBeat0 not available!');
-                    }
+                    if (typeof window._resyncBeat0 === 'function') window._resyncBeat0();
                 }
             }, 100);
         })();
@@ -7793,7 +7736,6 @@ ${gameState.gameLog.join('\n')}
         }
 
         function selectNextEvent() {
-            console.log('[CJ] selectNextEvent() entered', { eventsOk: !!(events && events.length), eventsLength: events?.length });
             try {
             // Safety check: ensure events array exists
             if (!events || !Array.isArray(events) || events.length === 0) {
@@ -8023,11 +7965,9 @@ ${gameState.gameLog.join('\n')}
                 if (titleEl && !shown) titleEl.textContent = 'Error loading event — try refreshing.';
             }
         }
-        console.log('[CJ] assigning window.selectNextEvent');
         window.selectNextEvent = selectNextEvent;
 
         function displayEvent(event) {
-            console.log('[CJ] displayEvent()', event ? event.id : 'null');
             // Scroll to top for new events so user sees the full event text + choices
             var _scrollEl = document.getElementById('game-screen');
             if (_scrollEl) _scrollEl.scrollTop = 0;
@@ -9584,27 +9524,16 @@ ${gameState.gameLog.join('\n')}
         // ============================================
         (function initTouchTooltips() {
             document.addEventListener('click', function(e) {
-                const stat = e.target.closest('.stat-mini');
-                // Close any open tooltips first
+                var stat = e.target.closest('.stat-mini');
                 document.querySelectorAll('.stat-mini.tooltip-open').forEach(function(el) {
                     if (el !== stat) el.classList.remove('tooltip-open');
                 });
                 if (stat) {
                     stat.classList.toggle('tooltip-open');
-                    e.stopPropagation();
-                }
-            });
-            // Close tooltips on outside tap
-            document.addEventListener('click', function(e) {
-                if (!e.target.closest('.stat-mini')) {
-                    document.querySelectorAll('.stat-mini.tooltip-open').forEach(function(el) {
-                        el.classList.remove('tooltip-open');
-                    });
                 }
             });
         })();
 
-        console.log('[CJ] script end', { selectNextEvent: typeof window.selectNextEvent, startGame: typeof window.startGame });
     </script>
 </body>
 </html>
